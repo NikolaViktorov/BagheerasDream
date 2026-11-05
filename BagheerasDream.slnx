@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="BagheerasDream/BagheerasDream.csproj" />
+  <Project Path="BagheerasDream.Application/BagheerasDream.Application.csproj" />
+  <Project Path="BagheerasDream.Domain/BagheerasDream.Domain.csproj" />
+  <Project Path="BagheerasDream.Infrastructure/BagheerasDream.Infrastructure.csproj" />
+  <Project Path="BagheerasDream/BagheerasDream.Web.csproj" />
 </Solution>
