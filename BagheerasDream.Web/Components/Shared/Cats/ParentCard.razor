@@ -1,0 +1,37 @@
+﻿@if (!string.IsNullOrWhiteSpace(ParentName))
+{
+    <a href="@DetailsUrl" class="parent-card">
+        <div class="parent-image">
+            @if (!string.IsNullOrWhiteSpace(ProfileImage))
+            {
+                <img src="@ProfileImage" alt="@ParentName" />
+            }
+            else
+            {
+                <div class="parent-placeholder">
+                    🐱
+                </div>
+            }
+        </div>
+
+        <div class="parent-info">
+            <span class="parent-label">@Label</span>
+            <h3>@ParentName</h3>
+            <span class="parent-link">View profile →</span>
+        </div>
+    </a>
+}
+
+@code {
+    [Parameter]
+    public string? ParentName { get; set; }
+
+    [Parameter]
+    public string? ProfileImage { get; set; }
+
+    [Parameter]
+    public string DetailsUrl { get; set; } = "#";
+
+    [Parameter]
+    public string Label { get; set; } = "Parent";
+}

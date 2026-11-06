@@ -1,0 +1,216 @@
+﻿/* =========================================
+   ABOUT SECTION
+   ========================================= */
+
+.about-section {
+    padding: 120px 40px;
+    background-color: var(--color-secondary);
+}
+
+.about-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    align-items: center;
+    gap: 110px;
+}
+
+
+/* =========================================
+   IMAGE
+   ========================================= */
+
+.about-visual {
+    position: relative;
+    padding: 0 25px 35px 0;
+}
+
+.about-image-frame {
+    width: 100%;
+    height: 570px;
+    overflow: hidden;
+    background-color: var(--color-background);
+}
+
+.about-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.about-image-frame:hover .about-image {
+    transform: scale(1.04);
+}
+
+.about-image-decoration {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    right: 0;
+    bottom: 0;
+    border-right: 1px solid var(--color-gold);
+    border-bottom: 1px solid var(--color-gold);
+    pointer-events: none;
+}
+
+.about-image-caption {
+    display: block;
+    margin-top: 18px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--color-muted);
+}
+
+
+/* =========================================
+   CONTENT
+   ========================================= */
+
+.about-content {
+    max-width: 470px;
+}
+
+.about-eyebrow {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--color-gold);
+    margin-bottom: 25px;
+}
+
+.about-content h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(42px, 4vw, 58px);
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -1px;
+    margin-bottom: 28px;
+}
+
+    .about-content h2 span {
+        display: block;
+        color: var(--color-gold);
+    }
+
+
+/* =========================================
+   DIVIDER
+   ========================================= */
+
+.about-divider {
+    width: 55px;
+    height: 1px;
+    background-color: var(--color-gold);
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   TEXT
+   ========================================= */
+
+.about-intro {
+    font-family: var(--font-heading);
+    font-size: 21px;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.about-description {
+    font-size: 13px;
+    line-height: 2;
+    color: var(--color-muted);
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   BUTTON
+   ========================================= */
+
+.about-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 25px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-gold);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+    .about-button span {
+        font-size: 17px;
+        transition: transform 0.3s ease;
+    }
+
+    .about-button:hover {
+        color: var(--color-gold);
+    }
+
+        .about-button:hover span {
+            transform: translateX(5px);
+        }
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .about-container {
+        gap: 55px;
+    }
+
+    .about-image-frame {
+        height: 470px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .about-section {
+        padding: 80px 24px;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 55px;
+    }
+
+    .about-visual {
+        max-width: 550px;
+    }
+
+    .about-image-frame {
+        height: 450px;
+    }
+
+    .about-content {
+        max-width: 100%;
+    }
+
+        .about-content h2 {
+            font-size: 48px;
+        }
+}
+
+@media (max-width: 480px) {
+
+    .about-image-frame {
+        height: 350px;
+    }
+
+    .about-content h2 {
+        font-size: 42px;
+    }
+}

@@ -1,0 +1,118 @@
+﻿@page "/cats/females"
+
+@using BagheerasDream.Web.Components.Shared.Cats
+
+<PageTitle>Our Females | BagheerasDream</PageTitle>
+
+<section class="females-page">
+
+    <!-- HEADER -->
+
+    <div class="females-header">
+
+        <span class="section-eyebrow">
+            THE LADIES OF BAGHEERASDREAM
+        </span>
+
+        <h1>
+            Our <span>Females.</span>
+        </h1>
+
+        <p>
+            Meet the beautiful ladies of our family.
+            Each with her own personality, character and charm.
+        </p>
+
+    </div>
+
+
+    <!-- CATS GRID -->
+
+    <div class="females-container">
+
+        <div class="cats-grid">
+
+            @foreach (var cat in Cats)
+            {
+                <CatCard
+                    Name="@cat.Name"
+                    Birthday="@cat.Birthday"
+                    Color="@cat.Color"
+                    Breed="@cat.Breed"
+                    ProfileImage="@cat.ProfileImage"
+                    DetailsUrl="@($"/cats/{cat.Id}")" />
+            }
+
+        </div>
+
+        @if (!Cats.Any())
+        {
+            <div class="empty-cats">
+                <h3>No cats to display yet.</h3>
+                <p>Our family is growing. Check back soon.</p>
+            </div>
+        }
+
+    </div>
+
+
+    <!-- FOOTER DECORATION -->
+
+    <div class="females-bottom">
+
+        <span>BRITISH SHORTHAIR</span>
+
+        <span>RAISED WITH LOVE & CARE</span>
+
+    </div>
+
+</section>
+
+
+@code {
+
+    private List<CatViewModel> Cats = new()
+    {
+        new()
+        {
+            Id = 1,
+            Name = "Bella",
+            Birthday = new DateTime(2023, 5, 12),
+            Color = "Blue",
+            Breed = "British Shorthair"
+        },
+
+        new()
+        {
+            Id = 2,
+            Name = "Luna",
+            Birthday = new DateTime(2022, 8, 20),
+            Color = "Lilac",
+            Breed = "British Shorthair"
+        },
+
+        new()
+        {
+            Id = 3,
+            Name = "Daisy",
+            Birthday = new DateTime(2024, 2, 15),
+            Color = "Cream",
+            Breed = "British Shorthair"
+        }
+    };
+
+    private class CatViewModel
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; } = string.Empty;
+
+        public DateTime Birthday { get; set; }
+
+        public string Color { get; set; } = string.Empty;
+
+        public string Breed { get; set; } = string.Empty;
+
+        public string? ProfileImage { get; set; }
+    }
+}

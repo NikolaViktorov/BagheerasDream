@@ -1,0 +1,133 @@
+﻿<section class="latest-litters-section">
+
+    <div class="litters-container">
+
+        <!-- Section Header -->
+        <div class="litters-header">
+
+            <div class="litters-heading">
+
+                <span class="section-eyebrow">
+                    THE NEXT GENERATION
+                </span>
+
+                <h2>
+                    Our Little <span>Ones.</span>
+                </h2>
+
+                <p>
+                    Discover our litters and follow the
+                    first steps of our little British Shorthairs.
+                </p>
+
+            </div>
+
+            <a href="/litters" class="litters-view-all">
+                VIEW ALL LITTERS
+                <span>→</span>
+            </a>
+
+        </div>
+
+
+        <!-- Litter Cards -->
+        <div class="litters-grid">
+
+            @foreach (var litter in Litters)
+            {
+                <article class="litter-card">
+
+                    <a href="/litters" class="litter-image-wrapper">
+
+                        <img src="@litter.Image"
+                             alt="@litter.Name"
+                             class="litter-image" />
+
+                        <span class="litter-status">
+                            @litter.Status
+                        </span>
+
+                    </a>
+
+                    <div class="litter-card-content">
+
+                        <div class="litter-card-top">
+
+                            <span class="litter-label">
+                                BAGHEERASDREAM
+                            </span>
+
+                            <span class="litter-date">
+                                @litter.Date
+                            </span>
+
+                        </div>
+
+                        <h3>@litter.Name</h3>
+
+                        <div class="litter-card-bottom">
+
+                            <span class="litter-count">
+                                @litter.Kittens
+                            </span>
+
+                            <a href="/litters" class="litter-details">
+                                VIEW LITTER
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+            }
+
+        </div>
+
+
+        <!-- Bottom Decoration -->
+        <div class="litters-footer">
+
+            <span>EVERY LITTLE PAW HAS A STORY</span>
+
+            <span>RAISED WITH LOVE & CARE</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+@code {
+
+    // Temporary demonstration data.
+    // We will replace this with real API data later.
+
+    private readonly (string Name, string Image, string Date, string Kittens, string Status)[] Litters =
+    {
+        (
+            "Litter A",
+            "/images/litters/litter1.jpg",
+            "Coming soon",
+            "Details coming soon",
+            "OUR LITTLE ONES"
+        ),
+        (
+            "Litter B",
+            "/images/litters/litter2.jpg",
+            "Coming soon",
+            "Details coming soon",
+            "OUR LITTLE ONES"
+        ),
+        (
+            "Litter C",
+            "/images/litters/litter3.jpg",
+            "Coming soon",
+            "Details coming soon",
+            "OUR LITTLE ONES"
+        )
+    };
+
+}

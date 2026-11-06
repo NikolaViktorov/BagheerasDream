@@ -1,0 +1,155 @@
+﻿@page "/litters/{Id:guid}"
+@using BagheerasDream.Web.Data
+@using BagheerasDream.Domain.Models
+@using BagheerasDream.Domain.Enums
+@using BagheerasDream.Web.Components.Shared.Litters
+
+<PageTitle>@(CurrentLitter?.Name ?? "Litter Details") | BagheerasDream</PageTitle>
+
+@if (CurrentLitter is null)
+{
+    <div class="litter-not-found">
+        <h1>Litter not found.</h1>
+        <a href="/litters">← BACK TO OUR LITTERS</a>
+    </div>
+}
+else
+{
+    <section class="litter-details-page">
+
+        <!-- HERO -->
+
+        <header class="litter-details-header">
+
+            <div class="litter-breadcrumb">
+                <a href="/">Home</a>
+                <span>/</span>
+                <a href="/litters">Our Litters</a>
+                <span>/</span>
+                <span>@CurrentLitter.Name</span>
+            </div>
+
+            <span class="section-eyebrow">THE NEXT GENERATION</span>
+
+            <h1>@CurrentLitter.Name<span>.</span></h1>
+
+            <p>
+                Born on @CurrentLitter.Birthday.ToString("dd MMMM yyyy")
+            </p>
+
+            <div class="litter-summary">
+                <span>@CurrentLitter.Kittens.Count LITTLE ONES</span>
+                <span>RAISED WITH LOVE & CARE</span>
+            </div>
+
+        </header>
+
+
+        <!-- PARENTS -->
+
+        <section class="litter-parents-section">
+
+            <div class="litter-section-heading">
+                <span class="section-eyebrow">WHERE IT ALL BEGINS</span>
+                <h2>Meet the <span>Parents.</span></h2>
+            </div>
+
+            <div class="litter-parents-grid">
+
+                <div class="litter-parent">
+                    <span>MOTHER</span>
+                    <h3>@CurrentLitter.Mother.Name</h3>
+                    <p>British Shorthair</p>
+                </div>
+
+                <div class="litter-parent">
+                    <span>FATHER</span>
+
+                    @if (CurrentLitter.Father is not null)
+                    {
+                        <h3>@CurrentLitter.Father.Name</h3>
+                        <p>British Shorthair</p>
+                    }
+                    else if (!string.IsNullOrWhiteSpace(CurrentLitter.ExternalFatherName))
+                    {
+                        <h3>@CurrentLitter.ExternalFatherName</h3>
+
+                        @if (!string.IsNullOrWhiteSpace(CurrentLitter.ExternalFatherCattery))
+                        {
+                            <p>@CurrentLitter.ExternalFatherCattery</p>
+                        }
+                    }
+                    else
+                    {
+                        <h3>Not specified</h3>
+                    }
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- KITTENS -->
+
+        <section class="litter-kittens-section">
+
+            <div class="litter-section-heading">
+                <span class="section-eyebrow">MEET THE LITTLE ONES</span>
+                <h2>Our <span>Kittens.</span></h2>
+                <p>
+                    Each one has its own personality and a special place in our family.
+                </p>
+            </div>
+
+            @if (CurrentLitter.Kittens.Any())
+            {
+                <div class="kittens-grid">
+
+                    @foreach (var kitten in CurrentLitter.Kittens)
+                    {
+                        <KittenCard Item="kitten" />
+                    }
+
+                </div>
+            }
+            else
+            {
+                <div class="empty-kittens">
+                    <span>♡</span>
+                    <p>More little stories coming soon.</p>
+                </div>
+            }
+
+        </section>
+
+
+        <!-- DESCRIPTION -->
+
+        @if (!string.IsNullOrWhiteSpace(CurrentLitter.Description))
+        {
+            <section class="litter-description-section">
+                <span class="section-eyebrow">OUR STORY</span>
+                <h2>A Little <span>About Them.</span></h2>
+                <p>@CurrentLitter.Description</p>
+            </section>
+        }
+
+
+        <div class="litter-details-bottom">
+            <a href="/litters">← BACK TO OUR LITTERS</a>
+            <span>RAISED WITH LOVE & CARE</span>
+        </div>
+
+    </section>
+}
+
+
+@code {
+
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private Litter? CurrentLitter =>
+    DemoLitterData.Litters.FirstOrDefault(l => l.LitterId == Id);
+}

@@ -1,0 +1,56 @@
+﻿@page "/litters"
+@using BagheerasDream.Web.Data
+@using BagheerasDream.Domain.Models
+@using BagheerasDream.Domain.Enums
+@using BagheerasDream.Web.Components.Shared.Litters
+
+<PageTitle>Our Litters | BagheerasDream</PageTitle>
+
+<section class="litters-page">
+
+    <header class="litters-header">
+
+        <span class="section-eyebrow">
+            THE NEXT GENERATION
+        </span>
+
+        <h1>Our <span>Litters.</span></h1>
+
+        <p>
+            Discover the little ones raised with love, care
+            and dedication in our family.
+        </p>
+
+    </header>
+
+
+    <div class="litters-container">
+
+        @if (DemoLitterData.Litters.Any())
+        {
+            <div class="litters-grid">
+
+                @foreach (var litter in DemoLitterData.Litters)
+                {
+                    <LitterCard Item="litter" />
+                }
+
+            </div>
+        }
+        else
+        {
+            <div class="empty-litters">
+                <span>♡</span>
+                <h2>Beautiful moments are coming.</h2>
+                <p>We currently have no litters to display.</p>
+            </div>
+        }
+
+    </div>
+
+
+    <div class="litters-bottom">
+        <span>RAISED WITH LOVE & CARE</span>
+    </div>
+
+</section>

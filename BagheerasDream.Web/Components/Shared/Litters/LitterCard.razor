@@ -1,0 +1,51 @@
+﻿@using BagheerasDream.Domain.Models
+
+<a href="@($"/litters/{Item.LitterId}")" class="litter-card">
+
+    <div class="litter-image">
+
+        @if (!string.IsNullOrWhiteSpace(Item.Kittens.FirstOrDefault()?.ProfileImage))
+        {
+            <img src="@Item.Kittens.First().ProfileImage"
+                 alt="@Item.Name" />
+        }
+        else
+        {
+            <div class="litter-placeholder">
+                <span>♡</span>
+                <p>OUR LITTLE ONES</p>
+            </div>
+        }
+
+        <span class="litter-badge">
+            @Item.Kittens.Count KITTENS
+        </span>
+
+    </div>
+
+    <div class="litter-content">
+
+        <span class="litter-date">
+            BORN @Item.Birthday.ToString("dd.MM.yyyy")
+        </span>
+
+        <h3>@Item.Name</h3>
+
+        <div class="litter-mother">
+            <span>MOTHER</span>
+            <strong>@Item.Mother.Name</strong>
+        </div>
+
+        <div class="litter-card-bottom">
+            <span>DISCOVER THE LITTER</span>
+            <span class="litter-arrow">→</span>
+        </div>
+
+    </div>
+
+</a>
+
+@code {
+    [Parameter, EditorRequired]
+    public Litter Item { get; set; } = null!;
+}

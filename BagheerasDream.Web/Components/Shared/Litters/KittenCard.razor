@@ -1,0 +1,38 @@
+﻿@using BagheerasDream.Domain.Models
+
+<article class="kitten-card">
+
+    <div class="kitten-image">
+        @if (!string.IsNullOrWhiteSpace(Item.ProfileImage))
+        {
+            <img src="@Item.ProfileImage" alt="@Item.Name" />
+        }
+        else
+        {
+            <div class="kitten-placeholder">
+                <span>♡</span>
+            </div>
+        }
+
+        <span class="kitten-status @GetStatusClass()">
+            @Item.Status.ToString()
+        </span>
+    </div>
+
+    <div class="kitten-info">
+        <span class="kitten-eyebrow">A LITTLE TREASURE</span>
+
+        <h3>@(string.IsNullOrWhiteSpace(Item.Name) ? "Little One" : Item.Name)</h3>
+    </div>
+
+</article>
+
+@code {
+    [Parameter, EditorRequired]
+    public Kitten Item { get; set; } = null!;
+
+    private string GetStatusClass()
+    {
+        return Item.Status.ToString().ToLowerInvariant();
+    }
+}

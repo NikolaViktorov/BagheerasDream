@@ -1,0 +1,239 @@
+﻿.litter-details-page {
+    background: #f8f5ef;
+    padding: 45px 5% 65px;
+    min-height: 80vh;
+    color: #302b27;
+}
+
+.litter-details-header {
+    max-width: 1150px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0 75px;
+}
+
+.litter-breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 75px;
+    font-size: 11px;
+    color: #8b8177;
+}
+
+    .litter-breadcrumb a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+        .litter-breadcrumb a:hover {
+            color: #b69a70;
+        }
+
+.section-eyebrow {
+    display: block;
+    color: #a58a62;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.litter-details-header h1 {
+    margin: 22px 0;
+    font-family: Georgia, serif;
+    font-size: clamp(45px, 6vw, 70px);
+    font-weight: 400;
+}
+
+    .litter-details-header h1 span,
+    .litter-section-heading h2 span,
+    .litter-description-section h2 span {
+        color: #b69a70;
+    }
+
+.litter-details-header > p {
+    color: #77716b;
+    font-size: 14px;
+}
+
+.litter-summary {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 35px;
+    color: #a58a62;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.litter-parents-section,
+.litter-kittens-section,
+.litter-description-section {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 65px 0;
+    border-top: 1px solid #ded7cd;
+}
+
+.litter-section-heading {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+    .litter-section-heading h2,
+    .litter-description-section h2 {
+        margin: 15px 0;
+        font-family: Georgia, serif;
+        font-size: 42px;
+        font-weight: 400;
+    }
+
+    .litter-section-heading > p,
+    .litter-description-section > p {
+        color: #77716b;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+.litter-parents-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.litter-parent {
+    padding: 35px;
+    background: #fff;
+    text-align: center;
+}
+
+    .litter-parent > span {
+        color: #a58a62;
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .litter-parent h3 {
+        margin: 15px 0 8px;
+        font-family: Georgia, serif;
+        font-size: 27px;
+        font-weight: 400;
+    }
+
+    .litter-parent p {
+        color: #77716b;
+        font-size: 12px;
+    }
+
+.kittens-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+}
+
+.empty-kittens {
+    padding: 60px 20px;
+    text-align: center;
+    color: #a58a62;
+}
+
+    .empty-kittens span {
+        font-family: Georgia, serif;
+        font-size: 50px;
+    }
+
+    .empty-kittens p {
+        color: #77716b;
+        font-size: 14px;
+    }
+
+.litter-description-section {
+    text-align: center;
+}
+
+    .litter-description-section > p {
+        max-width: 650px;
+        margin: 20px auto 0;
+    }
+
+.litter-details-bottom {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1150px;
+    margin: 60px auto 0;
+    padding-top: 25px;
+    border-top: 1px solid #ded7cd;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #8c7b67;
+}
+
+    .litter-details-bottom a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+        .litter-details-bottom a:hover {
+            color: #b69a70;
+        }
+
+.litter-not-found {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f8f5ef;
+}
+
+    .litter-not-found h1 {
+        font-family: Georgia, serif;
+        font-weight: 400;
+    }
+
+    .litter-not-found a {
+        color: #a58a62;
+        text-decoration: none;
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+@media (max-width: 850px) {
+    .kittens-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .litter-details-page {
+        padding: 35px 6% 45px;
+    }
+
+    .litter-breadcrumb {
+        margin-bottom: 50px;
+        gap: 7px;
+    }
+
+    .litter-summary {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .litter-parents-grid,
+    .kittens-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .litter-section-heading h2,
+    .litter-description-section h2 {
+        font-size: 34px;
+    }
+
+    .litter-details-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,242 @@
+﻿@page "/cats/{Id:int}"
+
+<PageTitle>@(Cat?.Name ?? "Cat Details") | BagheerasDream</PageTitle>
+
+@if (Cat is null)
+{
+    <div class="cat-not-found">
+        <h1>Cat not found.</h1>
+        <a href="/cats/females">BACK TO OUR FEMALES →</a>
+    </div>
+}
+else
+{
+    <section class="cat-details-page">
+
+        <div class="details-breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <a href="/cats/females">Our Females</a>
+            <span>/</span>
+            <span>@Cat.Name</span>
+        </div>
+
+        <div class="details-layout">
+
+            <div class="details-image">
+
+                @if (!string.IsNullOrWhiteSpace(Cat.ProfileImage))
+                {
+                    <img src="@Cat.ProfileImage" alt="@Cat.Name" />
+                }
+                else
+                {
+                    <div class="details-image-placeholder">
+                        <span>♡</span>
+                        <p>PHOTO COMING SOON</p>
+                    </div>
+                }
+
+                <div class="image-caption">
+                    <span>BRITISH SHORTHAIR</span>
+                    <span>@Cat.Color</span>
+                </div>
+
+            </div>
+
+
+            <div class="details-information">
+
+                <span class="details-eyebrow">
+                    MEET OUR LADY
+                </span>
+
+                <h1>@Cat.Name<span>.</span></h1>
+
+                <p class="details-description">
+                    @Cat.Description
+                </p>
+
+                <div class="details-facts">
+
+                    <div>
+                        <span>BREED</span>
+                        <strong>@Cat.Breed</strong>
+                    </div>
+
+                    <div>
+                        <span>COLOR</span>
+                        <strong>@Cat.Color</strong>
+                    </div>
+
+                    <div>
+                        <span>BIRTHDAY</span>
+                        <strong>@Cat.Birthday.ToString("dd.MM.yyyy")</strong>
+                    </div>
+
+                    <div>
+                        <span>AGE</span>
+                        <strong>@CalculateAge(Cat.Birthday) years</strong>
+                    </div>
+
+                    <div>
+                        <span>GENDER</span>
+                        <strong>Female</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PARENTS -->
+
+        <section class="parents-section">
+
+            <div class="parents-header">
+
+                <span class="details-eyebrow">
+                    HER FAMILY TREE
+                </span>
+
+                <h2>Meet Her <span>Parents.</span></h2>
+
+                <p>
+                    Every beautiful cat has a story.
+                    Discover where @Cat.Name comes from.
+                </p>
+
+            </div>
+
+
+            <div class="parents-grid">
+
+                <ParentCard
+                    ParentName="@Cat.Father?.Name"
+                    ProfileImage="@Cat.Father?.ProfileImage"
+                    DetailsUrl="@(Cat.Father?.Url ?? "#")"
+                    Label="Father" />
+
+                <ParentCard
+                    ParentName="@Cat.Mother?.Name"
+                    ProfileImage="@Cat.Mother?.ProfileImage"
+                    DetailsUrl="@(Cat.Mother?.Url ?? "#")"
+                    Label="Mother" />
+
+            </div>
+
+        </section>
+
+        <div class="details-bottom">
+            <a href="/cats/females">← BACK TO OUR FEMALES</a>
+            <span>RAISED WITH LOVE & CARE</span>
+        </div>
+
+    </section>
+}
+
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private FemaleCat? Cat => DemoCats.FirstOrDefault(c => c.Id == Id);
+
+    private static int CalculateAge(DateTime birthday)
+    {
+        var today = DateTime.Today;
+        var age = today.Year - birthday.Year;
+
+        if (birthday.Date > today.AddYears(-age))
+            age--;
+
+        return age;
+    }
+
+
+    // Temporary demonstration data
+
+    private static readonly List<FemaleCat> DemoCats = new()
+    {
+        new FemaleCat
+        {
+            Id = 1,
+            Name = "Bella",
+            Birthday = new DateTime(2023, 5, 12),
+            Color = "Blue",
+            Breed = "British Shorthair",
+            Description = "Bella is a beautiful British Shorthair with a gentle personality and a lovely character.",
+
+            Father = new ParentInfo
+            {
+                Name = "Oliver",
+                Color = "Blue",
+                Url = "/cats/10"
+            },
+
+            Mother = new ParentInfo
+            {
+                Name = "Sophie",
+                Color = "Lilac",
+                Url = "/cats/11"
+            }
+        },
+
+        new FemaleCat
+        {
+            Id = 2,
+            Name = "Luna",
+            Birthday = new DateTime(2022, 8, 20),
+            Color = "Lilac",
+            Breed = "British Shorthair",
+            Description = "Luna is a lovely member of our family."
+        },
+
+        new FemaleCat
+        {
+            Id = 3,
+            Name = "Daisy",
+            Birthday = new DateTime(2024, 2, 15),
+            Color = "Cream",
+            Breed = "British Shorthair",
+            Description = "Daisy is a charming young British Shorthair."
+        }
+    };
+
+
+    private class FemaleCat
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; } = string.Empty;
+
+        public DateTime Birthday { get; set; }
+
+        public string Color { get; set; } = string.Empty;
+
+        public string Breed { get; set; } = string.Empty;
+
+        public string Description { get; set; } = string.Empty;
+
+        public string? ProfileImage { get; set; }
+
+        public ParentInfo? Father { get; set; }
+
+        public ParentInfo? Mother { get; set; }
+    }
+
+
+    private class ParentInfo
+    {
+        public string Name { get; set; } = string.Empty;
+
+        public string Color { get; set; } = string.Empty;
+
+        public string? ProfileImage { get; set; }
+
+        public string Url { get; set; } = "#";
+    }
+}

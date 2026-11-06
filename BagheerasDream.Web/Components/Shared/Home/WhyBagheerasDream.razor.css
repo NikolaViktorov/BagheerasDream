@@ -1,0 +1,246 @@
+﻿/* =========================================
+   WHY BAGHEERASDREAM
+   ========================================= */
+
+.why-section {
+    padding: 130px 40px;
+    background-color: var(--color-background);
+}
+
+.why-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 100px;
+    align-items: center;
+}
+
+
+/* =========================================
+   INTRODUCTION
+   ========================================= */
+
+.why-intro {
+    max-width: 440px;
+}
+
+    .why-intro .section-eyebrow {
+        display: block;
+        color: var(--color-gold);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        margin-bottom: 25px;
+    }
+
+    .why-intro h2 {
+        font-family: var(--font-heading);
+        font-size: clamp(44px, 5vw, 62px);
+        font-weight: 500;
+        line-height: 1.15;
+        margin-bottom: 28px;
+    }
+
+        .why-intro h2 span {
+            display: block;
+            color: var(--color-gold);
+        }
+
+    .why-intro > p {
+        color: var(--color-muted);
+        font-size: 14px;
+        line-height: 2;
+        max-width: 390px;
+        margin-bottom: 35px;
+    }
+
+
+/* =========================================
+   STORY LINK
+   ========================================= */
+
+.why-story-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--color-gold);
+    color: var(--color-text);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+}
+
+    .why-story-link span {
+        font-size: 17px;
+        transition: transform 0.3s ease;
+    }
+
+    .why-story-link:hover {
+        color: var(--color-gold);
+    }
+
+        .why-story-link:hover span {
+            transform: translateX(6px);
+        }
+
+
+/* =========================================
+   PRINCIPLES GRID
+   ========================================= */
+
+.why-principles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid rgba(41, 39, 36, 0.15);
+    border-left: 1px solid rgba(41, 39, 36, 0.15);
+}
+
+
+/* =========================================
+   PRINCIPLE CARD
+   ========================================= */
+
+.why-card {
+    position: relative;
+    min-height: 260px;
+    padding: 35px 30px;
+    border-right: 1px solid rgba(41, 39, 36, 0.15);
+    border-bottom: 1px solid rgba(41, 39, 36, 0.15);
+    transition: background-color 0.3s ease;
+}
+
+    .why-card:hover {
+        background-color: var(--color-secondary);
+    }
+
+
+/* =========================================
+   NUMBER
+   ========================================= */
+
+.why-number {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: var(--color-muted);
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   ICON
+   ========================================= */
+
+.why-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 28px;
+    border: 1px solid var(--color-gold);
+    border-radius: 50%;
+    color: var(--color-gold);
+    font-size: 22px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.why-card:hover .why-icon {
+    background-color: var(--color-gold);
+    color: white;
+}
+
+
+/* =========================================
+   CONTENT
+   ========================================= */
+
+.why-card h3 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 13px;
+}
+
+.why-card p {
+    color: var(--color-muted);
+    font-size: 12px;
+    line-height: 1.9;
+    max-width: 260px;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.why-footer {
+    max-width: 1180px;
+    margin: 75px auto 0;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(41, 39, 36, 0.15);
+    color: var(--color-muted);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+    .why-container {
+        grid-template-columns: 1fr;
+        gap: 65px;
+    }
+
+    .why-intro {
+        max-width: 600px;
+    }
+
+        .why-intro > p {
+            max-width: 500px;
+        }
+}
+
+@media (max-width: 650px) {
+
+    .why-section {
+        padding: 85px 24px;
+    }
+
+    .why-container {
+        gap: 45px;
+    }
+
+    .why-principles {
+        grid-template-columns: 1fr;
+    }
+
+    .why-card {
+        min-height: 220px;
+        padding: 30px 25px;
+    }
+
+    .why-footer {
+        margin-top: 50px;
+        gap: 15px;
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .why-footer {
+        flex-direction: column;
+    }
+}

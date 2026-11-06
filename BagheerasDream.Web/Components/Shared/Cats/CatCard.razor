@@ -1,0 +1,74 @@
+﻿<article class="cat-card">
+
+    <a href="@DetailsUrl" class="cat-card-image">
+
+        @if (!string.IsNullOrWhiteSpace(ProfileImage))
+        {
+            <img src="@ProfileImage" alt="@Name" />
+        }
+        else
+        {
+            <div class="cat-image-placeholder">
+                <span>♡</span>
+                <p>Photo coming soon</p>
+            </div>
+        }
+
+        <div class="cat-card-overlay">
+            VIEW PROFILE →
+        </div>
+
+    </a>
+
+    <div class="cat-card-content">
+
+        <div class="cat-card-meta">
+            <span>@Breed</span>
+            <span>@Color</span>
+        </div>
+
+        <h3>@Name</h3>
+
+        <div class="cat-card-footer">
+
+            <span>
+                @Age years old
+            </span>
+
+            <a href="@DetailsUrl">
+                VIEW DETAILS →
+            </a>
+
+        </div>
+
+    </div>
+
+</article>
+
+@code {
+    [Parameter] public string Name { get; set; } = string.Empty;
+
+    [Parameter] public DateTime Birthday { get; set; }
+
+    [Parameter] public string Color { get; set; } = string.Empty;
+
+    [Parameter] public string Breed { get; set; } = string.Empty;
+
+    [Parameter] public string? ProfileImage { get; set; }
+
+    [Parameter] public string DetailsUrl { get; set; } = "#";
+
+    private int Age
+    {
+        get
+        {
+            var today = DateTime.Today;
+            var age = today.Year - Birthday.Year;
+
+            if (Birthday.Date > today.AddYears(-age))
+                age--;
+
+            return age;
+        }
+    }
+}

@@ -1,0 +1,126 @@
+﻿.litter-card {
+    display: block;
+    background: #fff;
+    text-decoration: none;
+    color: #302b27;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .litter-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(48, 43, 39, 0.09);
+    }
+
+.litter-image {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background: #eee8df;
+}
+
+    .litter-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+.litter-card:hover .litter-image img {
+    transform: scale(1.04);
+}
+
+.litter-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: #f0ebe3;
+    color: #b69a70;
+}
+
+    .litter-placeholder span {
+        font-family: Georgia, serif;
+        font-size: 65px;
+    }
+
+    .litter-placeholder p {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+.litter-badge {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    padding: 9px 13px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #806b4f;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+.litter-content {
+    padding: 25px 24px;
+}
+
+.litter-date {
+    color: #a58a62;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.litter-content h3 {
+    margin: 12px 0 20px;
+    font-family: Georgia, serif;
+    font-size: 29px;
+    font-weight: 400;
+}
+
+.litter-mother {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee8df;
+}
+
+    .litter-mother span {
+        color: #a58a62;
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+
+    .litter-mother strong {
+        font-family: Georgia, serif;
+        font-size: 17px;
+        font-weight: 400;
+    }
+
+.litter-card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    color: #a58a62;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+.litter-arrow {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.litter-card:hover .litter-arrow {
+    transform: translateX(5px);
+}
+
+@media (max-width: 600px) {
+    .litter-image {
+        height: 260px;
+    }
+}

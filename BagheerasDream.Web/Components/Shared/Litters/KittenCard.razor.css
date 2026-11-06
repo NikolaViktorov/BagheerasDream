@@ -1,0 +1,85 @@
+﻿.kitten-card {
+    background: #fff;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .kitten-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(48, 43, 39, 0.08);
+    }
+
+.kitten-image {
+    position: relative;
+    height: 280px;
+    background: #eee8df;
+    overflow: hidden;
+}
+
+    .kitten-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+.kitten-card:hover .kitten-image img {
+    transform: scale(1.04);
+}
+
+.kitten-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #b69a70;
+    font-family: Georgia, serif;
+    font-size: 65px;
+}
+
+.kitten-status {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    padding: 8px 12px;
+    background: white;
+    color: #806b4f;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+    .kitten-status.available {
+        color: #64836b;
+    }
+
+    .kitten-status.reserved {
+        color: #a58a62;
+    }
+
+    .kitten-status.sold {
+        color: #8b7777;
+    }
+
+.kitten-info {
+    padding: 20px;
+}
+
+.kitten-eyebrow {
+    color: #a58a62;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.kitten-info h3 {
+    margin: 9px 0 0;
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+@media (max-width: 600px) {
+    .kitten-image {
+        height: 240px;
+    }
+}
