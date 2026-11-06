@@ -1,9 +1,10 @@
+using BagheerasDream.Application.Interfaces;
 using BagheerasDream.Infrastructure.Data;
 using BagheerasDream.Infrastructure.Identity;
+using BagheerasDream.Infrastructure.Services;
+using BagheerasDream.Web.Components;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
-using BagheerasDream.Web.Components;
 
 public partial class Program
 {
@@ -33,6 +34,8 @@ public partial class Program
 
 		builder.Services.AddAuthorization();
 		builder.Services.AddCascadingAuthenticationState();
+
+		builder.Services.AddScoped<ICatsService, CatsService>();
 
 		var app = builder.Build();
 

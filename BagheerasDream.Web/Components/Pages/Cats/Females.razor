@@ -1,6 +1,9 @@
 ﻿@page "/cats/females"
 
-@using BagheerasDream.Web.Components.Shared.Cats
+@using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Application.DTOs.Cats
+
+@inject ICatsService CatsService
 
 <PageTitle>Our Females | BagheerasDream</PageTitle>
 
@@ -30,25 +33,31 @@
 
     <div class="females-container">
 
-        <div class="cats-grid">
-
-            @foreach (var cat in Cats)
-            {
-                <CatCard
-                    Name="@cat.Name"
-                    Birthday="@cat.Birthday"
-                    Color="@cat.Color"
-                    Breed="@cat.Breed"
-                    ProfileImage="@cat.ProfileImage"
-                    DetailsUrl="@($"/cats/{cat.Id}")" />
-            }
-
-        </div>
-
-        @if (!Cats.Any())
+        @if (IsLoading)
         {
-            <div class="empty-cats">
-                <h3>No cats to display yet.</h3>
+            <div class="empty-females">
+                <p>Loading...</p>
+            </div>
+        }
+        else if (Cats.Any())
+        {
+            <div class="cats-grid">
+                @foreach (var cat in Cats)
+                {
+                    <CatCard
+                        Name="@cat.Name"
+                        Birthday="@cat.Birthday.ToDateTime(TimeOnly.MinValue)"
+                        Color="@cat.Color.ToString()"
+                        Breed="@cat.Breed.ToString()"
+                        ProfileImage="@cat.ProfileImage"
+                        DetailsUrl="@($"/cats/{cat.CatId}")" />
+                }
+            </div>
+        }
+        else
+        {
+            <div class="empty-females">
+                <h3>No females to display yet.</h3>
                 <p>Our family is growing. Check back soon.</p>
             </div>
         }
@@ -71,48 +80,18 @@
 
 @code {
 
-    private List<CatViewModel> Cats = new()
+    private List<CatListDto> Cats = new();
+    private bool IsLoading = true;
+
+    protected override async Task OnInitializedAsync()
     {
-        new()
+        try
         {
-            Id = 1,
-            Name = "Bella",
-            Birthday = new DateTime(2023, 5, 12),
-            Color = "Blue",
-            Breed = "British Shorthair"
-        },
-
-        new()
-        {
-            Id = 2,
-            Name = "Luna",
-            Birthday = new DateTime(2022, 8, 20),
-            Color = "Lilac",
-            Breed = "British Shorthair"
-        },
-
-        new()
-        {
-            Id = 3,
-            Name = "Daisy",
-            Birthday = new DateTime(2024, 2, 15),
-            Color = "Cream",
-            Breed = "British Shorthair"
+            Cats = (await CatsService.GetFemalesAsync()).ToList();
         }
-    };
-
-    private class CatViewModel
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; } = string.Empty;
-
-        public DateTime Birthday { get; set; }
-
-        public string Color { get; set; } = string.Empty;
-
-        public string Breed { get; set; } = string.Empty;
-
-        public string? ProfileImage { get; set; }
+        finally
+        {
+            IsLoading = false;
+        }
     }
 }

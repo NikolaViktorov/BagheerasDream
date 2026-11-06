@@ -1,12 +1,31 @@
-﻿@page "/cats/{Id:int}"
+﻿@page "/cats/{Id:guid}"
+
+@using BagheerasDream.Domain.Enums
+@using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Application.DTOs.Cats
+
+@inject ICatsService CatsService
 
 <PageTitle>@(Cat?.Name ?? "Cat Details") | BagheerasDream</PageTitle>
 
-@if (Cat is null)
+@if (IsLoading)
+{
+    <div class="cat-not-found">
+        <h1>Loading cat details...</h1>
+    </div>
+}
+else if (ErrorMessage is not null)
+{
+    <div class="cat-not-found">
+        <h1>@ErrorMessage</h1>
+        <a href="@GetCatsUrl()">BACK TO OUR CATS →</a>
+    </div>
+}
+else if (Cat is null)
 {
     <div class="cat-not-found">
         <h1>Cat not found.</h1>
-        <a href="/cats/females">BACK TO OUR FEMALES →</a>
+        <a href="@GetCatsUrl()">BACK TO OUR CATS →</a>
     </div>
 }
 else
@@ -16,7 +35,7 @@ else
         <div class="details-breadcrumb">
             <a href="/">Home</a>
             <span>/</span>
-            <a href="/cats/females">Our Females</a>
+            <a href="@GetCatsUrl()">Our Females</a>
             <span>/</span>
             <span>@Cat.Name</span>
         </div>
@@ -48,7 +67,7 @@ else
             <div class="details-information">
 
                 <span class="details-eyebrow">
-                    MEET OUR LADY
+                    @(Cat.Gender == Gender.Female ? "MEET OUR LADY" : "MEET OUR GENTLEMAN")
                 </span>
 
                 <h1>@Cat.Name<span>.</span></h1>
@@ -81,13 +100,11 @@ else
 
                     <div>
                         <span>GENDER</span>
-                        <strong>Female</strong>
+                        <strong>@Cat.Gender</strong>
                     </div>
 
                 </div>
-
             </div>
-
         </div>
 
 
@@ -114,15 +131,15 @@ else
             <div class="parents-grid">
 
                 <ParentCard
-                    ParentName="@Cat.Father?.Name"
-                    ProfileImage="@Cat.Father?.ProfileImage"
-                    DetailsUrl="@(Cat.Father?.Url ?? "#")"
+                    ParentName="@Cat.FatherName"
+                    ProfileImage="@Cat.FatherProfileImage"
+                    DetailsUrl="@(Cat.FatherId.HasValue ? $"/cats/{Cat.FatherId}" : "#")"
                     Label="Father" />
 
                 <ParentCard
-                    ParentName="@Cat.Mother?.Name"
-                    ProfileImage="@Cat.Mother?.ProfileImage"
-                    DetailsUrl="@(Cat.Mother?.Url ?? "#")"
+                    ParentName="@Cat.MotherName"
+                    ProfileImage="@Cat.MotherProfileImage"
+                    DetailsUrl="@(Cat.MotherId.HasValue ? $"/cats/{Cat.MotherId}" : "#")"
                     Label="Mother" />
 
             </div>
@@ -130,7 +147,7 @@ else
         </section>
 
         <div class="details-bottom">
-            <a href="/cats/females">← BACK TO OUR FEMALES</a>
+            <a href="@GetCatsUrl()">← BACK TO OUR CATS</a>
             <span>RAISED WITH LOVE & CARE</span>
         </div>
 
@@ -141,102 +158,45 @@ else
 @code {
 
     [Parameter]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
-    private FemaleCat? Cat => DemoCats.FirstOrDefault(c => c.Id == Id);
+    private CatDetailsDto? Cat { get; set; }
+    private bool IsLoading { get; set; } = true;
+    private string? ErrorMessage { get; set; }
 
-    private static int CalculateAge(DateTime birthday)
+    protected override async Task OnInitializedAsync()
     {
-        var today = DateTime.Today;
+        try
+        {
+            Cat = await CatsService.GetByIdAsync(Id);
+        }
+        catch (Exception)
+        {
+            ErrorMessage = "Something went wrong while loading the cat.";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private static int CalculateAge(DateOnly birthday)
+    {
+        var today = DateOnly.FromDateTime(DateTime.Today);
         var age = today.Year - birthday.Year;
 
-        if (birthday.Date > today.AddYears(-age))
+        if (birthday > today.AddYears(-age))
+        {
             age--;
+        }
 
         return age;
     }
 
-
-    // Temporary demonstration data
-
-    private static readonly List<FemaleCat> DemoCats = new()
+    private string GetCatsUrl()
     {
-        new FemaleCat
-        {
-            Id = 1,
-            Name = "Bella",
-            Birthday = new DateTime(2023, 5, 12),
-            Color = "Blue",
-            Breed = "British Shorthair",
-            Description = "Bella is a beautiful British Shorthair with a gentle personality and a lovely character.",
-
-            Father = new ParentInfo
-            {
-                Name = "Oliver",
-                Color = "Blue",
-                Url = "/cats/10"
-            },
-
-            Mother = new ParentInfo
-            {
-                Name = "Sophie",
-                Color = "Lilac",
-                Url = "/cats/11"
-            }
-        },
-
-        new FemaleCat
-        {
-            Id = 2,
-            Name = "Luna",
-            Birthday = new DateTime(2022, 8, 20),
-            Color = "Lilac",
-            Breed = "British Shorthair",
-            Description = "Luna is a lovely member of our family."
-        },
-
-        new FemaleCat
-        {
-            Id = 3,
-            Name = "Daisy",
-            Birthday = new DateTime(2024, 2, 15),
-            Color = "Cream",
-            Breed = "British Shorthair",
-            Description = "Daisy is a charming young British Shorthair."
-        }
-    };
-
-
-    private class FemaleCat
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; } = string.Empty;
-
-        public DateTime Birthday { get; set; }
-
-        public string Color { get; set; } = string.Empty;
-
-        public string Breed { get; set; } = string.Empty;
-
-        public string Description { get; set; } = string.Empty;
-
-        public string? ProfileImage { get; set; }
-
-        public ParentInfo? Father { get; set; }
-
-        public ParentInfo? Mother { get; set; }
-    }
-
-
-    private class ParentInfo
-    {
-        public string Name { get; set; } = string.Empty;
-
-        public string Color { get; set; } = string.Empty;
-
-        public string? ProfileImage { get; set; }
-
-        public string Url { get; set; } = "#";
+        return Cat?.Gender == Gender.Male
+            ? "/cats/males"
+            : "/cats/females";
     }
 }
