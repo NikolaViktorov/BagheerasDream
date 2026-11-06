@@ -89,4 +89,107 @@ BagheerasDream is currently under active development.
 
 ### Completed
 - Initial solution structure and Clean Architecture setup.
-- Domain entities and
+- Domain entities and enums.
+- Entity Framework Core configuration.
+- SQL Server with Docker Compose.
+- ASP.NET Core Identity integration.
+- Initial database migration.
+- Admin user seeding.
+- Main frontend pages and reusable components.
+- Cat and litter presentation pages.
+- Contact form with client-side validation.
+- Centralized frontend demo data.
+
+### In Progress
+- Connecting frontend pages to real backend data.
+- Replacing temporary demo data with database records.
+- Implementing the remaining application functionality.
+
+**Note:** The current frontend uses temporary demo data. The contact form currently performs client-side validation only and does not send actual emails.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have installed:
+
+- [.NET SDK](https://dotnet.microsoft.com/download)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Visual Studio](https://visualstudio.microsoft.com/) or another compatible IDE.
+- Git
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd BagheerasDream
+```
+
+### 2. Start SQL Server
+
+Start Docker Desktop and run the database container using the existing Docker Compose configuration:
+
+```bash
+docker compose up -d
+```
+
+### 3. Configure development secrets
+
+Configure the required database connection string and other development settings using the project's configuration or ASP.NET Core User Secrets.
+
+Do not commit passwords, connection strings containing credentials or other sensitive information to GitHub.
+
+### 4. Apply database migrations
+
+From the solution directory, apply the existing Entity Framework Core migrations using the appropriate startup and migrations projects:
+
+```bash
+dotnet ef database update
+```
+
+### 5. Run the application
+
+Open the solution in Visual Studio, select `BagheerasDream.Web` as the startup project and run the application.
+
+---
+
+## 🎨 Design Philosophy
+
+BagheerasDream uses a clean, elegant and minimal visual identity.
+
+The design combines:
+
+- Warm cream and beige backgrounds.
+- Subtle gold accents.
+- Elegant serif typography.
+- Large photography areas.
+- Minimalist layouts.
+- Responsive components.
+
+The goal is to create a welcoming digital experience that reflects the character and elegance of the British Shorthair breed.
+
+---
+
+## 📌 Future Improvements
+
+- Full frontend and backend integration.
+- Dynamic cat and litter management.
+- Complete kitten availability management.
+- Admin dashboard.
+- Contact form email delivery.
+- Image upload and management.
+- Additional validation and application security improvements.
+
+---
+
+## 📄 License
+
+This project is currently developed as a personal software project.
+
+License information will be added in a future release.
+
+---
+
+**BagheerasDream** – Where elegance meets affection. 🐾
