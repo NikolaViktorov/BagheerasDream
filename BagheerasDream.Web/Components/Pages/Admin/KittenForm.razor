@@ -1,0 +1,266 @@
+﻿@page "/admin/kittens/create"
+@page "/admin/kittens/edit/{Id:guid}"
+
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin")]
+@implements IAsyncDisposable
+
+@layout Layout.AdminLayout
+
+@using BagheerasDream.Application.DTOs.Admin.Kittens
+@using BagheerasDream.Application.DTOs.Litters
+@using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Application.Interfaces.Admin
+@using BagheerasDream.Domain.Enums
+@using Microsoft.AspNetCore.Components.Forms
+
+@inject IImageUploadService ImageUploadService
+@inject ILittersService LittersService
+@inject IAdminKittensService AdminKittensService
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+<PageTitle>Kitten Form | Admin</PageTitle>
+
+<div class="admin-page">
+    <div class="page-header">
+        <div>
+            <h1>@(IsEditMode ? "Edit Kitten" : "Add New Kitten")</h1>
+            <p>Manage kitten information.</p>
+        </div>
+
+        <a href="/admin/kittens" class="btn-secondary">
+            Back to Kittens
+        </a>
+    </div>
+</div>
+
+@if (IsLoading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <EditForm Model="@Model" OnValidSubmit="HandleSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        @if (!string.IsNullOrWhiteSpace(ErrorMessage))
+        {
+            <div class="alert alert-danger">
+                @ErrorMessage
+            </div>
+        }
+
+        <div class="admin-form">
+
+            <div class="form-group">
+                <label>Name</label>
+                <InputText @bind-Value="Model.Name" class="form-control" />
+                <ValidationMessage For="@(() => Model.Name)" />
+            </div>
+
+            <div class="form-group">
+                <label>Color</label>
+                <InputSelect @bind-Value="Model.Color" class="form-control">
+                    @foreach (var color in Enum.GetValues<CatColor>())
+                    {
+                        <option value="@color">@color</option>
+                    }
+                </InputSelect>
+            </div>
+
+            <div class="form-group">
+                <label>Litter</label>
+                <InputSelect @bind-Value="Model.LitterId" class="form-control">
+                    <option value="">-- Select Litter --</option>
+
+                    @foreach (var litter in AvailableLitters)
+                    {
+                        <option value="@litter.LitterId">
+                            @litter.Name
+                        </option>
+                    }
+                </InputSelect>
+
+                <ValidationMessage For="@(() => Model.LitterId)" />
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                <InputSelect @bind-Value="Model.Status" class="form-control">
+                    @foreach (var status in Enum.GetValues<KittenStatus>())
+                    {
+                        <option value="@status">@status</option>
+                    }
+                </InputSelect>
+            </div>
+
+            <div class="form-group">
+                <label>Profile Image</label>
+
+                <InputFile id="kittenImageInput"
+                           OnChange="HandleImageSelection"
+                           accept=".jpg,.jpeg,.png,.webp"
+                           class="form-control" />
+
+                @if (!string.IsNullOrEmpty(ImagePreviewUrl))
+                {
+                    <div class="image-preview">
+                        <img src="@ImagePreviewUrl"
+                             alt="Image preview"
+                             style="max-width: 250px; margin-top: 15px;" />
+                    </div>
+                }
+                else if (!string.IsNullOrEmpty(Model.ProfileImage))
+                {
+                    <div class="image-preview">
+                        <img src="@Model.ProfileImage"
+                             alt="Current image"
+                             style="max-width: 250px; margin-top: 15px;" />
+                    </div>
+                }
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">
+                    @(IsEditMode ? "Save Changes" : "Create Kitten")
+                </button>
+
+                <a href="/admin/kittens" class="btn-secondary">
+                    Cancel
+                </a>
+            </div>
+
+        </div>
+    </EditForm>
+}
+
+                             @code {
+    [Parameter]
+    public Guid? Id { get; set; }
+
+    private bool IsEditMode => Id.HasValue;
+
+    private KittenFormDto Model = new();
+
+    private bool IsLoading = true;
+
+    private IEnumerable<LitterListDto> AvailableLitters = [];
+
+    private IBrowserFile? SelectedImage;
+
+    private string? ImagePreviewUrl;
+
+    private const long MaxImageSize = 15 * 1024 * 1024;
+
+    private string? ErrorMessage;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        AvailableLitters = await LittersService.GetAllAsync();
+
+        if (IsEditMode)
+        {
+            var kitten = await AdminKittensService.GetForEditAsync(Id!.Value);
+
+            if (kitten is null)
+            {
+                Navigation.NavigateTo("/admin/kittens");
+                return;
+            }
+
+            Model = kitten;
+        }
+
+        IsLoading = false;
+    }
+
+    private async Task HandleSubmit()
+    {
+        ErrorMessage = null;
+
+        string? oldImagePath = IsEditMode ? Model.ProfileImage : null;
+        string? newImagePath = null;
+
+        try
+        {
+            if (SelectedImage is not null)
+            {
+                await using var stream = SelectedImage.OpenReadStream(MaxImageSize);
+
+                newImagePath = await ImageUploadService.UploadAsync(
+                    stream,
+                    SelectedImage.Name,
+                    "kittens");
+
+                Model.ProfileImage = newImagePath;
+            }
+
+            bool success;
+
+            if (IsEditMode)
+            {
+                success = await AdminKittensService.UpdateAsync(Model);
+            }
+            else
+            {
+                await AdminKittensService.CreateAsync(Model);
+                success = true;
+            }
+
+            if (!success)
+            {
+                ErrorMessage = "Котенцето не беше намерено или не можа да бъде обновено.";
+
+                if (newImagePath is not null)
+                    await ImageUploadService.DeleteAsync(newImagePath);
+
+                Model.ProfileImage = oldImagePath;
+                return;
+            }
+
+            if (oldImagePath is not null && newImagePath is not null)
+            {
+                await ImageUploadService.DeleteAsync(oldImagePath);
+            }
+
+            Navigation.NavigateTo("/admin/kittens");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving kitten: {ex}");
+
+            if (newImagePath is not null)
+            {
+                await ImageUploadService.DeleteAsync(newImagePath);
+                Model.ProfileImage = oldImagePath;
+            }
+
+            ErrorMessage = "Възникна грешка при запазването. Моля, проверете данните и опитайте отново.";
+        }
+    }
+
+    private async Task HandleImageSelection(InputFileChangeEventArgs e)
+    {
+        SelectedImage = e.File;
+
+        if (!string.IsNullOrEmpty(ImagePreviewUrl))
+        {
+            await JS.InvokeVoidAsync("imagePreview.revoke", ImagePreviewUrl);
+        }
+
+        ImagePreviewUrl = await JS.InvokeAsync<string>(
+            "imagePreview.createFromInput",
+            "kittenImageInput");
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (!string.IsNullOrEmpty(ImagePreviewUrl))
+        {
+            await JS.InvokeVoidAsync("imagePreview.revoke", ImagePreviewUrl);
+            ImagePreviewUrl = null;
+        }
+    }
+}

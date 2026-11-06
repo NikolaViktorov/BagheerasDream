@@ -1,0 +1,145 @@
+﻿@page "/admin/litters"
+
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin")]
+
+@layout Layout.AdminLayout
+
+@using BagheerasDream.Application.DTOs.Litters
+@using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Application.Interfaces.Admin
+
+@inject ILittersService LittersService
+@inject IAdminLittersService AdminLittersService
+@inject IJSRuntime JS
+
+<PageTitle>Manage Litters | Admin</PageTitle>
+
+<div class="admin-page">
+    <div class="page-header">
+        <div>
+            <h1>Manage Litters</h1>
+            <p>Manage your cattery's litters.</p>
+        </div>
+
+        <a href="/admin/litters/create" class="btn-primary">
+            + Add New Litter
+        </a>
+    </div>
+</div>
+
+@if (litters == null)
+{
+    <p>Loading litters...</p>
+}
+else if (!litters.Any())
+{
+    <p>No litters found.</p>
+}
+else
+{
+    <div class="admin-table-container">
+
+        @if (!string.IsNullOrEmpty(DeleteErrorMessage))
+        {
+            <div class="alert alert-danger">
+                @DeleteErrorMessage
+            </div>
+        }
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Mother</th>
+                    <th>Birthday</th>
+                    <th>Kittens</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var litter in litters)
+                {
+                    <tr>
+                        <td>
+                            @if (!string.IsNullOrEmpty(litter.PhotoOfLitter))
+                            {
+                                <img src="@litter.PhotoOfLitter"
+                                     alt="@litter.Name"
+                                     style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;" />
+                            }
+                            else
+                            {
+                                <span>No photo</span>
+                            }
+                        </td>
+
+                        <td>@litter.Name</td>
+
+                        <td>@litter.MotherName</td>
+
+                        <td>@litter.Birthday.ToString("dd.MM.yyyy")</td>
+
+                        <td>@litter.KittenCount</td>
+
+                        <td>
+                            <a href="@($"/admin/litters/edit/{litter.LitterId}")"
+                               class="btn-edit">
+                                Edit
+                            </a>
+
+                            <button class="btn-delete"
+                                    @onclick="() => DeleteLitter(litter.LitterId)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private IEnumerable<LitterListDto>? litters;
+
+    private string? DeleteErrorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        litters = await LittersService.GetAllAsync();
+    }
+
+    private async Task DeleteLitter(Guid id)
+    {
+        var confirmed = await JS.InvokeAsync<bool>(
+            "confirm",
+            "Are you sure you want to delete this litter and all its kittens?");
+
+        if (!confirmed)
+            return;
+
+        try
+        {
+            var success = await AdminLittersService.DeleteAsync(id);
+
+            if (success)
+            {
+                DeleteErrorMessage = null;
+                litters = await LittersService.GetAllAsync();
+            }
+            else
+            {
+                DeleteErrorMessage = "The litter could not be found.";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"DELETE LITTER ERROR: {ex}");
+
+            DeleteErrorMessage = ex.ToString();
+        }
+    }
+}

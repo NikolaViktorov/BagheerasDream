@@ -24,8 +24,8 @@ public partial class Program
 		var connectionString = builder.Configuration.
 			GetConnectionString("DefaultConnection");
 
-		builder.Services.AddDbContext<ApplicationDbContext>(options => 
-		options.UseSqlServer(connectionString));
+		builder.Services.AddDbContext<ApplicationDbContext>(options =>
+	options.UseSqlServer(connectionString));
 
 		builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 		{
@@ -45,6 +45,8 @@ public partial class Program
 
 		builder.Services.AddScoped<IDashboardService, DashboardService>();
 		builder.Services.AddScoped<IAdminCatsService, AdminCatsService>();
+		builder.Services.AddScoped<IAdminKittensService, AdminKittensService>();
+		builder.Services.AddScoped<IAdminLittersService, AdminLittersService>();
 		builder.Services.AddScoped<IImageUploadService>(serviceProvider =>
 		{
 			var environment = serviceProvider.GetRequiredService<IWebHostEnvironment>();

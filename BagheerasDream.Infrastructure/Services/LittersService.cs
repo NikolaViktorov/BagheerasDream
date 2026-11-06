@@ -49,31 +49,31 @@ namespace BagheerasDream.Infrastructure.Services
 						ProfileImage = l.Mother.ProfileImage,
 						IsExternal = false
 					},
-					
+
 					FatherId = l.FatherId,
 
-					Father = l.Father != null 
-					? new LitterParentDto
+					Father = l.Father != null
+						? new LitterParentDto
+						{
+							CatId = l.Father.CatId,
+							Name = l.Father.Name,
+							ProfileImage = l.Father.ProfileImage,
+							IsExternal = false
+						}
+						: null,
+
+					l.ExternalFatherName,
+					l.ExternalFatherCattery,
+
+					Kittens = l.Kittens.Select(k => new KittenListDto
 					{
-						CatId = l.Father.CatId,
-						Name = l.Father.Name,
-						ProfileImage = l.Father.ProfileImage,
-						IsExternal = false
-					}
-					: null,
-
-					 l.ExternalFatherName,
-					 l.ExternalFatherCattery,
-
-					 Kittens = l.Kittens.Select(k => new KittenListDto
-					 {
-						 KittenId = k.KittenId,
-						 Name = k.Name,
-						 Color = k.Color,
-						 ProfileImage = k.ProfileImage,
-						 Status = k.Status,
-						 LitterId = l.LitterId,
-					 }).ToList()
+						KittenId = k.KittenId,
+						Name = k.Name,
+						Color = k.Color,
+						ProfileImage = k.ProfileImage,
+						Status = k.Status,
+						LitterId = l.LitterId
+					}).ToList()
 				})
 				.FirstOrDefaultAsync();
 
