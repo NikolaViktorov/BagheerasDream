@@ -1,7 +1,10 @@
 using BagheerasDream.Application.Interfaces;
+using BagheerasDream.Application.Interfaces.Admin;
 using BagheerasDream.Infrastructure.Data;
 using BagheerasDream.Infrastructure.Identity;
 using BagheerasDream.Infrastructure.Services;
+using BagheerasDream.Infrastructure.Services.Admin;
+using BagheerasDream.Infrastructure.Services.Files;
 using BagheerasDream.Web.Components;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +18,8 @@ public partial class Program
 		// Add services to the container.
 		builder.Services.AddRazorComponents()
 			.AddInteractiveServerComponents();
+
+		builder.Services.AddRazorPages();
 
 		var connectionString = builder.Configuration.
 			GetConnectionString("DefaultConnection");
@@ -38,6 +43,15 @@ public partial class Program
 		builder.Services.AddScoped<ICatsService, CatsService>();
 		builder.Services.AddScoped<ILittersService, LittersService>();
 
+		builder.Services.AddScoped<IDashboardService, DashboardService>();
+		builder.Services.AddScoped<IAdminCatsService, AdminCatsService>();
+		builder.Services.AddScoped<IImageUploadService>(serviceProvider =>
+		{
+			var environment = serviceProvider.GetRequiredService<IWebHostEnvironment>();
+
+			return new ImageUploadService(environment.WebRootPath);
+		});
+
 		var app = builder.Build();
 
 		await IdentitySeeder.SeedAdminAsync(app.Services, app.Configuration);
@@ -57,6 +71,7 @@ public partial class Program
 
 		app.UseAntiforgery();
 
+		app.MapRazorPages();
 		app.MapStaticAssets();
 		app.MapRazorComponents<App>()
 			.AddInteractiveServerRenderMode();

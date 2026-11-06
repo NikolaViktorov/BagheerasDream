@@ -1,0 +1,60 @@
+﻿@inherits LayoutComponentBase
+
+<div class="admin-shell">
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+            <span class="admin-brand-name">BagheerasDream</span>
+            <span class="admin-brand-label">ADMINISTRATION</span>
+        </div>
+
+        <nav class="admin-navigation">
+
+            <span class="admin-nav-heading">GENERAL</span>
+
+            <NavLink href="/admin" Match="NavLinkMatch.All">
+                <span>◈</span>
+                Dashboard
+            </NavLink>
+
+            <span class="admin-nav-heading">MANAGEMENT</span>
+
+            <NavLink href="/admin/cats">
+                <span>♧</span>
+                Cats
+            </NavLink>
+
+            <NavLink href="/admin/litters">
+                <span>♡</span>
+                Litters
+            </NavLink>
+
+            <NavLink href="/admin/kittens">
+                <span>♢</span>
+                Kittens
+            </NavLink>
+
+        </nav>
+
+        <div class="admin-sidebar-bottom">
+            <a href="/">← Back to website</a>
+            <span>BagheerasDream © 2026</span>
+        </div>
+
+    </aside>
+
+    <main class="admin-main">
+
+        <header class="admin-topbar">
+            <span>Administration Panel</span>
+            <span class="admin-user-label">Administrator</span>
+        </header>
+
+        <div class="admin-content">
+            @Body
+        </div>
+
+    </main>
+
+</div>

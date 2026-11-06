@@ -1,0 +1,46 @@
+﻿@page
+@model BagheerasDream.Web.Pages.Account.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login | BagheerasDream</title>
+</head>
+<body>
+
+    <h1>BagheerasDream</h1>
+    <h2>Administration Login</h2>
+
+    <form method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="ReturnUrl" />
+
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <div>
+            <label asp-for="Input.Email">Email</label>
+            <input asp-for="Input.Email" type="email" required />
+        </div>
+
+        <div>
+            <label asp-for="Input.Password">Password</label>
+            <input asp-for="Input.Password" type="password" required />
+        </div>
+
+        <div>
+            <input asp-for="Input.RememberMe" type="checkbox" />
+            <label asp-for="Input.RememberMe">Remember me</label>
+        </div>
+
+        <button type="submit">Sign In</button>
+    </form>
+
+</body>
+</html>

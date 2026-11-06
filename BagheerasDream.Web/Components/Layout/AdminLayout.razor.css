@@ -1,0 +1,146 @@
+﻿.admin-shell {
+    display: flex;
+    min-height: 100vh;
+    background: #f8f6f2;
+    color: #3d332b;
+    font-family: inherit;
+}
+
+/* SIDEBAR */
+
+.admin-sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: #302720;
+    color: #f5eee5;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 22px;
+    flex-shrink: 0;
+}
+
+.admin-brand {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px 35px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.admin-brand-name {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    color: #d7b98b;
+}
+
+.admin-brand-label {
+    margin-top: 7px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #b9a58d;
+}
+
+/* NAVIGATION */
+
+.admin-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 35px;
+}
+
+.admin-nav-heading {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #a99a88;
+    margin: 18px 10px 8px;
+}
+
+.admin-navigation a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    color: #d9cfc3;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: 0.2s ease;
+}
+
+    .admin-navigation a span {
+        font-size: 18px;
+        color: #c5a77d;
+    }
+
+    .admin-navigation a:hover,
+    .admin-navigation a.active {
+        background: rgba(215,185,139,0.13);
+        color: #e4c69c;
+    }
+
+/* SIDEBAR BOTTOM */
+
+.admin-sidebar-bottom {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 10px 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+    .admin-sidebar-bottom a {
+        color: #d7b98b;
+        text-decoration: none;
+        font-size: 13px;
+    }
+
+    .admin-sidebar-bottom span {
+        color: #a99a88;
+        font-size: 11px;
+    }
+
+/* MAIN CONTENT */
+
+.admin-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-topbar {
+    height: 75px;
+    background: #fff;
+    border-bottom: 1px solid #e9e2d9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    font-size: 13px;
+    color: #776b5f;
+}
+
+.admin-user-label {
+    color: #9b805e;
+}
+
+.admin-content {
+    padding: 40px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .admin-sidebar {
+        width: 190px;
+        padding: 25px 12px;
+    }
+
+    .admin-content {
+        padding: 20px;
+    }
+
+    .admin-topbar {
+        padding: 0 20px;
+    }
+}

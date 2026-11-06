@@ -164,8 +164,12 @@ else
     private bool IsLoading { get; set; } = true;
     private string? ErrorMessage { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
+        IsLoading = true;
+        ErrorMessage = null;
+        Cat = null;
+
         try
         {
             Cat = await CatsService.GetByIdAsync(Id);

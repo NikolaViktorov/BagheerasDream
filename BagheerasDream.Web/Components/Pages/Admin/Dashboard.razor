@@ -1,0 +1,89 @@
+﻿@page "/admin"
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin")]
+@layout Layout.AdminLayout
+
+@using BagheerasDream.Application.DTOs.Admin
+@using BagheerasDream.Application.Interfaces
+@inject IDashboardService DashboardService
+
+<PageTitle>Dashboard | BagheerasDream</PageTitle>
+
+<div class="dashboard-page">
+    <div class="dashboard-header">
+        <div>
+            <span class="dashboard-eyebrow">OVERVIEW</span>
+            <h1>Dashboard</h1>
+            <p>Welcome to your BagheerasDream administration panel.</p>
+        </div>
+    </div>
+
+    @if (IsLoading)
+    {
+        <p>Loading dashboard statistics...</p>
+    }
+    else if (Stats is not null)
+    {
+        <section class="dashboard-section">
+            <h2>Cats</h2>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <span>Total Cats</span>
+                    <strong>@Stats.TotalCats</strong>
+                </div>
+
+                <div class="dashboard-card">
+                    <span>Male Cats</span>
+                    <strong>@Stats.MaleCats</strong>
+                </div>
+
+                <div class="dashboard-card">
+                    <span>Female Cats</span>
+                    <strong>@Stats.FemaleCats</strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>Litters & Kittens</h2>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <span>Total Litters</span>
+                    <strong>@Stats.TotalLitters</strong>
+                </div>
+
+                <div class="dashboard-card">
+                    <span>Total Kittens</span>
+                    <strong>@Stats.TotalKittens</strong>
+                </div>
+
+                <div class="dashboard-card">
+                    <span>Available</span>
+                    <strong>@Stats.AvailableKittens</strong>
+                </div>
+
+                <div class="dashboard-card">
+                    <span>Reserved</span>
+                    <strong>@Stats.ReservedKittens</strong>
+                </div>
+
+                <div class="dashboard-card">
+                    <span>Sold</span>
+                    <strong>@Stats.SoldKittens</strong>
+                </div>
+            </div>
+        </section>
+    }
+</div>
+
+@code {
+    private DashboardStatsDto? Stats;
+    private bool IsLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Stats = await DashboardService.GetStatsAsync();
+        IsLoading = false;
+    }
+}

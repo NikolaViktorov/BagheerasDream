@@ -1,0 +1,115 @@
+﻿@page "/admin/cats"
+
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin")]
+
+@layout Layout.AdminLayout
+
+@using BagheerasDream.Application.DTOs.Cats
+@using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Application.Interfaces.Admin
+@inject ICatsService CatsService
+@inject IAdminCatsService AdminCatsService
+@inject IJSRuntime JS
+
+<PageTitle>Manage Cats | Admin</PageTitle>
+
+<div class="admin-page">
+    <div class="page-header">
+        <div>
+            <h1>Manage Cats</h1>
+            <p>Manage your cattery's cats.</p>
+        </div>
+
+        <a href="/admin/cats/create" class="btn-primary">
+            + Add New Cat
+        </a>
+    </div>
+</div>
+
+@if (cats == null)
+{
+    <p>Loading cats...</p>
+}
+else if (!cats.Any())
+{
+    <p>No cats found.</p>
+}
+else
+{
+    <div class="admin-table-container">
+        @if (!string.IsNullOrEmpty(DeleteErrorMessage))
+        {
+            <div class="alert alert-danger">
+                @DeleteErrorMessage
+            </div>
+        }
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Breed</th>
+                    <th>Color</th>
+                    <th>Birthday</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var cat in cats)
+                {
+                    <tr>
+                        <td>@cat.Name</td>
+                        <td>@cat.Gender</td>
+                        <td>@cat.Breed</td>
+                        <td>@cat.Color</td>
+                        <td>@cat.Birthday.ToString("dd.MM.yyyy")</td>
+                        <td>
+                            <a href="@($"/admin/cats/edit/{cat.CatId}")" class="btn-edit">
+                                Edit
+                            </a>
+                            <button class="btn-delete"
+                                    @onclick="() => DeleteCat(cat.CatId)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private IEnumerable<CatListDto>? cats;
+
+    private string? DeleteErrorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        cats = await CatsService.GetAllAsync();
+    }
+
+    private async Task DeleteCat(Guid id)
+    {
+        var confirmed = await JS.InvokeAsync<bool>(
+            "confirm",
+            "Are you sure you want to delete this cat?");
+
+        if (!confirmed)
+            return;
+
+        var success = await AdminCatsService.DeleteAsync(id);
+
+        if (success)
+        {
+            DeleteErrorMessage = null;
+            cats = await CatsService.GetAllAsync();
+        }
+        else
+        {
+            DeleteErrorMessage = "This cat cannot be deleted because it is assigned as a parent.";
+        }
+    }
+}
