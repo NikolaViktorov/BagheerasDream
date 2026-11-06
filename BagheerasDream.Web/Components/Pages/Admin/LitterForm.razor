@@ -180,7 +180,10 @@ else
 
     private bool IsEditMode => Id.HasValue;
 
-    private LitterFormDto Model = new();
+    private LitterFormDto Model = new()
+    {
+        Birthday = DateOnly.FromDateTime(DateTime.Today)
+    };
 
     private bool IsLoading = true;
 
@@ -215,7 +218,10 @@ else
         }
         else
         {
-            Model = new LitterFormDto();
+            Model = new LitterFormDto()
+            {
+                Birthday = DateOnly.FromDateTime(DateTime.Today)
+            };
         }
 
         IsLoading = false;

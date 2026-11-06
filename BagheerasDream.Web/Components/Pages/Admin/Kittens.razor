@@ -75,7 +75,11 @@
                             <td>@(string.IsNullOrWhiteSpace(kitten.Name) ? "Unnamed" : kitten.Name)</td>
                             <td>@kitten.Color</td>
                             <td>@kitten.LitterName</td>
-                            <td>@kitten.Status</td>
+                            <td>
+                                <span class="status-badge status-@kitten.Status.ToString().ToLowerInvariant()">
+                                    @kitten.Status
+                                </span>
+                            </td>
 
                             <td>
                                 <a href="@($"/admin/kittens/edit/{kitten.KittenId}")"
