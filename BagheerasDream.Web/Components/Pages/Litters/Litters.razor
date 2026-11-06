@@ -1,8 +1,9 @@
 ﻿@page "/litters"
-@using BagheerasDream.Web.Data
-@using BagheerasDream.Domain.Models
-@using BagheerasDream.Domain.Enums
+@using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Application.DTOs.Litters
 @using BagheerasDream.Web.Components.Shared.Litters
+
+@inject ILittersService LittersService
 
 <PageTitle>Our Litters | BagheerasDream</PageTitle>
 
@@ -25,16 +26,17 @@
 
 
     <div class="litters-container">
-
-        @if (DemoLitterData.Litters.Any())
+        @if (IsLoading)
+        {
+            <p>Loading litters...</p>
+        }
+        else if (LittersList.Any())
         {
             <div class="litters-grid">
-
-                @foreach (var litter in DemoLitterData.Litters)
+                @foreach (var litter in LittersList)
                 {
                     <LitterCard Item="litter" />
                 }
-
             </div>
         }
         else
@@ -45,7 +47,6 @@
                 <p>We currently have no litters to display.</p>
             </div>
         }
-
     </div>
 
 
@@ -54,3 +55,21 @@
     </div>
 
 </section>
+
+@code {
+    private List<LitterListDto> LittersList = new();
+
+    private bool IsLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            LittersList = (await LittersService.GetAllAsync()).ToList();
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+}

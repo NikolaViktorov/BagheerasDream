@@ -1,12 +1,19 @@
 ﻿@page "/litters/{Id:guid}"
-@using BagheerasDream.Web.Data
-@using BagheerasDream.Domain.Models
-@using BagheerasDream.Domain.Enums
+@using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Application.DTOs.Litters
 @using BagheerasDream.Web.Components.Shared.Litters
+
+@inject ILittersService LittersService
 
 <PageTitle>@(CurrentLitter?.Name ?? "Litter Details") | BagheerasDream</PageTitle>
 
-@if (CurrentLitter is null)
+@if (IsLoading)
+{
+    <div class="litter-not-found">
+        <h1>Loading litter...</h1>
+    </div>
+}
+else if (CurrentLitter is null)
 {
     <div class="litter-not-found">
         <h1>Litter not found.</h1>
@@ -44,52 +51,6 @@ else
 
         </header>
 
-
-        <!-- PARENTS -->
-
-        <section class="litter-parents-section">
-
-            <div class="litter-section-heading">
-                <span class="section-eyebrow">WHERE IT ALL BEGINS</span>
-                <h2>Meet the <span>Parents.</span></h2>
-            </div>
-
-            <div class="litter-parents-grid">
-
-                <div class="litter-parent">
-                    <span>MOTHER</span>
-                    <h3>@CurrentLitter.Mother.Name</h3>
-                    <p>British Shorthair</p>
-                </div>
-
-                <div class="litter-parent">
-                    <span>FATHER</span>
-
-                    @if (CurrentLitter.Father is not null)
-                    {
-                        <h3>@CurrentLitter.Father.Name</h3>
-                        <p>British Shorthair</p>
-                    }
-                    else if (!string.IsNullOrWhiteSpace(CurrentLitter.ExternalFatherName))
-                    {
-                        <h3>@CurrentLitter.ExternalFatherName</h3>
-
-                        @if (!string.IsNullOrWhiteSpace(CurrentLitter.ExternalFatherCattery))
-                        {
-                            <p>@CurrentLitter.ExternalFatherCattery</p>
-                        }
-                    }
-                    else
-                    {
-                        <h3>Not specified</h3>
-                    }
-                </div>
-
-            </div>
-
-        </section>
-
-
         <!-- KITTENS -->
 
         <section class="litter-kittens-section">
@@ -123,6 +84,86 @@ else
 
         </section>
 
+        <!-- PARENTS -->
+
+        <section class="litter-parents-section">
+
+            <div class="litter-section-heading">
+                <span class="section-eyebrow">WHERE IT ALL BEGINS</span>
+                <h2>Meet the <span>Parents.</span></h2>
+            </div>
+
+            <div class="litter-parents-grid">
+
+                <!-- MOTHER -->
+                <div class="litter-parent">
+                    <span>MOTHER</span>
+
+                    @if (!string.IsNullOrWhiteSpace(CurrentLitter.Mother.ProfileImage))
+                    {
+                        <img src="@CurrentLitter.Mother.ProfileImage"
+                             alt="@CurrentLitter.Mother.Name" />
+                    }
+
+                    @if (CurrentLitter.Mother.CatId.HasValue)
+                    {
+                        <a href="@($"/cats/{CurrentLitter.Mother.CatId}")">
+                            <h3>@CurrentLitter.Mother.Name</h3>
+                        </a>
+                    }
+                    else
+                    {
+                        <h3>@CurrentLitter.Mother.Name</h3>
+                    }
+
+                    <p>British Shorthair</p>
+                </div>
+
+                <!-- FATHER -->
+                <div class="litter-parent">
+                    <span>FATHER</span>
+
+                    @if (CurrentLitter.Father is not null)
+                    {
+                        @if (!string.IsNullOrWhiteSpace(CurrentLitter.Father.ProfileImage))
+                        {
+                            <img src="@CurrentLitter.Father.ProfileImage"
+                                 alt="@CurrentLitter.Father.Name" />
+                        }
+
+                        @if (!CurrentLitter.Father.IsExternal && CurrentLitter.Father.CatId.HasValue)
+                        {
+                            <a href="@($"/cats/{CurrentLitter.Father.CatId}")">
+                                <h3>@CurrentLitter.Father.Name</h3>
+                            </a>
+                        }
+                        else
+                        {
+                            <h3>@CurrentLitter.Father.Name</h3>
+                        }
+
+                        @if (CurrentLitter.Father.IsExternal)
+                        {
+                            @if (!string.IsNullOrWhiteSpace(CurrentLitter.Father.CatteryName))
+                            {
+                                <p>@CurrentLitter.Father.CatteryName</p>
+                            }
+                        }
+                        else
+                        {
+                            <p>British Shorthair</p>
+                        }
+                    }
+                    else
+                    {
+                        <h3>Not specified</h3>
+                    }
+                </div>
+
+            </div>
+
+        </section>
+
 
         <!-- DESCRIPTION -->
 
@@ -146,10 +187,24 @@ else
 
 
 @code {
-
     [Parameter]
     public Guid Id { get; set; }
 
-    private Litter? CurrentLitter =>
-    DemoLitterData.Litters.FirstOrDefault(l => l.LitterId == Id);
+    private LitterDetailsDto? CurrentLitter;
+
+    private bool IsLoading = true;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        IsLoading = true;
+
+        try
+        {
+            CurrentLitter = await LittersService.GetByIdAsync(Id);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
 }

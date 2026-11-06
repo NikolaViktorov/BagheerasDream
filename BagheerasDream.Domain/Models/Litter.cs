@@ -9,7 +9,11 @@ namespace BagheerasDream.Domain.Models
 		[Required]
 		[MaxLength(50)]
 		public string Name { get; set; } = string.Empty;
+
 		public DateOnly Birthday { get; set; }
+
+		[MaxLength(500)]
+		public string? PhotoOfLitter { get; set; }
 
 		public Guid MotherId { get; set; }
 		public Cat Mother { get; set; } = null!;

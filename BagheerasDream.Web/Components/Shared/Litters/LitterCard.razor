@@ -1,12 +1,12 @@
-﻿@using BagheerasDream.Domain.Models
+﻿@using BagheerasDream.Application.DTOs.Litters
 
 <a href="@($"/litters/{Item.LitterId}")" class="litter-card">
 
     <div class="litter-image">
 
-        @if (!string.IsNullOrWhiteSpace(Item.Kittens.FirstOrDefault()?.ProfileImage))
+        @if (!string.IsNullOrWhiteSpace(Item.PhotoOfLitter))
         {
-            <img src="@Item.Kittens.First().ProfileImage"
+            <img src="@Item.PhotoOfLitter"
                  alt="@Item.Name" />
         }
         else
@@ -18,7 +18,7 @@
         }
 
         <span class="litter-badge">
-            @Item.Kittens.Count KITTENS
+            @Item.KittenCount KITTENS
         </span>
 
     </div>
@@ -33,7 +33,7 @@
 
         <div class="litter-mother">
             <span>MOTHER</span>
-            <strong>@Item.Mother.Name</strong>
+            <strong>@Item.MotherName</strong>
         </div>
 
         <div class="litter-card-bottom">
@@ -46,6 +46,8 @@
 </a>
 
 @code {
-    [Parameter, EditorRequired]
-    public Litter Item { get; set; } = null!;
+    @code {
+        [Parameter, EditorRequired]
+        public LitterListDto Item { get; set; } = null!;
+    }
 }

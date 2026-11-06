@@ -1,4 +1,4 @@
-﻿@using BagheerasDream.Domain.Models
+﻿@using BagheerasDream.Application.DTOs.Litters
 
 <article class="kitten-card">
 
@@ -29,7 +29,7 @@
 
 @code {
     [Parameter, EditorRequired]
-    public Kitten Item { get; set; } = null!;
+    public KittenListDto Item { get; set; } = null!;
 
     private string GetStatusClass()
     {

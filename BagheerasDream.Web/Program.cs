@@ -36,6 +36,7 @@ public partial class Program
 		builder.Services.AddCascadingAuthenticationState();
 
 		builder.Services.AddScoped<ICatsService, CatsService>();
+		builder.Services.AddScoped<ILittersService, LittersService>();
 
 		var app = builder.Build();
 
