@@ -51,7 +51,27 @@ services:
       - "8080:8080"
     restart: unless-stopped
 
+  caddy:
+    image: caddy:2
+    container_name: bagheerasdream-caddy
+    environment:
+      DOMAIN: ${DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+    restart: unless-stopped
+
 volumes:
   sqlserver_data:
   uploaded_images:
   dataprotection_keys:
+  caddy_data:
+  caddy_config:
