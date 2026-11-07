@@ -3,6 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+
+
 # User-specific files
 *.rsuser
 *.suo
@@ -11,10 +13,19 @@
 *.sln.docstates
 .env
 .env.*
+.env.production
 !.env.example
 bin/
 obj/
 .vs/
+
+# Data Protection certificate
+secrets/
+
+publish-test/
+
+# Local database backups
+backups/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

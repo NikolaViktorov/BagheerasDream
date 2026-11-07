@@ -1,5 +1,3 @@
-using System.Globalization;
-using Microsoft.AspNetCore.Localization;
 using BagheerasDream.Application.Interfaces;
 using BagheerasDream.Application.Interfaces.Admin;
 using BagheerasDream.Infrastructure.Data;
@@ -8,9 +6,13 @@ using BagheerasDream.Infrastructure.Services;
 using BagheerasDream.Infrastructure.Services.Admin;
 using BagheerasDream.Infrastructure.Services.Files;
 using BagheerasDream.Web.Components;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
-
+using System.Globalization;
+using System.Security.Cryptography.X509Certificates;
 
 public partial class Program
 {
@@ -24,6 +26,18 @@ public partial class Program
 			new CultureInfo("de"),
 			new CultureInfo("en")
 		};
+
+		builder.Services.Configure<ForwardedHeadersOptions>(options =>
+		{
+			options.ForwardedHeaders =
+				ForwardedHeaders.XForwardedFor |
+				ForwardedHeaders.XForwardedProto;
+
+			options.KnownIPNetworks.Clear();
+			options.KnownProxies.Clear();
+
+			options.ForwardLimit = 1;
+		});
 
 		builder.Services.Configure<RequestLocalizationOptions>(options =>
 		{
@@ -59,10 +73,43 @@ public partial class Program
 			options.Password.RequireUppercase = true;
 			options.Password.RequireLowercase = true;
 			options.Password.RequireNonAlphanumeric = false;
-		}).AddEntityFrameworkStores<ApplicationDbContext>()
+		})
+		.AddEntityFrameworkStores<ApplicationDbContext>()
 		.AddDefaultTokenProviders();
 
+		builder.Services.ConfigureApplicationCookie(options =>
+		{
+			options.ExpireTimeSpan = TimeSpan.FromHours(1);
+			options.SlidingExpiration = true;
+
+			options.Cookie.HttpOnly = true;
+			options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+			options.Cookie.SameSite = SameSiteMode.Lax;
+
+			options.LoginPath = "/Account/Login";
+			options.AccessDeniedPath = "/Account/AccessDenied";
+		});
+
 		builder.Services.AddAuthorization();
+		var certificatePassword = builder.Configuration["DataProtection:CertificatePassword"];
+		var certificatePath = "/app/secrets/dataprotection.pfx";
+
+		if (string.IsNullOrWhiteSpace(certificatePassword))
+		{
+			throw new InvalidOperationException(
+				"Data Protection certificate password is missing.");
+		}
+
+		var certificate = X509CertificateLoader.LoadPkcs12FromFile(
+			certificatePath,
+			certificatePassword,
+			X509KeyStorageFlags.EphemeralKeySet);
+
+		builder.Services.AddDataProtection()
+			.PersistKeysToFileSystem(
+				new DirectoryInfo("/home/app/.aspnet/DataProtection-Keys"))
+			.ProtectKeysWithCertificate(certificate);
+
 		builder.Services.AddCascadingAuthenticationState();
 
 		builder.Services.AddScoped<ICatsService, CatsService>();
@@ -81,6 +128,16 @@ public partial class Program
 
 		var app = builder.Build();
 
+		app.UseForwardedHeaders();
+
+		// Apply pending database migrations
+		using (var scope = app.Services.CreateScope())
+		{
+			var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+			await db.Database.MigrateAsync();
+		}
+
+		// Seed admin user
 		await IdentitySeeder.SeedAdminAsync(app.Services, app.Configuration);
 
 		// Configure the HTTP request pipeline.
@@ -128,6 +185,7 @@ public partial class Program
 		app.UseAntiforgery();
 
 		app.MapRazorPages();
+		app.UseStaticFiles();
 		app.MapStaticAssets();
 		app.MapRazorComponents<App>()
 			.AddInteractiveServerRenderMode();
