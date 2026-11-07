@@ -22,6 +22,11 @@ namespace BagheerasDream.Domain.Models
 		[MaxLength(500)]
 		public string? ProfileImage { get; set; }
 
+		[MaxLength(500)]
+		public string? PedigreeImage { get; set; }
+
+		public ICollection<CatImage> Images { get; set; } = new List<CatImage>();
+
 		public string? Description { get; set; }
 
 		// Parents

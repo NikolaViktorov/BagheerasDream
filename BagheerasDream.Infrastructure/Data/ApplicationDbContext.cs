@@ -14,6 +14,8 @@ namespace BagheerasDream.Infrastructure.Data
 
 		public DbSet<Cat> Cats { get; set; }
 
+		public DbSet<CatImage> CatImages { get; set; }
+
 		public DbSet<Litter> Litters { get; set; }
 
 		public DbSet<Kitten> Kittens { get; set; }

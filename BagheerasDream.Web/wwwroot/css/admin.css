@@ -477,3 +477,70 @@
     background: #eeeeee;
     color: #666666;
 }
+
+
+/* =========================================
+   GALLERY
+========================================= */
+
+.gallery-section {
+    margin-top: 25px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+    .gallery-item img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        display: block;
+        border-radius: 10px;
+    }
+
+.gallery-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+    .gallery-controls button {
+        padding: 6px 12px;
+        border: 1px solid #ded5c9;
+        border-radius: 5px;
+        background: #f8f6f2;
+        color: #574738;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+        .gallery-controls button:hover:not(:disabled) {
+            background: #e9dfcf;
+        }
+
+        .gallery-controls button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+    .gallery-controls .gallery-delete-btn {
+        background: #b83232;
+        color: white;
+        border-color: #b83232;
+    }
+
+        .gallery-controls .gallery-delete-btn:hover {
+            background: #982727;
+        }

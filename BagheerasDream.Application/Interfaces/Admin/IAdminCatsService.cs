@@ -11,4 +11,12 @@ public interface IAdminCatsService
 	Task<bool> UpdateAsync(CatFormDto dto);
 
 	Task<bool> DeleteAsync(Guid id);
+
+	Task<List<CatImageDto>> GetImagesAsync(Guid catId);
+
+	Task<bool> AddImageAsync(Guid catId, Stream fileStream, string fileName);
+
+	Task<bool> DeleteImageAsync(Guid catImageId);
+
+	Task<bool> ReorderImagesAsync(Guid catId, List<Guid> orderedImageIds);
 }

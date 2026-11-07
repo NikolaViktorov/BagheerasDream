@@ -3,10 +3,10 @@
 
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize(Roles = "Admin")]
-@implements IAsyncDisposable
 
 @layout Layout.AdminLayout
 
+@using BagheerasDream.Web.Components.Pages.Admin.CatComponents
 @using BagheerasDream.Application.DTOs.Admin.Cats
 @using BagheerasDream.Application.Interfaces.Admin
 @using BagheerasDream.Domain.Enums
@@ -17,7 +17,6 @@
 @inject ICatsService CatsService
 @inject IAdminCatsService AdminCatsService
 @inject NavigationManager Navigation
-@inject IJSRuntime JS
 
 
 <PageTitle>Форма за котка | Админ панел</PageTitle>
@@ -121,31 +120,16 @@ else
                 </InputSelect>
             </div>
 
-            <div class="form-group">
-                <label>Профилна снимка</label>
+            <CatProfileImageUpload CurrentImage="@Model.ProfileImage"
+                       OnImageSelected="HandleImageSelected" />
 
-                <InputFile id="catImageInput"
-                           OnChange="HandleImageSelection"
-                           accept=".jpg,.jpeg,.png,.webp"
-                           class="form-control" />
+            <CatPedigreeUpload CurrentImage="@Model.PedigreeImage"
+                   OnImageSelected="HandlePedigreeImageSelected" />
 
-                @if (!string.IsNullOrEmpty(ImagePreviewUrl))
-                {
-                    <div class="image-preview">
-                        <img src="@ImagePreviewUrl"
-                             alt="Преглед на снимката"
-                             style="max-width: 250px; margin-top: 15px;" />
-                    </div>
-                }
-                else if (!string.IsNullOrEmpty(Model.ProfileImage))
-                {
-                    <div class="image-preview">
-                        <img src="@Model.ProfileImage"
-                             alt="Текуща снимка"
-                             style="max-width: 250px; margin-top: 15px;" />
-                    </div>
-                }
-            </div>
+            @if (IsEditMode)
+            {
+                <CatGalleryManager CatId="Id!.Value" />
+            }
 
             <div class="form-group">
                 <label>Описание</label>
@@ -183,14 +167,20 @@ else
 
     private IBrowserFile? SelectedImage;
 
-    private string? ImagePreviewUrl;
-
     private const long MaxImageSize = 15 * 1024 * 1024;
 
     private string? ErrorMessage;
 
+    private IBrowserFile? SelectedPedigreeImage;
+
     protected override async Task OnParametersSetAsync()
     {
+        IsLoading = true;
+        ErrorMessage = null;
+
+        SelectedImage = null;
+        SelectedPedigreeImage = null;
+
         AvailableCats = await CatsService.GetAllAsync();
 
         if (IsEditMode)
@@ -205,6 +195,13 @@ else
 
             Model = cat;
         }
+        else
+        {
+            Model = new CatFormDto
+            {
+                Birthday = DateOnly.FromDateTime(DateTime.Today)
+            };
+        }
 
         IsLoading = false;
     }
@@ -214,11 +211,14 @@ else
         ErrorMessage = null;
 
         string? oldImagePath = IsEditMode ? Model.ProfileImage : null;
+        string? oldPedigreePath = IsEditMode ? Model.PedigreeImage : null;
+
         string? newImagePath = null;
+        string? newPedigreePath = null;
 
         try
         {
-            // Качване на нова снимка, ако е избрана такава.
+            // Качване на профилна снимка
             if (SelectedImage is not null)
             {
                 await using var stream = SelectedImage.OpenReadStream(MaxImageSize);
@@ -229,6 +229,19 @@ else
                     "cats");
 
                 Model.ProfileImage = newImagePath;
+            }
+
+            // Качване на родословие
+            if (SelectedPedigreeImage is not null)
+            {
+                await using var stream = SelectedPedigreeImage.OpenReadStream(MaxImageSize);
+
+                newPedigreePath = await ImageUploadService.UploadAsync(
+                    stream,
+                    SelectedPedigreeImage.Name,
+                    "cat-pedigrees");
+
+                Model.PedigreeImage = newPedigreePath;
             }
 
             bool success;
@@ -250,52 +263,71 @@ else
                 if (newImagePath is not null)
                     await ImageUploadService.DeleteAsync(newImagePath);
 
+                if (newPedigreePath is not null)
+                    await ImageUploadService.DeleteAsync(newPedigreePath);
+
                 Model.ProfileImage = oldImagePath;
+                Model.PedigreeImage = oldPedigreePath;
+
                 return;
             }
-
-            // Изтриване на старата снимка само след успешно обновяване.
-            if (oldImagePath is not null && newImagePath is not null)
-            {
-                await ImageUploadService.DeleteAsync(oldImagePath);
-            }
-
-            Navigation.NavigateTo("/admin/cats");
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error saving cat: {ex}");
 
             if (newImagePath is not null)
-            {
                 await ImageUploadService.DeleteAsync(newImagePath);
-                Model.ProfileImage = oldImagePath;
-            }
+
+            if (newPedigreePath is not null)
+                await ImageUploadService.DeleteAsync(newPedigreePath);
+
+            Model.ProfileImage = oldImagePath;
+            Model.PedigreeImage = oldPedigreePath;
 
             ErrorMessage = "Възникна грешка при запазването. Моля, проверете данните и опитайте отново.";
+            return;
         }
+
+        // Изтриваме старите изображения едва след успешно запазване
+        // Грешка при почистването не трябва да отменя успешно запазената котка
+
+        if (oldImagePath is not null && newImagePath is not null)
+        {
+            try
+            {
+                await ImageUploadService.DeleteAsync(oldImagePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting old profile image: {ex}");
+            }
+        }
+
+        if (oldPedigreePath is not null && newPedigreePath is not null)
+        {
+            try
+            {
+                await ImageUploadService.DeleteAsync(oldPedigreePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting old pedigree image: {ex}");
+            }
+        }
+
+        Navigation.NavigateTo("/admin/cats");
     }
 
-    private async Task HandleImageSelection(InputFileChangeEventArgs e)
+    private Task HandleImageSelected(IBrowserFile file)
     {
-        SelectedImage = e.File;
-
-        if (!string.IsNullOrEmpty(ImagePreviewUrl))
-        {
-            await JS.InvokeVoidAsync("imagePreview.revoke", ImagePreviewUrl);
-        }
-
-        ImagePreviewUrl = await JS.InvokeAsync<string>(
-            "imagePreview.createFromInput",
-            "catImageInput");
+        SelectedImage = file;
+        return Task.CompletedTask;
     }
 
-    public async ValueTask DisposeAsync()
+    private Task HandlePedigreeImageSelected(IBrowserFile file)
     {
-        if (!string.IsNullOrEmpty(ImagePreviewUrl))
-        {
-            await JS.InvokeVoidAsync("imagePreview.revoke", ImagePreviewUrl);
-            ImagePreviewUrl = null;
-        }
+        SelectedPedigreeImage = file;
+        return Task.CompletedTask;
     }
 }

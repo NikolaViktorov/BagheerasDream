@@ -59,6 +59,16 @@ namespace BagheerasDream.Infrastructure.Services
 					Breed = cat.Breed,
 					Gender = cat.Gender,
 					ProfileImage = cat.ProfileImage,
+					PedigreeImage = cat.PedigreeImage,
+					GalleryImages = cat.Images
+						.OrderBy(image => image.DisplayOrder)
+						.Select(image => new CatGalleryImageDto
+						{
+							CatImageId = image.CatImageId,
+							ImagePath = image.ImagePath,
+							DisplayOrder = image.DisplayOrder
+						})
+						.ToList(),
 					Description = cat.Description,
 					FatherId = cat.FatherId,
 					FatherName = cat.Father != null ? cat.Father.Name : null,

@@ -21,6 +21,8 @@ namespace BagheerasDream.Application.DTOs.Cats
 
 		public string? ProfileImage { get; set; }
 
+		public string? PedigreeImage { get; set; }
+
 		public string? Description { get; set; }
 
 		public Guid? FatherId { get; set; }
@@ -34,5 +36,7 @@ namespace BagheerasDream.Application.DTOs.Cats
 		public string? MotherName { get; set; }
 
 		public string? MotherProfileImage { get; set; }
+
+		public List<CatGalleryImageDto> GalleryImages { get; set; } = [];
 	}
 }

@@ -109,6 +109,109 @@ else
             </div>
         </div>
 
+        <!-- PEDIGREE -->
+
+        @if (!string.IsNullOrEmpty(Cat.PedigreeImage))
+        {
+            <section class="pedigree-section">
+                <div class="pedigree-header">
+                    <span class="details-eyebrow">FAMILY HERITAGE</span>
+                    <h2>@Cat.Name's <span>Pedigree.</span></h2>
+                    <p>Discover the family history and lineage behind @Cat.Name.</p>
+                </div>
+
+                <div class="pedigree-image-container"
+                     @onclick="OpenPedigreeLightbox">
+
+                    <img src="@Cat.PedigreeImage"
+                         alt="@Cat.Name's pedigree" />
+                </div>
+
+                @if (IsPedigreeLightboxOpen)
+                {
+                    <div class="lightbox-overlay"
+                         @onclick="ClosePedigreeLightbox">
+
+                        <button class="lightbox-close"
+                                @onclick:stopPropagation="true"
+                                @onclick="ClosePedigreeLightbox">
+                            &times;
+                        </button>
+
+                        <img class="lightbox-image"
+                             src="@Cat.PedigreeImage"
+                             alt="@Cat.Name's pedigree"
+                             @onclick:stopPropagation="true" />
+                    </div>
+                }
+            </section>
+        }
+
+        <!-- GALLERY -->
+
+
+        @if (Cat.GalleryImages.Any())
+        {
+            <section class="cat-gallery-section">
+
+                <div class="cat-gallery-header">
+                    <span class="details-eyebrow">PHOTO COLLECTION</span>
+
+                    <h2>A Little More of <span>@Cat.Name.</span></h2>
+
+                    <p>
+                        Discover more beautiful moments from @Cat.Name's life.
+                    </p>
+                </div>
+
+                <div class="cat-gallery">
+                    @foreach (var image in Cat.GalleryImages)
+                    {
+                        <div class="cat-gallery-item"
+                             @onclick="() => OpenLightbox(image.CatImageId)">
+                            <img src="@image.ImagePath" alt="@Cat.Name" />
+                        </div>
+                    }
+                </div>
+
+                @if (IsLightboxOpen)
+                {
+                    <div class="lightbox-overlay" @onclick="CloseLightbox">
+
+                        <button class="lightbox-close"
+                                @onclick:preventDefault="true"
+                                @onclick:stopPropagation="true"
+                                @onclick="CloseLightbox">
+                            &times;
+                        </button>
+
+                        <button class="lightbox-arrow lightbox-prev"
+                                @onclick:stopPropagation="true"
+                                @onclick="PreviousImage">
+                            &#10094;
+                        </button>
+
+                        <img class="lightbox-image"
+                             src="@SelectedGalleryImage?.ImagePath"
+                             alt="@Cat.Name"
+                             @onclick:stopPropagation="true" />
+
+                        <button class="lightbox-arrow lightbox-next"
+                                @onclick:stopPropagation="true"
+                                @onclick="NextImage">
+                            &#10095;
+                        </button>
+
+                        <div class="lightbox-counter">
+                            @(SelectedImageIndex + 1) / @Cat.GalleryImages.Count
+                        </div>
+
+                    </div>
+                }
+
+
+            </section>
+        }
 
         <!-- PARENTS -->
 
@@ -179,6 +282,63 @@ else
     private CatDetailsDto? Cat { get; set; }
     private bool IsLoading { get; set; } = true;
     private string? ErrorMessage { get; set; }
+
+
+    private bool IsLightboxOpen { get; set; }
+
+    private int SelectedImageIndex { get; set; }
+
+    private CatGalleryImageDto? SelectedGalleryImage =>
+        Cat?.GalleryImages.ElementAtOrDefault(SelectedImageIndex);
+
+    private bool IsPedigreeLightboxOpen { get; set; }
+
+    private void OpenPedigreeLightbox()
+    {
+        IsPedigreeLightboxOpen = true;
+    }
+
+    private void ClosePedigreeLightbox()
+    {
+        IsPedigreeLightboxOpen = false;
+    }
+
+    private void OpenLightbox(Guid imageId)
+    {
+        if (Cat is null)
+            return;
+
+        SelectedImageIndex = Cat.GalleryImages
+            .ToList()
+            .FindIndex(image => image.CatImageId == imageId);
+
+        if (SelectedImageIndex >= 0)
+            IsLightboxOpen = true;
+    }
+
+    private void CloseLightbox()
+    {
+        IsLightboxOpen = false;
+    }
+
+    private void PreviousImage()
+    {
+        if (Cat is null || Cat.GalleryImages.Count == 0)
+            return;
+
+        SelectedImageIndex =
+            (SelectedImageIndex - 1 + Cat.GalleryImages.Count)
+            % Cat.GalleryImages.Count;
+    }
+
+    private void NextImage()
+    {
+        if (Cat is null || Cat.GalleryImages.Count == 0)
+            return;
+
+        SelectedImageIndex =
+            (SelectedImageIndex + 1) % Cat.GalleryImages.Count;
+    }
 
     protected override async Task OnParametersSetAsync()
     {

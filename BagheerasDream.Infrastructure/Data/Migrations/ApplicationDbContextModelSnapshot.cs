@@ -54,6 +54,10 @@ namespace BagheerasDream.Infrastructure.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("PedigreeImage")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<string>("ProfileImage")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -65,6 +69,30 @@ namespace BagheerasDream.Infrastructure.Data.Migrations
                     b.HasIndex("MotherId");
 
                     b.ToTable("Cats");
+                });
+
+            modelBuilder.Entity("BagheerasDream.Domain.Models.CatImage", b =>
+                {
+                    b.Property<Guid>("CatImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CatId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("CatImageId");
+
+                    b.HasIndex("CatId", "DisplayOrder");
+
+                    b.ToTable("CatImages");
                 });
 
             modelBuilder.Entity("BagheerasDream.Domain.Models.Kitten", b =>
@@ -360,6 +388,17 @@ namespace BagheerasDream.Infrastructure.Data.Migrations
                     b.Navigation("Mother");
                 });
 
+            modelBuilder.Entity("BagheerasDream.Domain.Models.CatImage", b =>
+                {
+                    b.HasOne("BagheerasDream.Domain.Models.Cat", "Cat")
+                        .WithMany("Images")
+                        .HasForeignKey("CatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cat");
+                });
+
             modelBuilder.Entity("BagheerasDream.Domain.Models.Kitten", b =>
                 {
                     b.HasOne("BagheerasDream.Domain.Models.Litter", "Litter")
@@ -438,6 +477,11 @@ namespace BagheerasDream.Infrastructure.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BagheerasDream.Domain.Models.Cat", b =>
+                {
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("BagheerasDream.Domain.Models.Litter", b =>

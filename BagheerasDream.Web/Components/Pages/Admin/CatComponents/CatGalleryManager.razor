@@ -1,0 +1,172 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@using BagheerasDream.Application.DTOs.Admin.Cats
+@using BagheerasDream.Application.Interfaces.Admin
+@inject IAdminCatsService AdminCatsService
+
+<div class="form-group gallery-section">
+    <label>Галерия на котката</label>
+
+    <p>Можете да добавите до 5 допълнителни снимки.</p>
+
+    <InputFile OnChange="HandleImageUpload"
+               accept=".jpg,.jpeg,.png,.webp"
+               class="form-control"
+               disabled="@(Images.Count >= MaxImages)" />
+
+    <div class="gallery-grid">
+        @foreach (var image in Images)
+        {
+            <div class="gallery-item">
+                <img src="@image.ImagePath" alt="Снимка на котката" />
+
+                <div class="gallery-controls">
+                    <button type="button"
+                            @onclick="() => MoveImage(image.CatImageId, -1)"
+                            disabled="@(Images.IndexOf(image) == 0)">
+                        ↑
+                    </button>
+
+                    <button type="button"
+                            @onclick="() => MoveImage(image.CatImageId, 1)"
+                            disabled="@(Images.IndexOf(image) == Images.Count - 1)">
+                        ↓
+                    </button>
+
+                    <button type="button"
+                            class="gallery-delete-btn"
+                            @onclick="() => DeleteImage(image.CatImageId)">
+                        Изтрий
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+
+    <small>@Images.Count / @MaxImages снимки</small>
+
+    @if (!string.IsNullOrWhiteSpace(ErrorMessage))
+    {
+        <div class="alert alert-danger">
+            @ErrorMessage
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public Guid CatId { get; set; }
+
+    private const int MaxImages = 5;
+    private const long MaxImageSize = 15 * 1024 * 1024;
+
+    private List<CatImageDto> Images = [];
+    private string? ErrorMessage;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (CatId != Guid.Empty)
+        {
+            await LoadImagesAsync();
+        }
+    }
+
+    private async Task HandleImageUpload(InputFileChangeEventArgs e)
+    {
+        ErrorMessage = null;
+
+        if (CatId == Guid.Empty || Images.Count >= MaxImages)
+            return;
+
+        var file = e.File;
+
+        try
+        {
+            await using var stream = file.OpenReadStream(MaxImageSize);
+
+            var success = await AdminCatsService.AddImageAsync(
+                CatId,
+                stream,
+                file.Name);
+
+            if (!success)
+            {
+                ErrorMessage = "Снимката не можа да бъде добавена.";
+                return;
+            }
+
+            await LoadImagesAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error uploading gallery image: {ex}");
+            ErrorMessage = "Възникна грешка при качването на снимката.";
+        }
+    }
+
+    private async Task DeleteImage(Guid catImageId)
+    {
+        ErrorMessage = null;
+
+        try
+        {
+            var success = await AdminCatsService.DeleteImageAsync(catImageId);
+
+            if (!success)
+            {
+                ErrorMessage = "Снимката не беше намерена.";
+                return;
+            }
+
+            await LoadImagesAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error deleting gallery image: {ex}");
+            ErrorMessage = "Възникна грешка при изтриването на снимката.";
+        }
+    }
+
+    private async Task MoveImage(Guid catImageId, int direction)
+    {
+        var currentIndex = Images.FindIndex(
+            image => image.CatImageId == catImageId);
+
+        var newIndex = currentIndex + direction;
+
+        if (currentIndex < 0 || newIndex < 0 || newIndex >= Images.Count)
+            return;
+
+        var orderedIds = Images
+            .Select(image => image.CatImageId)
+            .ToList();
+
+        (orderedIds[currentIndex], orderedIds[newIndex]) =
+            (orderedIds[newIndex], orderedIds[currentIndex]);
+
+        try
+        {
+            var success = await AdminCatsService.ReorderImagesAsync(
+                CatId,
+                orderedIds);
+
+            if (success)
+            {
+                await LoadImagesAsync();
+            }
+            else
+            {
+                ErrorMessage = "Редът на снимките не можа да бъде променен.";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error reordering gallery images: {ex}");
+            ErrorMessage = "Възникна грешка при пренареждането на снимките.";
+        }
+    }
+
+    private async Task LoadImagesAsync()
+    {
+        Images = await AdminCatsService.GetImagesAsync(CatId);
+    }
+}

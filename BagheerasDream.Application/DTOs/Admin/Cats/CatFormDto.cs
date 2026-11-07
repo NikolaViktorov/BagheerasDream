@@ -21,6 +21,8 @@ public class CatFormDto
 
 	public string? ProfileImage { get; set; }
 
+	public string? PedigreeImage { get; set; }
+
 	[StringLength(2000,
 	ErrorMessage = "Описанието не може да надвишава 2000 символа.")]
 	public string? Description { get; set; }
