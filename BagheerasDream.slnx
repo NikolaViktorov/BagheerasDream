@@ -1,4 +1,5 @@
 <Solution>
+  <Folder Name="/Solution Items/" />
   <Project Path="BagheerasDream.Application/BagheerasDream.Application.csproj" />
   <Project Path="BagheerasDream.Domain/BagheerasDream.Domain.csproj" />
   <Project Path="BagheerasDream.Infrastructure/BagheerasDream.Infrastructure.csproj" />

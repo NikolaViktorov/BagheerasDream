@@ -129,7 +129,10 @@
     {
         try
         {
-            LittersList = (await LittersService.GetAllAsync()).ToList();
+            LittersList = (await LittersService.GetAllAsync())
+                .OrderByDescending(litter => litter.Birthday)
+                .Take(3)
+                .ToList();
         }
         catch (Exception ex)
         {
