@@ -6,70 +6,70 @@
 @using BagheerasDream.Application.Interfaces
 @inject IDashboardService DashboardService
 
-<PageTitle>Dashboard | BagheerasDream</PageTitle>
+<PageTitle>Табло | BagheerasDream</PageTitle>
 
 <div class="dashboard-page">
     <div class="dashboard-header">
         <div>
-            <span class="dashboard-eyebrow">OVERVIEW</span>
-            <h1>Dashboard</h1>
-            <p>Welcome to your BagheerasDream administration panel.</p>
+            <span class="dashboard-eyebrow">ОБЩ ПРЕГЛЕД</span>
+            <h1>Табло</h1>
+            <p>Добре дошли в административния панел на BagheerasDream.</p>
         </div>
     </div>
 
     @if (IsLoading)
     {
-        <p>Loading dashboard statistics...</p>
+        <p>Зареждане на статистиката...</p>
     }
     else if (Stats is not null)
     {
         <section class="dashboard-section">
-            <h2>Cats</h2>
+            <h2>Котки</h2>
 
             <div class="dashboard-grid">
                 <div class="dashboard-card">
-                    <span>Total Cats</span>
+                    <span>Общо котки</span>
                     <strong>@Stats.TotalCats</strong>
                 </div>
 
                 <div class="dashboard-card">
-                    <span>Male Cats</span>
+                    <span>Мъжки котки</span>
                     <strong>@Stats.MaleCats</strong>
                 </div>
 
                 <div class="dashboard-card">
-                    <span>Female Cats</span>
+                    <span>Женски котки</span>
                     <strong>@Stats.FemaleCats</strong>
                 </div>
             </div>
         </section>
 
         <section class="dashboard-section">
-            <h2>Litters & Kittens</h2>
+            <h2>Котила и котенца</h2>
 
             <div class="dashboard-grid">
                 <div class="dashboard-card">
-                    <span>Total Litters</span>
+                    <span>Общо котила</span>
                     <strong>@Stats.TotalLitters</strong>
                 </div>
 
                 <div class="dashboard-card">
-                    <span>Total Kittens</span>
+                    <span>Общо котенца</span>
                     <strong>@Stats.TotalKittens</strong>
                 </div>
 
                 <div class="dashboard-card">
-                    <span>Available</span>
+                    <span>Свободни</span>
                     <strong>@Stats.AvailableKittens</strong>
                 </div>
 
                 <div class="dashboard-card">
-                    <span>Reserved</span>
+                    <span>Резервирани</span>
                     <strong>@Stats.ReservedKittens</strong>
                 </div>
 
                 <div class="dashboard-card">
-                    <span>Sold</span>
+                    <span>Продадени</span>
                     <strong>@Stats.SoldKittens</strong>
                 </div>
             </div>

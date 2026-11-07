@@ -20,30 +20,31 @@
 @inject IJSRuntime JS
 
 
-<PageTitle>Cat Form | Admin</PageTitle>
+<PageTitle>Форма за котка | Админ панел</PageTitle>
 
 <div class="admin-page">
     <div class="page-header">
         <div>
-            <h1>@(IsEditMode ? "Edit Cat" : "Add New Cat")</h1>
-            <p>Manage cat information.</p>
+            <h1>@(IsEditMode ? "Редактиране на котка" : "Добавяне на нова котка")</h1>
+            <p>Управление на информацията за котката.</p>
         </div>
 
         <a href="/admin/cats" class="btn-secondary">
-            Back to Cats
+            Обратно към котките
         </a>
     </div>
 </div>
 
 @if (IsLoading)
 {
-    <p>Loading...</p>
+    <p>Зареждане...</p>
 }
 else
 {
     <EditForm Model="@Model" OnValidSubmit="HandleSubmit">
         <DataAnnotationsValidator />
         <ValidationSummary />
+
         @if (!string.IsNullOrWhiteSpace(ErrorMessage))
         {
             <div class="alert alert-danger">
@@ -97,7 +98,7 @@ else
             <div class="form-group">
                 <label>Баща</label>
                 <InputSelect @bind-Value="Model.FatherId" class="form-control">
-                    <option value="">-- Select Father --</option>
+                    <option value="">-- Изберете баща --</option>
 
                     @foreach (var cat in AvailableCats.Where(c =>
                         c.Gender == Gender.Male && c.CatId != Model.CatId))
@@ -110,7 +111,7 @@ else
             <div class="form-group">
                 <label>Майка</label>
                 <InputSelect @bind-Value="Model.MotherId" class="form-control">
-                    <option value="">-- Select Mother --</option>
+                    <option value="">-- Изберете майка --</option>
 
                     @foreach (var cat in AvailableCats.Where(c =>
                         c.Gender == Gender.Female && c.CatId != Model.CatId))
@@ -153,11 +154,11 @@ else
 
             <div class="form-actions">
                 <button type="submit" class="btn-primary">
-                    @(IsEditMode ? "Save Changes" : "Create Cat")
+                    @(IsEditMode ? "Запази промените" : "Добави котка")
                 </button>
 
                 <a href="/admin/cats" class="btn-secondary">
-                    Cancel
+                    Отказ
                 </a>
             </div>
 
@@ -217,7 +218,7 @@ else
 
         try
         {
-            // Upload a new image if one was selected.
+            // Качване на нова снимка, ако е избрана такава.
             if (SelectedImage is not null)
             {
                 await using var stream = SelectedImage.OpenReadStream(MaxImageSize);
@@ -253,7 +254,7 @@ else
                 return;
             }
 
-            // Delete the old image only after a successful update.
+            // Изтриване на старата снимка само след успешно обновяване.
             if (oldImagePath is not null && newImagePath is not null)
             {
                 await ImageUploadService.DeleteAsync(oldImagePath);

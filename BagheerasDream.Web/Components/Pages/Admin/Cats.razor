@@ -8,32 +8,33 @@
 @using BagheerasDream.Application.DTOs.Cats
 @using BagheerasDream.Application.Interfaces
 @using BagheerasDream.Application.Interfaces.Admin
+
 @inject ICatsService CatsService
 @inject IAdminCatsService AdminCatsService
 @inject IJSRuntime JS
 
-<PageTitle>Manage Cats | Admin</PageTitle>
+<PageTitle>Управление на котките | Админ панел</PageTitle>
 
 <div class="admin-page">
     <div class="page-header">
         <div>
-            <h1>Manage Cats</h1>
-            <p>Manage your cattery's cats.</p>
+            <h1>Управление на котките</h1>
+            <p>Добавяне, редактиране и управление на котките в развъдника.</p>
         </div>
 
         <a href="/admin/cats/create" class="btn-primary">
-            + Add New Cat
+            + Добави нова котка
         </a>
     </div>
 </div>
 
 @if (cats == null)
 {
-    <p>Loading cats...</p>
+    <p>Зареждане на котките...</p>
 }
 else if (!cats.Any())
 {
-    <p>No cats found.</p>
+    <p>Все още няма добавени котки.</p>
 }
 else
 {
@@ -44,15 +45,16 @@ else
                 @DeleteErrorMessage
             </div>
         }
+
         <table class="admin-table">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Breed</th>
-                    <th>Color</th>
-                    <th>Birthday</th>
-                    <th>Actions</th>
+                    <th>Име</th>
+                    <th>Пол</th>
+                    <th>Порода</th>
+                    <th>Цвят</th>
+                    <th>Дата на раждане</th>
+                    <th>Действия</th>
                 </tr>
             </thead>
 
@@ -61,17 +63,18 @@ else
                 {
                     <tr>
                         <td>@cat.Name</td>
-                        <td>@cat.Gender</td>
-                        <td>@cat.Breed</td>
+                        <td>@(cat.Gender == BagheerasDream.Domain.Enums.Gender.Male ? "Мъжки" : "Женски")</td>
+                        <td>Британска късокосместа</td>
                         <td>@cat.Color</td>
                         <td>@cat.Birthday.ToString("dd.MM.yyyy")</td>
                         <td>
                             <a href="@($"/admin/cats/edit/{cat.CatId}")" class="btn-edit">
-                                Edit
+                                Редактирай
                             </a>
+
                             <button class="btn-delete"
                                     @onclick="() => DeleteCat(cat.CatId)">
-                                Delete
+                                Изтрий
                             </button>
                         </td>
                     </tr>
@@ -95,7 +98,7 @@ else
     {
         var confirmed = await JS.InvokeAsync<bool>(
             "confirm",
-            "Are you sure you want to delete this cat?");
+            "Сигурни ли сте, че искате да изтриете тази котка?");
 
         if (!confirmed)
             return;
@@ -109,7 +112,7 @@ else
         }
         else
         {
-            DeleteErrorMessage = "This cat cannot be deleted because it is assigned as a parent.";
+            DeleteErrorMessage = "Тази котка не може да бъде изтрита, защото е посочена като родител в котка или котило.";
         }
     }
 }

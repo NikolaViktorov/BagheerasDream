@@ -20,24 +20,24 @@
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
 
-<PageTitle>Kitten Form | Admin</PageTitle>
+<PageTitle>Форма за котенце | Админ панел</PageTitle>
 
 <div class="admin-page">
     <div class="page-header">
         <div>
-            <h1>@(IsEditMode ? "Edit Kitten" : "Add New Kitten")</h1>
-            <p>Manage kitten information.</p>
+            <h1>@(IsEditMode ? "Редактиране на котенце" : "Добавяне на ново котенце")</h1>
+            <p>Управление на информацията за котенцето.</p>
         </div>
 
         <a href="/admin/kittens" class="btn-secondary">
-            Back to Kittens
+            Обратно към котенцата
         </a>
     </div>
 </div>
 
 @if (IsLoading)
 {
-    <p>Loading...</p>
+    <p>Зареждане...</p>
 }
 else
 {
@@ -55,13 +55,13 @@ else
         <div class="admin-form">
 
             <div class="form-group">
-                <label>Name</label>
+                <label>Име</label>
                 <InputText @bind-Value="Model.Name" class="form-control" />
                 <ValidationMessage For="@(() => Model.Name)" />
             </div>
 
             <div class="form-group">
-                <label>Color</label>
+                <label>Цвят</label>
                 <InputSelect @bind-Value="Model.Color" class="form-control">
                     @foreach (var color in Enum.GetValues<CatColor>())
                     {
@@ -71,7 +71,7 @@ else
             </div>
 
             <div class="form-group">
-                <label>Gender</label>
+                <label>Пол</label>
                 <InputSelect @bind-Value="Model.Gender" class="form-control">
                     @foreach (var gender in Enum.GetValues<Gender>())
                     {
@@ -81,9 +81,9 @@ else
             </div>
 
             <div class="form-group">
-                <label>Litter</label>
+                <label>Котило</label>
                 <InputSelect @bind-Value="Model.LitterId" class="form-control">
-                    <option value="">-- Select Litter --</option>
+                    <option value="">-- Изберете котило --</option>
 
                     @foreach (var litter in AvailableLitters)
                     {
@@ -97,7 +97,7 @@ else
             </div>
 
             <div class="form-group">
-                <label>Status</label>
+                <label>Статус</label>
                 <InputSelect @bind-Value="Model.Status" class="form-control">
                     @foreach (var status in Enum.GetValues<KittenStatus>())
                     {
@@ -107,7 +107,7 @@ else
             </div>
 
             <div class="form-group">
-                <label>Profile Image</label>
+                <label>Профилна снимка</label>
 
                 <InputFile id="kittenImageInput"
                            OnChange="HandleImageSelection"
@@ -118,7 +118,7 @@ else
                 {
                     <div class="image-preview">
                         <img src="@ImagePreviewUrl"
-                             alt="Image preview"
+                             alt="Преглед на снимката"
                              style="max-width: 250px; margin-top: 15px;" />
                     </div>
                 }
@@ -126,7 +126,7 @@ else
                 {
                     <div class="image-preview">
                         <img src="@Model.ProfileImage"
-                             alt="Current image"
+                             alt="Текуща снимка"
                              style="max-width: 250px; margin-top: 15px;" />
                     </div>
                 }
@@ -134,11 +134,11 @@ else
 
             <div class="form-actions">
                 <button type="submit" class="btn-primary">
-                    @(IsEditMode ? "Save Changes" : "Create Kitten")
+                    @(IsEditMode ? "Запази промените" : "Добави котенце")
                 </button>
 
                 <a href="/admin/kittens" class="btn-secondary">
-                    Cancel
+                    Отказ
                 </a>
             </div>
 
@@ -146,7 +146,7 @@ else
     </EditForm>
 }
 
-                             @code {
+@code {
     [Parameter]
     public Guid? Id { get; set; }
 

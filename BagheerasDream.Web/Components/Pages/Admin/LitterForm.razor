@@ -20,24 +20,24 @@
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
 
-<PageTitle>Litter Form | Admin</PageTitle>
+<PageTitle>Форма за котило | Админ панел</PageTitle>
 
 <div class="admin-page">
     <div class="page-header">
         <div>
-            <h1>@(IsEditMode ? "Edit Litter" : "Add New Litter")</h1>
-            <p>Manage litter information.</p>
+            <h1>@(IsEditMode ? "Редактиране на котило" : "Добавяне на ново котило")</h1>
+            <p>Управление на информацията за котилото.</p>
         </div>
 
         <a href="/admin/litters" class="btn-secondary">
-            Back to Litters
+            Обратно към котилата
         </a>
     </div>
 </div>
 
 @if (IsLoading)
 {
-    <p>Loading...</p>
+    <p>Зареждане...</p>
 }
 else
 {
@@ -119,7 +119,7 @@ else
                 </div>
 
                 <div class="form-group">
-                    <label>Развъдник</label>
+                    <label>Развъдник на бащата</label>
 
                     <InputText @bind-Value="Model.ExternalFatherCattery"
                                class="form-control" />
@@ -162,11 +162,11 @@ else
 
             <div class="form-actions">
                 <button type="submit" class="btn-primary">
-                    @(IsEditMode ? "Save Changes" : "Create Litter")
+                    @(IsEditMode ? "Запази промените" : "Създай котило")
                 </button>
 
                 <a href="/admin/litters" class="btn-secondary">
-                    Cancel
+                    Отказ
                 </a>
             </div>
 

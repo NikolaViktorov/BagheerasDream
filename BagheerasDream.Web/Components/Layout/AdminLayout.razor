@@ -6,39 +6,39 @@
 
         <div class="admin-brand">
             <span class="admin-brand-name">BagheerasDream</span>
-            <span class="admin-brand-label">ADMINISTRATION</span>
+            <span class="admin-brand-label">АДМИНИСТРАЦИЯ</span>
         </div>
 
         <nav class="admin-navigation">
 
-            <span class="admin-nav-heading">GENERAL</span>
+            <span class="admin-nav-heading">ОБЩО</span>
 
             <NavLink href="/admin" Match="NavLinkMatch.All">
                 <span>◈</span>
-                Dashboard
+                Табло
             </NavLink>
 
-            <span class="admin-nav-heading">MANAGEMENT</span>
+            <span class="admin-nav-heading">УПРАВЛЕНИЕ</span>
 
             <NavLink href="/admin/cats">
                 <span>♧</span>
-                Cats
+                Котки
             </NavLink>
 
             <NavLink href="/admin/litters">
                 <span>♡</span>
-                Litters
+                Котила
             </NavLink>
 
             <NavLink href="/admin/kittens">
                 <span>♢</span>
-                Kittens
+                Котенца
             </NavLink>
 
         </nav>
 
         <div class="admin-sidebar-bottom">
-            <a href="/">← Back to website</a>
+            <a href="/">← Обратно към сайта</a>
             <span>BagheerasDream © 2026</span>
         </div>
 
@@ -47,15 +47,15 @@
     <main class="admin-main">
 
         <header class="admin-topbar">
-            <span>Administration Panel</span>
+            <span>Административен панел</span>
 
             <div class="admin-topbar-actions">
-                <span class="admin-user-label">Administrator</span>
+                <span class="admin-user-label">Администратор</span>
 
                 <form method="post" action="/Account/Logout">
                     <AntiforgeryToken />
                     <button type="submit" class="admin-logout-btn">
-                        ↪ Logout
+                        ↪ Изход
                     </button>
                 </form>
             </div>

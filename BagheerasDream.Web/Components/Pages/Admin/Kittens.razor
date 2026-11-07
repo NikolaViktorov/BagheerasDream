@@ -11,17 +11,17 @@
 @inject IAdminKittensService AdminKittensService
 @inject IJSRuntime JS
 
-<PageTitle>Manage Kittens | Admin</PageTitle>
+<PageTitle>Управление на котенцата | Админ панел</PageTitle>
 
 <div class="admin-page">
     <div class="page-header">
         <div>
-            <h1>Manage Kittens</h1>
-            <p>Manage your cattery's kittens.</p>
+            <h1>Управление на котенцата</h1>
+            <p>Управление на котенцата във вашия развъдник.</p>
         </div>
 
         <a href="/admin/kittens/create" class="btn-primary">
-            + Add New Kitten
+            + Добави ново котенце
         </a>
     </div>
 
@@ -34,11 +34,11 @@
 
     @if (kittens == null)
     {
-        <p>Loading kittens...</p>
+        <p>Зареждане на котенцата...</p>
     }
     else if (!kittens.Any())
     {
-        <p>No kittens found.</p>
+        <p>Все още няма добавени котенца.</p>
     }
     else
     {
@@ -69,13 +69,13 @@
                                 }
                                 else
                                 {
-                                    <span>No photo</span>
+                                    <span>Няма снимка</span>
                                 }
                             </td>
 
-                            <td>@(string.IsNullOrWhiteSpace(kitten.Name) ? "Unnamed" : kitten.Name)</td>
+                            <td>@(string.IsNullOrWhiteSpace(kitten.Name) ? "Без име" : kitten.Name)</td>
                             <td>@kitten.Color</td>
-                            <td>@kitten.Gender</td>
+                            <td>@(kitten.Gender == BagheerasDream.Domain.Enums.Gender.Male ? "Мъжки" : "Женски")</td>
                             <td>@kitten.LitterName</td>
                             <td>
                                 <span class="status-badge status-@kitten.Status.ToString().ToLowerInvariant()">
@@ -86,12 +86,12 @@
                             <td>
                                 <a href="@($"/admin/kittens/edit/{kitten.KittenId}")"
                                    class="btn-edit">
-                                    Edit
+                                    Редактирай
                                 </a>
 
                                 <button class="btn-delete"
                                         @onclick="() => DeleteKitten(kitten.KittenId)">
-                                    Delete
+                                    Изтрий
                                 </button>
                             </td>
                         </tr>
@@ -115,7 +115,7 @@
     {
         var confirmed = await JS.InvokeAsync<bool>(
             "confirm",
-            "Are you sure you want to delete this kitten?");
+            "Сигурни ли сте, че искате да изтриете това котенце?");
 
         if (!confirmed)
             return;
@@ -131,13 +131,13 @@
             }
             else
             {
-                DeleteErrorMessage = "This kitten could not be found.";
+                DeleteErrorMessage = "Котенцето не беше намерено.";
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"DELETE KITTEN ERROR: {ex}");
-            DeleteErrorMessage = "An error occurred while deleting the kitten.";
+            DeleteErrorMessage = "Възникна грешка при изтриването на котенцето.";
         }
     }
 }
