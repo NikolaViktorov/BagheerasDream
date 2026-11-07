@@ -35,7 +35,9 @@ else
         <div class="details-breadcrumb">
             <a href="/">Home</a>
             <span>/</span>
-            <a href="@GetCatsUrl()">Our Females</a>
+            <a href="@GetCatsUrl()">
+                @(Cat.Gender == Gender.Male ? "Our Males" : "Our Females")
+            </a>
             <span>/</span>
             <span>@Cat.Name</span>
         </div>
@@ -115,10 +117,10 @@ else
             <div class="parents-header">
 
                 <span class="details-eyebrow">
-                    HER FAMILY TREE
+                    @(Cat.Gender == Gender.Male ? "His" : "Her") FAMILY TREE
                 </span>
 
-                <h2>Meet Her <span>Parents.</span></h2>
+                <h2>Meet @(Cat.Gender == Gender.Male ? "His" : "Her") <span>Parents.</span></h2>
 
                 <p>
                     Every beautiful cat has a story.
@@ -128,21 +130,35 @@ else
             </div>
 
 
-            <div class="parents-grid">
+            @if (Cat.FatherId.HasValue || Cat.MotherId.HasValue)
+            {
+                <div class="parents-grid">
 
-                <ParentCard
-                    ParentName="@Cat.FatherName"
-                    ProfileImage="@Cat.FatherProfileImage"
-                    DetailsUrl="@(Cat.FatherId.HasValue ? $"/cats/{Cat.FatherId}" : "#")"
-                    Label="Father" />
+                    <ParentCard
+                        ParentName="@Cat.FatherName"
+                        ProfileImage="@Cat.FatherProfileImage"
+                        DetailsUrl="@(Cat.FatherId.HasValue ? $"/cats/{Cat.FatherId}" : "#")"
+                        Label="Father" />
 
-                <ParentCard
-                    ParentName="@Cat.MotherName"
-                    ProfileImage="@Cat.MotherProfileImage"
-                    DetailsUrl="@(Cat.MotherId.HasValue ? $"/cats/{Cat.MotherId}" : "#")"
-                    Label="Mother" />
+                    <ParentCard
+                        ParentName="@Cat.MotherName"
+                        ProfileImage="@Cat.MotherProfileImage"
+                        DetailsUrl="@(Cat.MotherId.HasValue ? $"/cats/{Cat.MotherId}" : "#")"
+                        Label="Mother" />
 
-            </div>
+                </div>
+            }
+            else
+            {
+                <div class="parents-empty">
+                    <span>FAMILY HISTORY</span>
+                    <h3>No family records yet.</h3>
+                    <p>
+                        We're still adding our cats' family history.
+                        Check back soon to discover their origins.
+                    </p>
+                </div>
+            }
 
         </section>
 

@@ -107,7 +107,17 @@
     padding: 35px;
     background: #fff;
     text-align: center;
+    overflow: hidden;
 }
+
+    .litter-parent img {
+        display: block;
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        object-position: center;
+        margin-top: 15px;
+    }
 
     .litter-parent > span {
         color: #a58a62;

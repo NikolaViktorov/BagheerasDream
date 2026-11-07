@@ -101,8 +101,18 @@ else
 
                     @if (!string.IsNullOrWhiteSpace(CurrentLitter.Mother.ProfileImage))
                     {
-                        <img src="@CurrentLitter.Mother.ProfileImage"
-                             alt="@CurrentLitter.Mother.Name" />
+                        @if (CurrentLitter.Mother.CatId.HasValue)
+                        {
+                            <a href="@($"/cats/{CurrentLitter.Mother.CatId}")">
+                                <img src="@CurrentLitter.Mother.ProfileImage"
+                                     alt="@CurrentLitter.Mother.Name" />
+                            </a>
+                        }
+                        else
+                        {
+                            <img src="@CurrentLitter.Mother.ProfileImage"
+                                 alt="@CurrentLitter.Mother.Name" />
+                        }
                     }
 
                     @if (CurrentLitter.Mother.CatId.HasValue)
@@ -127,8 +137,19 @@ else
                     {
                         @if (!string.IsNullOrWhiteSpace(CurrentLitter.Father.ProfileImage))
                         {
-                            <img src="@CurrentLitter.Father.ProfileImage"
-                                 alt="@CurrentLitter.Father.Name" />
+                            @if (!CurrentLitter.Father.IsExternal &&
+                                 CurrentLitter.Father.CatId.HasValue)
+                            {
+                                <a href="@($"/cats/{CurrentLitter.Father.CatId}")">
+                                    <img src="@CurrentLitter.Father.ProfileImage"
+                                         alt="@CurrentLitter.Father.Name" />
+                                </a>
+                            }
+                            else
+                            {
+                                <img src="@CurrentLitter.Father.ProfileImage"
+                                     alt="@CurrentLitter.Father.Name" />
+                            }
                         }
 
                         @if (!CurrentLitter.Father.IsExternal && CurrentLitter.Father.CatId.HasValue)

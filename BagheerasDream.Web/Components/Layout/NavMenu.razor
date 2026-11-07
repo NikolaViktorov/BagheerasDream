@@ -1,4 +1,6 @@
-﻿<header class="site-header">
+﻿@using Microsoft.AspNetCore.Components.Authorization
+
+<header class="site-header">
 
     <div class="navbar-container">
 
@@ -48,9 +50,13 @@
                 Contact
             </NavLink>
 
-            <NavLink href="/admin" class="nav-link">
-                Admin
-            </NavLink>
+            <AuthorizeView Roles="Admin">
+                <Authorized>
+                    <NavLink href="/admin" class="nav-link">
+                        Admin
+                    </NavLink>
+                </Authorized>
+            </AuthorizeView>
 
             <NavLink href="/Account/Login" class="nav-link">
                 Login

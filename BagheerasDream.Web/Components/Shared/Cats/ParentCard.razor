@@ -1,25 +1,45 @@
 ﻿@if (!string.IsNullOrWhiteSpace(ParentName))
 {
-    <a href="@DetailsUrl" class="parent-card">
-        <div class="parent-image">
-            @if (!string.IsNullOrWhiteSpace(ProfileImage))
-            {
-                <img src="@ProfileImage" alt="@ParentName" />
-            }
-            else
-            {
-                <div class="parent-placeholder">
-                    🐱
-                </div>
-            }
-        </div>
+    <div class="cat-parent-card">
+        <span class="cat-parent-label">@Label</span>
 
-        <div class="parent-info">
-            <span class="parent-label">@Label</span>
+        @if (!string.IsNullOrWhiteSpace(DetailsUrl) && DetailsUrl != "#")
+        {
+            <a href="@DetailsUrl" class="cat-parent-image-link">
+                <div class="cat-parent-image">
+                    @if (!string.IsNullOrWhiteSpace(ProfileImage))
+                    {
+                        <img src="@ProfileImage" alt="@ParentName" />
+                    }
+                    else
+                    {
+                        <div class="cat-parent-placeholder">🐱</div>
+                    }
+                </div>
+            </a>
+
+            <a href="@DetailsUrl" class="cat-parent-name">
+                <h3>@ParentName</h3>
+            </a>
+        }
+        else
+        {
+            <div class="cat-parent-image">
+                @if (!string.IsNullOrWhiteSpace(ProfileImage))
+                {
+                    <img src="@ProfileImage" alt="@ParentName" />
+                }
+                else
+                {
+                    <div class="cat-parent-placeholder">🐱</div>
+                }
+            </div>
+
             <h3>@ParentName</h3>
-            <span class="parent-link">View profile →</span>
-        </div>
-    </a>
+        }
+
+        <p>British Shorthair</p>
+    </div>
 }
 
 @code {

@@ -11,36 +11,205 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Login | BagheerasDream</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f7f4ee;
+            font-family: 'Segoe UI', sans-serif;
+            color: #302d28;
+            padding: 24px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 440px;
+            background: #fff;
+            padding: 55px 48px 45px;
+            box-shadow: 0 15px 50px rgba(58, 48, 32, 0.08);
+            text-align: center;
+        }
+
+        .brand {
+            font-family: Georgia, serif;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            color: #39332b;
+            margin-bottom: 12px;
+        }
+
+        .divider {
+            width: 45px;
+            height: 2px;
+            background: #b89a65;
+            margin: 0 auto 28px;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #a58a62;
+            margin-bottom: 38px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #6f675c;
+            margin-bottom: 9px;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 48px;
+            padding: 0 14px;
+            border: 1px solid #e5dfd4;
+            background: #fcfbf9;
+            font-size: 14px;
+            color: #302d28;
+            outline: none;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #b89a65;
+            box-shadow: 0 0 0 3px rgba(184, 154, 101, 0.12);
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            text-align: left;
+            margin: 5px 0 28px;
+            font-size: 13px;
+            color: #777064;
+        }
+
+        .remember-me input {
+            accent-color: #a58a62;
+            width: 15px;
+            height: 15px;
+        }
+
+        .login-button {
+            width: 100%;
+            height: 49px;
+            border: none;
+            background: #a58a62;
+            color: #fff;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .login-button:hover {
+            background: #8e744e;
+            transform: translateY(-2px);
+        }
+
+        .validation-summary-errors {
+            color: #a94442;
+            font-size: 13px;
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .validation-summary-errors ul {
+            padding-left: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #918777;
+            font-size: 12px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #a58a62;
+        }
+
+        .footer-text {
+            margin-top: 42px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: #b0a99e;
+        }
+
+        @@media (max-width: 480px) {
+            .login-container {
+                padding: 42px 28px 35px;
+            }
+
+            .brand {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <main class="login-container">
 
-    <h1>BagheerasDream</h1>
-    <h2>Administration Login</h2>
+        <div class="brand">BagheerasDream</div>
 
-    <form method="post">
-        @Html.AntiForgeryToken()
+        <div class="divider"></div>
 
-        <input type="hidden" asp-for="ReturnUrl" />
+        <div class="subtitle">Administration Portal</div>
 
-        <div asp-validation-summary="ModelOnly"></div>
+        <form method="post">
+            @Html.AntiForgeryToken()
 
-        <div>
-            <label asp-for="Input.Email">Email</label>
-            <input asp-for="Input.Email" type="email" required />
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <div class="form-group">
+                <label asp-for="Input.Email">Email Address</label>
+                <input asp-for="Input.Email" type="email" placeholder="Enter your email" required />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Input.Password">Password</label>
+                <input asp-for="Input.Password" type="password" placeholder="Enter your password" required />
+            </div>
+
+            <label class="remember-me">
+                <input asp-for="Input.RememberMe" type="checkbox" />
+                Remember me
+            </label>
+
+            <button type="submit" class="login-button">Sign In</button>
+        </form>
+
+        <a href="/" class="back-link">← Back to website</a>
+
+        <div class="footer-text">
+            BAGHEERASDREAM © 2026
         </div>
 
-        <div>
-            <label asp-for="Input.Password">Password</label>
-            <input asp-for="Input.Password" type="password" required />
-        </div>
-
-        <div>
-            <input asp-for="Input.RememberMe" type="checkbox" />
-            <label asp-for="Input.RememberMe">Remember me</label>
-        </div>
-
-        <button type="submit">Sign In</button>
-    </form>
-
+    </main>
 </body>
 </html>

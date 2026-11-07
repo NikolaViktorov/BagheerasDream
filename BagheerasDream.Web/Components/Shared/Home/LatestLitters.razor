@@ -1,4 +1,9 @@
-﻿<section class="latest-litters-section">
+﻿@using BagheerasDream.Application.DTOs.Litters
+@using BagheerasDream.Application.Interfaces
+@using System.Globalization
+@inject ILittersService LittersService
+
+<section class="latest-litters-section">
 
     <div class="litters-container">
 
@@ -32,57 +37,70 @@
 
         <!-- Litter Cards -->
         <div class="litters-grid">
-
-            @foreach (var litter in Litters)
+            @if (IsLoading)
             {
-                <article class="litter-card">
-
-                    <a href="/litters" class="litter-image-wrapper">
-
-                        <img src="@litter.Image"
-                             alt="@litter.Name"
-                             class="litter-image" />
-
-                        <span class="litter-status">
-                            @litter.Status
-                        </span>
-
-                    </a>
-
-                    <div class="litter-card-content">
-
-                        <div class="litter-card-top">
-
-                            <span class="litter-label">
-                                BAGHEERASDREAM
-                            </span>
-
-                            <span class="litter-date">
-                                @litter.Date
-                            </span>
-
-                        </div>
-
-                        <h3>@litter.Name</h3>
-
-                        <div class="litter-card-bottom">
-
-                            <span class="litter-count">
-                                @litter.Kittens
-                            </span>
-
-                            <a href="/litters" class="litter-details">
-                                VIEW LITTER
-                                <span>→</span>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </article>
+                <p>Loading litters...</p>
             }
+            else if (LittersList.Any())
+            {
+                @foreach (var litter in LittersList)
+                {
+                    <article class="litter-card">
 
+                        <a href="@($"/litters/{litter.LitterId}")" class="litter-image-wrapper">
+                            <img src="@(string.IsNullOrWhiteSpace(litter.PhotoOfLitter)
+                                            ? "/images/placeholder.jpg"
+                                            : litter.PhotoOfLitter)"
+                                 alt="@litter.Name"
+                                 class="litter-image" />
+                        </a>
+
+                        <div class="litter-card-content">
+
+                            <div class="litter-card-top">
+
+                                <span class="litter-label">
+                                    BAGHEERASDREAM
+                                </span>
+
+                                <span class="litter-date">
+                                    @litter.Birthday.ToString("dd MMM yyyy", CultureInfo.InvariantCulture)
+                                </span>
+
+                            </div>
+
+                            <h3>@litter.Name</h3>
+
+                            <div class="litter-card-bottom">
+
+                                <span class="litter-count">
+                                    @litter.KittenCount @(litter.KittenCount > 1 ? "Kittens" : "Kitten")
+                                </span>
+
+                                <a href="@($"/litters/{litter.LitterId}")" class="litter-details">
+                                    VIEW LITTER
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+                }
+            }
+            else if (ErrorMessage is not null)
+            {
+                <p>@ErrorMessage</p>
+            }
+            else
+            {
+                <div class="empty-litters">
+                    <span>♡</span>
+                    <h2>Beautiful moments are coming.</h2>
+                    <p>We currently have no litters to display.</p>
+                </div>
+            }
         </div>
 
 
@@ -101,33 +119,26 @@
 
 
 @code {
+    private List<LitterListDto> LittersList = new();
 
-    // Temporary demonstration data.
-    // We will replace this with real API data later.
+    private bool IsLoading = true;
 
-    private readonly (string Name, string Image, string Date, string Kittens, string Status)[] Litters =
+    private string ErrorMessage = null;
+
+    protected override async Task OnInitializedAsync()
     {
-        (
-            "Litter A",
-            "/images/litters/litter1.jpg",
-            "Coming soon",
-            "Details coming soon",
-            "OUR LITTLE ONES"
-        ),
-        (
-            "Litter B",
-            "/images/litters/litter2.jpg",
-            "Coming soon",
-            "Details coming soon",
-            "OUR LITTLE ONES"
-        ),
-        (
-            "Litter C",
-            "/images/litters/litter3.jpg",
-            "Coming soon",
-            "Details coming soon",
-            "OUR LITTLE ONES"
-        )
-    };
-
+        try
+        {
+            LittersList = (await LittersService.GetAllAsync()).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading litters: {ex}");
+            ErrorMessage = "Unable to load litters. Please try again later.";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
 }
