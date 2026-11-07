@@ -173,6 +173,30 @@ namespace BagheerasDream.Infrastructure.Data.Migrations
                     b.ToTable("Litters");
                 });
 
+            modelBuilder.Entity("BagheerasDream.Domain.Models.LitterImage", b =>
+                {
+                    b.Property<Guid>("LitterImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<Guid>("LitterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("LitterImageId");
+
+                    b.HasIndex("LitterId", "DisplayOrder");
+
+                    b.ToTable("LitterImages");
+                });
+
             modelBuilder.Entity("BagheerasDream.Infrastructure.Identity.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -428,6 +452,17 @@ namespace BagheerasDream.Infrastructure.Data.Migrations
                     b.Navigation("Mother");
                 });
 
+            modelBuilder.Entity("BagheerasDream.Domain.Models.LitterImage", b =>
+                {
+                    b.HasOne("BagheerasDream.Domain.Models.Litter", "Litter")
+                        .WithMany("Images")
+                        .HasForeignKey("LitterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Litter");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -486,6 +521,8 @@ namespace BagheerasDream.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("BagheerasDream.Domain.Models.Litter", b =>
                 {
+                    b.Navigation("Images");
+
                     b.Navigation("Kittens");
                 });
 #pragma warning restore 612, 618

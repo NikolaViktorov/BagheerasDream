@@ -24,6 +24,46 @@ namespace BagheerasDream.Infrastructure.Services.Admin
 			this._imageUploadService = imageUploadService;
 		}
 
+		public async Task<bool> AddImageAsync(Guid litterId, Stream fileStream, string fileName)
+		{
+			var litterExists = await this._context.Litters.AnyAsync(l => l.LitterId == litterId);
+
+			if (!litterExists)
+			{
+				return false;
+			}
+
+			var imageCount = await this._context.LitterImages.CountAsync(i => i.LitterId == i.LitterId);
+
+			if (imageCount >= 10)
+			{
+				return false;
+			}
+
+			var imagePath = await this._imageUploadService.UploadAsync(fileStream, fileName, "litter-gallery");
+
+			var image = new LitterImage
+			{
+				LitterImageId = Guid.NewGuid(),
+				ImagePath = imagePath,
+				DisplayOrder = imageCount,
+				LitterId = litterId
+			};
+
+			try
+			{
+				await this._context.LitterImages.AddAsync(image);
+				await this._context.SaveChangesAsync();
+
+				return true;
+			}
+			catch (Exception)
+			{
+				await this._imageUploadService.DeleteAsync(imagePath);
+				throw;
+			}
+		}
+
 		public async Task<Guid> CreateAsync(LitterFormDto dto)
 		{
 			await ValidateRelationshipsAsync(dto);
@@ -51,6 +91,7 @@ namespace BagheerasDream.Infrastructure.Services.Admin
 		{
 			var litter = await this._context.Litters
 				.Include(l => l.Kittens)
+				.Include(l => l.Images)
 				.FirstOrDefaultAsync(l => l.LitterId == id);
 
 			if (litter is null)
@@ -61,6 +102,7 @@ namespace BagheerasDream.Infrastructure.Services.Admin
 			var imagePaths = litter.Kittens
 				.Select(k => k.ProfileImage)
 				.Append(litter.PhotoOfLitter)
+				.Concat(litter.Images.Select(i => i.ImagePath))
 				.Where(path => !string.IsNullOrWhiteSpace(path))
 				.ToList();
 
@@ -72,6 +114,24 @@ namespace BagheerasDream.Infrastructure.Services.Admin
 			{
 				await _imageUploadService.DeleteAsync(imagePath);
 			}
+
+			return true;
+		}
+
+		public async Task<bool> DeleteImageAsync(Guid litterImageId)
+		{
+			var image = await this._context.LitterImages.FirstOrDefaultAsync(i => i.LitterImageId == litterImageId);
+
+			if (image is null)
+			{
+				return false;
+			}
+
+			this._context.LitterImages.Remove(image);
+
+			await this._context.SaveChangesAsync();
+
+			await this._imageUploadService.DeleteAsync(image.ImagePath);
 
 			return true;
 		}
@@ -95,6 +155,53 @@ namespace BagheerasDream.Infrastructure.Services.Admin
 					PhotoOfLitter = l.PhotoOfLitter
 				})
 				.FirstOrDefaultAsync();
+		}
+
+		public async Task<List<LitterImageDto>> GetImagesAsync(Guid litterId)
+		{
+			return await this._context.LitterImages
+				.AsNoTracking()
+				.Where(i => i.LitterId == litterId)
+				.OrderBy(i => i.DisplayOrder)
+				.Select(i => new LitterImageDto
+				{
+					ImagePath = i.ImagePath,
+					LitterImageId = i.LitterImageId,
+					DisplayOrder = i.DisplayOrder
+				})
+				.ToListAsync();
+		}
+
+		public async Task<bool> ReorderImagesAsync(Guid litterId, List<Guid> orderedImageIds)
+		{
+			var images = await this._context.LitterImages.Where(i => i.LitterId == litterId)
+				.ToListAsync();
+
+			if (images.Count != orderedImageIds.Count)
+			{
+				return false;
+			}
+
+			if (orderedImageIds.Distinct().Count() != orderedImageIds.Count)
+			{
+				return false;
+			}
+
+			if (!images.Select(i => i.LitterImageId).ToHashSet().SetEquals(orderedImageIds))
+			{
+				return false;
+			}
+
+			for (int i = 0; i < orderedImageIds.Count; i++)
+			{
+				var image = images.First(img => img.LitterImageId == orderedImageIds[i]);
+
+				image.DisplayOrder = i;
+			}
+
+			await this._context.SaveChangesAsync();
+
+			return true;
 		}
 
 		public async Task<bool> UpdateAsync(LitterFormDto dto)

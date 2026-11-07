@@ -29,6 +29,8 @@ namespace BagheerasDream.Domain.Models
 
 		public ICollection<Kitten> Kittens { get; set; } = new List<Kitten>();
 
+		public ICollection<LitterImage> Images { get; set; } = new List<LitterImage>();
+
 		[MaxLength(1000)]
 		public string? Description { get; set; }
 	}

@@ -18,5 +18,7 @@ namespace BagheerasDream.Application.DTOs.Litters
 		public LitterParentDto? Father { get; set; }
 
 		public ICollection<KittenListDto> Kittens { get; set; } = new List<KittenListDto>();
+
+		public List<LitterGalleryImageDto> GalleryImages { get; set; } = [];
 	}
 }

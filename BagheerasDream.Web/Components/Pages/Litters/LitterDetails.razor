@@ -84,6 +84,71 @@ else
 
         </section>
 
+        <!-- LITTER GALLERY -->
+
+        @if (OrderedGalleryImages.Any())
+        {
+            <section class="cat-gallery-section">
+
+                <div class="cat-gallery-header">
+                    <span class="details-eyebrow">PHOTO COLLECTION</span>
+
+                    <h2>Little <span>Moments.</span></h2>
+
+                    <p>
+                        Discover beautiful memories from @CurrentLitter.Name's life.
+                    </p>
+                </div>
+
+                <div class="cat-gallery">
+                    @foreach (var image in OrderedGalleryImages)
+                    {
+                        <div class="cat-gallery-item"
+                             @onclick="() => OpenLightbox(image.LitterImageId)">
+                            <img src="@image.ImagePath"
+                                 alt="@CurrentLitter.Name" />
+                        </div>
+                    }
+                </div>
+
+                @if (IsLightboxOpen)
+                {
+                    <div class="lightbox-overlay" @onclick="CloseLightbox">
+
+                        <button class="lightbox-close"
+                                @onclick:preventDefault="true"
+                                @onclick:stopPropagation="true"
+                                @onclick="CloseLightbox">
+                            &times;
+                        </button>
+
+                        <button class="lightbox-arrow lightbox-prev"
+                                @onclick:stopPropagation="true"
+                                @onclick="PreviousImage">
+                            &#10094;
+                        </button>
+
+                        <img class="lightbox-image"
+                             src="@SelectedGalleryImage?.ImagePath"
+                             alt="@CurrentLitter.Name"
+                             @onclick:stopPropagation="true" />
+
+                        <button class="lightbox-arrow lightbox-next"
+                                @onclick:stopPropagation="true"
+                                @onclick="NextImage">
+                            &#10095;
+                        </button>
+
+                        <div class="lightbox-counter">
+                            @(SelectedImageIndex + 1) / @OrderedGalleryImages.Count
+                        </div>
+
+                    </div>
+                }
+
+            </section>
+        }
+
         <!-- PARENTS -->
 
         <section class="litter-parents-section">
@@ -214,6 +279,51 @@ else
     private LitterDetailsDto? CurrentLitter;
 
     private bool IsLoading = true;
+
+    private bool IsLightboxOpen { get; set; }
+
+    private int SelectedImageIndex { get; set; }
+
+    private List<LitterGalleryImageDto> OrderedGalleryImages =>
+        CurrentLitter?.GalleryImages
+            .OrderBy(image => image.DisplayOrder)
+            .ToList() ?? [];
+
+    private LitterGalleryImageDto? SelectedGalleryImage =>
+        OrderedGalleryImages.ElementAtOrDefault(SelectedImageIndex);
+
+    private void OpenLightbox(Guid imageId)
+    {
+        SelectedImageIndex = OrderedGalleryImages
+            .FindIndex(image => image.LitterImageId == imageId);
+
+        if (SelectedImageIndex >= 0)
+            IsLightboxOpen = true;
+    }
+
+    private void CloseLightbox()
+    {
+        IsLightboxOpen = false;
+    }
+
+    private void PreviousImage()
+    {
+        if (OrderedGalleryImages.Count == 0)
+            return;
+
+        SelectedImageIndex =
+            (SelectedImageIndex - 1 + OrderedGalleryImages.Count)
+            % OrderedGalleryImages.Count;
+    }
+
+    private void NextImage()
+    {
+        if (OrderedGalleryImages.Count == 0)
+            return;
+
+        SelectedImageIndex =
+            (SelectedImageIndex + 1) % OrderedGalleryImages.Count;
+    }
 
     protected override async Task OnParametersSetAsync()
     {

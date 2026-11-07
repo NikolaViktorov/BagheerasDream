@@ -18,6 +18,8 @@ namespace BagheerasDream.Infrastructure.Data
 
 		public DbSet<Litter> Litters { get; set; }
 
+		public DbSet<LitterImage> LitterImages { get; set; }
+
 		public DbSet<Kitten> Kittens { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

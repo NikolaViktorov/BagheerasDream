@@ -14,5 +14,13 @@ namespace BagheerasDream.Application.Interfaces.Admin
 		Task<bool> UpdateAsync(LitterFormDto dto);
 
 		Task<bool> DeleteAsync(Guid id);
+
+		Task<List<LitterImageDto>> GetImagesAsync(Guid litterId);
+
+		Task<bool> AddImageAsync(Guid litterId, Stream fileStream, string fileName);
+
+		Task<bool> DeleteImageAsync(Guid litterImageId);
+
+		Task<bool> ReorderImagesAsync(Guid litterId, List<Guid> orderedImageIds);
 	}
 }

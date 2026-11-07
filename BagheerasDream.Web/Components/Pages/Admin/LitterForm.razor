@@ -7,6 +7,7 @@
 
 @layout Layout.AdminLayout
 
+@using BagheerasDream.Web.Components.Pages.Admin.LitterComponents
 @using BagheerasDream.Application.DTOs.Admin.Litters
 @using BagheerasDream.Application.DTOs.Cats
 @using BagheerasDream.Application.Interfaces
@@ -151,6 +152,11 @@ else
                     </div>
                 }
             </div>
+
+            @if (IsEditMode)
+            {
+                <LitterGalleryManager LitterId="@Id!.Value" />
+            }
 
             <div class="form-group">
                 <label>Описание</label>

@@ -74,7 +74,16 @@ namespace BagheerasDream.Infrastructure.Services
 						ProfileImage = k.ProfileImage,
 						Status = k.Status,
 						LitterId = l.LitterId
-					}).ToList()
+					}).ToList(),
+					
+					GalleryImages = l.Images.OrderBy(image => image.DisplayOrder)
+						.Select(image => new LitterGalleryImageDto
+						{
+							LitterImageId = image.LitterImageId,
+							ImagePath = image.ImagePath,
+							DisplayOrder = image.DisplayOrder
+						})
+						.ToList()
 				})
 				.FirstOrDefaultAsync();
 
@@ -107,7 +116,8 @@ namespace BagheerasDream.Infrastructure.Services
 				Description = litter.Description,
 				Mother = litter.Mother,
 				Father = father,
-				Kittens = litter.Kittens
+				Kittens = litter.Kittens,
+				GalleryImages = litter.GalleryImages
 			};
 		}
 	}
