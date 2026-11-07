@@ -128,7 +128,13 @@ textarea {
 .main-navigation {
     display: flex;
     align-items: center;
-    gap: 38px;
+    gap: 24px;
+    flex-shrink: 0;
+}
+
+.nav-link {
+    white-space: nowrap;
+    font-size: 12px;
 }
 
 .nav-link {
@@ -228,6 +234,30 @@ textarea {
     }
 }
 
+
+/* =========================================
+   LANGUAGE SELECTOR
+   ========================================= */
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--color-muted);
+}
+
+.language-link {
+    color: var(--color-muted);
+    transition: color 0.3s ease;
+}
+
+    .language-link:hover,
+    .language-link.active {
+        color: var(--color-gold);
+    }
 
 /* =========================================
    GLOBAL ELEMENTS

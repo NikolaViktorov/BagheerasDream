@@ -1,4 +1,8 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
+﻿@using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Globalization
+@inject NavigationManager Navigation
+@inject IStringLocalizer<NavMenu> Localizer
 
 <header class="site-header">
 
@@ -27,42 +31,77 @@
             <NavLink href="/"
                      Match="NavLinkMatch.All"
                      class="nav-link">
-                Home
+                @Localizer["Home"]
             </NavLink>
 
             <NavLink href="/cats/females" class="nav-link">
-                Our Females
+                @Localizer["OurFemales"]
             </NavLink>
 
             <NavLink href="/cats/males" class="nav-link">
-                Our Males
+                @Localizer["OurMales"]
             </NavLink>
 
             <NavLink href="/litters" class="nav-link">
-                Litters
+                @Localizer["Litters"]
             </NavLink>
 
             <NavLink href="/home/aboutus" class="nav-link">
-                About Us
+                @Localizer["AboutUs"]
             </NavLink>
 
             <NavLink href="/home/contact" class="nav-link">
-                Contact
+                @Localizer["Contact"]
             </NavLink>
 
             <AuthorizeView Roles="Admin">
                 <Authorized>
                     <NavLink href="/admin" class="nav-link">
-                        Административен панел
+                        @Localizer["AdminPanel"]
                     </NavLink>
                 </Authorized>
             </AuthorizeView>
 
             <NavLink href="/Account/Login" class="nav-link">
-                Login
+                @Localizer["Login"]
             </NavLink>
+
+            <div class="language-selector">
+                <a href="@GetLanguageUrl("en")"
+                   class="language-link @(IsCurrentLanguage("en") ? "active" : "")">
+                    EN
+                </a>
+
+                <span>|</span>
+
+                <a href="@GetLanguageUrl("de")"
+                   class="language-link @(IsCurrentLanguage("de") ? "active" : "")">
+                    DE
+                </a>
+
+                <span>|</span>
+
+                <a href="@GetLanguageUrl("bg")"
+                   class="language-link @(IsCurrentLanguage("bg") ? "active" : "")">
+                    BG
+                </a>
+            </div>
         </nav>
 
     </div>
 
 </header>
+
+@code {
+    private string GetLanguageUrl(string culture)
+    {
+        var currentUrl = new Uri(Navigation.Uri).PathAndQuery;
+
+        return $"/set-language?culture={culture}&returnUrl={Uri.EscapeDataString(currentUrl)}";
+    }
+
+    private bool IsCurrentLanguage(string culture)
+    {
+        return CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == culture;
+    }
+}
