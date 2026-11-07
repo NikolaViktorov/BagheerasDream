@@ -71,6 +71,16 @@ else
             </div>
 
             <div class="form-group">
+                <label>Gender</label>
+                <InputSelect @bind-Value="Model.Gender" class="form-control">
+                    @foreach (var gender in Enum.GetValues<Gender>())
+                    {
+                        <option value="@gender">@gender</option>
+                    }
+                </InputSelect>
+            </div>
+
+            <div class="form-group">
                 <label>Litter</label>
                 <InputSelect @bind-Value="Model.LitterId" class="form-control">
                     <option value="">-- Select Litter --</option>

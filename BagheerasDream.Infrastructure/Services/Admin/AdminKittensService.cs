@@ -34,6 +34,7 @@ namespace BagheerasDream.Infrastructure.Services.Admin
 				Name = dto.Name,
 				Color = dto.Color,
 				Status = dto.Status,
+				Gender = dto.Gender,
 				ProfileImage = dto.ProfileImage,
 				LitterId = dto.LitterId
 			};
@@ -78,6 +79,7 @@ namespace BagheerasDream.Infrastructure.Services.Admin
 					KittenId = k.KittenId,
 					Name = k.Name,
 					Color = k.Color,
+					Gender = k.Gender,
 					ProfileImage = k.ProfileImage,
 					Status = k.Status,
 					LitterId = k.LitterId,
@@ -96,6 +98,7 @@ namespace BagheerasDream.Infrastructure.Services.Admin
 					KittenId = k.KittenId,
 					Name = k.Name,
 					Color = k.Color,
+					Gender = k.Gender,
 					ProfileImage = k.ProfileImage,
 					Status = k.Status,
 					LitterId = k.LitterId
@@ -118,6 +121,7 @@ namespace BagheerasDream.Infrastructure.Services.Admin
 			kitten.Color = dto.Color;
 			kitten.ProfileImage = dto.ProfileImage;
 			kitten.Status = dto.Status;
+			kitten.Gender = dto.Gender;
 			kitten.LitterId = dto.LitterId;
 
 			await _context.SaveChangesAsync();

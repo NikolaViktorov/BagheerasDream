@@ -12,6 +12,8 @@ namespace BagheerasDream.Domain.Models
 
 		public CatColor Color { get; set; }
 
+		public Gender Gender { get; set; }
+
 		[MaxLength(500)]
 		public string? ProfileImage { get; set; }
 

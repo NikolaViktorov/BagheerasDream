@@ -83,3 +83,13 @@
         height: 240px;
     }
 }
+
+.kitten-gender {
+    display: inline-block;
+    margin-top: 6px;
+    color: var(--color-gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}

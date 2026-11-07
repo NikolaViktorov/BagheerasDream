@@ -115,14 +115,15 @@
 }
 
 
-/* FORM */
-.contact-form-container {
+/* CONTACT METHODS */
+
+.contact-methods {
     padding: 45px;
     background: #f0ebe3;
 }
 
 .form-heading {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
     .form-heading h2 {
@@ -138,135 +139,71 @@
         line-height: 1.8;
     }
 
-.form-row {
+
+/* CONTACT CARDS */
+
+.contact-method-card {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: 48px 1fr;
+    align-items: start;
+    gap: 15px;
+    padding: 22px 0;
+    border-bottom: 1px solid #dfd6c9;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 23px;
-}
-
-    .form-group label {
-        margin-bottom: 10px;
-        color: #514a43;
-        font-size: 11px;
-        letter-spacing: 0.5px;
+    .contact-method-card:last-child {
+        border-bottom: none;
     }
 
-/* Blazor form components */
-
-.contact-form-container ::deep .form-group input,
-.contact-form-container ::deep .form-group select,
-.contact-form-container ::deep .form-group textarea {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #e2dbd0;
-    border-radius: 0;
-    outline: none;
-    background: #f8f5ef;
-    color: #302b27;
-    font-family: inherit;
-    font-size: 12px;
-    transition: border-color 0.3s ease;
-}
-
-    .contact-form-container ::deep .form-group input:focus,
-    .contact-form-container ::deep .form-group select:focus,
-    .contact-form-container ::deep .form-group textarea:focus {
-        border-color: #b69a70;
-        box-shadow: none;
-    }
-
-.contact-form-container ::deep .form-group textarea {
-    resize: vertical;
-    min-height: 145px;
-}
-
-    .contact-form-container ::deep .form-group input::placeholder,
-    .contact-form-container ::deep .form-group textarea::placeholder {
-        color: #aaa198;
-    }
-
-.contact-form-container ::deep .form-group .invalid {
-    border-color: #b85c52;
-}
-
-.contact-form-container ::deep .validation-message {
-    margin-top: 6px;
-    color: #b85c52;
-    font-size: 11px;
-}
-
-.contact-submit {
+.contact-method-icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    width: 100%;
-    padding: 18px;
-    border: none;
-    background: #a58a62;
-    color: white;
-    font-size: 10px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+    width: 44px;
+    height: 44px;
+    background: #e7ddce;
+    color: #a58a62;
+    font-size: 22px;
 }
 
-    .contact-submit:hover {
-        background: #806b4f;
-    }
-
-    .contact-submit span {
-        font-size: 16px;
-    }
-
-.form-disclaimer {
-    margin-top: 15px;
-    color: #999087;
-    font-size: 10px;
+.contact-method-info h3 {
+    margin: 0 0 7px;
+    font-family: Georgia, serif;
+    font-size: 21px;
+    font-weight: 400;
+    color: #302b27;
 }
 
-
-/* SUCCESS */
-
-.form-success {
-    padding: 55px 15px;
-    text-align: center;
+.contact-method-info p {
+    margin-bottom: 8px;
+    color: #77716b;
+    font-size: 12px;
+    line-height: 1.7;
 }
 
-    .form-success > span {
-        color: #b69a70;
-        font-size: 45px;
-    }
+.contact-method-info span {
+    color: #a58a62;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+}
 
-    .form-success h3 {
-        margin: 20px 0 12px;
-        font-family: Georgia, serif;
-        font-size: 32px;
-        font-weight: 400;
-    }
+.contact-method-button {
+    grid-column: 2;
+    justify-self: start;
+    display: inline-block;
+    margin-top: 5px;
+    padding: 11px 17px;
+    border: 1px solid #a58a62;
+    color: #8f7652;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
 
-    .form-success p {
-        color: #77716b;
-        font-size: 13px;
-        line-height: 1.9;
-    }
-
-    .form-success button {
-        margin-top: 30px;
-        padding: 15px 25px;
-        border: none;
+    .contact-method-button:hover {
         background: #a58a62;
         color: white;
-        font-size: 10px;
-        letter-spacing: 1.5px;
-        cursor: pointer;
     }
 
 
@@ -336,38 +273,19 @@
         font-size: 36px;
     }
 
-    .contact-form-container {
+    .contact-methods {
         padding: 30px 22px;
     }
 
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
+    .contact-method-card {
+        gap: 12px;
+    }
+
+    .contact-method-info h3 {
+        font-size: 19px;
     }
 
     .contact-bottom {
         padding: 75px 25px;
     }
 }
-
-.contact-form-container .form-group input,
-.contact-form-container .form-group select,
-.contact-form-container .form-group textarea {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #e2dbd0;
-    border-radius: 0;
-    outline: none;
-    background: #f8f5ef;
-    color: #302b27;
-    font-family: inherit;
-    font-size: 12px;
-}
-
-    .contact-form-container .form-group input:focus,
-    .contact-form-container .form-group select:focus,
-    .contact-form-container .form-group textarea:focus {
-        border-color: #b69a70;
-        box-shadow: none;
-    }

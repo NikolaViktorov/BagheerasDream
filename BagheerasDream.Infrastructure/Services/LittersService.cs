@@ -70,6 +70,7 @@ namespace BagheerasDream.Infrastructure.Services
 						KittenId = k.KittenId,
 						Name = k.Name,
 						Color = k.Color,
+						Gender = k.Gender,
 						ProfileImage = k.ProfileImage,
 						Status = k.Status,
 						LitterId = l.LitterId

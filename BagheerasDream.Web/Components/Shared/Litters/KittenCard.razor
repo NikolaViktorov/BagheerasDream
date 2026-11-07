@@ -3,9 +3,9 @@
 <article class="kitten-card">
 
     <div class="kitten-image">
-        @if (!string.IsNullOrWhiteSpace(Item.ProfileImage))
+        @if (!string.IsNullOrWhiteSpace(Kitten.ProfileImage))
         {
-            <img src="@Item.ProfileImage" alt="@Item.Name" />
+            <img src="@Kitten.ProfileImage" alt="@Kitten.Name" />
         }
         else
         {
@@ -15,24 +15,26 @@
         }
 
         <span class="kitten-status @GetStatusClass()">
-            @Item.Status.ToString()
+            @Kitten.Status.ToString()
         </span>
     </div>
 
     <div class="kitten-info">
-        <span class="kitten-eyebrow">A LITTLE TREASURE</span>
+        <h3>@(string.IsNullOrWhiteSpace(Kitten.Name) ? "Little One" : Kitten.Name)</h3>
 
-        <h3>@(string.IsNullOrWhiteSpace(Item.Name) ? "Little One" : Item.Name)</h3>
+        <span class="kitten-gender">
+            @Kitten.Gender.ToString()
+        </span>
     </div>
 
 </article>
 
 @code {
     [Parameter, EditorRequired]
-    public KittenListDto Item { get; set; } = null!;
+    public KittenListDto Kitten { get; set; } = null!;
 
     private string GetStatusClass()
     {
-        return Item.Status.ToString().ToLowerInvariant();
+        return Kitten.Status.ToString().ToLowerInvariant();
     }
 }

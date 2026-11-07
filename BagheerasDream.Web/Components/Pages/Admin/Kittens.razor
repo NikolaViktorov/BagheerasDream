@@ -46,12 +46,13 @@
             <table class="admin-table">
                 <thead>
                     <tr>
-                        <th>Photo</th>
-                        <th>Name</th>
-                        <th>Color</th>
-                        <th>Litter</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th>Снимка</th>
+                        <th>Име</th>
+                        <th>Цвят</th>
+                        <th>Пол</th>
+                        <th>Котило</th>
+                        <th>Статус</th>
+                        <th>Действия</th>
                     </tr>
                 </thead>
 
@@ -74,6 +75,7 @@
 
                             <td>@(string.IsNullOrWhiteSpace(kitten.Name) ? "Unnamed" : kitten.Name)</td>
                             <td>@kitten.Color</td>
+                            <td>@kitten.Gender</td>
                             <td>@kitten.LitterName</td>
                             <td>
                                 <span class="status-badge status-@kitten.Status.ToString().ToLowerInvariant()">

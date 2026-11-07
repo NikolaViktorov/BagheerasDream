@@ -13,6 +13,8 @@ public class KittenFormDto
 
 	public CatColor Color { get; set; }
 
+	public Gender Gender { get; set; }
+
 	[StringLength(500)]
 	public string? ProfileImage { get; set; }
 

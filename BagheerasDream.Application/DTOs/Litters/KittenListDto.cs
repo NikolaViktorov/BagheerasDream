@@ -10,6 +10,8 @@ public class KittenListDto
 
 	public CatColor Color { get; set; }
 
+	public Gender Gender { get; set; }
+
 	public string? ProfileImage { get; set; }
 
 	public KittenStatus Status { get; set; }

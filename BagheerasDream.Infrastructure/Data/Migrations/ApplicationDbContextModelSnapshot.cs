@@ -76,6 +76,9 @@ namespace BagheerasDream.Infrastructure.Data.Migrations
                     b.Property<int>("Color")
                         .HasColumnType("int");
 
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("LitterId")
                         .HasColumnType("uniqueidentifier");
 
