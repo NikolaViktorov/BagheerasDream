@@ -1,7 +1,16 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
+    <title>Bagheera's Dream | British Shorthair Katzenzucht</title>
+
+    <meta name="description"
+          content="Willkommen bei Bagheera's Dream – entdecken Sie unsere British Shorthair Katzen, unsere Zucht und aktuelle Kitten." />
+
+    <meta property="og:site_name" content="Bagheera's Dream" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/" />
@@ -12,6 +21,32 @@
     <link rel="stylesheet" href="@Assets["BagheerasDream.Web.styles.css"]" />
     <ImportMap />
     <link rel="icon" type="image/png" href="favicon.png" />
+
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@graph": [
+        {
+          "@@type": "Organization",
+          "@@id": "https://bagheerasdream.de/#organization",
+          "name": "Bagheera's Dream",
+          "url": "https://bagheerasdream.de/",
+          "description": "British Shorthair cattery dedicated to responsible breeding, health and wellbeing."
+        },
+        {
+          "@@type": "WebSite",
+          "@@id": "https://bagheerasdream.de/#website",
+          "name": "Bagheera's Dream",
+          "url": "https://bagheerasdream.de/",
+          "publisher": {
+            "@@id": "https://bagheerasdream.de/#organization"
+          },
+          "inLanguage": "en"
+        }
+      ]
+    }
+    </script>
+
     <HeadOutlet @rendermode="InteractiveServer" />
 </head>
 
