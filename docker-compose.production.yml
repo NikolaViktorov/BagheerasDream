@@ -1,7 +1,6 @@
 services:
   database:
     image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: bagheerasdream-db
     environment:
       ACCEPT_EULA: "Y"
       MSSQL_SA_PASSWORD: ${SA_PASSWORD}
@@ -26,13 +25,14 @@ services:
       retries: 10
       start_period: 30s
     restart: unless-stopped
+    networks:
+      - backend
 
   web:
     build:
       context: .
       dockerfile: Dockerfile
     image: bagheerasdream-web:latest
-    container_name: bagheerasdream-web
     depends_on:
       database:
         condition: service_healthy
@@ -47,13 +47,13 @@ services:
       - uploaded_images:/app/wwwroot/uploads
       - dataprotection_keys:/home/app/.aspnet/DataProtection-Keys
       - ./secrets/dataprotection.pfx:/app/secrets/dataprotection.pfx:ro
-    ports:
-      - "8080:8080"
     restart: unless-stopped
+    networks:
+      - backend
+      - proxy
 
   caddy:
     image: caddy:2
-    container_name: bagheerasdream-caddy
     environment:
       DOMAIN: ${DOMAIN}
       ACME_EMAIL: ${ACME_EMAIL}
@@ -68,6 +68,8 @@ services:
     depends_on:
       - web
     restart: unless-stopped
+    networks:
+      - proxy
 
 volumes:
   sqlserver_data:
@@ -75,3 +77,9 @@ volumes:
   dataprotection_keys:
   caddy_data:
   caddy_config:
+
+networks:
+  backend:
+    internal: true
+  proxy:
+    driver: bridge

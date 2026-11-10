@@ -91,24 +91,32 @@ public partial class Program
 		});
 
 		builder.Services.AddAuthorization();
-		var certificatePassword = builder.Configuration["DataProtection:CertificatePassword"];
-		var certificatePath = "/app/secrets/dataprotection.pfx";
 
-		if (string.IsNullOrWhiteSpace(certificatePassword))
+		if (builder.Environment.IsProduction())
 		{
-			throw new InvalidOperationException(
-				"Data Protection certificate password is missing.");
+			var certificatePassword = builder.Configuration["DataProtection:CertificatePassword"];
+			var certificatePath = "/app/secrets/dataprotection.pfx";
+
+			if (string.IsNullOrWhiteSpace(certificatePassword))
+			{
+				throw new InvalidOperationException(
+					"Data Protection certificate password is missing.");
+			}
+
+			var certificate = X509CertificateLoader.LoadPkcs12FromFile(
+				certificatePath,
+				certificatePassword,
+				X509KeyStorageFlags.EphemeralKeySet);
+
+			builder.Services.AddDataProtection()
+				.PersistKeysToFileSystem(
+					new DirectoryInfo("/home/app/.aspnet/DataProtection-Keys"))
+				.ProtectKeysWithCertificate(certificate);
 		}
-
-		var certificate = X509CertificateLoader.LoadPkcs12FromFile(
-			certificatePath,
-			certificatePassword,
-			X509KeyStorageFlags.EphemeralKeySet);
-
-		builder.Services.AddDataProtection()
-			.PersistKeysToFileSystem(
-				new DirectoryInfo("/home/app/.aspnet/DataProtection-Keys"))
-			.ProtectKeysWithCertificate(certificate);
+		else
+		{
+			builder.Services.AddDataProtection();
+		}
 
 		builder.Services.AddCascadingAuthenticationState();
 
