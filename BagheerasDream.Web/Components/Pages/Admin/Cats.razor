@@ -6,8 +6,10 @@
 @layout Layout.AdminLayout
 
 @using BagheerasDream.Application.DTOs.Cats
+
 @using BagheerasDream.Application.Interfaces
 @using BagheerasDream.Application.Interfaces.Admin
+@using BagheerasDream.Web.Extensions
 
 @inject ICatsService CatsService
 @inject IAdminCatsService AdminCatsService
@@ -65,7 +67,7 @@ else
                         <td>@cat.Name</td>
                         <td>@(cat.Gender == BagheerasDream.Domain.Enums.Gender.Male ? "Мъжки" : "Женски")</td>
                         <td>Британска късокосместа</td>
-                        <td>@cat.Color</td>
+                        <td>@cat.Color.ToDisplayName()</td>
                         <td>@cat.Birthday.ToString("dd.MM.yyyy")</td>
                         <td>
                             <a href="@($"/admin/cats/edit/{cat.CatId}")" class="btn-edit">

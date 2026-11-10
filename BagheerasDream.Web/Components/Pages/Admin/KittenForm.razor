@@ -11,6 +11,7 @@
 @using BagheerasDream.Application.DTOs.Litters
 @using BagheerasDream.Application.Interfaces
 @using BagheerasDream.Application.Interfaces.Admin
+@using BagheerasDream.Web.Extensions
 @using BagheerasDream.Domain.Enums
 @using Microsoft.AspNetCore.Components.Forms
 
@@ -65,7 +66,7 @@ else
                 <InputSelect @bind-Value="Model.Color" class="form-control">
                     @foreach (var color in Enum.GetValues<CatColor>())
                     {
-                        <option value="@color">@color</option>
+                        <option value="@color">@color.ToDisplayName()</option>
                     }
                 </InputSelect>
             </div>

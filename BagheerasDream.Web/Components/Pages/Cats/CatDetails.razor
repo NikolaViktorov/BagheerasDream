@@ -1,6 +1,7 @@
 ﻿@page "/cats/{Id:guid}"
 
 @using BagheerasDream.Domain.Enums
+@using BagheerasDream.Web.Extensions
 @using BagheerasDream.Application.Interfaces
 @using BagheerasDream.Application.DTOs.Cats
 
@@ -60,7 +61,7 @@ else
 
                 <div class="image-caption">
                     <span>BRITISH SHORTHAIR</span>
-                    <span>@Cat.Color</span>
+                    <span>@Cat.Color.ToDisplayName()</span>
                 </div>
 
             </div>
@@ -87,7 +88,7 @@ else
 
                     <div>
                         <span>COLOR</span>
-                        <strong>@Cat.Color</strong>
+                        <strong>@Cat.Color.ToDisplayName()</strong>
                     </div>
 
                     <div>

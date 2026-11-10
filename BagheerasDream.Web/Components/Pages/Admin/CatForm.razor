@@ -10,6 +10,7 @@
 @using BagheerasDream.Application.DTOs.Admin.Cats
 @using BagheerasDream.Application.Interfaces.Admin
 @using BagheerasDream.Domain.Enums
+@using BagheerasDream.Web.Extensions
 @using BagheerasDream.Application.DTOs.Cats
 @using BagheerasDream.Application.Interfaces
 @using Microsoft.AspNetCore.Components.Forms
@@ -79,7 +80,7 @@ else
                 <InputSelect @bind-Value="Model.Color" class="form-control">
                     @foreach (var color in Enum.GetValues<CatColor>())
                     {
-                        <option value="@color">@color</option>
+                        <option value="@color">@color.ToDisplayName()</option>
                     }
                 </InputSelect>
             </div>

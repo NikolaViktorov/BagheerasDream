@@ -1,6 +1,7 @@
 ﻿@page "/cats/males"
 
 @using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Web.Extensions
 @using BagheerasDream.Application.DTOs.Cats
 
 @inject ICatsService CatsService
@@ -47,7 +48,7 @@
                     <CatCard
                         Name="@cat.Name"
                         Birthday="@cat.Birthday.ToDateTime(TimeOnly.MinValue)"
-                        Color="@cat.Color.ToString()"
+                        Color="@cat.Color.ToDisplayName()"
                         Breed="@cat.Breed.ToString()"
                         ProfileImage="@cat.ProfileImage"
                         DetailsUrl="@($"/cats/{cat.CatId}")" />

@@ -7,6 +7,7 @@
 
 @using BagheerasDream.Application.DTOs.Admin.Kittens
 @using BagheerasDream.Application.Interfaces.Admin
+@using BagheerasDream.Web.Extensions
 
 @inject IAdminKittensService AdminKittensService
 @inject IJSRuntime JS
@@ -74,7 +75,7 @@
                             </td>
 
                             <td>@(string.IsNullOrWhiteSpace(kitten.Name) ? "Без име" : kitten.Name)</td>
-                            <td>@kitten.Color</td>
+                            <td>@kitten.Color.ToDisplayName()</td>
                             <td>@(kitten.Gender == BagheerasDream.Domain.Enums.Gender.Male ? "Мъжки" : "Женски")</td>
                             <td>@kitten.LitterName</td>
                             <td>
