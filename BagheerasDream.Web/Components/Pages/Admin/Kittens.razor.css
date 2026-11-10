@@ -1,0 +1,396 @@
+﻿/* =========================================
+   KITTENS PAGE
+========================================= */
+
+.kittens-page {
+    width: 100%;
+    min-width: 0;
+}
+
+    /* =========================================
+   PAGE HEADER
+========================================= */
+
+    .kittens-page .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+        .kittens-page .page-header h1 {
+            margin: 0 0 8px;
+            color: #3f3028;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .kittens-page .page-header p {
+            margin: 0;
+            color: #8b7b70;
+            font-size: 0.95rem;
+        }
+
+    /* =========================================
+   SUMMARY
+========================================= */
+
+    .kittens-page .list-summary {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        color: #8b7b70;
+        font-size: 0.9rem;
+    }
+
+        .kittens-page .list-summary strong {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 30px;
+            height: 30px;
+            padding: 0 9px;
+            border-radius: 8px;
+            background: #f1e8dc;
+            color: #765b3e;
+            font-size: 0.9rem;
+        }
+
+    /* =========================================
+   TABLE
+========================================= */
+
+    .kittens-page .admin-table-container {
+        width: 100%;
+        overflow-x: auto;
+        background: #fff;
+        border: 1px solid #eee7df;
+        border-radius: 12px;
+    }
+
+    .kittens-page .admin-table {
+        width: 100%;
+        min-width: 850px;
+        border-collapse: collapse;
+    }
+
+        .kittens-page .admin-table th {
+            padding: 16px;
+            background: #faf7f3;
+            color: #75665b;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .kittens-page .admin-table td {
+            padding: 14px 16px;
+            border-top: 1px solid #f0ebe5;
+            color: #49382e;
+            font-size: 0.9rem;
+            vertical-align: middle;
+        }
+
+        .kittens-page .admin-table tbody tr:hover {
+            background: #fdfbf8;
+        }
+
+    .kittens-page .kitten-thumbnail {
+        display: block;
+        width: 58px;
+        height: 58px;
+        object-fit: cover;
+        border-radius: 9px;
+    }
+
+    .kittens-page .no-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 58px;
+        height: 58px;
+        padding: 4px;
+        border-radius: 9px;
+        background: #f5f0e9;
+        color: #9a897a;
+        font-size: 0.65rem;
+        text-align: center;
+    }
+
+    .kittens-page .table-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+    }
+
+    /* =========================================
+   STATUS BADGES
+========================================= */
+
+    .kittens-page .status-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 11px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .kittens-page .status-available {
+        background: #e8f4e9;
+        color: #397447;
+    }
+
+    .kittens-page .status-reserved {
+        background: #fff2d9;
+        color: #9b6a17;
+    }
+
+    .kittens-page .status-sold {
+        background: #eee9e5;
+        color: #78675c;
+    }
+
+    /* =========================================
+   ACTION BUTTONS
+========================================= */
+
+    .kittens-page .btn-edit,
+    .kittens-page .btn-delete {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 36px;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 7px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .kittens-page .btn-edit {
+        background: #f1e8dc;
+        color: #765b3e;
+    }
+
+        .kittens-page .btn-edit:hover {
+            background: #e7d8c5;
+        }
+
+    .kittens-page .btn-delete {
+        background: #fae9e7;
+        color: #b44338;
+    }
+
+        .kittens-page .btn-delete:hover {
+            background: #f4d5d1;
+        }
+
+    /* =========================================
+   LOADING / EMPTY STATES
+========================================= */
+
+    .kittens-page .loading-state,
+    .kittens-page .empty-state {
+        padding: 45px 20px;
+        border: 1px solid #eee7df;
+        border-radius: 12px;
+        background: #fff;
+        color: #8b7b70;
+        text-align: center;
+    }
+
+        .kittens-page .empty-state h3 {
+            margin: 0 0 10px;
+            color: #49382e;
+            font-size: 1.2rem;
+        }
+
+        .kittens-page .empty-state p {
+            margin: 0 0 20px;
+        }
+
+    /* =========================================
+   MOBILE CARDS
+========================================= */
+
+    .kittens-page .kittens-mobile-view {
+        display: none;
+    }
+
+    .kittens-page .kitten-admin-card {
+        padding: 17px;
+        border: 1px solid #eee7df;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 3px 12px rgba(63, 48, 40, 0.035);
+    }
+
+    .kittens-page .kitten-card-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .kittens-page .kitten-card-image,
+    .kittens-page .kitten-card-placeholder {
+        flex-shrink: 0;
+        width: 76px;
+        height: 76px;
+        border-radius: 10px;
+    }
+
+    .kittens-page .kitten-card-image {
+        object-fit: cover;
+    }
+
+    .kittens-page .kitten-card-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+        background: #f5f0e9;
+        color: #9a897a;
+        font-size: 0.7rem;
+        text-align: center;
+    }
+
+    .kittens-page .kitten-card-title {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 9px;
+        min-width: 0;
+    }
+
+        .kittens-page .kitten-card-title h3 {
+            margin: 0;
+            color: #49382e;
+            font-size: 1.05rem;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+    .kittens-page .kitten-card-details {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+        padding: 17px 0;
+        margin-top: 15px;
+        border-top: 1px solid #f0ebe5;
+        border-bottom: 1px solid #f0ebe5;
+    }
+
+    .kittens-page .detail-item {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        min-width: 0;
+    }
+
+        .kittens-page .detail-item span {
+            color: #9a897a;
+            font-size: 0.75rem;
+        }
+
+        .kittens-page .detail-item strong {
+            color: #49382e;
+            font-size: 0.88rem;
+            overflow-wrap: anywhere;
+        }
+
+        .kittens-page .detail-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+    .kittens-page .kitten-card-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+        .kittens-page .kitten-card-actions a,
+        .kittens-page .kitten-card-actions button {
+            flex: 1;
+            min-height: 42px;
+        }
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+    .kittens-page .admin-table {
+        min-width: 800px;
+    }
+
+        .kittens-page .admin-table th,
+        .kittens-page .admin-table td {
+            padding: 12px;
+        }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+    .kittens-page .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+        .kittens-page .page-header h1 {
+            font-size: 1.45rem;
+        }
+
+        .kittens-page .page-header > a {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+        }
+
+    .kittens-page .kittens-desktop-view {
+        display: none;
+    }
+
+    .kittens-page .kittens-mobile-view {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+    .kittens-page .kitten-admin-card {
+        padding: 13px;
+    }
+
+    .kittens-page .kitten-card-image,
+    .kittens-page .kitten-card-placeholder {
+        width: 65px;
+        height: 65px;
+    }
+
+    .kittens-page .kitten-card-actions {
+        flex-direction: column;
+    }
+
+    .kittens-page .kitten-card-title h3 {
+        font-size: 0.95rem;
+    }
+}

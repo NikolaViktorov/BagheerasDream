@@ -15,92 +15,176 @@
 
 <PageTitle>Управление на котилата | Админ панел</PageTitle>
 
-<div class="admin-page">
+<div class="admin-page litters-page">
+
     <div class="page-header">
         <div>
-            <h1>Управление на котилата</h1>
+            <span class="page-eyebrow">УПРАВЛЕНИЕ</span>
+            <h1>Котила</h1>
             <p>Управление на котилата във вашия развъдник.</p>
         </div>
 
         <a href="/admin/litters/create" class="btn-primary">
-            + Добави ново котило
+            <span>+</span>
+            Добави котило
         </a>
     </div>
-</div>
 
-@if (litters == null)
-{
-    <p>Зареждане на котилата...</p>
-}
-else if (!litters.Any())
-{
-    <p>Все още няма добавени котила.</p>
-}
-else
-{
-    <div class="admin-table-container">
+    @if (!string.IsNullOrEmpty(DeleteErrorMessage))
+    {
+        <div class="alert alert-danger">
+            @DeleteErrorMessage
+        </div>
+    }
 
-        @if (!string.IsNullOrEmpty(DeleteErrorMessage))
-        {
-            <div class="alert alert-danger">
-                @DeleteErrorMessage
-            </div>
-        }
+    @if (litters == null)
+    {
+        <div class="litters-message">
+            Зареждане на котилата...
+        </div>
+    }
+    else if (!litters.Any())
+    {
+        <div class="litters-empty">
+            <span class="litters-empty-icon">♡</span>
+            <h3>Все още няма добавени котила</h3>
+            <p>Добави първото котило в развъдника.</p>
 
-        <table class="admin-table">
-            <thead>
-                <tr>
-                    <th>Снимка</th>
-                    <th>Име</th>
-                    <th>Майка</th>
-                    <th>Дата на раждане</th>
-                    <th>Брой котенца</th>
-                    <th>Действия</th>
-                </tr>
-            </thead>
+            <a href="/admin/litters/create" class="btn-primary">
+                + Добави котило
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="litters-count">
+            Общо котила: <strong>@litters.Count()</strong>
+        </div>
 
-            <tbody>
-                @foreach (var litter in litters)
-                {
+        @* Desktop table *@
+        <div class="admin-table-container litters-desktop-view">
+            <table class="admin-table">
+                <thead>
                     <tr>
-                        <td>
-                            @if (!string.IsNullOrEmpty(litter.PhotoOfLitter))
-                            {
-                                <img src="@litter.PhotoOfLitter"
-                                     alt="@litter.Name"
-                                     style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;" />
-                            }
-                            else
-                            {
-                                <span>Няма снимка</span>
-                            }
-                        </td>
-
-                        <td>@litter.Name</td>
-
-                        <td>@litter.MotherName</td>
-
-                        <td>@litter.Birthday.ToString("dd.MM.yyyy")</td>
-
-                        <td>@litter.KittenCount</td>
-
-                        <td>
-                            <a href="@($"/admin/litters/edit/{litter.LitterId}")"
-                               class="btn-edit">
-                                Редактирай
-                            </a>
-
-                            <button class="btn-delete"
-                                    @onclick="() => DeleteLitter(litter.LitterId)">
-                                Изтрий
-                            </button>
-                        </td>
+                        <th>Снимка</th>
+                        <th>Име</th>
+                        <th>Майка</th>
+                        <th>Дата на раждане</th>
+                        <th>Брой котенца</th>
+                        <th>Действия</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-}
+                </thead>
+
+                <tbody>
+                    @foreach (var litter in litters)
+                    {
+                        <tr>
+                            <td>
+                                @if (!string.IsNullOrEmpty(litter.PhotoOfLitter))
+                                {
+                                    <img src="@litter.PhotoOfLitter"
+                                         alt="@litter.Name"
+                                         class="litter-table-image" />
+                                }
+                                else
+                                {
+                                    <div class="litter-table-placeholder">♡</div>
+                                }
+                            </td>
+
+                            <td class="litter-name-cell">@litter.Name</td>
+
+                            <td>@litter.MotherName</td>
+
+                            <td>@litter.Birthday.ToString("dd.MM.yyyy")</td>
+
+                            <td>
+                                <span class="litter-count-badge">
+                                    @litter.KittenCount
+                                </span>
+                            </td>
+
+                            <td>
+                                <div class="litter-actions">
+                                    <a href="@($"/admin/litters/edit/{litter.LitterId}")"
+                                       class="btn-edit">
+                                        Редактирай
+                                    </a>
+
+                                    <button class="btn-delete"
+                                            @onclick="() => DeleteLitter(litter.LitterId)">
+                                        Изтрий
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @* Mobile cards *@
+        <div class="litters-mobile-view">
+            @foreach (var litter in litters)
+            {
+                <article class="litter-mobile-card">
+
+                    <div class="litter-mobile-header">
+
+                        @if (!string.IsNullOrEmpty(litter.PhotoOfLitter))
+                        {
+                            <img src="@litter.PhotoOfLitter"
+                                 alt="@litter.Name"
+                                 class="litter-mobile-image" />
+                        }
+                        else
+                        {
+                            <div class="litter-mobile-placeholder">♡</div>
+                        }
+
+                        <div class="litter-mobile-title">
+                            <h3>@litter.Name</h3>
+                            <span>@litter.MotherName</span>
+                        </div>
+
+                    </div>
+
+                    <div class="litter-mobile-details">
+
+                        <div>
+                            <span>Дата на раждане</span>
+                            <strong>@litter.Birthday.ToString("dd.MM.yyyy")</strong>
+                        </div>
+
+                        <div>
+                            <span>Брой котенца</span>
+                            <strong class="litter-mobile-count">
+                                @litter.KittenCount
+                            </strong>
+                        </div>
+
+                    </div>
+
+                    <div class="litter-mobile-actions">
+
+                        <a href="@($"/admin/litters/edit/{litter.LitterId}")"
+                           class="btn-edit">
+                            Редактирай
+                        </a>
+
+                        <button class="btn-delete"
+                                @onclick="() => DeleteLitter(litter.LitterId)">
+                            Изтрий
+                        </button>
+
+                    </div>
+
+                </article>
+            }
+        </div>
+    }
+
+</div>
 
 @code {
     private IEnumerable<LitterListDto>? litters;

@@ -22,7 +22,7 @@
 
 <PageTitle>Форма за котка | Админ панел</PageTitle>
 
-<div class="admin-page">
+<div class="admin-page cat-form-page">
     <div class="page-header">
         <div>
             <h1>@(IsEditMode ? "Редактиране на котка" : "Добавяне на нова котка")</h1>
@@ -52,7 +52,7 @@ else
             </div>
         }
 
-        <div class="admin-form">
+        <div class="admin-form cat-form-layout">
 
             <div class="form-group">
                 <label>Име</label>
@@ -137,7 +137,7 @@ else
                 <InputTextArea @bind-Value="Model.Description" class="form-control" rows="5" />
             </div>
 
-            <div class="form-actions">
+            <div class="form-actions cat-form-actions">
                 <button type="submit" class="btn-primary">
                     @(IsEditMode ? "Запази промените" : "Добави котка")
                 </button>

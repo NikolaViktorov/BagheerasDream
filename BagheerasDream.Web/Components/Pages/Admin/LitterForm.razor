@@ -23,7 +23,7 @@
 
 <PageTitle>Форма за котило | Админ панел</PageTitle>
 
-<div class="admin-page">
+<div class="admin-page litter-form-page">
     <div class="page-header">
         <div>
             <h1>@(IsEditMode ? "Редактиране на котило" : "Добавяне на ново котило")</h1>
@@ -34,15 +34,14 @@
             Обратно към котилата
         </a>
     </div>
-</div>
 
-@if (IsLoading)
-{
-    <p>Зареждане...</p>
-}
-else
-{
-    <EditForm Model="@Model" OnValidSubmit="HandleSubmit">
+    @if (IsLoading)
+    {
+        <p>Зареждане...</p>
+    }
+    else
+    {
+        <EditForm Model="@Model" OnValidSubmit="HandleSubmit">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
@@ -178,7 +177,8 @@ else
 
         </div>
     </EditForm>
-}
+    }
+</div>
 
 @code {
     [Parameter]

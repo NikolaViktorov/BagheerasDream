@@ -23,7 +23,7 @@
 
 <PageTitle>Форма за котенце | Админ панел</PageTitle>
 
-<div class="admin-page">
+<div class="admin-page kitten-form-page">
     <div class="page-header">
         <div>
             <h1>@(IsEditMode ? "Редактиране на котенце" : "Добавяне на ново котенце")</h1>
@@ -34,118 +34,116 @@
             Обратно към котенцата
         </a>
     </div>
+
+    @if (IsLoading)
+    {
+        <p>Зареждане...</p>
+    }
+    else
+    {
+        <EditForm Model="@Model" OnValidSubmit="HandleSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            @if (!string.IsNullOrWhiteSpace(ErrorMessage))
+            {
+                <div class="alert alert-danger">
+                    @ErrorMessage
+                </div>
+            }
+
+            <div class="admin-form">
+
+                <div class="form-group">
+                    <label>Име</label>
+                    <InputText @bind-Value="Model.Name" class="form-control" />
+                    <ValidationMessage For="@(() => Model.Name)" />
+                </div>
+
+                <div class="form-group">
+                    <label>Цвят</label>
+                    <InputSelect @bind-Value="Model.Color" class="form-control">
+                        @foreach (var color in Enum.GetValues<CatColor>())
+                        {
+                            <option value="@color">@color.ToDisplayName()</option>
+                        }
+                    </InputSelect>
+                </div>
+
+                <div class="form-group">
+                    <label>Пол</label>
+                    <InputSelect @bind-Value="Model.Gender" class="form-control">
+                        @foreach (var gender in Enum.GetValues<Gender>())
+                        {
+                            <option value="@gender">@gender</option>
+                        }
+                    </InputSelect>
+                </div>
+
+                <div class="form-group">
+                    <label>Котило</label>
+                    <InputSelect @bind-Value="Model.LitterId" class="form-control">
+                        <option value="">-- Изберете котило --</option>
+
+                        @foreach (var litter in AvailableLitters)
+                        {
+                            <option value="@litter.LitterId">
+                                @litter.Name
+                            </option>
+                        }
+                    </InputSelect>
+
+                    <ValidationMessage For="@(() => Model.LitterId)" />
+                </div>
+
+                <div class="form-group">
+                    <label>Статус</label>
+                    <InputSelect @bind-Value="Model.Status" class="form-control">
+                        @foreach (var status in Enum.GetValues<KittenStatus>())
+                        {
+                            <option value="@status">@status</option>
+                        }
+                    </InputSelect>
+                </div>
+
+                <div class="form-group">
+                    <label>Профилна снимка</label>
+
+                    <InputFile id="kittenImageInput"
+                               OnChange="HandleImageSelection"
+                               accept=".jpg,.jpeg,.png,.webp"
+                               class="form-control" />
+
+                    @if (!string.IsNullOrEmpty(ImagePreviewUrl))
+                    {
+                        <div class="image-preview">
+                            <img src="@ImagePreviewUrl"
+                                 alt="Преглед на снимката" />
+                        </div>
+                    }
+                    else if (!string.IsNullOrEmpty(Model.ProfileImage))
+                    {
+                        <div class="image-preview">
+                            <img src="@Model.ProfileImage"
+                                 alt="Текуща снимка" />
+                        </div>
+                    }
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                        @(IsEditMode ? "Запази промените" : "Добави котенце")
+                    </button>
+
+                    <a href="/admin/kittens" class="btn-secondary">
+                        Отказ
+                    </a>
+                </div>
+
+            </div>
+        </EditForm>
+    }
 </div>
-
-@if (IsLoading)
-{
-    <p>Зареждане...</p>
-}
-else
-{
-    <EditForm Model="@Model" OnValidSubmit="HandleSubmit">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-
-        @if (!string.IsNullOrWhiteSpace(ErrorMessage))
-        {
-            <div class="alert alert-danger">
-                @ErrorMessage
-            </div>
-        }
-
-        <div class="admin-form">
-
-            <div class="form-group">
-                <label>Име</label>
-                <InputText @bind-Value="Model.Name" class="form-control" />
-                <ValidationMessage For="@(() => Model.Name)" />
-            </div>
-
-            <div class="form-group">
-                <label>Цвят</label>
-                <InputSelect @bind-Value="Model.Color" class="form-control">
-                    @foreach (var color in Enum.GetValues<CatColor>())
-                    {
-                        <option value="@color">@color.ToDisplayName()</option>
-                    }
-                </InputSelect>
-            </div>
-
-            <div class="form-group">
-                <label>Пол</label>
-                <InputSelect @bind-Value="Model.Gender" class="form-control">
-                    @foreach (var gender in Enum.GetValues<Gender>())
-                    {
-                        <option value="@gender">@gender</option>
-                    }
-                </InputSelect>
-            </div>
-
-            <div class="form-group">
-                <label>Котило</label>
-                <InputSelect @bind-Value="Model.LitterId" class="form-control">
-                    <option value="">-- Изберете котило --</option>
-
-                    @foreach (var litter in AvailableLitters)
-                    {
-                        <option value="@litter.LitterId">
-                            @litter.Name
-                        </option>
-                    }
-                </InputSelect>
-
-                <ValidationMessage For="@(() => Model.LitterId)" />
-            </div>
-
-            <div class="form-group">
-                <label>Статус</label>
-                <InputSelect @bind-Value="Model.Status" class="form-control">
-                    @foreach (var status in Enum.GetValues<KittenStatus>())
-                    {
-                        <option value="@status">@status</option>
-                    }
-                </InputSelect>
-            </div>
-
-            <div class="form-group">
-                <label>Профилна снимка</label>
-
-                <InputFile id="kittenImageInput"
-                           OnChange="HandleImageSelection"
-                           accept=".jpg,.jpeg,.png,.webp"
-                           class="form-control" />
-
-                @if (!string.IsNullOrEmpty(ImagePreviewUrl))
-                {
-                    <div class="image-preview">
-                        <img src="@ImagePreviewUrl"
-                             alt="Преглед на снимката"
-                             style="max-width: 250px; margin-top: 15px;" />
-                    </div>
-                }
-                else if (!string.IsNullOrEmpty(Model.ProfileImage))
-                {
-                    <div class="image-preview">
-                        <img src="@Model.ProfileImage"
-                             alt="Текуща снимка"
-                             style="max-width: 250px; margin-top: 15px;" />
-                    </div>
-                }
-            </div>
-
-            <div class="form-actions">
-                <button type="submit" class="btn-primary">
-                    @(IsEditMode ? "Запази промените" : "Добави котенце")
-                </button>
-
-                <a href="/admin/kittens" class="btn-secondary">
-                    Отказ
-                </a>
-            </div>
-
-        </div>
-    </EditForm>
-}
 
 @code {
     [Parameter]

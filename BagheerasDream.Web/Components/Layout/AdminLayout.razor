@@ -2,35 +2,51 @@
 
 <div class="admin-shell">
 
-    <aside class="admin-sidebar">
+    @if (isMenuOpen)
+    {
+        <button class="admin-overlay"
+                aria-label="Затвори менюто"
+                @onclick="CloseMenu">
+        </button>
+    }
+
+    <aside class="admin-sidebar @(isMenuOpen ? "sidebar-open" : "")">
 
         <div class="admin-brand">
             <span class="admin-brand-name">BagheerasDream</span>
             <span class="admin-brand-label">АДМИНИСТРАЦИЯ</span>
+
+            <button class="admin-mobile-close"
+                    @onclick="CloseMenu"
+                    aria-label="Затвори менюто">
+                ✕
+            </button>
         </div>
 
         <nav class="admin-navigation">
 
             <span class="admin-nav-heading">ОБЩО</span>
 
-            <NavLink href="/admin" Match="NavLinkMatch.All">
+            <NavLink href="/admin"
+                     Match="NavLinkMatch.All"
+                     @onclick="CloseMenu">
                 <span>◈</span>
                 Табло
             </NavLink>
 
             <span class="admin-nav-heading">УПРАВЛЕНИЕ</span>
 
-            <NavLink href="/admin/cats">
+            <NavLink href="/admin/cats" @onclick="CloseMenu">
                 <span>♧</span>
                 Котки
             </NavLink>
 
-            <NavLink href="/admin/litters">
+            <NavLink href="/admin/litters" @onclick="CloseMenu">
                 <span>♡</span>
                 Котила
             </NavLink>
 
-            <NavLink href="/admin/kittens">
+            <NavLink href="/admin/kittens" @onclick="CloseMenu">
                 <span>♢</span>
                 Котенца
             </NavLink>
@@ -38,8 +54,11 @@
         </nav>
 
         <div class="admin-sidebar-bottom">
+
             <a href="/">← Обратно към сайта</a>
+
             <span>BagheerasDream © 2026</span>
+
         </div>
 
     </aside>
@@ -47,18 +66,38 @@
     <main class="admin-main">
 
         <header class="admin-topbar">
-            <span>Административен панел</span>
+
+            <div class="admin-topbar-left">
+
+                <button class="admin-menu-toggle"
+                        @onclick="ToggleMenu"
+                        aria-label="Отвори менюто"
+                        aria-expanded="@isMenuOpen">
+                    ☰
+                </button>
+
+                <span class="admin-topbar-title">
+                    Административен панел
+                </span>
+
+            </div>
 
             <div class="admin-topbar-actions">
-                <span class="admin-user-label">Администратор</span>
+
+                <span class="admin-user-label">
+                    Администратор
+                </span>
 
                 <form method="post" action="/Account/Logout">
                     <AntiforgeryToken />
+
                     <button type="submit" class="admin-logout-btn">
-                        ↪ Изход
+                        ↪ <span>Изход</span>
                     </button>
                 </form>
+
             </div>
+
         </header>
 
         <div class="admin-content">
@@ -68,3 +107,17 @@
     </main>
 
 </div>
+
+@code {
+    private bool isMenuOpen;
+
+    private void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+    }
+
+    private void CloseMenu()
+    {
+        isMenuOpen = false;
+    }
+}

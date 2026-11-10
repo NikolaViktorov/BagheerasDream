@@ -9,7 +9,9 @@
     <div class="navbar-container">
 
         <!-- Logo -->
-        <a href="/" class="brand">
+        <a href="/"
+           class="brand"
+           @onclick="CloseMobileMenu">
             <span class="brand-name">Bagheera's Dream</span>
             <span class="brand-subtitle">BRITISH SHORTHAIR</span>
         </a>
@@ -17,7 +19,8 @@
         <!-- Mobile menu toggle -->
         <input type="checkbox"
                id="nav-toggle"
-               class="nav-toggle" />
+               class="nav-toggle"
+               @bind="_isMenuOpen" />
 
         <label for="nav-toggle" class="nav-toggle-label">
             <span></span>
@@ -30,40 +33,55 @@
 
             <NavLink href="/"
                      Match="NavLinkMatch.All"
-                     class="nav-link">
+                     class="nav-link"
+                     @onclick="CloseMobileMenu">
                 @Localizer["Home"]
             </NavLink>
 
-            <NavLink href="/cats/females" class="nav-link">
+            <NavLink href="/cats/females"
+                     class="nav-link"
+                     @onclick="CloseMobileMenu">
                 @Localizer["OurFemales"]
             </NavLink>
 
-            <NavLink href="/cats/males" class="nav-link">
+            <NavLink href="/cats/males"
+                     class="nav-link"
+                     @onclick="CloseMobileMenu">
                 @Localizer["OurMales"]
             </NavLink>
 
-            <NavLink href="/litters" class="nav-link">
+            <NavLink href="/litters"
+                     class="nav-link"
+                     @onclick="CloseMobileMenu">
                 @Localizer["Litters"]
             </NavLink>
 
-            <NavLink href="/home/aboutus" class="nav-link">
+            <NavLink href="/home/aboutus"
+                     class="nav-link"
+                     @onclick="CloseMobileMenu">
                 @Localizer["AboutUs"]
             </NavLink>
 
-            <NavLink href="/home/contact" class="nav-link">
+            <NavLink href="/home/contact"
+                     class="nav-link"
+                     @onclick="CloseMobileMenu">
                 @Localizer["Contact"]
             </NavLink>
 
             <AuthorizeView Roles="Admin">
                 <Authorized>
-                    <NavLink href="/admin" class="nav-link">
+                    <NavLink href="/admin"
+                             class="nav-link"
+                             @onclick="CloseMobileMenu">
                         @Localizer["AdminPanel"]
                     </NavLink>
                 </Authorized>
             </AuthorizeView>
 
             <div class="language-selector">
+
                 <a href="@GetLanguageUrl("en")"
+                   @onclick="CloseMobileMenu"
                    class="language-link @(IsCurrentLanguage("en") ? "active" : "")">
                     EN
                 </a>
@@ -71,6 +89,7 @@
                 <span>|</span>
 
                 <a href="@GetLanguageUrl("de")"
+                   @onclick="CloseMobileMenu"
                    class="language-link @(IsCurrentLanguage("de") ? "active" : "")">
                     DE
                 </a>
@@ -78,9 +97,11 @@
                 <span>|</span>
 
                 <a href="@GetLanguageUrl("bg")"
+                   @onclick="CloseMobileMenu"
                    class="language-link @(IsCurrentLanguage("bg") ? "active" : "")">
                     BG
                 </a>
+
             </div>
         </nav>
 
@@ -89,6 +110,13 @@
 </header>
 
 @code {
+    private bool _isMenuOpen;
+
+    private void CloseMobileMenu()
+    {
+        _isMenuOpen = false;
+    }
+
     private string GetLanguageUrl(string culture)
     {
         var currentUrl = new Uri(Navigation.Uri).PathAndQuery;

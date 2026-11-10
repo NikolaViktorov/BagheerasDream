@@ -6,7 +6,6 @@
 @layout Layout.AdminLayout
 
 @using BagheerasDream.Application.DTOs.Cats
-
 @using BagheerasDream.Application.Interfaces
 @using BagheerasDream.Application.Interfaces.Admin
 @using BagheerasDream.Web.Extensions
@@ -17,74 +16,149 @@
 
 <PageTitle>Управление на котките | Админ панел</PageTitle>
 
-<div class="admin-page">
+<div class="admin-page cats-page">
+
     <div class="page-header">
         <div>
-            <h1>Управление на котките</h1>
+            <span class="page-eyebrow">УПРАВЛЕНИЕ</span>
+            <h1>Котки</h1>
             <p>Добавяне, редактиране и управление на котките в развъдника.</p>
         </div>
 
         <a href="/admin/cats/create" class="btn-primary">
-            + Добави нова котка
+            <span>+</span>
+            Добави котка
         </a>
     </div>
-</div>
 
-@if (cats == null)
-{
-    <p>Зареждане на котките...</p>
-}
-else if (!cats.Any())
-{
-    <p>Все още няма добавени котки.</p>
-}
-else
-{
-    <div class="admin-table-container">
-        @if (!string.IsNullOrEmpty(DeleteErrorMessage))
-        {
-            <div class="alert alert-danger">
-                @DeleteErrorMessage
-            </div>
-        }
+    @if (!string.IsNullOrEmpty(DeleteErrorMessage))
+    {
+        <div class="alert alert-danger">
+            @DeleteErrorMessage
+        </div>
+    }
 
-        <table class="admin-table">
-            <thead>
-                <tr>
-                    <th>Име</th>
-                    <th>Пол</th>
-                    <th>Порода</th>
-                    <th>Цвят</th>
-                    <th>Дата на раждане</th>
-                    <th>Действия</th>
-                </tr>
-            </thead>
+    @if (cats == null)
+    {
+        <div class="cats-message">
+            <span>Зареждане на котките...</span>
+        </div>
+    }
+    else if (!cats.Any())
+    {
+        <div class="cats-empty">
+            <span class="cats-empty-icon">♧</span>
+            <h3>Все още няма добавени котки</h3>
+            <p>Добави първата котка в развъдника.</p>
 
-            <tbody>
-                @foreach (var cat in cats)
-                {
+            <a href="/admin/cats/create" class="btn-primary">
+                + Добави котка
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="cats-count">
+            Общо котки: <strong>@cats.Count()</strong>
+        </div>
+
+        @* Desktop table *@
+        <div class="admin-table-container cats-desktop-view">
+            <table class="admin-table">
+                <thead>
                     <tr>
-                        <td>@cat.Name</td>
-                        <td>@(cat.Gender == BagheerasDream.Domain.Enums.Gender.Male ? "Мъжки" : "Женски")</td>
-                        <td>Британска късокосместа</td>
-                        <td>@cat.Color.ToDisplayName()</td>
-                        <td>@cat.Birthday.ToString("dd.MM.yyyy")</td>
-                        <td>
-                            <a href="@($"/admin/cats/edit/{cat.CatId}")" class="btn-edit">
-                                Редактирай
-                            </a>
-
-                            <button class="btn-delete"
-                                    @onclick="() => DeleteCat(cat.CatId)">
-                                Изтрий
-                            </button>
-                        </td>
+                        <th>Име</th>
+                        <th>Пол</th>
+                        <th>Порода</th>
+                        <th>Цвят</th>
+                        <th>Дата на раждане</th>
+                        <th>Действия</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-}
+                </thead>
+
+                <tbody>
+                    @foreach (var cat in cats)
+                    {
+                        <tr>
+                            <td class="cat-name-cell">@cat.Name</td>
+
+                            <td>
+                                @(cat.Gender == BagheerasDream.Domain.Enums.Gender.Male ? "Мъжки" : "Женски")
+                            </td>
+
+                            <td>Британска късокосместа</td>
+
+                            <td>@cat.Color.ToDisplayName()</td>
+
+                            <td>@cat.Birthday.ToString("dd.MM.yyyy")</td>
+
+                            <td>
+                                <div class="cat-actions">
+                                    <a href="@($"/admin/cats/edit/{cat.CatId}")"
+                                       class="btn-edit">
+                                        Редактирай
+                                    </a>
+
+                                    <button class="btn-delete"
+                                            @onclick="() => DeleteCat(cat.CatId)">
+                                        Изтрий
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @* Mobile cards *@
+        <div class="cats-mobile-view">
+            @foreach (var cat in cats)
+            {
+                <article class="cat-mobile-card">
+
+                    <div class="cat-mobile-info">
+                        <h3>@cat.Name</h3>
+
+                        <span class="cat-gender-badge">
+                            @(cat.Gender == BagheerasDream.Domain.Enums.Gender.Male ? "Мъжки" : "Женски")
+                        </span>
+                    </div>
+
+                    <div class="cat-mobile-details">
+                        <div>
+                            <span>Порода</span>
+                            <strong>Британска късокосместа</strong>
+                        </div>
+
+                        <div>
+                            <span>Цвят</span>
+                            <strong>@cat.Color.ToDisplayName()</strong>
+                        </div>
+
+                        <div>
+                            <span>Родена на</span>
+                            <strong>@cat.Birthday.ToString("dd.MM.yyyy")</strong>
+                        </div>
+                    </div>
+
+                    <div class="cat-mobile-actions">
+                        <a href="@($"/admin/cats/edit/{cat.CatId}")"
+                           class="btn-edit">
+                            Редактирай
+                        </a>
+
+                        <button class="btn-delete"
+                                @onclick="() => DeleteCat(cat.CatId)">
+                            Изтрий
+                        </button>
+                    </div>
+
+                </article>
+            }
+        </div>
+    }
+</div>
 
 @code {
     private IEnumerable<CatListDto>? cats;

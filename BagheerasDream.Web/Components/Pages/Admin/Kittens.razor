@@ -14,7 +14,7 @@
 
 <PageTitle>Управление на котенцата | Админ панел</PageTitle>
 
-<div class="admin-page">
+<div class="admin-page kittens-page">
     <div class="page-header">
         <div>
             <h1>Управление на котенцата</h1>
@@ -35,15 +35,30 @@
 
     @if (kittens == null)
     {
-        <p>Зареждане на котенцата...</p>
+        <div class="loading-state">
+            Зареждане на котенцата...
+        </div>
     }
     else if (!kittens.Any())
     {
-        <p>Все още няма добавени котенца.</p>
+        <div class="empty-state">
+            <h3>Все още няма добавени котенца</h3>
+            <p>Добавете първото котенце във вашия развъдник.</p>
+
+            <a href="/admin/kittens/create" class="btn-primary">
+                + Добави котенце
+            </a>
+        </div>
     }
     else
     {
-        <div class="admin-table-container">
+        <div class="list-summary">
+            <span>Общо котенца</span>
+            <strong>@kittens.Count()</strong>
+        </div>
+
+        @* Desktop / Tablet table *@
+        <div class="admin-table-container kittens-desktop-view">
             <table class="admin-table">
                 <thead>
                     <tr>
@@ -66,18 +81,32 @@
                                 {
                                     <img src="@kitten.ProfileImage"
                                          alt="@kitten.Name"
-                                         style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;" />
+                                         class="kitten-thumbnail" />
                                 }
                                 else
                                 {
-                                    <span>Няма снимка</span>
+                                    <div class="no-image">Няма снимка</div>
                                 }
                             </td>
 
-                            <td>@(string.IsNullOrWhiteSpace(kitten.Name) ? "Без име" : kitten.Name)</td>
+                            <td>
+                                <strong>
+                                    @(string.IsNullOrWhiteSpace(kitten.Name)
+                                        ? "Без име"
+                                        : kitten.Name)
+                                </strong>
+                            </td>
+
                             <td>@kitten.Color.ToDisplayName()</td>
-                            <td>@(kitten.Gender == BagheerasDream.Domain.Enums.Gender.Male ? "Мъжки" : "Женски")</td>
+
+                            <td>
+                                @(kitten.Gender == BagheerasDream.Domain.Enums.Gender.Male
+                                    ? "Мъжки"
+                                    : "Женски")
+                            </td>
+
                             <td>@kitten.LitterName</td>
+
                             <td>
                                 <span class="status-badge status-@kitten.Status.ToString().ToLowerInvariant()">
                                     @kitten.Status
@@ -85,20 +114,92 @@
                             </td>
 
                             <td>
-                                <a href="@($"/admin/kittens/edit/{kitten.KittenId}")"
-                                   class="btn-edit">
-                                    Редактирай
-                                </a>
+                                <div class="table-actions">
+                                    <a href="@($"/admin/kittens/edit/{kitten.KittenId}")"
+                                       class="btn-edit">
+                                        Редактирай
+                                    </a>
 
-                                <button class="btn-delete"
-                                        @onclick="() => DeleteKitten(kitten.KittenId)">
-                                    Изтрий
-                                </button>
+                                    <button class="btn-delete"
+                                            @onclick="() => DeleteKitten(kitten.KittenId)">
+                                        Изтрий
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
+        </div>
+
+        @* Mobile cards *@
+        <div class="kittens-mobile-view">
+            @foreach (var kitten in kittens)
+            {
+                <article class="kitten-admin-card">
+
+                    <div class="kitten-card-header">
+                        @if (!string.IsNullOrWhiteSpace(kitten.ProfileImage))
+                        {
+                            <img src="@kitten.ProfileImage"
+                                 alt="@kitten.Name"
+                                 class="kitten-card-image" />
+                        }
+                        else
+                        {
+                            <div class="kitten-card-placeholder">
+                                Няма снимка
+                            </div>
+                        }
+
+                        <div class="kitten-card-title">
+                            <h3>
+                                @(string.IsNullOrWhiteSpace(kitten.Name)
+                                    ? "Без име"
+                                    : kitten.Name)
+                            </h3>
+
+                            <span class="status-badge status-@kitten.Status.ToString().ToLowerInvariant()">
+                                @kitten.Status
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="kitten-card-details">
+                        <div class="detail-item">
+                            <span>Цвят</span>
+                            <strong>@kitten.Color.ToDisplayName()</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Пол</span>
+                            <strong>
+                                @(kitten.Gender == BagheerasDream.Domain.Enums.Gender.Male
+                                    ? "Мъжки"
+                                    : "Женски")
+                            </strong>
+                        </div>
+
+                        <div class="detail-item full-width">
+                            <span>Котило</span>
+                            <strong>@kitten.LitterName</strong>
+                        </div>
+                    </div>
+
+                    <div class="kitten-card-actions">
+                        <a href="@($"/admin/kittens/edit/{kitten.KittenId}")"
+                           class="btn-edit">
+                            Редактирай
+                        </a>
+
+                        <button class="btn-delete"
+                                @onclick="() => DeleteKitten(kitten.KittenId)">
+                            Изтрий
+                        </button>
+                    </div>
+
+                </article>
+            }
         </div>
     }
 </div>
@@ -138,6 +239,7 @@
         catch (Exception ex)
         {
             Console.WriteLine($"DELETE KITTEN ERROR: {ex}");
+
             DeleteErrorMessage = "Възникна грешка при изтриването на котенцето.";
         }
     }
