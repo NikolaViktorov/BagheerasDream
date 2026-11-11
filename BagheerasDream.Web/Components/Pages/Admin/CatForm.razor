@@ -90,7 +90,7 @@ else
                 <InputSelect @bind-Value="Model.Breed" class="form-control">
                     @foreach (var breed in Enum.GetValues<Breed>())
                     {
-                        <option value="@breed">@breed</option>
+                        <option value="@breed">@breed.ToDisplayName()</option>
                     }
                 </InputSelect>
             </div>

@@ -66,7 +66,7 @@
                         Name="@pet.Name"
                         Birthday="@pet.Birthday.ToDateTime(TimeOnly.MinValue)"
                         Color="@pet.Color.ToDisplayName()"
-                        Breed="@pet.Breed.ToString()"
+                        Breed="@pet.Breed.ToDisplayName()"
                         Gender="@pet.Gender.ToString()"
                         ProfileImage="@pet.ProfileImage" />
                 }

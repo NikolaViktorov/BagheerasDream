@@ -70,7 +70,7 @@
                         Name="@cat.Name"
                         Birthday="@cat.Birthday.ToDateTime(TimeOnly.MinValue)"
                         Color="@cat.Color.ToDisplayName()"
-                        Breed="@cat.Breed.ToString()"
+                        Breed="@cat.Breed.ToDisplayName()"
                         ProfileImage="@cat.ProfileImage"
                         DetailsUrl="@($"/cats/{cat.CatId}")" />
                 }

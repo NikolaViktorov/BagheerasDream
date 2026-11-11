@@ -87,7 +87,7 @@
                                 @(pet.Gender == Gender.Male ? "Мъжки" : "Женски")
                             </td>
 
-                            <td>@pet.Breed</td>
+                            <td>@pet.Breed.ToDisplayName()</td>
 
                             <td>@pet.Color.ToDisplayName()</td>
 
