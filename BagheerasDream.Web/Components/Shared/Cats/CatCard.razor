@@ -32,7 +32,7 @@
         <div class="cat-card-footer">
 
             <span>
-                @Age years old
+                @Age
             </span>
 
             <a href="@DetailsUrl">
@@ -58,17 +58,29 @@
 
     [Parameter] public string DetailsUrl { get; set; } = "#";
 
-    private int Age
+    private string Age
     {
         get
         {
-            var today = DateTime.Today;
-            var age = today.Year - Birthday.Year;
+            var today = DateOnly.FromDateTime(DateTime.Today);
+            var birthday = Birthday;
 
-            if (Birthday.Date > today.AddYears(-age))
-                age--;
+            var years = today.Year - birthday.Year;
+            var months = today.Month - birthday.Month;
 
-            return age;
+            if (today.Day < birthday.Day)
+                months--;
+
+            if (months < 0)
+            {
+                years--;
+                months += 12;
+            }
+
+            if (years == 0)
+                return months == 1 ? "1 month old" : $"{months} months old";
+
+            return years == 1 ? "1 year old" : $"{years} years old";
         }
     }
 }

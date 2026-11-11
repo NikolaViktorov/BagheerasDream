@@ -98,7 +98,7 @@ else
 
                     <div>
                         <span>AGE</span>
-                        <strong>@CalculateAge(Cat.Birthday) years</strong>
+                        <strong>@GetCatAge(Cat.Birthday)</strong>
                     </div>
 
                     <div>
@@ -361,17 +361,28 @@ else
         }
     }
 
-    private static int CalculateAge(DateOnly birthday)
+    private static string GetCatAge(DateOnly birthday)
     {
         var today = DateOnly.FromDateTime(DateTime.Today);
-        var age = today.Year - birthday.Year;
 
-        if (birthday > today.AddYears(-age))
+        var years = today.Year - birthday.Year;
+        var months = today.Month - birthday.Month;
+
+        if (today.Day < birthday.Day)
         {
-            age--;
+            months--;
         }
 
-        return age;
+        if (months < 0)
+        {
+            years--;
+            months += 12;
+        }
+        
+        if (years == 0)
+            return months == 1 ? "1 month old" : $"{months} months old";
+
+        return years == 1 ? "1 year old" : $"{years} years old";
     }
 
     private string GetCatsUrl()
