@@ -1,37 +1,58 @@
-# 🐱 BagheerasDream
+# 🐱 Bagheera's Dream
 
-**A modern cattery management and presentation platform for British Shorthair cats.**
+### A modern cattery website and management platform for British Shorthair cats.
 
-BagheerasDream is a web application designed to present a British Shorthair cattery, showcase its cats and litters, and provide visitors with an elegant way to explore available kittens and get in touch.
+**Bagheera's Dream** is a full-stack web application developed for my mother's British Shorthair cattery. It provides an elegant online presence for the cattery, allowing visitors to discover our cats, explore litters, learn about available kittens, and get in touch.
 
-The project is built with ASP.NET Core and follows Clean Architecture principles, with a focus on maintainability, scalability and a clear separation of concerns.
+The platform also includes a dedicated administration area for managing cats, litters, kittens, and household pets.
+
+🌐 **Live Website:** [https://bagheerasdream.de](https://bagheerasdream.de)
+
+This is a real-world project, designed, developed, and deployed for an actual cattery rather than a demonstration or university assignment.
 
 ---
 
 ## ✨ Features
 
-### Frontend
-- Elegant and responsive homepage.
-- About Us page presenting the cattery.
-- Contact page with client-side form validation.
-- Separate catalogues for female and male cats.
-- Individual cat profile pages.
-- Parent information and pedigree navigation.
-- Litter catalogue with individual litter pages.
-- Kitten cards displaying their availability status.
-- Reusable Razor components.
-- Consistent design with responsive layouts.
+### Public Website
 
-### Backend
-- Clean Architecture solution structure.
-- Domain entities and enums.
+- Responsive homepage introducing the cattery.
+- About Us page.
+- Contact page.
+- Separate catalogues for male and female breeding cats.
+- Individual cat profiles.
+- Cat information, pedigree, and parent navigation.
+- Litter catalogue and individual litter pages.
+- Kitten information and availability status.
+- Dedicated household pets overview.
+- Reusable Razor components.
+- Responsive layouts for desktop and mobile devices.
+- SEO metadata and sitemap configuration.
+
+### Administration Panel
+
+- Secure administrator authentication using ASP.NET Core Identity.
+- Protected administration routes.
+- Cat management (create, edit, and delete).
+- Litter management.
+- Kitten management.
+- Household pet management.
+- Profile image uploads.
+- Image management and galleries.
+- Live image previews when selecting new images.
+- Form validation and error handling.
+
+### Backend & Infrastructure
+
+- Clean Architecture-based solution structure.
 - Entity Framework Core integration.
 - SQL Server database.
-- Docker Compose configuration.
-- ASP.NET Core Identity authentication.
-- Admin user seeding.
+- ASP.NET Core Identity.
 - Database migrations.
-- Development secrets configuration.
+- Application and infrastructure service separation.
+- Docker-based deployment.
+- Production hosting on a Linux VPS.
+- HTTPS configuration and reverse proxy using Caddy.
 
 ---
 
@@ -40,42 +61,61 @@ The project is built with ASP.NET Core and follows Clean Architecture principles
 | Technology | Purpose |
 |---|---|
 | C# | Main programming language |
+| .NET 10 | Application platform |
 | ASP.NET Core | Web application framework |
-| Blazor | Frontend development |
-| Entity Framework Core | ORM and database access |
+| Blazor Interactive Server | Frontend development |
+| Razor Components | Reusable UI components |
+| Entity Framework Core 10 | ORM and database access |
 | SQL Server 2022 | Relational database |
-| ASP.NET Core Identity | Authentication and user management |
-| Docker Compose | Database containerization |
+| ASP.NET Core Identity | Authentication and authorization |
+| Docker & Docker Compose | Containerization and deployment |
+| Caddy | Reverse proxy and HTTPS |
 | HTML & CSS | Frontend structure and styling |
+| JavaScript | Browser-side functionality |
 | Git & GitHub | Version control |
 
 ---
 
 ## 🏗️ Architecture
 
-The application follows Clean Architecture principles to separate business logic, infrastructure and presentation.
+The application follows Clean Architecture principles, separating domain logic, application services, infrastructure, and presentation.
 
-The solution is organized into the following main projects:
+The solution consists of four main projects:
 
-- **BagheerasDream.Domain** – Domain entities, enums and core business models.
-- **BagheerasDream.Infrastructure** – Database access, Entity Framework Core and infrastructure services.
-- **BagheerasDream.Web** – ASP.NET Core application, Blazor components and user interface.
+| Project | Responsibility |
+|---|---|
+| `BagheerasDream.Domain` | Domain entities, enums, and core business models |
+| `BagheerasDream.Application` | Application services, interfaces, and DTOs |
+| `BagheerasDream.Infrastructure` | Database access, EF Core configurations, and infrastructure services |
+| `BagheerasDream.Web` | ASP.NET Core application, Blazor components, and user interface |
 
-The architecture is designed to keep the domain independent from external infrastructure and make future development easier.
+### Application Flow
+
+The application uses a service-based architecture:
+
+1. Blazor components handle user interaction and presentation.
+2. Application services define the operations available to the application.
+3. Infrastructure services implement database access and external operations.
+4. Entity Framework Core communicates with SQL Server.
+
+This structure keeps responsibilities separated and makes the application easier to maintain and extend.
 
 ---
 
 ## 📂 Domain Models
 
-The core domain currently includes:
+The application includes the following core domain entities:
 
-- **Cat** – Represents an individual breeding cat, including its basic information and parents.
-- **Litter** – Represents a litter, including its parents, birthday and kittens.
+- **Cat** – Represents a breeding cat, including its profile information and family relationships.
+- **CatImage** – Stores images associated with breeding cats.
+- **Litter** – Represents a litter, including its parents and birth information.
+- **LitterImage** – Stores images associated with a litter.
 - **Kitten** – Represents an individual kitten belonging to a litter.
+- **Pet** – Represents a household pet that is presented separately from breeding cats.
 
 ### Kitten Availability
 
-Each kitten has one of the following statuses:
+Kittens can have different availability statuses:
 
 - `Available`
 - `Reserved`
@@ -83,81 +123,79 @@ Each kitten has one of the following statuses:
 
 ---
 
-## 🚧 Development Status
+## 🚀 Live Deployment
 
-BagheerasDream is currently under active development.
+The application is deployed and publicly accessible:
 
-### Completed
-- Initial solution structure and Clean Architecture setup.
-- Domain entities and enums.
-- Entity Framework Core configuration.
-- SQL Server with Docker Compose.
-- ASP.NET Core Identity integration.
-- Initial database migration.
-- Admin user seeding.
-- Main frontend pages and reusable components.
-- Cat and litter presentation pages.
-- Contact form with client-side validation.
-- Centralized frontend demo data.
+**Website:** [https://bagheerasdream.de](https://bagheerasdream.de)
 
-### In Progress
-- Connecting frontend pages to real backend data.
-- Replacing temporary demo data with database records.
-- Implementing the remaining application functionality.
+The production environment uses:
 
-**Note:** The current frontend uses temporary demo data. The contact form currently performs client-side validation only and does not send actual emails.
+- Linux VPS hosting.
+- Docker Compose for application deployment.
+- SQL Server database.
+- Caddy as a reverse proxy.
+- HTTPS with automatic certificate management.
+
+Production updates are deployed by pulling the latest changes from the GitHub repository and rebuilding the Docker containers.
 
 ---
 
-## 🚀 Getting Started
+## 💻 Getting Started
 
 ### Prerequisites
 
 Make sure you have installed:
 
-- [.NET SDK](https://dotnet.microsoft.com/download)
+- [.NET 10 SDK](https://dotnet.microsoft.com/download)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [Visual Studio](https://visualstudio.microsoft.com/) or another compatible IDE.
-- Git
+- [Git](https://git-scm.com/)
+- Visual Studio 2022 or another compatible IDE.
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/NikolaViktorov/BagheerasDream.git
 cd BagheerasDream
 ```
 
-### 2. Start SQL Server
+### 2. Configure Application Settings
 
-Start Docker Desktop and run the database container using the existing Docker Compose configuration:
+Configure the required connection strings and application settings using the appropriate configuration files or ASP.NET Core User Secrets.
+
+Never commit passwords, database credentials, or other sensitive configuration values to the repository.
+
+### 3. Start the Database
+
+Start Docker Desktop and run the development database configuration:
 
 ```bash
 docker compose up -d
 ```
 
-### 3. Configure development secrets
+### 4. Apply Database Migrations
 
-Configure the required database connection string and other development settings using the project's configuration or ASP.NET Core User Secrets.
-
-Do not commit passwords, connection strings containing credentials or other sensitive information to GitHub.
-
-### 4. Apply database migrations
-
-From the solution directory, apply the existing Entity Framework Core migrations using the appropriate startup and migrations projects:
+From the solution directory, apply the Entity Framework Core migrations:
 
 ```bash
-dotnet ef database update
+dotnet ef database update --project BagheerasDream.Infrastructure --startup-project BagheerasDream.Web
 ```
 
-### 5. Run the application
+### 5. Run the Application
 
-Open the solution in Visual Studio, select `BagheerasDream.Web` as the startup project and run the application.
+Start the web project:
+
+```bash
+dotnet run --project BagheerasDream.Web
+```
+
+Alternatively, open `BagheerasDream.slnx` in Visual Studio and select `BagheerasDream.Web` as the startup project.
 
 ---
 
 ## 🎨 Design Philosophy
 
-BagheerasDream uses a clean, elegant and minimal visual identity.
+The visual identity of Bagheera's Dream is inspired by the elegance and personality of the British Shorthair breed.
 
 The design combines:
 
@@ -166,30 +204,29 @@ The design combines:
 - Elegant serif typography.
 - Large photography areas.
 - Minimalist layouts.
+- Consistent spacing and typography.
 - Responsive components.
 
-The goal is to create a welcoming digital experience that reflects the character and elegance of the British Shorthair breed.
+The goal is to create a welcoming and premium experience that reflects the character of the cattery and its cats.
 
 ---
 
-## 📌 Future Improvements
+## 🚧 Development Status
 
-- Full frontend and backend integration.
-- Dynamic cat and litter management.
-- Complete kitten availability management.
-- Admin dashboard.
-- Contact form email delivery.
-- Image upload and management.
-- Additional validation and application security improvements.
+Bagheera's Dream is an actively maintained project with a live production deployment.
+
+The application is continuously evolving as new features, improvements, and refinements are introduced.
+
+Future development focuses on improving the administration experience, expanding content management capabilities, and refining the public website.
 
 ---
 
 ## 📄 License
 
-This project is currently developed as a personal software project.
+This project is developed as a personal project for a family-owned cattery.
 
-License information will be added in a future release.
+All rights reserved unless otherwise specified.
 
 ---
 
-**BagheerasDream** – Where elegance meets affection. 🐾
+**Bagheera's Dream** – Where elegance meets affection. 🐾
