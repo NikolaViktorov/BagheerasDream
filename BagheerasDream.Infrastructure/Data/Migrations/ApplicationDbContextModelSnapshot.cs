@@ -197,6 +197,38 @@ namespace BagheerasDream.Infrastructure.Data.Migrations
                     b.ToTable("LitterImages");
                 });
 
+            modelBuilder.Entity("BagheerasDream.Domain.Models.Pet", b =>
+                {
+                    b.Property<Guid>("PetId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateOnly>("Birthday")
+                        .HasColumnType("date");
+
+                    b.Property<int>("Breed")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Color")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProfileImage")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("PetId");
+
+                    b.ToTable("Pets");
+                });
+
             modelBuilder.Entity("BagheerasDream.Infrastructure.Identity.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")

@@ -1,0 +1,375 @@
+﻿/* PAGE */
+
+.pets-admin-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+    /* HEADER */
+
+    .pets-admin-page .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 32px;
+    }
+
+    .pets-admin-page .page-eyebrow {
+        color: #a58b62;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+    }
+
+    .pets-admin-page .page-header h1 {
+        margin: 8px 0;
+        color: #40352d;
+        font-size: 2.1rem;
+        font-weight: 600;
+    }
+
+    .pets-admin-page .page-header p {
+        margin: 0;
+        color: #8b8178;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* ADD BUTTON */
+
+    .pets-admin-page .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 44px;
+        padding: 12px 20px;
+        border: 1px solid #9d8159;
+        border-radius: 8px;
+        background: #9d8159;
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+        .pets-admin-page .btn-primary span {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .pets-admin-page .btn-primary:hover {
+            background: #826846;
+            border-color: #826846;
+        }
+
+/* COUNT */
+
+.pets-count {
+    margin-bottom: 14px;
+    color: #8b8178;
+    font-size: 0.9rem;
+}
+
+    .pets-count strong {
+        color: #514035;
+    }
+
+/* DESKTOP TABLE */
+
+.pets-desktop-view {
+    width: 100%;
+    overflow-x: auto;
+    background: #fff;
+    border: 1px solid #eee7dd;
+    border-radius: 12px;
+}
+
+    .pets-desktop-view .admin-table {
+        width: 100%;
+        min-width: 850px;
+        border-collapse: collapse;
+    }
+
+        .pets-desktop-view .admin-table th {
+            padding: 17px 20px;
+            background: #faf8f5;
+            color: #8b8178;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            white-space: nowrap;
+        }
+
+        .pets-desktop-view .admin-table td {
+            padding: 17px 20px;
+            border-top: 1px solid #f0ebe4;
+            color: #51443a;
+            font-size: 0.9rem;
+            vertical-align: middle;
+        }
+
+        .pets-desktop-view .admin-table tbody tr {
+            transition: background 0.15s ease;
+        }
+
+            .pets-desktop-view .admin-table tbody tr:hover {
+                background: #fdfcfb;
+            }
+
+    .pets-desktop-view .pet-name-cell {
+        color: #40352d;
+        font-weight: 600;
+    }
+
+/* ACTIONS */
+
+.pet-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pets-admin-page .btn-edit,
+.pets-admin-page .btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 12px;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.pets-admin-page .btn-edit {
+    border: 1px solid #dfd1bb;
+    background: #f8f5ef;
+    color: #806b4d;
+}
+
+    .pets-admin-page .btn-edit:hover {
+        background: #eee6d9;
+    }
+
+.pets-admin-page .btn-delete {
+    border: 1px solid #ead5d1;
+    background: #fff8f7;
+    color: #a65c52;
+}
+
+    .pets-admin-page .btn-delete:hover {
+        background: #f8e9e6;
+    }
+
+/* MOBILE CARDS */
+
+.pets-mobile-view {
+    display: none;
+}
+
+/* EMPTY STATE */
+
+.pets-empty,
+.pets-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 55px 24px;
+    background: #fff;
+    border: 1px solid #eee7dd;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.pets-message {
+    color: #8b8178;
+}
+
+.pets-empty-icon {
+    margin-bottom: 12px;
+    color: #a58b62;
+    font-size: 2.5rem;
+}
+
+.pets-empty h3 {
+    margin: 0 0 8px;
+    color: #514035;
+    font-size: 1.15rem;
+}
+
+.pets-empty p {
+    margin: 0 0 20px;
+    color: #8b8178;
+    font-size: 0.9rem;
+}
+
+/* ERROR MESSAGE */
+
+.pets-admin-page .alert-danger {
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border: 1px solid #ead5d1;
+    border-radius: 8px;
+    background: #fff8f7;
+    color: #a65c52;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .pets-admin-page .page-header {
+        align-items: flex-start;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .pets-admin-page .page-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+        .pets-admin-page .page-header h1 {
+            font-size: 1.8rem;
+        }
+
+        .pets-admin-page .page-header p {
+            font-size: 0.9rem;
+        }
+
+    .pets-admin-page .btn-primary {
+        width: 100%;
+        min-height: 48px;
+    }
+
+    .pets-desktop-view {
+        display: none;
+    }
+
+    .pets-mobile-view {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .pet-mobile-card {
+        padding: 18px;
+        background: #fff;
+        border: 1px solid #eee7dd;
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(65, 48, 34, 0.035);
+    }
+
+    .pet-mobile-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #f0ebe4;
+    }
+
+        .pet-mobile-info h3 {
+            margin: 0;
+            color: #40352d;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+    .pet-gender-badge {
+        padding: 6px 10px;
+        border-radius: 20px;
+        background: #f8f5ef;
+        color: #806b4d;
+        font-size: 0.75rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .pet-mobile-details {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 12px;
+        padding: 17px 0;
+    }
+
+        .pet-mobile-details div {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 0;
+        }
+
+        .pet-mobile-details span {
+            color: #9a9087;
+            font-size: 0.75rem;
+        }
+
+        .pet-mobile-details strong {
+            color: #51443a;
+            font-size: 0.85rem;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+    .pet-mobile-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding-top: 14px;
+        border-top: 1px solid #f0ebe4;
+    }
+
+        .pet-mobile-actions .btn-edit,
+        .pet-mobile-actions .btn-delete {
+            min-height: 44px;
+            font-size: 0.85rem;
+        }
+}
+
+/* VERY SMALL PHONES */
+
+@media (max-width: 360px) {
+
+    .pet-mobile-card {
+        padding: 15px;
+    }
+
+    .pet-mobile-details {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .pet-mobile-info {
+        align-items: flex-start;
+    }
+}
+
+/* DESKTOP HOVER ONLY */
+
+@media (hover: none) {
+
+    .pets-admin-page .btn-primary:hover,
+    .pets-admin-page .btn-edit:hover,
+    .pets-admin-page .btn-delete:hover {
+        background: initial;
+    }
+}

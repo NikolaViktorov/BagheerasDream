@@ -141,4 +141,7 @@
   <data name="OurMales" xml:space="preserve">
     <value>Нашите мъжки</value>
   </data>
+  <data name="Pets" xml:space="preserve">
+    <value>Домашни любимци</value>
+  </data>
 </root>

@@ -141,4 +141,7 @@
   <data name="OurMales" xml:space="preserve">
     <value>Unsere Kater</value>
   </data>
+  <data name="Pets" xml:space="preserve">
+    <value>Haustiere</value>
+  </data>
 </root>

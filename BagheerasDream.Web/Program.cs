@@ -122,11 +122,13 @@ public partial class Program
 
 		builder.Services.AddScoped<ICatsService, CatsService>();
 		builder.Services.AddScoped<ILittersService, LittersService>();
+		builder.Services.AddScoped<IPetsService, PetsService>();
 
 		builder.Services.AddScoped<IDashboardService, DashboardService>();
 		builder.Services.AddScoped<IAdminCatsService, AdminCatsService>();
 		builder.Services.AddScoped<IAdminKittensService, AdminKittensService>();
 		builder.Services.AddScoped<IAdminLittersService, AdminLittersService>();
+		builder.Services.AddScoped<IAdminPetsService, AdminPetsService>();
 		builder.Services.AddScoped<IImageUploadService>(serviceProvider =>
 		{
 			var environment = serviceProvider.GetRequiredService<IWebHostEnvironment>();

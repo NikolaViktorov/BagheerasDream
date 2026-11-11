@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@inject IJSRuntime JS
+@implements IAsyncDisposable
+
+<div class="form-group">
+    <label>Профилна снимка</label>
+
+    <InputFile id="petImageInput"
+               OnChange="HandleImageSelection"
+               accept=".jpg,.jpeg,.png,.webp"
+               class="form-control" />
+
+    @if (!string.IsNullOrEmpty(PreviewUrl))
+    {
+        <div class="image-preview">
+            <img src="@PreviewUrl"
+                 alt="Преглед на снимката"
+                 style="max-width: 250px; margin-top: 15px;" />
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(CurrentImage))
+    {
+        <div class="image-preview">
+            <img src="@CurrentImage"
+                 alt="Текуща снимка"
+                 style="max-width: 250px; margin-top: 15px;" />
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string? CurrentImage { get; set; }
+
+    [Parameter]
+    public EventCallback<IBrowserFile> OnImageSelected { get; set; }
+
+    private string? PreviewUrl;
+
+    private async Task HandleImageSelection(InputFileChangeEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(PreviewUrl))
+        {
+            await JS.InvokeVoidAsync("imagePreview.revoke", PreviewUrl);
+        }
+
+        await OnImageSelected.InvokeAsync(e.File);
+
+        PreviewUrl = await JS.InvokeAsync<string>(
+            "imagePreview.createFromInput",
+            "petImageInput");
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (!string.IsNullOrEmpty(PreviewUrl))
+        {
+            await JS.InvokeVoidAsync("imagePreview.revoke", PreviewUrl);
+        }
+    }
+}

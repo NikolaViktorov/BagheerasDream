@@ -1,5 +1,4 @@
-﻿```css
-.cat-card {
+﻿.cat-card {
     background-color: #faf8f3;
     overflow: hidden;
 }
@@ -102,5 +101,3 @@
         .cat-card-footer a:hover {
             color: var(--color-gold);
         }
-
-```

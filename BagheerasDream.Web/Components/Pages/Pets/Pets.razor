@@ -1,0 +1,108 @@
+﻿@page "/pets"
+
+@using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Web.Extensions
+@using BagheerasDream.Application.DTOs.Pets
+@using BagheerasDream.Web.Components.Shared.Pets
+
+@inject IPetsService PetsService
+
+<PageTitle>Our Pets | Bagheera's Dream</PageTitle>
+
+<HeadContent>
+    <meta name="description"
+          content="Meet our beloved British Shorthair family pets. Discover their personalities, beautiful colors and unique charm at Bagheera's Dream." />
+
+    <link rel="canonical" href="https://bagheerasdream.de/pets" />
+
+    <meta property="og:title"
+          content="Our Beloved Pets | Bagheera's Dream" />
+
+    <meta property="og:description"
+          content="Meet the beloved British Shorthair pets who are part of our family." />
+
+    <meta property="og:url"
+          content="https://bagheerasdream.de/pets" />
+
+    <meta property="og:image"
+          content="https://bagheerasdream.de/images/home/5.jpg" />
+
+    <meta property="og:type" content="website" />
+</HeadContent>
+
+<section class="pets-page">
+
+    <!-- HEADER -->
+    <div class="pets-header">
+        <span class="section-eyebrow">
+            THE BELOVED MEMBERS OF OUR FAMILY
+        </span>
+
+        <h1>
+            Our <span>Pets.</span>
+        </h1>
+
+        <p>
+            Meet the beloved members of our family.
+            Each with their own personality, character and special place in our hearts.
+        </p>
+    </div>
+
+    <!-- PETS GRID -->
+    <div class="pets-container">
+
+        @if (IsLoading)
+        {
+            <div class="empty-pets">
+                <p>Loading...</p>
+            </div>
+        }
+        else if (PetsList.Any())
+        {
+            <div class="pets-grid">
+                @foreach (var pet in PetsList)
+                {
+                    <PetCard
+                        Name="@pet.Name"
+                        Birthday="@pet.Birthday.ToDateTime(TimeOnly.MinValue)"
+                        Color="@pet.Color.ToDisplayName()"
+                        Breed="@pet.Breed.ToString()"
+                        Gender="@pet.Gender.ToString()"
+                        ProfileImage="@pet.ProfileImage" />
+                }
+            </div>
+        }
+        else
+        {
+            <div class="empty-pets">
+                <h3>No pets to display yet.</h3>
+                <p>Our family is growing. Check back soon.</p>
+            </div>
+        }
+
+    </div>
+
+    <!-- FOOTER DECORATION -->
+    <div class="pets-bottom">
+        <span>BRITISH SHORTHAIR</span>
+        <span>FOREVER PART OF OUR FAMILY</span>
+    </div>
+
+</section>
+
+@code {
+    private List<PetListDto> PetsList = new();
+    private bool IsLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            PetsList = (await PetsService.GetAllAsync()).ToList();
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+}

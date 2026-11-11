@@ -1,0 +1,258 @@
+﻿@page "/admin/pets/create"
+@page "/admin/pets/edit/{Id:guid}"
+
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin")]
+
+@layout Layout.AdminLayout
+
+@using BagheerasDream.Application.DTOs.Admin.Pets
+@using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Application.Interfaces.Admin
+@using BagheerasDream.Web.Components.Pages.Admin.PetComponents
+@using BagheerasDream.Domain.Enums
+@using BagheerasDream.Web.Extensions
+@using Microsoft.AspNetCore.Components.Forms
+
+@inject IImageUploadService ImageUploadService
+@inject IAdminPetsService AdminPetsService
+@inject NavigationManager Navigation
+
+<PageTitle>Форма за любимец | Админ панел</PageTitle>
+
+<div class="admin-page pet-form-page">
+
+    <div class="page-header">
+        <div>
+            <h1>@(IsEditMode ? "Редактиране на любимец" : "Добавяне на нов любимец")</h1>
+            <p>Управление на информацията за домашния любимец.</p>
+        </div>
+
+        <a href="/admin/pets" class="btn-secondary">
+            Обратно към любимците
+        </a>
+    </div>
+
+</div>
+
+@if (IsLoading)
+{
+    <p>Зареждане...</p>
+}
+else
+{
+    <EditForm Model="@Model" OnValidSubmit="HandleSubmit">
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        @if (!string.IsNullOrWhiteSpace(ErrorMessage))
+        {
+            <div class="alert alert-danger">
+                @ErrorMessage
+            </div>
+        }
+
+        <div class="admin-form pet-form-layout">
+
+            <div class="form-group">
+                <label>Име</label>
+                <InputText @bind-Value="Model.Name" class="form-control" />
+                <ValidationMessage For="@(() => Model.Name)" />
+            </div>
+
+            <div class="form-group">
+                <label>Дата на раждане</label>
+                <InputDate @bind-Value="Model.Birthday" class="form-control" />
+                <ValidationMessage For="@(() => Model.Birthday)" />
+            </div>
+
+            <div class="form-group">
+                <label>Пол</label>
+                <InputSelect @bind-Value="Model.Gender" class="form-control">
+                    @foreach (var gender in Enum.GetValues<Gender>())
+                    {
+                        <option value="@gender">@gender</option>
+                    }
+                </InputSelect>
+            </div>
+
+            <div class="form-group">
+                <label>Цвят</label>
+                <InputSelect @bind-Value="Model.Color" class="form-control">
+                    @foreach (var color in Enum.GetValues<CatColor>())
+                    {
+                        <option value="@color">@color.ToDisplayName()</option>
+                    }
+                </InputSelect>
+            </div>
+
+            <div class="form-group">
+                <label>Порода</label>
+                <InputSelect @bind-Value="Model.Breed" class="form-control">
+                    @foreach (var breed in Enum.GetValues<Breed>())
+                    {
+                        <option value="@breed">@breed</option>
+                    }
+                </InputSelect>
+            </div>
+
+            <div class="form-group pet-image-upload">
+                <PetProfileImageUpload CurrentImage="@Model.ProfileImage"
+                                       OnImageSelected="HandleImageSelected" />
+            </div>
+
+            <div class="form-actions pet-form-actions">
+
+                <button type="submit" class="btn-primary">
+                    @(IsEditMode ? "Запази промените" : "Добави любимец")
+                </button>
+
+                <a href="/admin/pets" class="btn-secondary">
+                    Отказ
+                </a>
+
+            </div>
+
+        </div>
+
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public Guid? Id { get; set; }
+
+    private bool IsEditMode => Id.HasValue;
+
+    private PetFormDto Model = new()
+    {
+        Birthday = DateOnly.FromDateTime(DateTime.Today)
+    };
+
+    private bool IsLoading = true;
+
+    private IBrowserFile? SelectedImage;
+
+    private const long MaxImageSize = 15 * 1024 * 1024;
+
+    private string? ErrorMessage;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        IsLoading = true;
+        ErrorMessage = null;
+        SelectedImage = null;
+
+        if (IsEditMode)
+        {
+            var pet = await AdminPetsService.GetForEditAsync(Id!.Value);
+
+            if (pet is null)
+            {
+                Navigation.NavigateTo("/admin/pets");
+                return;
+            }
+
+            Model = pet;
+        }
+        else
+        {
+            Model = new PetFormDto
+            {
+                Birthday = DateOnly.FromDateTime(DateTime.Today)
+            };
+        }
+
+        IsLoading = false;
+    }
+
+    private async Task HandleSubmit()
+    {
+        ErrorMessage = null;
+
+        string? oldImagePath = IsEditMode ? Model.ProfileImage : null;
+        string? newImagePath = null;
+
+        try
+        {
+            if (SelectedImage is not null)
+            {
+                await using var stream = SelectedImage.OpenReadStream(MaxImageSize);
+
+                newImagePath = await ImageUploadService.UploadAsync(
+                    stream,
+                    SelectedImage.Name,
+                    "pets");
+
+                Model.ProfileImage = newImagePath;
+            }
+
+            bool success;
+
+            if (IsEditMode)
+            {
+                success = await AdminPetsService.UpdateAsync(Model);
+            }
+            else
+            {
+                await AdminPetsService.CreateAsync(Model);
+                success = true;
+            }
+
+            if (!success)
+            {
+                ErrorMessage = "Любимецът не беше намерен или не можа да бъде обновен.";
+
+                if (newImagePath is not null)
+                    await ImageUploadService.DeleteAsync(newImagePath);
+
+                Model.ProfileImage = oldImagePath;
+
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving pet: {ex}");
+
+            if (newImagePath is not null)
+            {
+                try
+                {
+                    await ImageUploadService.DeleteAsync(newImagePath);
+                }
+                catch (Exception cleanupEx)
+                {
+                    Console.WriteLine($"Error deleting new pet image: {cleanupEx}");
+                }
+            }
+
+            Model.ProfileImage = oldImagePath;
+
+            ErrorMessage = "Възникна грешка при запазването. Моля, проверете данните и опитайте отново.";
+
+            return;
+        }
+
+        if (oldImagePath is not null && newImagePath is not null)
+        {
+            try
+            {
+                await ImageUploadService.DeleteAsync(oldImagePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting old pet image: {ex}");
+            }
+        }
+
+        Navigation.NavigateTo("/admin/pets");
+    }
+
+    private Task HandleImageSelected(IBrowserFile file)
+    {
+        SelectedImage = file;
+        return Task.CompletedTask;
+    }
+}

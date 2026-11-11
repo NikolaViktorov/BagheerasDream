@@ -4,9 +4,6 @@ using BagheerasDream.Application.Interfaces;
 using BagheerasDream.Domain.Models;
 using BagheerasDream.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BagheerasDream.Infrastructure.Services.Admin
 {

@@ -22,6 +22,8 @@ namespace BagheerasDream.Infrastructure.Data
 
 		public DbSet<Kitten> Kittens { get; set; }
 
+		public DbSet<Pet> Pets { get; set; }
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
