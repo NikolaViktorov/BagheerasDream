@@ -38,6 +38,12 @@
                 @Localizer["Home"]
             </NavLink>
 
+            <NavLink href="/home/aboutus"
+                     class="nav-link"
+                     @onclick="CloseMobileMenu">
+                @Localizer["AboutUs"]
+            </NavLink>
+
             <NavLink href="/cats/females"
                      class="nav-link"
                      @onclick="CloseMobileMenu">
@@ -60,12 +66,6 @@
                      class="nav-link"
                      @onclick="CloseMobileMenu">
                 @Localizer["Pets"]
-            </NavLink>
-
-            <NavLink href="/home/aboutus"
-                     class="nav-link"
-                     @onclick="CloseMobileMenu">
-                @Localizer["AboutUs"]
             </NavLink>
 
             <NavLink href="/home/contact"

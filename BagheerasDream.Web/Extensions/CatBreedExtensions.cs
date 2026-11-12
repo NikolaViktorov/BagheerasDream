@@ -9,6 +9,8 @@ namespace BagheerasDream.Web.Extensions
 			return breed switch
 			{
 				Breed.BritishShorthair => "British Shorthair",
+				Breed.BritishLonghair => "British Longhair",
+				Breed.Other => "Other",
 
 				_ => breed.ToString()
 			};
