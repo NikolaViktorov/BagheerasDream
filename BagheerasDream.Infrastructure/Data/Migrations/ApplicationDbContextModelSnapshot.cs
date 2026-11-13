@@ -95,6 +95,22 @@ namespace BagheerasDream.Infrastructure.Data.Migrations
                     b.ToTable("CatImages");
                 });
 
+            modelBuilder.Entity("BagheerasDream.Domain.Models.HappyFamily", b =>
+                {
+                    b.Property<Guid>("HappyFamilyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("HappyFamilyId");
+
+                    b.ToTable("HappyFamilies");
+                });
+
             modelBuilder.Entity("BagheerasDream.Domain.Models.Kitten", b =>
                 {
                     b.Property<Guid>("KittenId")

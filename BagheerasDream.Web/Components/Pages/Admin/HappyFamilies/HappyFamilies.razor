@@ -1,0 +1,129 @@
+﻿@page "/admin/happy-families"
+
+@using Microsoft.AspNetCore.Authorization
+@using BagheerasDream.Application.DTOs.HappyFamilies
+@using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Application.Interfaces.Admin
+
+@attribute [Authorize(Roles = "Admin")]
+@layout Layout.AdminLayout
+
+@inject IHappyFamiliesService HappyFamiliesService
+@inject IAdminHappyFamiliesService AdminHappyFamiliesService
+@inject IJSRuntime JS
+
+<PageTitle>Happy Families</PageTitle>
+
+<div class="happy-families-page">
+
+    <div class="page-header">
+        <div>
+            <h1>Happy Families</h1>
+            <p>Галерия със снимки на доволните семейства и техните котета.</p>
+        </div>
+
+        <a href="/admin/happy-families/create" class="btn-primary">
+            + Добави снимка
+        </a>
+    </div>
+
+    @if (!string.IsNullOrEmpty(ErrorMessage))
+    {
+        <div class="alert alert-danger">
+            @ErrorMessage
+        </div>
+    }
+
+    @if (HappyFamiliesList is null)
+    {
+        <div class="loading-state">
+            <p>Зареждане на снимките...</p>
+        </div>
+    }
+    else if (!HappyFamiliesList.Any())
+    {
+        <div class="empty-state">
+            <h3>Все още няма добавени снимки</h3>
+            <p>Добави първата снимка в галерията Happy Families.</p>
+
+            <a href="/admin/happy-families/create" class="btn-primary">
+                + Добави първа снимка
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="gallery-summary">
+            <span>Общо снимки: <strong>@HappyFamiliesList.Count()</strong></span>
+        </div>
+
+        <div class="happy-families-grid">
+            @foreach (var family in HappyFamiliesList)
+            {
+                <div class="family-card" @key="family.HappyFamilyId">
+
+                    <div class="family-image-container">
+                        <img src="@family.Image"
+                             alt="Happy Family"
+                             class="family-image" />
+                    </div>
+
+                    <div class="family-card-actions">
+                        <button class="btn-delete"
+                                @onclick="() => DeletePhoto(family.HappyFamilyId)">
+                            Изтрий
+                        </button>
+                    </div>
+
+                </div>
+            }
+        </div>
+    }
+
+</div>
+
+@code {
+    private IEnumerable<HappyFamilyListDto>? HappyFamiliesList;
+
+    private string? ErrorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadHappyFamilies();
+    }
+
+    private async Task LoadHappyFamilies()
+    {
+        HappyFamiliesList = await HappyFamiliesService.GetAllAsync();
+    }
+
+    private async Task DeletePhoto(Guid id)
+    {
+        ErrorMessage = null;
+
+        var confirmed = await JS.InvokeAsync<bool>(
+            "confirm",
+            "Сигурен ли си, че искаш да изтриеш тази снимка?"
+        );
+
+        if (!confirmed)
+            return;
+
+        try
+        {
+            var deleted = await AdminHappyFamiliesService.DeleteAsync(id);
+
+            if (!deleted)
+            {
+                ErrorMessage = "Снимката не беше намерена.";
+                return;
+            }
+
+            await LoadHappyFamilies();
+        }
+        catch (Exception)
+        {
+            ErrorMessage = "Възникна грешка при изтриването на снимката.";
+        }
+    }
+}

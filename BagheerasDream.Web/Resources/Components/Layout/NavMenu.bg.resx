@@ -126,6 +126,9 @@
   <data name="Contact" xml:space="preserve">
     <value>Контакти</value>
   </data>
+  <data name="HappyFamilies" xml:space="preserve">
+    <value>Щастливи семейства</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Начало</value>
   </data>

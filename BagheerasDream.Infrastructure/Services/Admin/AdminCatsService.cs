@@ -68,6 +68,7 @@ namespace BagheerasDream.Infrastructure.Services.Admin
 				Color = dto.Color,
 				Breed = dto.Breed,
 				Gender = dto.Gender,
+				Description = dto.Description,
 				PedigreeImage = dto.PedigreeImage,
 				ProfileImage = dto.ProfileImage,
 				FatherId = dto.FatherId,

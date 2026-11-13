@@ -1,0 +1,186 @@
+﻿@page "/admin/happy-families/create"
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using BagheerasDream.Application.DTOs.HappyFamilies
+@using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Application.Interfaces.Admin
+
+@attribute [Authorize(Roles = "Admin")]
+@layout Layout.AdminLayout
+
+@implements IAsyncDisposable
+
+@inject IAdminHappyFamiliesService AdminHappyFamiliesService
+@inject IImageUploadService ImageUploadService
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+<PageTitle>Добави снимка - Happy Families</PageTitle>
+
+<div class="happy-family-form-page">
+
+    <div class="page-header">
+        <div>
+            <h1>Добави снимка</h1>
+            <p>Добави нова снимка в галерията Happy Families.</p>
+        </div>
+
+        <a href="/admin/happy-families" class="btn-secondary">
+            ← Назад към галерията
+        </a>
+    </div>
+
+    <div class="form-container">
+
+        <EditForm Model="@Model" OnValidSubmit="HandleSubmit">
+            <DataAnnotationsValidator />
+
+            @if (!string.IsNullOrEmpty(ErrorMessage))
+            {
+                <div class="alert alert-danger">
+                    @ErrorMessage
+                </div>
+            }
+
+            <div class="form-group">
+                <label for="happyFamilyImageInput">
+                    Снимка <span class="required">*</span>
+                </label>
+
+                <InputFile id="happyFamilyImageInput"
+                           OnChange="HandleImageSelection"
+                           accept=".jpg,.jpeg,.png,.webp"
+                           class="form-control" />
+
+                <small class="form-text">
+                    Позволени формати: JPG, JPEG, PNG, WEBP. Максимален размер: 15 MB.
+                </small>
+
+                @if (!string.IsNullOrEmpty(ImagePreviewUrl))
+                {
+                    <div class="image-preview">
+                        <img src="@ImagePreviewUrl"
+                             alt="Преглед на снимката" />
+                    </div>
+                }
+            </div>
+
+            <div class="form-actions">
+                <button type="submit"
+                        class="btn-primary"
+                        disabled="@(SelectedImage is null || IsSaving)">
+                    @if (IsSaving)
+                    {
+                        <span>Качване...</span>
+                    }
+                    else
+                    {
+                        <span>Добави снимката</span>
+                    }
+                </button>
+
+                <a href="/admin/happy-families" class="btn-secondary">
+                    Отказ
+                </a>
+            </div>
+
+        </EditForm>
+
+    </div>
+</div>
+
+@code {
+    private HappyFamilyListDto Model = new();
+
+    private IBrowserFile? SelectedImage;
+    private string? ImagePreviewUrl;
+    private string? ErrorMessage;
+
+    private bool IsSaving;
+
+    private const long MaxImageSize = 15 * 1024 * 1024;
+
+    private async Task HandleImageSelection(InputFileChangeEventArgs e)
+    {
+        ErrorMessage = null;
+        SelectedImage = e.File;
+
+        if (!string.IsNullOrEmpty(ImagePreviewUrl))
+        {
+            await JS.InvokeVoidAsync("imagePreview.revoke", ImagePreviewUrl);
+            ImagePreviewUrl = null;
+        }
+
+        if (SelectedImage.Size > MaxImageSize)
+        {
+            ErrorMessage = "Снимката не може да бъде по-голяма от 15 MB.";
+            SelectedImage = null;
+            return;
+        }
+
+        ImagePreviewUrl = await JS.InvokeAsync<string>(
+            "imagePreview.createFromInput",
+            "happyFamilyImageInput"
+        );
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (SelectedImage is null)
+        {
+            ErrorMessage = "Моля, избери снимка.";
+            return;
+        }
+
+        IsSaving = true;
+        ErrorMessage = null;
+
+        string? uploadedImage = null;
+
+        try
+        {
+            await using var stream = SelectedImage.OpenReadStream(MaxImageSize);
+
+            uploadedImage = await ImageUploadService.UploadAsync(
+                stream,
+                SelectedImage.Name,
+                "happy-families"
+            );
+
+            Model.Image = uploadedImage;
+
+            await AdminHappyFamiliesService.CreateAsync(Model);
+
+            Navigation.NavigateTo("/admin/happy-families");
+        }
+        catch (Exception)
+        {
+            if (!string.IsNullOrEmpty(uploadedImage))
+            {
+                try
+                {
+                    await ImageUploadService.DeleteAsync(uploadedImage);
+                }
+                catch
+                {
+                    
+                }
+            }
+
+            ErrorMessage = "Възникна грешка при качването на снимката. Опитай отново.";
+        }
+        finally
+        {
+            IsSaving = false;
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (!string.IsNullOrEmpty(ImagePreviewUrl))
+        {
+            await JS.InvokeVoidAsync("imagePreview.revoke", ImagePreviewUrl);
+        }
+    }
+}
