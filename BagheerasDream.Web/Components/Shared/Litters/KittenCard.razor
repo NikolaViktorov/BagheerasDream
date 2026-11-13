@@ -4,8 +4,11 @@
 
 <article class="kitten-card">
 
-    <div class="kitten-image">
-        @if (!string.IsNullOrWhiteSpace(Kitten.ProfileImage))
+    <div class="kitten-image"
+         @onclick="OpenImage"
+         style="cursor: @(HasImage ? "pointer" : "default")">
+
+        @if (HasImage)
         {
             <img src="@Kitten.ProfileImage" alt="@Kitten.Name" />
         }
@@ -19,6 +22,7 @@
         <span class="kitten-status @GetStatusClass()">
             @Localizer[Kitten.Status.ToString()]
         </span>
+
     </div>
 
     <div class="kitten-info">
@@ -31,9 +35,44 @@
 
 </article>
 
+@if (_isImageOpen && HasImage)
+{
+    <div class="kitten-lightbox"
+         @onclick="CloseImage">
+
+        <button class="kitten-lightbox-close"
+                @onclick="CloseImage"
+                aria-label="Close image">
+            &times;
+        </button>
+
+        <img src="@Kitten.ProfileImage"
+             alt="@Kitten.Name"
+             class="kitten-lightbox-image"
+             @onclick:stopPropagation="true" />
+
+    </div>
+}
+
 @code {
     [Parameter, EditorRequired]
     public KittenListDto Kitten { get; set; } = null!;
+
+    private bool _isImageOpen;
+
+    private bool HasImage =>
+        !string.IsNullOrWhiteSpace(Kitten.ProfileImage);
+
+    private void OpenImage()
+    {
+        if (HasImage)
+            _isImageOpen = true;
+    }
+
+    private void CloseImage()
+    {
+        _isImageOpen = false;
+    }
 
     private string GetStatusClass()
     {
