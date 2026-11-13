@@ -1,64 +1,47 @@
 ﻿@page "/cats/females"
-
 @using BagheerasDream.Application.Interfaces
 @using BagheerasDream.Application.DTOs.Cats
 @using BagheerasDream.Web.Extensions
-
 @inject ICatsService CatsService
+@inject IStringLocalizer<Females> Localizer
 
-<PageTitle>Our Females | Bagheera's Dream</PageTitle>
+<PageTitle>@Localizer["PageTitle"]</PageTitle>
 
 <HeadContent>
-    <meta name="description"
-          content="Lernen Sie unsere wunderschönen British Shorthair Katzen kennen. Entdecken Sie ihre Charaktere, Fellfarben und besonderen Eigenschaften bei Bagheera's Dream." />
-
+    <meta name="description" content="@Localizer["MetaDescription"]" />
     <link rel="canonical" href="https://bagheerasdream.de/cats/females" />
 
-    <meta property="og:title"
-          content="Unsere British Shorthair Katzen | Bagheera's Dream" />
-
-    <meta property="og:description"
-          content="Entdecken Sie unsere weiblichen British Shorthair Katzen und erfahren Sie mehr über unsere Zuchtkatzen." />
-
-    <meta property="og:url"
-          content="https://bagheerasdream.de/cats/females" />
-
-    <meta property="og:image"
-          content="https://bagheerasdream.de/images/home/5.jpg" />
-
+    <meta property="og:title" content="@Localizer["OgTitle"]" />
+    <meta property="og:description" content="@Localizer["OgDescription"]" />
+    <meta property="og:url" content="https://bagheerasdream.de/cats/females" />
+    <meta property="og:image" content="https://bagheerasdream.de/images/home/5.jpg" />
     <meta property="og:type" content="website" />
 </HeadContent>
 
 <section class="females-page">
 
     <!-- HEADER -->
-
     <div class="females-header">
-
         <span class="section-eyebrow">
-            THE LADIES OF BAGHEERA'S DREAM
+            @Localizer["HeaderEyebrow"]
         </span>
 
         <h1>
-            OUR <span>FEMALES</span>
+            @Localizer["Heading"]
+            <span>@Localizer["HeadingHighlight"]</span>
         </h1>
 
         <p>
-            Meet the beautiful ladies of our family.
-            Each with her own personality, character and charm.
+            @Localizer["Description"]
         </p>
-
     </div>
 
-
     <!-- CATS GRID -->
-
     <div class="females-container">
-
         @if (IsLoading)
         {
             <div class="empty-females">
-                <p>Loading...</p>
+                <p>@Localizer["Loading"]</p>
             </div>
         }
         else if (Cats.Any())
@@ -66,42 +49,33 @@
             <div class="cats-grid">
                 @foreach (var cat in Cats)
                 {
-                    <CatCard
-                        Name="@cat.Name"
-                        Birthday="@cat.Birthday.ToDateTime(TimeOnly.MinValue)"
-                        Color="@cat.Color.ToDisplayName()"
-                        Breed="@cat.Breed.ToDisplayName()"
-                        ProfileImage="@cat.ProfileImage"
-                        DetailsUrl="@($"/cats/{cat.CatId}")" />
+                    <CatCard Name="@cat.Name"
+                             Birthday="@cat.Birthday.ToDateTime(TimeOnly.MinValue)"
+                             Color="@cat.Color.ToDisplayName()"
+                             Breed="@cat.Breed.ToDisplayName()"
+                             ProfileImage="@cat.ProfileImage"
+                             DetailsUrl="@($"/cats/{cat.CatId}")" />
                 }
             </div>
         }
         else
         {
             <div class="empty-females">
-                <h3>No females to display yet.</h3>
-                <p>Our family is growing. Check back soon.</p>
+                <h3>@Localizer["EmptyHeading"]</h3>
+                <p>@Localizer["EmptyDescription"]</p>
             </div>
         }
-
     </div>
 
-
     <!-- FOOTER DECORATION -->
-
     <div class="females-bottom">
-
-        <span>BRITISH SHORTHAIR</span>
-
-        <span>RAISED WITH LOVE & CARE</span>
-
+        <span>@Localizer["FooterBreed"]</span>
+        <span>@Localizer["FooterNote"]</span>
     </div>
 
 </section>
 
-
 @code {
-
     private List<CatListDto> Cats = new();
     private bool IsLoading = true;
 

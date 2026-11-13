@@ -1,4 +1,6 @@
-﻿<article class="cat-card">
+﻿@inject IStringLocalizer<CatCard> Localizer
+
+<article class="cat-card">
 
     <a href="@DetailsUrl" class="cat-card-image">
 
@@ -10,12 +12,12 @@
         {
             <div class="cat-image-placeholder">
                 <span>♡</span>
-                <p>Photo coming soon</p>
+                <p>@Localizer["PhotoComingSoon"]</p>
             </div>
         }
 
         <div class="cat-card-overlay">
-            VIEW PROFILE →
+            @Localizer["ViewProfile"] →
         </div>
 
     </a>
@@ -31,12 +33,10 @@
 
         <div class="cat-card-footer">
 
-            <span>
-                @Age
-            </span>
+            <span>@Age</span>
 
             <a href="@DetailsUrl">
-                VIEW DETAILS →
+                @Localizer["ViewDetails"] →
             </a>
 
         </div>
@@ -78,9 +78,15 @@
             }
 
             if (years == 0)
-                return months == 1 ? "1 month old" : $"{months} months old";
+            {
+                return months == 1
+                    ? Localizer["AgeMonthsOne"].Value
+                    : Localizer["AgeMonthsMany", months].Value;
+            }
 
-            return years == 1 ? "1 year old" : $"{years} years old";
+            return years == 1
+                ? Localizer["AgeYearsOne"].Value
+                : Localizer["AgeYearsMany", years].Value;
         }
     }
 }

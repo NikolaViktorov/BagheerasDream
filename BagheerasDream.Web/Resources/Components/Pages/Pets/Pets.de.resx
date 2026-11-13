@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Unsere Lieblinge | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Lernen Sie unsere geliebten Britisch-Kurzhaar-Familienkatzen kennen. Entdecken Sie ihre Persönlichkeiten, wunderschönen Farben und ihren einzigartigen Charme.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Unsere geliebten Haustiere | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Lernen Sie die geliebten Britisch-Kurzhaar-Katzen kennen, die Teil unserer Familie sind.</value>
+  </data>
+  <data name="HeaderEyebrow" xml:space="preserve">
+    <value>DIE GELIEBTEN MITGLIEDER UNSERER FAMILIE</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>UNSERE</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>LIEBLINGE</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Unsere Familie besteht nicht nur aus Katzen! Wir haben auch eine süße kleine Toy-Pudel-Dame, die sich wunderbar mit unseren Katzenfreunden versteht. Sie haben die schönsten Freundschaften geschlossen und spielen jeden Tag gerne zusammen. Hier lernen Sie auch einige unserer älteren Katzen kennen, die sich vielleicht bereits aus der Zucht zurückgezogen haben, aber für immer Teil unserer Familie bleiben. Für uns hat Liebe kein Ablaufdatum – einmal Familie, immer Familie. Wir werden sie bis ans Ende ihres Lebens lieben und umsorgen.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Wird geladen...</value>
+  </data>
+  <data name="EmptyHeading" xml:space="preserve">
+    <value>Noch keine Haustiere vorhanden.</value>
+  </data>
+  <data name="EmptyDescription" xml:space="preserve">
+    <value>Unsere Familie wächst. Schauen Sie bald wieder vorbei.</value>
+  </data>
+  <data name="FooterBreed" xml:space="preserve">
+    <value>BRITISCH KURZHAAR</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>FÜR IMMER TEIL UNSERER FAMILIE</value>
+  </data>
+</root>

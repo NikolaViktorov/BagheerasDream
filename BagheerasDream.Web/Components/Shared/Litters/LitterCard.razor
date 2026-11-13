@@ -1,5 +1,7 @@
 ﻿@using BagheerasDream.Application.DTOs.Litters
 
+@inject IStringLocalizer<LitterCard> Localizer
+
 <a href="@($"/litters/{Item.LitterId}")" class="litter-card">
 
     <div class="litter-image">
@@ -13,12 +15,12 @@
         {
             <div class="litter-placeholder">
                 <span>♡</span>
-                <p>OUR LITTLE ONES</p>
+                <p>@Localizer["Placeholder"]</p>
             </div>
         }
 
         <span class="litter-badge">
-            @Item.KittenCount KITTENS
+            @Localizer["KittenCount", Item.KittenCount]
         </span>
 
     </div>
@@ -26,18 +28,18 @@
     <div class="litter-content">
 
         <span class="litter-date">
-            BORN @Item.Birthday.ToString("dd.MM.yyyy")
+            @Localizer["Born"] @Item.Birthday.ToString("dd.MM.yyyy")
         </span>
 
         <h3>@Item.Name</h3>
 
         <div class="litter-mother">
-            <span>MOTHER</span>
+            <span>@Localizer["Mother"]</span>
             <strong>@Item.MotherName</strong>
         </div>
 
         <div class="litter-card-bottom">
-            <span>DISCOVER THE LITTER</span>
+            <span>@Localizer["DiscoverLitter"]</span>
             <span class="litter-arrow">→</span>
         </div>
 
@@ -46,8 +48,6 @@
 </a>
 
 @code {
-    @code {
-        [Parameter, EditorRequired]
-        public LitterListDto Item { get; set; } = null!;
-    }
+    [Parameter, EditorRequired]
+    public LitterListDto Item { get; set; } = null!;
 }

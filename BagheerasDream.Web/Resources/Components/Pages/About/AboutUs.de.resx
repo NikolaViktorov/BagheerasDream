@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Über uns | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Erfahren Sie mehr über Bagheera's Dream, unsere Leidenschaft für Britisch Kurzhaar Katzen, unsere Zuchtphilosophie und unsere Liebe zu dieser besonderen Rasse.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Über uns | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Entdecken Sie die Geschichte hinter Bagheera's Dream, unsere Leidenschaft für Britisch Kurzhaar Katzen und die Werte, die unsere Zucht prägen.</value>
+  </data>
+  <data name="HeroEyebrow" xml:space="preserve">
+    <value>DIE GESCHICHTE HINTER BAGHEERA'S DREAM</value>
+  </data>
+  <data name="HeroHeading" xml:space="preserve">
+    <value>EINE LIEBE FÜR</value>
+  </data>
+  <data name="HeroHeadingHighlight" xml:space="preserve">
+    <value>BRITISCH KURZHAAR</value>
+  </data>
+  <data name="HeroDescription" xml:space="preserve">
+    <value>Mehr als eine Katzenzucht. Eine Leidenschaft für wunderschöne Katzen, wunderbare Persönlichkeiten und die Liebe, die sie in unser Leben bringen.</value>
+  </data>
+  <data name="StoryImageAlt" xml:space="preserve">
+    <value>Unsere Britisch Kurzhaar Katzen</value>
+  </data>
+  <data name="StoryCaptionNumber" xml:space="preserve">
+    <value>01 — UNSERE GESCHICHTE</value>
+  </data>
+  <data name="StoryEyebrow" xml:space="preserve">
+    <value>LERNEN SIE UNS KENNEN</value>
+  </data>
+  <data name="StoryHeading" xml:space="preserve">
+    <value>WIE AUS UNS</value>
+  </data>
+  <data name="StoryHeadingHighlight" xml:space="preserve">
+    <value>BAGHEERA'S DREAM WURDE</value>
+  </data>
+  <data name="StoryDescription" xml:space="preserve">
+    <value>Vor zwölf Jahren begann meine Reise in die wunderbare Welt der Britisch Kurzhaar mit nur zwei Katzen und einem Herzen voller Liebe für diese Rasse. Was als kleine Leidenschaft begann, entwickelte sich langsam zu etwas viel Größerem – einer Familie, einer lebenslangen Verpflichtung und einem Zuhause voller wunderschöner Katzen, jede mit ihrer eigenen Persönlichkeit und ihrem ganz besonderen Platz in meinem Herzen.</value>
+  </data>
+  <data name="PhilosophyEyebrow" xml:space="preserve">
+    <value>WAS UNS WICHTIG IST</value>
+  </data>
+  <data name="PhilosophyHeading" xml:space="preserve">
+    <value>UNSERE</value>
+  </data>
+  <data name="PhilosophyHeadingHighlight" xml:space="preserve">
+    <value>PHILOSOPHIE</value>
+  </data>
+  <data name="PhilosophyDescription" xml:space="preserve">
+    <value>Die Werte, die unser gesamtes Handeln leiten.</value>
+  </data>
+  <data name="LoveCareTitle" xml:space="preserve">
+    <value>Liebe &amp; Fürsorge</value>
+  </data>
+  <data name="LoveCareDescription" xml:space="preserve">
+    <value>Jede Katze verdient Zuneigung, Aufmerksamkeit und ein fürsorgliches Umfeld.</value>
+  </data>
+  <data name="HealthWellbeingTitle" xml:space="preserve">
+    <value>Gesundheit &amp; Wohlbefinden</value>
+  </data>
+  <data name="HealthWellbeingDescription" xml:space="preserve">
+    <value>Die Gesundheit und das Wohlbefinden unserer Katzen stehen immer an erster Stelle.</value>
+  </data>
+  <data name="ResponsibleBreedingTitle" xml:space="preserve">
+    <value>Verantwortungsvolle Zucht</value>
+  </data>
+  <data name="ResponsibleBreedingDescription" xml:space="preserve">
+    <value>Wir glauben an wohlüberlegte Entscheidungen und verantwortungsvolle Zuchtpraktiken.</value>
+  </data>
+  <data name="HappyFamiliesTitle" xml:space="preserve">
+    <value>Glückliche Familien</value>
+  </data>
+  <data name="HappyFamiliesDescription" xml:space="preserve">
+    <value>Unser Wunsch ist es, dass jedes Kätzchen ein liebevolles Zuhause für immer findet.</value>
+  </data>
+  <data name="HappyFamiliesLink" xml:space="preserve">
+    <value>ENTDECKEN SIE UNSERE GLÜCKLICHEN FAMILIEN</value>
+  </data>
+  <data name="BreedEyebrow" xml:space="preserve">
+    <value>LERNEN SIE UNS KENNEN</value>
+  </data>
+  <data name="BreedHeading" xml:space="preserve">
+    <value>EINE FAMILIE, JEDE</value>
+  </data>
+  <data name="BreedHeadingHighlight" xml:space="preserve">
+    <value>KATZE GELIEBT</value>
+  </data>
+  <data name="BreedDescription" xml:space="preserve">
+    <value>Heute ist unsere Zucht das Zuhause einer großen Familie aus Zuchtkatzen und Katzen, die nicht in der Zucht eingesetzt werden. Für mich zählt jede Katze – unabhängig davon, ob sie Teil unseres Zuchtprogramms ist oder einfach ihr wohlverdientes Leben als geliebtes Familienmitglied genießt.</value>
+  </data>
+  <data name="BreedImageAlt" xml:space="preserve">
+    <value>Unsere Britisch Kurzhaar Katzen</value>
+  </data>
+  <data name="BreedImageCaption" xml:space="preserve">
+    <value>Ausstellung von Felidae e.V. im August 2024 in Dessau-Roßlau, Deutschland.</value>
+  </data>
+  <data name="BreedImageDay" xml:space="preserve">
+    <value>TAG 2</value>
+  </data>
+  <data name="CtaEyebrow" xml:space="preserve">
+    <value>WILLKOMMEN IN UNSERER WELT</value>
+  </data>
+  <data name="CtaHeading" xml:space="preserve">
+    <value>ENTDECKEN SIE DIE WELT VON</value>
+  </data>
+  <data name="CtaHeadingHighlight" xml:space="preserve">
+    <value>BAGHEERA'S DREAM</value>
+  </data>
+  <data name="CtaDescription" xml:space="preserve">
+    <value>Wir laden Sie ein, unsere wunderschönen Katzen kennenzulernen und die Kleinen zu entdecken, die unsere Familie so besonders machen.</value>
+  </data>
+  <data name="CtaButton" xml:space="preserve">
+    <value>UNSERE WÜRFE ENTDECKEN</value>
+  </data>
+</root>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Eyebrow" xml:space="preserve">
+    <value>С КАКВО СМЕ РАЗЛИЧНИ</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>ПОВЕЧЕ ОТ ПРОСТО</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>РАЗВЪЖДАНЕ</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>В Bagheera's Dream вярваме, че отглеждането на красиви котки започва с любов, отговорност и искрено разбиране на техните нужди.</value>
+  </data>
+  <data name="StoryLink" xml:space="preserve">
+    <value>ОТКРИЙТЕ НАШАТА ФИЛОСОФИЯ</value>
+  </data>
+  <data name="LoveCareTitle" xml:space="preserve">
+    <value>Любов и грижа</value>
+  </data>
+  <data name="LoveCareDescription" xml:space="preserve">
+    <value>Всяка котка заслужава любяща среда, ежедневно внимание и истинска грижа.</value>
+  </data>
+  <data name="ResponsibleBreedingTitle" xml:space="preserve">
+    <value>Отговорно развъждане</value>
+  </data>
+  <data name="ResponsibleBreedingDescription" xml:space="preserve">
+    <value>Вярваме в обмисленото развъждане, уважението към породата и отговорните решения.</value>
+  </data>
+  <data name="HealthWellbeingTitle" xml:space="preserve">
+    <value>Здраве и благополучие</value>
+  </data>
+  <data name="HealthWellbeingDescription" xml:space="preserve">
+    <value>Здравето и доброто състояние на нашите котки винаги са на първо място.</value>
+  </data>
+  <data name="LovingHomeTitle" xml:space="preserve">
+    <value>Любящ дом</value>
+  </data>
+  <data name="LovingHomeDescription" xml:space="preserve">
+    <value>Искаме всяко котенце да има възможност да израсне в сигурен и изпълнен с любов дом.</value>
+  </data>
+  <data name="FooterPromise" xml:space="preserve">
+    <value>НАШИТЕ ЦЕННОСТИ, НАШЕТО ОБЕЩАНИЕ</value>
+  </data>
+  <data name="FooterBrand" xml:space="preserve">
+    <value>BAGHEERA'S DREAM · БРИТАНСКА КЪСОКОСМЕСТА</value>
+  </data>
+</root>

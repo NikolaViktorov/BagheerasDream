@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Wurfdetails</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Der Wurf wird geladen...</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Wurf nicht gefunden.</value>
+  </data>
+  <data name="BackToLitters" xml:space="preserve">
+    <value>ZURÜCK ZU UNSEREN WÜRFEN</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="OurLitters" xml:space="preserve">
+    <value>Unsere Würfe</value>
+  </data>
+  <data name="HeroEyebrow" xml:space="preserve">
+    <value>DIE NÄCHSTE GENERATION</value>
+  </data>
+  <data name="BornOn" xml:space="preserve">
+    <value>Geboren am</value>
+  </data>
+  <data name="LittleOnesCount" xml:space="preserve">
+    <value>{0} KLEINE KÄTZCHEN</value>
+  </data>
+  <data name="RaisedWithLove" xml:space="preserve">
+    <value>MIT LIEBE UND FÜRSORGE AUFGEZOGEN</value>
+  </data>
+  <data name="MeetLittleOnes" xml:space="preserve">
+    <value>LERNEN SIE DIE KLEINEN KENNEN</value>
+  </data>
+  <data name="Our" xml:space="preserve">
+    <value>UNSERE</value>
+  </data>
+  <data name="Kittens" xml:space="preserve">
+    <value>KÄTZCHEN</value>
+  </data>
+  <data name="KittensDescription" xml:space="preserve">
+    <value>Jedes hat seine eigene Persönlichkeit und einen besonderen Platz in unserer Familie.</value>
+  </data>
+  <data name="EmptyKittens" xml:space="preserve">
+    <value>Weitere kleine Geschichten folgen bald.</value>
+  </data>
+  <data name="PhotoCollection" xml:space="preserve">
+    <value>FOTOSAMMLUNG</value>
+  </data>
+  <data name="Little" xml:space="preserve">
+    <value>KLEINE</value>
+  </data>
+  <data name="Moments" xml:space="preserve">
+    <value>MOMENTE</value>
+  </data>
+  <data name="GalleryDescription" xml:space="preserve">
+    <value>Entdecken Sie schöne Erinnerungen aus dem Leben von {0}.</value>
+  </data>
+  <data name="PreviousImage" xml:space="preserve">
+    <value>Vorheriges Bild</value>
+  </data>
+  <data name="NextImage" xml:space="preserve">
+    <value>Nächstes Bild</value>
+  </data>
+  <data name="WhereItBegins" xml:space="preserve">
+    <value>HIER BEGINNT ALLES</value>
+  </data>
+  <data name="MeetThe" xml:space="preserve">
+    <value>LERNEN SIE DIE</value>
+  </data>
+  <data name="Parents" xml:space="preserve">
+    <value>ELTERNTIERE KENNEN</value>
+  </data>
+  <data name="Mother" xml:space="preserve">
+    <value>MUTTER</value>
+  </data>
+  <data name="Father" xml:space="preserve">
+    <value>VATER</value>
+  </data>
+  <data name="NotSpecified" xml:space="preserve">
+    <value>Nicht angegeben</value>
+  </data>
+  <data name="OurStory" xml:space="preserve">
+    <value>UNSERE GESCHICHTE</value>
+  </data>
+  <data name="ALittle" xml:space="preserve">
+    <value>EIN WENIG</value>
+  </data>
+  <data name="AboutThem" xml:space="preserve">
+    <value>ÜBER SIE</value>
+  </data>
+</root>

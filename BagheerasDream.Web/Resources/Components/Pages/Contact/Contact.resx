@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Contact Us | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Contact Bagheera's Dream. We are happy to answer your questions about our British Shorthair cats, kittens and breeding programme.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Contact | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Interested in our British Shorthair cats? Get in touch with us – we look forward to hearing from you.</value>
+  </data>
+  <data name="HeroEyebrow" xml:space="preserve">
+    <value>WE WOULD LOVE TO HEAR FROM YOU</value>
+  </data>
+  <data name="HeroHeading" xml:space="preserve">
+    <value>LET'S START A</value>
+  </data>
+  <data name="HeroHeadingHighlight" xml:space="preserve">
+    <value>CONVERSATION</value>
+  </data>
+  <data name="HeroDescription" xml:space="preserve">
+    <value>Whether you are interested in our cats, have a question or simply want to learn more about us, we would be happy to hear from you.</value>
+  </data>
+  <data name="InfoEyebrow" xml:space="preserve">
+    <value>GET IN TOUCH</value>
+  </data>
+  <data name="InfoHeading" xml:space="preserve">
+    <value>WE ARE HERE FOR</value>
+  </data>
+  <data name="InfoHeadingHighlight" xml:space="preserve">
+    <value>YOU</value>
+  </data>
+  <data name="InfoDescription" xml:space="preserve">
+    <value>Finding the right kitten is a special journey. We believe that every future family deserves time, attention and honest communication.</value>
+  </data>
+  <data name="KittenEnquiriesTitle" xml:space="preserve">
+    <value>Kitten Enquiries</value>
+  </data>
+  <data name="KittenEnquiriesDescription" xml:space="preserve">
+    <value>Interested in one of our kittens? Feel free to get in touch with us.</value>
+  </data>
+  <data name="GeneralQuestionsTitle" xml:space="preserve">
+    <value>General Questions</value>
+  </data>
+  <data name="GeneralQuestionsDescription" xml:space="preserve">
+    <value>Have questions about our cattery or the British Shorthair breed? We are always happy to help.</value>
+  </data>
+  <data name="ContactNote" xml:space="preserve">
+    <value>Every message matters to us. We look forward to getting to know you.</value>
+  </data>
+  <data name="MethodsHeading" xml:space="preserve">
+    <value>CONNECT WITH US</value>
+  </data>
+  <data name="MethodsDescription" xml:space="preserve">
+    <value>Choose your preferred way to get in touch with us. We would love to hear from you!</value>
+  </data>
+  <data name="PhoneTitle" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="PhoneDescription" xml:space="preserve">
+    <value>Give us a call. We will be happy to hear from you.</value>
+  </data>
+  <data name="CallUs" xml:space="preserve">
+    <value>CALL US</value>
+  </data>
+  <data name="WhatsAppDescription" xml:space="preserve">
+    <value>Have a question? Send us a message directly.</value>
+  </data>
+  <data name="WhatsAppLabel" xml:space="preserve">
+    <value>Chat with us on WhatsApp</value>
+  </data>
+  <data name="MessageUs" xml:space="preserve">
+    <value>MESSAGE US</value>
+  </data>
+  <data name="InstagramDescription" xml:space="preserve">
+    <value>Follow our cattery and send us a direct message.</value>
+  </data>
+  <data name="TikTokDescription" xml:space="preserve">
+    <value>Discover our cats and follow their little adventures.</value>
+  </data>
+  <data name="VisitProfile" xml:space="preserve">
+    <value>VISIT PROFILE</value>
+  </data>
+  <data name="BottomEyebrow" xml:space="preserve">
+    <value>A LITTLE WORLD OF LOVE</value>
+  </data>
+  <data name="BottomHeading" xml:space="preserve">
+    <value>PERHAPS YOUR NEW BEST FRIEND</value>
+  </data>
+  <data name="BottomHeadingHighlight" xml:space="preserve">
+    <value>IS WAITING</value>
+  </data>
+  <data name="BottomDescription" xml:space="preserve">
+    <value>Discover our beautiful British Shorthairs and meet the little ones looking for their forever homes.</value>
+  </data>
+  <data name="BottomButton" xml:space="preserve">
+    <value>EXPLORE OUR LITTERS</value>
+  </data>
+</root>

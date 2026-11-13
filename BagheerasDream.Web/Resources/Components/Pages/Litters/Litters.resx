@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Our Litters | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Discover the current and past litters of our British Shorthair cattery. Learn more about our kittens at Bagheera's Dream.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>British Shorthair Kittens and Litters | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Explore our British Shorthair litters and meet our kittens.</value>
+  </data>
+  <data name="HeaderEyebrow" xml:space="preserve">
+    <value>THE NEWEST MEMBERS OF OUR FAMILY</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>OUR</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>LITTERS</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Discover the little ones raised with love, care and dedication in our family.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading litters...</value>
+  </data>
+  <data name="EmptyHeading" xml:space="preserve">
+    <value>Beautiful moments are coming.</value>
+  </data>
+  <data name="EmptyDescription" xml:space="preserve">
+    <value>We currently have no litters to display.</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>RAISED WITH LOVE &amp; CARE</value>
+  </data>
+</root>

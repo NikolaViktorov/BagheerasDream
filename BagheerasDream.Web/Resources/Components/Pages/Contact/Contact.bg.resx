@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Контакти | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Свържете се с Bagheera's Dream. С удоволствие ще отговорим на въпросите ви за нашите британски късокосмести котки, котенца и развъдната ни дейност.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Контакти | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Интересувате се от нашите британски късокосмести котки? Свържете се с нас – ще се радваме да получим вашето съобщение.</value>
+  </data>
+  <data name="HeroEyebrow" xml:space="preserve">
+    <value>ЩЕ СЕ РАДВАМЕ ДА НИ ПИШЕТЕ</value>
+  </data>
+  <data name="HeroHeading" xml:space="preserve">
+    <value>НЕКА ЗАПОЧНЕМ</value>
+  </data>
+  <data name="HeroHeadingHighlight" xml:space="preserve">
+    <value>РАЗГОВОР</value>
+  </data>
+  <data name="HeroDescription" xml:space="preserve">
+    <value>Независимо дали проявявате интерес към нашите котки, имате въпрос или просто искате да научите повече за нас, ще се радваме да се свържете с нас.</value>
+  </data>
+  <data name="InfoEyebrow" xml:space="preserve">
+    <value>СВЪРЖЕТЕ СЕ С НАС</value>
+  </data>
+  <data name="InfoHeading" xml:space="preserve">
+    <value>ТУК СМЕ ЗАРАДИ</value>
+  </data>
+  <data name="InfoHeadingHighlight" xml:space="preserve">
+    <value>ВАС</value>
+  </data>
+  <data name="InfoDescription" xml:space="preserve">
+    <value>Откриването на подходящото котенце е специално пътешествие. Вярваме, че всяко бъдещо семейство заслужава време, внимание и открита комуникация.</value>
+  </data>
+  <data name="KittenEnquiriesTitle" xml:space="preserve">
+    <value>Запитвания за котенца</value>
+  </data>
+  <data name="KittenEnquiriesDescription" xml:space="preserve">
+    <value>Харесали сте някое от нашите котенца? Не се колебайте да се свържете с нас.</value>
+  </data>
+  <data name="GeneralQuestionsTitle" xml:space="preserve">
+    <value>Общи въпроси</value>
+  </data>
+  <data name="GeneralQuestionsDescription" xml:space="preserve">
+    <value>Имате въпроси за нашия развъдник или за британската късокосместа порода? Винаги ще се радваме да помогнем.</value>
+  </data>
+  <data name="ContactNote" xml:space="preserve">
+    <value>Всяко съобщение е важно за нас. Очакваме с нетърпение да се запознаем.</value>
+  </data>
+  <data name="MethodsHeading" xml:space="preserve">
+    <value>СВЪРЖЕТЕ СЕ С НАС</value>
+  </data>
+  <data name="MethodsDescription" xml:space="preserve">
+    <value>Изберете предпочитания от вас начин за връзка. Ще се радваме да ни пишете!</value>
+  </data>
+  <data name="PhoneTitle" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="PhoneDescription" xml:space="preserve">
+    <value>Обадете ни се. Ще се радваме да разговаряме с вас.</value>
+  </data>
+  <data name="CallUs" xml:space="preserve">
+    <value>ОБАДЕТЕ СЕ</value>
+  </data>
+  <data name="WhatsAppDescription" xml:space="preserve">
+    <value>Имате въпрос? Изпратете ни съобщение директно.</value>
+  </data>
+  <data name="WhatsAppLabel" xml:space="preserve">
+    <value>Пишете ни в WhatsApp</value>
+  </data>
+  <data name="MessageUs" xml:space="preserve">
+    <value>ИЗПРАТЕТЕ СЪОБЩЕНИЕ</value>
+  </data>
+  <data name="InstagramDescription" xml:space="preserve">
+    <value>Следвайте нашия развъдник и ни изпратете лично съобщение.</value>
+  </data>
+  <data name="TikTokDescription" xml:space="preserve">
+    <value>Открийте нашите котки и следете малките им приключения.</value>
+  </data>
+  <data name="VisitProfile" xml:space="preserve">
+    <value>ПОСЕТЕТЕ ПРОФИЛА</value>
+  </data>
+  <data name="BottomEyebrow" xml:space="preserve">
+    <value>ЕДИН МАЛЪК СВЯТ, ИЗПЪЛНЕН С ЛЮБОВ</value>
+  </data>
+  <data name="BottomHeading" xml:space="preserve">
+    <value>МОЖЕ БИ ВАШИЯТ НОВ НАЙ-ДОБЪР ПРИЯТЕЛ</value>
+  </data>
+  <data name="BottomHeadingHighlight" xml:space="preserve">
+    <value>ВИ ОЧАКВА</value>
+  </data>
+  <data name="BottomDescription" xml:space="preserve">
+    <value>Разгледайте нашите прекрасни британски късокосмести котки и се запознайте с малките, които търсят своя постоянен дом.</value>
+  </data>
+  <data name="BottomButton" xml:space="preserve">
+    <value>РАЗГЛЕДАЙТЕ НАШИТЕ КОТИЛА</value>
+  </data>
+</root>

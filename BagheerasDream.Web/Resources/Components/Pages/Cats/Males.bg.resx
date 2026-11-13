@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Нашите мъжки котки | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Запознайте се с красивите мъжки британски късокосмести котки на Bagheera's Dream. Открийте техния характер, окраска и индивидуални качества.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Нашите мъжки британски късокосмести котки | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Открийте нашите мъжки британски късокосмести котки и се запознайте с разплодните мъжкари в нашия развъдник.</value>
+  </data>
+  <data name="HeaderEyebrow" xml:space="preserve">
+    <value>ДЖЕНТЪЛМЕНИТЕ НА BAGHEERA'S DREAM</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>НАШИТЕ</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>МЪЖКИ КОТКИ</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Запознайте се с нашите красиви джентълмени – с характерните им пухкави бузи, очарователна закръглена осанка и силно мускулесто телосложение.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Зареждане...</value>
+  </data>
+  <data name="EmptyHeading" xml:space="preserve">
+    <value>Все още няма мъжки котки за показване.</value>
+  </data>
+  <data name="EmptyDescription" xml:space="preserve">
+    <value>Нашето семейство расте. Посетете ни отново скоро.</value>
+  </data>
+  <data name="FooterBreed" xml:space="preserve">
+    <value>БРИТАНСКА КЪСОКОСМЕСТА</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>ОТГЛЕДАНИ С ЛЮБОВ И ГРИЖА</value>
+  </data>
+</root>

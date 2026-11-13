@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Kontakt | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Kontaktieren Sie Bagheera's Dream. Wir beantworten gerne Ihre Fragen zu unseren Britisch Kurzhaar Katzen, Kitten und unserer Zucht.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Kontakt | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Sie interessieren sich für unsere Britisch Kurzhaar Katzen? Kontaktieren Sie uns – wir freuen uns auf Ihre Nachricht.</value>
+  </data>
+  <data name="HeroEyebrow" xml:space="preserve">
+    <value>WIR FREUEN UNS, VON IHNEN ZU HÖREN</value>
+  </data>
+  <data name="HeroHeading" xml:space="preserve">
+    <value>LASSEN SIE UNS EIN</value>
+  </data>
+  <data name="HeroHeadingHighlight" xml:space="preserve">
+    <value>GESPRÄCH BEGINNEN</value>
+  </data>
+  <data name="HeroDescription" xml:space="preserve">
+    <value>Ob Sie sich für unsere Katzen interessieren, eine Frage haben oder einfach mehr über uns erfahren möchten – wir freuen uns, von Ihnen zu hören.</value>
+  </data>
+  <data name="InfoEyebrow" xml:space="preserve">
+    <value>NEHMEN SIE KONTAKT AUF</value>
+  </data>
+  <data name="InfoHeading" xml:space="preserve">
+    <value>WIR SIND FÜR</value>
+  </data>
+  <data name="InfoHeadingHighlight" xml:space="preserve">
+    <value>SIE DA</value>
+  </data>
+  <data name="InfoDescription" xml:space="preserve">
+    <value>Das passende Kätzchen zu finden, ist eine besondere Reise. Wir sind überzeugt, dass jede zukünftige Familie Zeit, Aufmerksamkeit und eine ehrliche Kommunikation verdient.</value>
+  </data>
+  <data name="KittenEnquiriesTitle" xml:space="preserve">
+    <value>Anfragen zu Kitten</value>
+  </data>
+  <data name="KittenEnquiriesDescription" xml:space="preserve">
+    <value>Interessieren Sie sich für eines unserer Kitten? Kontaktieren Sie uns gerne.</value>
+  </data>
+  <data name="GeneralQuestionsTitle" xml:space="preserve">
+    <value>Allgemeine Fragen</value>
+  </data>
+  <data name="GeneralQuestionsDescription" xml:space="preserve">
+    <value>Haben Sie Fragen zu unserer Katzenzucht oder zur Rasse Britisch Kurzhaar? Wir helfen Ihnen jederzeit gerne weiter.</value>
+  </data>
+  <data name="ContactNote" xml:space="preserve">
+    <value>Jede Nachricht ist uns wichtig. Wir freuen uns darauf, Sie kennenzulernen.</value>
+  </data>
+  <data name="MethodsHeading" xml:space="preserve">
+    <value>VERBINDEN SIE SICH MIT UNS</value>
+  </data>
+  <data name="MethodsDescription" xml:space="preserve">
+    <value>Wählen Sie Ihren bevorzugten Kontaktweg. Wir freuen uns auf Ihre Nachricht!</value>
+  </data>
+  <data name="PhoneTitle" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="PhoneDescription" xml:space="preserve">
+    <value>Rufen Sie uns an. Wir freuen uns auf Ihren Anruf.</value>
+  </data>
+  <data name="CallUs" xml:space="preserve">
+    <value>JETZT ANRUFEN</value>
+  </data>
+  <data name="WhatsAppDescription" xml:space="preserve">
+    <value>Haben Sie eine Frage? Schreiben Sie uns direkt.</value>
+  </data>
+  <data name="WhatsAppLabel" xml:space="preserve">
+    <value>Schreiben Sie uns auf WhatsApp</value>
+  </data>
+  <data name="MessageUs" xml:space="preserve">
+    <value>NACHRICHT SENDEN</value>
+  </data>
+  <data name="InstagramDescription" xml:space="preserve">
+    <value>Folgen Sie unserer Katzenzucht und senden Sie uns eine Direktnachricht.</value>
+  </data>
+  <data name="TikTokDescription" xml:space="preserve">
+    <value>Entdecken Sie unsere Katzen und begleiten Sie ihre kleinen Abenteuer.</value>
+  </data>
+  <data name="VisitProfile" xml:space="preserve">
+    <value>PROFIL BESUCHEN</value>
+  </data>
+  <data name="BottomEyebrow" xml:space="preserve">
+    <value>EINE KLEINE WELT VOLLER LIEBE</value>
+  </data>
+  <data name="BottomHeading" xml:space="preserve">
+    <value>VIELLEICHT WARTET IHR NEUER BESTER FREUND</value>
+  </data>
+  <data name="BottomHeadingHighlight" xml:space="preserve">
+    <value>SCHON AUF SIE</value>
+  </data>
+  <data name="BottomDescription" xml:space="preserve">
+    <value>Entdecken Sie unsere wunderschönen Britisch Kurzhaar Katzen und lernen Sie die Kleinen kennen, die ein liebevolles Zuhause für immer suchen.</value>
+  </data>
+  <data name="BottomButton" xml:space="preserve">
+    <value>UNSERE WÜRFE ENTDECKEN</value>
+  </data>
+</root>

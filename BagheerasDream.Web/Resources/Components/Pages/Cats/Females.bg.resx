@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Нашите женски котки | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Запознайте се с прекрасните женски британски късокосмести котки на Bagheera's Dream. Открийте техния характер, окраска и индивидуални качества.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Нашите женски британски късокосмести котки | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Открийте нашите женски британски късокосмести котки и научете повече за дамите в нашия развъдник.</value>
+  </data>
+  <data name="HeaderEyebrow" xml:space="preserve">
+    <value>ДАМИТЕ НА BAGHEERA'S DREAM</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>НАШИТЕ</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>ЖЕНСКИ КОТКИ</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Запознайте се с прекрасните дами на нашето семейство. Всяка от тях има свой характер, индивидуалност и чар.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Зареждане...</value>
+  </data>
+  <data name="EmptyHeading" xml:space="preserve">
+    <value>Все още няма женски котки за показване.</value>
+  </data>
+  <data name="EmptyDescription" xml:space="preserve">
+    <value>Нашето семейство расте. Посетете ни отново скоро.</value>
+  </data>
+  <data name="FooterBreed" xml:space="preserve">
+    <value>БРИТАНСКА КЪСОКОСМЕСТА</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>ОТГЛЕДАНИ С ЛЮБОВ И ГРИЖА</value>
+  </data>
+</root>

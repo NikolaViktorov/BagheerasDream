@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Нашите любимци | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Запознайте се с любимите ни домашни любимци от семейството на британските късокосмести котки. Открийте техния характер, красиви окраски и неповторим чар.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Нашите любими домашни любимци | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Запознайте се с любимите британски късокосмести котки, които са част от нашето семейство.</value>
+  </data>
+  <data name="HeaderEyebrow" xml:space="preserve">
+    <value>ОБИЧАНИТЕ ЧЛЕНОВЕ НА НАШЕТО СЕМЕЙСТВО</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>НАШИТЕ</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>ЛЮБИМЦИ</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Нашето семейство не се състои само от котки! Имаме и едно сладко момиче от породата той пудел, което чудесно се разбира с нашите котешки приятели. Те са създали прекрасни приятелства и обичат да играят заедно всеки ден. Тук ще срещнете и някои от по-възрастните ни котки, които може вече да са се оттеглили от развъждането, но завинаги ще останат част от семейството ни. За нас любовта няма срок на годност – веднъж семейство, завинаги семейство. Ще ги обичаме и ще се грижим за тях до последния им ден.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Зареждане...</value>
+  </data>
+  <data name="EmptyHeading" xml:space="preserve">
+    <value>Все още няма любимци за показване.</value>
+  </data>
+  <data name="EmptyDescription" xml:space="preserve">
+    <value>Нашето семейство расте. Посетете страницата отново скоро.</value>
+  </data>
+  <data name="FooterBreed" xml:space="preserve">
+    <value>БРИТАНСКА КЪСОКОСМЕСТА</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>ЗАВИНАГИ ЧАСТ ОТ НАШЕТО СЕМЕЙСТВО</value>
+  </data>
+</root>

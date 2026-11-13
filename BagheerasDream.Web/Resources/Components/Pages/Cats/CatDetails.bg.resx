@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Информация за котката</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Зареждане на информацията за котката...</value>
+  </data>
+  <data name="LoadError" xml:space="preserve">
+    <value>Възникна проблем при зареждането на информацията за котката.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Котката не е намерена.</value>
+  </data>
+  <data name="BackToCats" xml:space="preserve">
+    <value>НАЗАД КЪМ НАШИТЕ КОТКИ</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Начало</value>
+  </data>
+  <data name="OurMales" xml:space="preserve">
+    <value>Нашите мъжки котки</value>
+  </data>
+  <data name="OurFemales" xml:space="preserve">
+    <value>Нашите женски котки</value>
+  </data>
+  <data name="PhotoComingSoon" xml:space="preserve">
+    <value>СНИМКАТА ПРЕДСТОИ</value>
+  </data>
+  <data name="BreedLabel" xml:space="preserve">
+    <value>ПОРОДА</value>
+  </data>
+  <data name="ColorLabel" xml:space="preserve">
+    <value>ОКРАСКА</value>
+  </data>
+  <data name="BirthdayLabel" xml:space="preserve">
+    <value>РОЖДЕНА ДАТА</value>
+  </data>
+  <data name="AgeLabel" xml:space="preserve">
+    <value>ВЪЗРАСТ</value>
+  </data>
+  <data name="GenderLabel" xml:space="preserve">
+    <value>ПОЛ</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Мъжки</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Женски</value>
+  </data>
+  <data name="MeetOurLady" xml:space="preserve">
+    <value>ЗАПОЗНАЙТЕ СЕ С НАШАТА ДАМА</value>
+  </data>
+  <data name="MeetOurGentleman" xml:space="preserve">
+    <value>ЗАПОЗНАЙТЕ СЕ С НАШИЯ ДЖЕНТЪЛМЕН</value>
+  </data>
+  <data name="PedigreeEyebrow" xml:space="preserve">
+    <value>РОДОСЛОВИЕ</value>
+  </data>
+  <data name="PedigreeHeadingSuffix" xml:space="preserve">
+    <value>Родословие.</value>
+  </data>
+  <data name="PedigreeDescription" xml:space="preserve">
+    <value>Открийте семейната история и произхода на тази котка.</value>
+  </data>
+  <data name="PedigreeImageAlt" xml:space="preserve">
+    <value>Родословие на {0}</value>
+  </data>
+  <data name="GalleryEyebrow" xml:space="preserve">
+    <value>ФОТОГАЛЕРИЯ</value>
+  </data>
+  <data name="GalleryHeading" xml:space="preserve">
+    <value>Още малко от света на</value>
+  </data>
+  <data name="GalleryDescription" xml:space="preserve">
+    <value>Открийте още красиви моменти от живота на тази котка.</value>
+  </data>
+  <data name="CloseImage" xml:space="preserve">
+    <value>Затвори изображението</value>
+  </data>
+  <data name="PreviousImage" xml:space="preserve">
+    <value>Предишно изображение</value>
+  </data>
+  <data name="NextImage" xml:space="preserve">
+    <value>Следващо изображение</value>
+  </data>
+  <data name="HisFamilyTree" xml:space="preserve">
+    <value>НЕГОВОТО СЕМЕЙНО ДЪРВО</value>
+  </data>
+  <data name="HerFamilyTree" xml:space="preserve">
+    <value>НЕЙНОТО СЕМЕЙНО ДЪРВО</value>
+  </data>
+  <data name="MeetHis" xml:space="preserve">
+    <value>Запознайте се с неговите</value>
+  </data>
+  <data name="MeetHer" xml:space="preserve">
+    <value>Запознайте се с нейните</value>
+  </data>
+  <data name="ParentsHeadingSuffix" xml:space="preserve">
+    <value>родители.</value>
+  </data>
+  <data name="ParentsDescription" xml:space="preserve">
+    <value>Всяка прекрасна котка има своя история. Открийте произхода на тази котка.</value>
+  </data>
+  <data name="Father" xml:space="preserve">
+    <value>Баща</value>
+  </data>
+  <data name="Mother" xml:space="preserve">
+    <value>Майка</value>
+  </data>
+  <data name="FamilyHistory" xml:space="preserve">
+    <value>СЕМЕЙНА ИСТОРИЯ</value>
+  </data>
+  <data name="NoFamilyRecordsHeading" xml:space="preserve">
+    <value>Все още няма данни за родословието.</value>
+  </data>
+  <data name="NoFamilyRecordsDescription" xml:space="preserve">
+    <value>Все още добавяме семейната история на нашите котки. Посетете ни отново скоро, за да откриете техния произход.</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>ОТГЛЕДАНИ С ЛЮБОВ И ГРИЖА</value>
+  </data>
+  <data name="AgeMonthsOne" xml:space="preserve">
+    <value>на 1 месец</value>
+  </data>
+  <data name="AgeMonthsMany" xml:space="preserve">
+    <value>на {0} месеца</value>
+  </data>
+  <data name="AgeYearsOne" xml:space="preserve">
+    <value>на 1 година</value>
+  </data>
+  <data name="AgeYearsMany" xml:space="preserve">
+    <value>на {0} години</value>
+  </data>
+</root>

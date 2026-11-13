@@ -4,62 +4,44 @@
 @using BagheerasDream.Application.DTOs.HappyFamilies
 
 @inject IHappyFamiliesService HappyFamiliesService
+@inject IStringLocalizer<HappyFamilies> Localizer
 
-<PageTitle>Happy Families | Bagheera's Dream</PageTitle>
+<PageTitle>@Localizer["PageTitle"]</PageTitle>
 
 <HeadContent>
-    <meta name="description"
-          content="Discover the happy families and beautiful moments shared by the kittens from Bagheera's Dream." />
-
+    <meta name="description" content="@Localizer["MetaDescription"]" />
     <link rel="canonical" href="https://bagheerasdream.de/happy-families" />
-
-    <meta property="og:title"
-          content="Happy Families | Bagheera's Dream" />
-
-    <meta property="og:description"
-          content="A collection of beautiful moments and happy families who welcomed our kittens into their homes." />
-
-    <meta property="og:url"
-          content="https://bagheerasdream.de/happy-families" />
-
-    <meta property="og:image"
-          content="https://bagheerasdream.de/images/home/5.jpg" />
-
+    <meta property="og:title" content="@Localizer["OgTitle"]" />
+    <meta property="og:description" content="@Localizer["OgDescription"]" />
+    <meta property="og:url" content="https://bagheerasdream.de/happy-families" />
+    <meta property="og:image" content="https://bagheerasdream.de/images/home/5.jpg" />
     <meta property="og:type" content="website" />
 </HeadContent>
 
 <section class="happy-families-page">
 
-    <!-- HEADER -->
     <div class="happy-families-header">
 
         <span class="section-eyebrow">
-            A LIFETIME OF LOVE AND HAPPINESS
+            @Localizer["HeaderEyebrow"]
         </span>
 
         <h1>
-            HAPPY <span>FAMILIES</span>
+            @Localizer["Heading"] <span>@Localizer["HeadingHighlight"]</span>
         </h1>
 
         <p>
-            Nothing makes us happier than seeing our kittens grow up
-            surrounded by love. Every kitten that leaves our home
-            becomes part of a new family, creating special memories
-            and lifelong friendships.
-
-            Here are some beautiful moments shared by the wonderful
-            families who welcomed our kittens into their lives.
+            @Localizer["Description"]
         </p>
 
     </div>
 
-    <!-- GALLERY -->
     <div class="happy-families-container">
 
         @if (IsLoading)
         {
             <div class="empty-families">
-                <p>Loading...</p>
+                <p>@Localizer["Loading"]</p>
             </div>
         }
         else if (Families.Any())
@@ -70,7 +52,7 @@
                 {
                     <div class="happy-family-image" @key="family.HappyFamilyId">
                         <img src="@family.Image"
-                             alt="Happy family with a Bagheera's Dream kitten"
+                             alt="@Localizer["ImageAlt"]"
                              loading="lazy" />
                     </div>
                 }
@@ -80,17 +62,16 @@
         else
         {
             <div class="empty-families">
-                <h3>Beautiful moments are coming soon.</h3>
-                <p>Our gallery will be updated with memories from our happy families.</p>
+                <h3>@Localizer["EmptyHeading"]</h3>
+                <p>@Localizer["EmptyDescription"]</p>
             </div>
         }
 
     </div>
 
-    <!-- FOOTER DECORATION -->
     <div class="happy-families-bottom">
-        <span>BAGHEERA'S DREAM</span>
-        <span>HAPPY FAMILIES, HAPPY KITTENS</span>
+        <span>@Localizer["FooterBrand"]</span>
+        <span>@Localizer["FooterNote"]</span>
     </div>
 
 </section>

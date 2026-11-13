@@ -1,6 +1,7 @@
 ﻿@using Microsoft.Extensions.Localization
 @using Microsoft.AspNetCore.Components.Authorization
 @using System.Globalization
+@using Microsoft.AspNetCore.WebUtilities
 @inject NavigationManager Navigation
 @inject IStringLocalizer<NavMenu> Localizer
 
@@ -92,24 +93,27 @@
 
             <div class="language-selector">
 
-                <a href="@GetLanguageUrl("en")"
-                   @onclick="CloseMobileMenu"
+                <a href="#"
+                   @onclick="ChangeToEnglish"
+                   @onclick:preventDefault="true"
                    class="language-link @(IsCurrentLanguage("en") ? "active" : "")">
                     EN
                 </a>
 
                 <span>|</span>
 
-                <a href="@GetLanguageUrl("de")"
-                   @onclick="CloseMobileMenu"
+                <a href="#"
+                   @onclick="ChangeToGerman"
+                   @onclick:preventDefault="true"
                    class="language-link @(IsCurrentLanguage("de") ? "active" : "")">
                     DE
                 </a>
 
                 <span>|</span>
 
-                <a href="@GetLanguageUrl("bg")"
-                   @onclick="CloseMobileMenu"
+                <a href="#"
+                   @onclick="ChangeToBulgarian"
+                   @onclick:preventDefault="true"
                    class="language-link @(IsCurrentLanguage("bg") ? "active" : "")">
                     BG
                 </a>
@@ -129,11 +133,28 @@
         _isMenuOpen = false;
     }
 
-    private string GetLanguageUrl(string culture)
-    {
-        var currentUrl = new Uri(Navigation.Uri).PathAndQuery;
+    private void ChangeToEnglish() => ChangeLanguage("en");
 
-        return $"/set-language?culture={culture}&returnUrl={Uri.EscapeDataString(currentUrl)}";
+    private void ChangeToGerman() => ChangeLanguage("de");
+
+    private void ChangeToBulgarian() => ChangeLanguage("bg");
+
+    private void ChangeLanguage(string culture)
+    {
+        CloseMobileMenu();
+
+        var currentUrl = new Uri(Navigation.Uri);
+        var returnUrl = currentUrl.PathAndQuery;
+
+        var targetUrl = QueryHelpers.AddQueryString(
+            "/set-language",
+            new Dictionary<string, string?>
+            {
+                ["culture"] = culture,
+                ["returnUrl"] = returnUrl
+            });
+
+        Navigation.NavigateTo(targetUrl, forceLoad: true);
     }
 
     private bool IsCurrentLanguage(string culture)

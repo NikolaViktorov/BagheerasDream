@@ -1,28 +1,29 @@
-﻿<section class="contact-cta">
+﻿@inject IStringLocalizer<ContactCta> Localizer
+
+<section class="contact-cta">
 
     <div class="contact-cta-container">
 
         <span class="section-eyebrow">
-            LET'S GET IN TOUCH
+            @Localizer["Eyebrow"]
         </span>
 
         <h2>
-            EVERY LITTLE PAW
-            <span>DESERVES A LOVING HOME</span>
+            @Localizer["Heading"]
+            <span>@Localizer["HeadingHighlight"]</span>
         </h2>
 
         <p>
-            Interested in welcoming a British Shorthair into your family?
-            We'd love to hear from you and help you find your perfect companion.
+            @Localizer["Description"]
         </p>
 
         <a href="/home/contact" class="contact-cta-button">
-            CONTACT US
+            @Localizer["ContactUs"]
             <span>→</span>
         </a>
 
         <div class="contact-cta-decoration">
-            BAGHEERA'S DREAM · BRITISH SHORTHAIR
+            @Localizer["Decoration"]
         </div>
 
     </div>

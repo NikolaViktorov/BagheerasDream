@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>За нас | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Научете повече за Bagheera's Dream, нашата страст към британските късокосмести котки, философията ни на развъждане и любовта ни към тази специална порода.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>За нас | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Открийте историята на Bagheera's Dream, нашата страст към британските късокосмести котки и ценностите, които ръководят развъдника ни.</value>
+  </data>
+  <data name="HeroEyebrow" xml:space="preserve">
+    <value>ИСТОРИЯТА ЗАД BAGHEERA'S DREAM</value>
+  </data>
+  <data name="HeroHeading" xml:space="preserve">
+    <value>ЛЮБОВ КЪМ</value>
+  </data>
+  <data name="HeroHeadingHighlight" xml:space="preserve">
+    <value>БРИТАНСКИТЕ КЪСОКОСМЕСТИ КОТКИ</value>
+  </data>
+  <data name="HeroDescription" xml:space="preserve">
+    <value>Повече от развъдник. Страст, изградена около красиви котки, прекрасни характери и любовта, която те внасят в живота ни.</value>
+  </data>
+  <data name="StoryImageAlt" xml:space="preserve">
+    <value>Нашите британски късокосмести котки</value>
+  </data>
+  <data name="StoryCaptionNumber" xml:space="preserve">
+    <value>01 — НАШАТА ИСТОРИЯ</value>
+  </data>
+  <data name="StoryEyebrow" xml:space="preserve">
+    <value>ЗАПОЗНАЙТЕ СЕ С НАС</value>
+  </data>
+  <data name="StoryHeading" xml:space="preserve">
+    <value>КАК СЕ РОДИ</value>
+  </data>
+  <data name="StoryHeadingHighlight" xml:space="preserve">
+    <value>BAGHEERA'S DREAM</value>
+  </data>
+  <data name="StoryDescription" xml:space="preserve">
+    <value>Преди дванадесет години моето пътешествие в прекрасния свят на британските късокосмести котки започна само с две котки и сърце, изпълнено с любов към породата. Това, което започна като малка страст, постепенно се превърна в нещо много по-голямо – семейство, житейски ангажимент и дом, изпълнен с красиви котки, всяка със собствен характер и специално място в сърцето ми.</value>
+  </data>
+  <data name="PhilosophyEyebrow" xml:space="preserve">
+    <value>КАКВО Е ВАЖНО ЗА НАС</value>
+  </data>
+  <data name="PhilosophyHeading" xml:space="preserve">
+    <value>НАШАТА</value>
+  </data>
+  <data name="PhilosophyHeadingHighlight" xml:space="preserve">
+    <value>ФИЛОСОФИЯ</value>
+  </data>
+  <data name="PhilosophyDescription" xml:space="preserve">
+    <value>Ценностите, които ръководят всичко, което правим.</value>
+  </data>
+  <data name="LoveCareTitle" xml:space="preserve">
+    <value>Любов и грижа</value>
+  </data>
+  <data name="LoveCareDescription" xml:space="preserve">
+    <value>Всяка котка заслужава обич, внимание и грижовна среда.</value>
+  </data>
+  <data name="HealthWellbeingTitle" xml:space="preserve">
+    <value>Здраве и благополучие</value>
+  </data>
+  <data name="HealthWellbeingDescription" xml:space="preserve">
+    <value>Здравето и доброто състояние на нашите котки винаги са на първо място.</value>
+  </data>
+  <data name="ResponsibleBreedingTitle" xml:space="preserve">
+    <value>Отговорно развъждане</value>
+  </data>
+  <data name="ResponsibleBreedingDescription" xml:space="preserve">
+    <value>Вярваме в обмислените решения и отговорните практики при развъждането.</value>
+  </data>
+  <data name="HappyFamiliesTitle" xml:space="preserve">
+    <value>Щастливи семейства</value>
+  </data>
+  <data name="HappyFamiliesDescription" xml:space="preserve">
+    <value>Нашето желание е всяко котенце да открие любящ дом, в който да остане завинаги.</value>
+  </data>
+  <data name="HappyFamiliesLink" xml:space="preserve">
+    <value>ОТКРИЙТЕ НАШИТЕ ЩАСТЛИВИ СЕМЕЙСТВА</value>
+  </data>
+  <data name="BreedEyebrow" xml:space="preserve">
+    <value>ЗАПОЗНАЙТЕ СЕ С НАС</value>
+  </data>
+  <data name="BreedHeading" xml:space="preserve">
+    <value>ЕДНО СЕМЕЙСТВО, ВСЯКА</value>
+  </data>
+  <data name="BreedHeadingHighlight" xml:space="preserve">
+    <value>КОТКА Е ОБИЧАНА</value>
+  </data>
+  <data name="BreedDescription" xml:space="preserve">
+    <value>Днес нашият развъдник е дом на голямо семейство от котки за разплод и домашни любимци. За мен всяка котка е важна, независимо дали участва в развъдната програма, или просто се радва на заслужения си живот като обичан член на семейството.</value>
+  </data>
+  <data name="BreedImageAlt" xml:space="preserve">
+    <value>Нашите британски късокосмести котки</value>
+  </data>
+  <data name="BreedImageCaption" xml:space="preserve">
+    <value>Изложение на Felidae e.V. през август 2024 г. в Десау-Рослау, Германия.</value>
+  </data>
+  <data name="BreedImageDay" xml:space="preserve">
+    <value>ДЕН 2</value>
+  </data>
+  <data name="CtaEyebrow" xml:space="preserve">
+    <value>ДОБРЕ ДОШЛИ В НАШИЯ СВЯТ</value>
+  </data>
+  <data name="CtaHeading" xml:space="preserve">
+    <value>ОТКРИЙТЕ СВЕТА НА</value>
+  </data>
+  <data name="CtaHeadingHighlight" xml:space="preserve">
+    <value>BAGHEERA'S DREAM</value>
+  </data>
+  <data name="CtaDescription" xml:space="preserve">
+    <value>Каним ви да се запознаете с нашите красиви котки и да откриете малките съкровища, които правят семейството ни специално.</value>
+  </data>
+  <data name="CtaButton" xml:space="preserve">
+    <value>РАЗГЛЕДАЙТЕ НАШИТЕ КОТИЛА</value>
+  </data>
+</root>

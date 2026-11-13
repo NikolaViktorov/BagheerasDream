@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Eyebrow" xml:space="preserve">
+    <value>WHAT MAKES US DIFFERENT</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>MORE THAN JUST</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>BREEDING</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>At Bagheera's Dream, we believe that raising beautiful cats begins with love, responsibility and a genuine understanding of their needs.</value>
+  </data>
+  <data name="StoryLink" xml:space="preserve">
+    <value>DISCOVER OUR PHILOSOPHY</value>
+  </data>
+  <data name="LoveCareTitle" xml:space="preserve">
+    <value>Love &amp; Care</value>
+  </data>
+  <data name="LoveCareDescription" xml:space="preserve">
+    <value>Every cat deserves a loving environment, daily attention and genuine care.</value>
+  </data>
+  <data name="ResponsibleBreedingTitle" xml:space="preserve">
+    <value>Responsible Breeding</value>
+  </data>
+  <data name="ResponsibleBreedingDescription" xml:space="preserve">
+    <value>We believe in thoughtful breeding, respect for the breed and responsible decisions.</value>
+  </data>
+  <data name="HealthWellbeingTitle" xml:space="preserve">
+    <value>Health &amp; Wellbeing</value>
+  </data>
+  <data name="HealthWellbeingDescription" xml:space="preserve">
+    <value>The health and wellbeing of our cats should always come first.</value>
+  </data>
+  <data name="LovingHomeTitle" xml:space="preserve">
+    <value>A Loving Home</value>
+  </data>
+  <data name="LovingHomeDescription" xml:space="preserve">
+    <value>We want every kitten to have the opportunity to grow up in a safe and loving home.</value>
+  </data>
+  <data name="FooterPromise" xml:space="preserve">
+    <value>OUR VALUES, OUR PROMISE</value>
+  </data>
+  <data name="FooterBrand" xml:space="preserve">
+    <value>BAGHEERA'S DREAM · BRITISH SHORTHAIR</value>
+  </data>
+</root>

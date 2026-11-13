@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Eyebrow" xml:space="preserve">
+    <value>WAS UNS BESONDERS MACHT</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>MEHR ALS NUR</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>ZUCHT</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Bei Bagheera's Dream sind wir überzeugt, dass die Aufzucht wunderschöner Katzen mit Liebe, Verantwortung und einem echten Verständnis für ihre Bedürfnisse beginnt.</value>
+  </data>
+  <data name="StoryLink" xml:space="preserve">
+    <value>ENTDECKEN SIE UNSERE PHILOSOPHIE</value>
+  </data>
+  <data name="LoveCareTitle" xml:space="preserve">
+    <value>Liebe &amp; Fürsorge</value>
+  </data>
+  <data name="LoveCareDescription" xml:space="preserve">
+    <value>Jede Katze verdient ein liebevolles Umfeld, tägliche Aufmerksamkeit und echte Fürsorge.</value>
+  </data>
+  <data name="ResponsibleBreedingTitle" xml:space="preserve">
+    <value>Verantwortungsvolle Zucht</value>
+  </data>
+  <data name="ResponsibleBreedingDescription" xml:space="preserve">
+    <value>Wir glauben an eine durchdachte Zucht, Respekt vor der Rasse und verantwortungsvolle Entscheidungen.</value>
+  </data>
+  <data name="HealthWellbeingTitle" xml:space="preserve">
+    <value>Gesundheit &amp; Wohlbefinden</value>
+  </data>
+  <data name="HealthWellbeingDescription" xml:space="preserve">
+    <value>Die Gesundheit und das Wohlbefinden unserer Katzen stehen immer an erster Stelle.</value>
+  </data>
+  <data name="LovingHomeTitle" xml:space="preserve">
+    <value>Ein liebevolles Zuhause</value>
+  </data>
+  <data name="LovingHomeDescription" xml:space="preserve">
+    <value>Wir möchten, dass jedes Kätzchen die Möglichkeit hat, in einem sicheren und liebevollen Zuhause aufzuwachsen.</value>
+  </data>
+  <data name="FooterPromise" xml:space="preserve">
+    <value>UNSERE WERTE, UNSER VERSPRECHEN</value>
+  </data>
+  <data name="FooterBrand" xml:space="preserve">
+    <value>BAGHEERA'S DREAM · BRITISCH KURZHAAR</value>
+  </data>
+</root>

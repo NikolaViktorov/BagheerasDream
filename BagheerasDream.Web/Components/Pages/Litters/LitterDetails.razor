@@ -1,103 +1,86 @@
 ﻿@page "/litters/{Id:guid}"
+@using System.Globalization
 @using BagheerasDream.Application.Interfaces
 @using BagheerasDream.Application.DTOs.Litters
 @using BagheerasDream.Web.Components.Shared.Litters
 
 @inject ILittersService LittersService
+@inject IStringLocalizer<LitterDetails> Localizer
 
-<PageTitle>@(CurrentLitter?.Name ?? "Litter Details") | BagheerasDream</PageTitle>
+<PageTitle>@(CurrentLitter?.Name ?? Localizer["PageTitle"]) | Bagheera's Dream</PageTitle>
 
 @if (IsLoading)
 {
     <div class="litter-not-found">
-        <h1>Loading litter...</h1>
+        <h1>@Localizer["Loading"]</h1>
     </div>
 }
 else if (CurrentLitter is null)
 {
     <div class="litter-not-found">
-        <h1>Litter not found.</h1>
-        <a href="/litters">← BACK TO OUR LITTERS</a>
+        <h1>@Localizer["NotFound"]</h1>
+        <a href="/litters">← @Localizer["BackToLitters"]</a>
     </div>
 }
 else
 {
     <section class="litter-details-page">
 
-        <!-- HERO -->
-
         <header class="litter-details-header">
-
             <div class="litter-breadcrumb">
-                <a href="/">Home</a>
+                <a href="/">@Localizer["Home"]</a>
                 <span>/</span>
-                <a href="/litters">Our Litters</a>
+                <a href="/litters">@Localizer["OurLitters"]</a>
                 <span>/</span>
                 <span>@CurrentLitter.Name</span>
             </div>
 
-            <span class="section-eyebrow">THE NEXT GENERATION</span>
+            <span class="section-eyebrow">@Localizer["HeroEyebrow"]</span>
 
             <h1>@CurrentLitter.Name<span>.</span></h1>
 
             <p>
-                Born on @CurrentLitter.Birthday.ToString("dd MMMM yyyy")
+                @Localizer["BornOn"] @CurrentLitter.Birthday.ToString("dd MMMM yyyy", CultureInfo.CurrentCulture)
             </p>
 
             <div class="litter-summary">
-                <span>@CurrentLitter.Kittens.Count LITTLE ONES</span>
-                <span>RAISED WITH LOVE & CARE</span>
+                <span>@Localizer["LittleOnesCount", CurrentLitter.Kittens.Count]</span>
+                <span>@Localizer["RaisedWithLove"]</span>
             </div>
-
         </header>
 
-        <!-- KITTENS -->
-
         <section class="litter-kittens-section">
-
             <div class="litter-section-heading">
-                <span class="section-eyebrow">MEET THE LITTLE ONES</span>
-                <h2>OUR <span>KITTENS</span></h2>
-                <p>
-                    Each one has its own personality and a special place in our family.
-                </p>
+                <span class="section-eyebrow">@Localizer["MeetLittleOnes"]</span>
+                <h2>@Localizer["Our"] <span>@Localizer["Kittens"]</span></h2>
+                <p>@Localizer["KittensDescription"]</p>
             </div>
 
             @if (CurrentLitter.Kittens.Any())
             {
                 <div class="kittens-grid">
-
                     @foreach (var kitten in CurrentLitter.Kittens)
                     {
                         <KittenCard Kitten="kitten" />
                     }
-
                 </div>
             }
             else
             {
                 <div class="empty-kittens">
                     <span>♡</span>
-                    <p>More little stories coming soon.</p>
+                    <p>@Localizer["EmptyKittens"]</p>
                 </div>
             }
-
         </section>
-
-        <!-- LITTER GALLERY -->
 
         @if (OrderedGalleryImages.Any())
         {
             <section class="cat-gallery-section">
-
                 <div class="cat-gallery-header">
-                    <span class="section-eyebrow">PHOTO COLLECTION</span>
-
-                    <h2>LITTLE <span>MOMENTS</span></h2>
-
-                    <p>
-                        Discover beautiful memories from @CurrentLitter.Name's life.
-                    </p>
+                    <span class="section-eyebrow">@Localizer["PhotoCollection"]</span>
+                    <h2>@Localizer["Little"] <span>@Localizer["Moments"]</span></h2>
+                    <p>@Localizer["GalleryDescription", CurrentLitter.Name]</p>
                 </div>
 
                 <div class="cat-gallery">
@@ -105,8 +88,7 @@ else
                     {
                         <div class="cat-gallery-item"
                              @onclick="() => OpenLightbox(image.LitterImageId)">
-                            <img src="@image.ImagePath"
-                                 alt="@CurrentLitter.Name" />
+                            <img src="@image.ImagePath" alt="@CurrentLitter.Name" />
                         </div>
                     }
                 </div>
@@ -114,7 +96,6 @@ else
                 @if (IsLightboxOpen)
                 {
                     <div class="lightbox-overlay" @onclick="CloseLightbox">
-
                         <button class="lightbox-close"
                                 @onclick:preventDefault="true"
                                 @onclick:stopPropagation="true"
@@ -123,6 +104,7 @@ else
                         </button>
 
                         <button class="lightbox-arrow lightbox-prev"
+                                aria-label="@Localizer["PreviousImage"]"
                                 @onclick:stopPropagation="true"
                                 @onclick="PreviousImage">
                             &#10094;
@@ -134,6 +116,7 @@ else
                              @onclick:stopPropagation="true" />
 
                         <button class="lightbox-arrow lightbox-next"
+                                aria-label="@Localizer["NextImage"]"
                                 @onclick:stopPropagation="true"
                                 @onclick="NextImage">
                             &#10095;
@@ -142,27 +125,20 @@ else
                         <div class="lightbox-counter">
                             @(SelectedImageIndex + 1) / @OrderedGalleryImages.Count
                         </div>
-
                     </div>
                 }
-
             </section>
         }
 
-        <!-- PARENTS -->
-
         <section class="litter-parents-section">
-
             <div class="litter-section-heading">
-                <span class="section-eyebrow">WHERE IT ALL BEGINS</span>
-                <h2>MEET THE <span>PARENTS</span></h2>
+                <span class="section-eyebrow">@Localizer["WhereItBegins"]</span>
+                <h2>@Localizer["MeetThe"] <span>@Localizer["Parents"]</span></h2>
             </div>
 
             <div class="litter-parents-grid">
-
-                <!-- MOTHER -->
                 <div class="litter-parent">
-                    <span>MOTHER</span>
+                    <span>@Localizer["Mother"]</span>
 
                     @if (!string.IsNullOrWhiteSpace(CurrentLitter.Mother.ProfileImage))
                     {
@@ -194,9 +170,8 @@ else
                     <p>Bagheera's Dream *DE</p>
                 </div>
 
-                <!-- FATHER -->
                 <div class="litter-parent">
-                    <span>FATHER</span>
+                    <span>@Localizer["Father"]</span>
 
                     @if (CurrentLitter.Father is not null)
                     {
@@ -242,46 +217,35 @@ else
                     }
                     else
                     {
-                        <h3>Not specified</h3>
+                        <h3>@Localizer["NotSpecified"]</h3>
                     }
                 </div>
-
             </div>
-
         </section>
-
-
-        <!-- DESCRIPTION -->
 
         @if (!string.IsNullOrWhiteSpace(CurrentLitter.Description))
         {
             <section class="litter-description-section">
-                <span class="section-eyebrow">OUR STORY</span>
-                <h2>A LITTLE <span>ABOUT THEM</span></h2>
+                <span class="section-eyebrow">@Localizer["OurStory"]</span>
+                <h2>@Localizer["ALittle"] <span>@Localizer["AboutThem"]</span></h2>
                 <p>@CurrentLitter.Description</p>
             </section>
         }
 
-
         <div class="litter-details-bottom">
-            <a href="/litters">← BACK TO OUR LITTERS</a>
-            <span>RAISED WITH LOVE & CARE</span>
+            <a href="/litters">← @Localizer["BackToLitters"]</a>
+            <span>@Localizer["RaisedWithLove"]</span>
         </div>
-
     </section>
 }
-
 
 @code {
     [Parameter]
     public Guid Id { get; set; }
 
     private LitterDetailsDto? CurrentLitter;
-
     private bool IsLoading = true;
-
     private bool IsLightboxOpen { get; set; }
-
     private int SelectedImageIndex { get; set; }
 
     private List<LitterGalleryImageDto> OrderedGalleryImages =>
@@ -301,10 +265,7 @@ else
             IsLightboxOpen = true;
     }
 
-    private void CloseLightbox()
-    {
-        IsLightboxOpen = false;
-    }
+    private void CloseLightbox() => IsLightboxOpen = false;
 
     private void PreviousImage()
     {

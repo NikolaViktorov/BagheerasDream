@@ -1,61 +1,49 @@
 ﻿@page "/home/aboutus"
+@inject IStringLocalizer<AboutUs> Localizer
 
-<PageTitle>About Us | Bagheera's Dream</PageTitle>
+<PageTitle>@Localizer["PageTitle"]</PageTitle>
 
 <HeadContent>
-    <meta name="description"
-          content="Erfahren Sie mehr über Bagheera's Dream, unsere Leidenschaft für British Shorthair Katzen, unsere Zuchtphilosophie und unsere Liebe zu dieser besonderen Rasse." />
-
+    <meta name="description" content="@Localizer["MetaDescription"]" />
     <link rel="canonical" href="https://bagheerasdream.de/home/aboutus" />
 
-    <meta property="og:title"
-          content="About Us | Bagheera's Dream" />
-
-    <meta property="og:description"
-          content="Discover the story behind Bagheera's Dream, our passion for British Shorthair cats and the values that guide our cattery." />
-
-    <meta property="og:url"
-          content="https://bagheerasdream.de/home/aboutus" />
-
-    <meta property="og:image"
-          content="https://bagheerasdream.de/images/home/2.png" />
-
+    <meta property="og:title" content="@Localizer["OgTitle"]" />
+    <meta property="og:description" content="@Localizer["OgDescription"]" />
+    <meta property="og:url" content="https://bagheerasdream.de/home/aboutus" />
+    <meta property="og:image" content="https://bagheerasdream.de/images/home/2.png" />
     <meta property="og:type" content="website" />
 </HeadContent>
 
 <section class="about-page">
 
     <!-- HERO -->
-
     <header class="about-hero">
-
         <span class="section-eyebrow">
-            THE STORY BEHIND BAGHEERA'S DREAM
+            @Localizer["HeroEyebrow"]
         </span>
 
-        <h1>A LOVE FOR <span>BRITISH SHORTHAIRS</span></h1>
+        <h1>
+            @Localizer["HeroHeading"]
+            <span>@Localizer["HeroHeadingHighlight"]</span>
+        </h1>
 
         <p>
-            More than a cattery. A passion built around beautiful cats,
-            wonderful personalities and the love they bring into our lives.
+            @Localizer["HeroDescription"]
         </p>
-
     </header>
 
 
     <!-- OUR STORY -->
-
     <section class="about-story">
-
         <div class="about-story-visual">
             <div class="about-story-frame">
                 <img src="/images/home/aboutus1.png"
-                     alt="Our British Shorthair cats"
+                     alt="@Localizer["StoryImageAlt"]"
                      class="about-story-photo" />
             </div>
 
             <div class="about-story-caption">
-                <span>01 — OUR STORY</span>
+                <span>@Localizer["StoryCaptionNumber"]</span>
                 <span>BAGHEERA'S DREAM</span>
             </div>
 
@@ -63,165 +51,123 @@
         </div>
 
         <div class="about-story-content">
-
             <span class="section-eyebrow">
-                GET TO KNOW US
+                @Localizer["StoryEyebrow"]
             </span>
 
-            <h2>HOW WE BECAME <span>BAGHEERA'S DREAM</span></h2>
+            <h2>
+                @Localizer["StoryHeading"]
+                <span>@Localizer["StoryHeadingHighlight"]</span>
+            </h2>
 
-            <p> 
-                Twelve years ago, my journey into the wonderful world of British Shorthairs began
-                with just two cats and a heart full of love for the breed. What started as a small
-                passion slowly grew into something much bigger – a family, a lifelong commitment
-                and a home filled with beautiful cats, each with their own personality and place in my heart.
+            <p>
+                @Localizer["StoryDescription"]
             </p>
         </div>
-
     </section>
 
 
     <!-- OUR PHILOSOPHY -->
-
     <section class="about-philosophy">
-
         <div class="philosophy-header">
-
             <span class="section-eyebrow">
-                WHAT MATTERS TO US
+                @Localizer["PhilosophyEyebrow"]
             </span>
 
-            <h2>OUR <span>PHILOSOPHY</span></h2>
+            <h2>
+                @Localizer["PhilosophyHeading"]
+                <span>@Localizer["PhilosophyHeadingHighlight"]</span>
+            </h2>
 
             <p>
-                The values that guide everything we do.
+                @Localizer["PhilosophyDescription"]
             </p>
-
         </div>
-
 
         <div class="philosophy-grid">
-
             <article class="philosophy-card">
-
                 <span class="philosophy-icon">♡</span>
-
-                <h3>Love & Care</h3>
-
-                <p>
-                    Every cat deserves affection, attention
-                    and a caring environment.
-                </p>
-
+                <h3>@Localizer["LoveCareTitle"]</h3>
+                <p>@Localizer["LoveCareDescription"]</p>
             </article>
 
-
             <article class="philosophy-card">
-
                 <span class="philosophy-icon">✧</span>
-
-                <h3>Health & Wellbeing</h3>
-
-                <p>
-                    The health and wellbeing of our cats
-                    always come first.
-                </p>
-
+                <h3>@Localizer["HealthWellbeingTitle"]</h3>
+                <p>@Localizer["HealthWellbeingDescription"]</p>
             </article>
 
-
             <article class="philosophy-card">
-
                 <span class="philosophy-icon">❋</span>
-
-                <h3>Responsible Breeding</h3>
-
-                <p>
-                    We believe in thoughtful decisions
-                    and responsible breeding practices.
-                </p>
-
+                <h3>@Localizer["ResponsibleBreedingTitle"]</h3>
+                <p>@Localizer["ResponsibleBreedingDescription"]</p>
             </article>
 
-
             <article class="philosophy-card">
-
                 <span class="philosophy-icon">♡</span>
-
-                <h3>Happy Families</h3>
-
-                <p>
-                    Our wish is for every kitten to find
-                    a loving and caring forever home.
-                </p>
+                <h3>@Localizer["HappyFamiliesTitle"]</h3>
+                <p>@Localizer["HappyFamiliesDescription"]</p>
 
                 <a href="/happy-families" class="philosophy-link">
-                    DISCOVER OUR HAPPY FAMILIES →
+                    @Localizer["HappyFamiliesLink"] →
                 </a>
-
             </article>
-
         </div>
-
     </section>
 
 
     <!-- OUR BREED -->
-
     <section class="about-breed">
-
         <div class="about-breed-content">
-
             <span class="section-eyebrow">
-                GET TO KNOW US
+                @Localizer["BreedEyebrow"]
             </span>
 
-            <h2>ONE FAMILY, EVERY <span>CAT CHERISHED</span></h2>
+            <h2>
+                @Localizer["BreedHeading"]
+                <span>@Localizer["BreedHeadingHighlight"]</span>
+            </h2>
 
             <p>
-                Today, our cattery is home to a big family of both breeding and non-breeding cats.
-                For me, every cat matters, regardless of whether they are part of the breeding programme
-                or simply enjoying their well-deserved life as beloved family members.
+                @Localizer["BreedDescription"]
             </p>
         </div>
 
         <div class="about-story-visual">
             <div class="about-story-frame">
                 <img src="/images/home/aboutus2.jpg"
-                     alt="Our British Shorthair cats"
+                     alt="@Localizer["BreedImageAlt"]"
                      class="about-story-photo" />
             </div>
 
             <div class="about-story-caption">
-                <span>Felidae e.V. exhibition in August, 2024 in Dessau Rosslau, Germany.</span>
-                <span>DAY 2</span>
+                <span>@Localizer["BreedImageCaption"]</span>
+                <span>@Localizer["BreedImageDay"]</span>
             </div>
 
             <div class="about-story-decoration"></div>
         </div>
-
     </section>
 
 
     <!-- CLOSING CTA -->
-
     <section class="about-cta">
-
         <span class="section-eyebrow">
-            WELCOME TO OUR WORLD
+            @Localizer["CtaEyebrow"]
         </span>
 
-        <h2>DISCOVER THE WORLD OF <span>BAGHEERA'S DREAM</span></h2>
+        <h2>
+            @Localizer["CtaHeading"]
+            <span>@Localizer["CtaHeadingHighlight"]</span>
+        </h2>
 
         <p>
-            We invite you to meet our beautiful cats
-            and discover the little ones who make our family special.
+            @Localizer["CtaDescription"]
         </p>
 
         <a href="/litters" class="about-cta-button">
-            DISCOVER OUR LITTERS
+            @Localizer["CtaButton"]
         </a>
-
     </section>
 
 </section>

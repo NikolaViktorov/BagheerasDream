@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Katzendetails</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Katzendetails werden geladen...</value>
+  </data>
+  <data name="LoadError" xml:space="preserve">
+    <value>Beim Laden der Katzeninformationen ist ein Fehler aufgetreten.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Katze nicht gefunden.</value>
+  </data>
+  <data name="BackToCats" xml:space="preserve">
+    <value>ZURÜCK ZU UNSEREN KATZEN</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="OurMales" xml:space="preserve">
+    <value>Unsere Kater</value>
+  </data>
+  <data name="OurFemales" xml:space="preserve">
+    <value>Unsere weiblichen Katzen</value>
+  </data>
+  <data name="PhotoComingSoon" xml:space="preserve">
+    <value>FOTO FOLGT IN KÜRZE</value>
+  </data>
+  <data name="BreedLabel" xml:space="preserve">
+    <value>RASSE</value>
+  </data>
+  <data name="ColorLabel" xml:space="preserve">
+    <value>FARBE</value>
+  </data>
+  <data name="BirthdayLabel" xml:space="preserve">
+    <value>GEBURTSTAG</value>
+  </data>
+  <data name="AgeLabel" xml:space="preserve">
+    <value>ALTER</value>
+  </data>
+  <data name="GenderLabel" xml:space="preserve">
+    <value>GESCHLECHT</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Männlich</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Weiblich</value>
+  </data>
+  <data name="MeetOurLady" xml:space="preserve">
+    <value>LERNEN SIE UNSERE DAME KENNEN</value>
+  </data>
+  <data name="MeetOurGentleman" xml:space="preserve">
+    <value>LERNEN SIE UNSEREN GENTLEMAN KENNEN</value>
+  </data>
+  <data name="PedigreeEyebrow" xml:space="preserve">
+    <value>FAMILIENHERKUNFT</value>
+  </data>
+  <data name="PedigreeHeadingSuffix" xml:space="preserve">
+    <value>Stammbaum.</value>
+  </data>
+  <data name="PedigreeDescription" xml:space="preserve">
+    <value>Entdecken Sie die Familiengeschichte und Abstammung dieser Katze.</value>
+  </data>
+  <data name="PedigreeImageAlt" xml:space="preserve">
+    <value>Stammbaum von {0}</value>
+  </data>
+  <data name="GalleryEyebrow" xml:space="preserve">
+    <value>FOTOSAMMLUNG</value>
+  </data>
+  <data name="GalleryHeading" xml:space="preserve">
+    <value>Ein wenig mehr von</value>
+  </data>
+  <data name="GalleryDescription" xml:space="preserve">
+    <value>Entdecken Sie weitere schöne Momente aus dem Leben dieser Katze.</value>
+  </data>
+  <data name="CloseImage" xml:space="preserve">
+    <value>Bild schließen</value>
+  </data>
+  <data name="PreviousImage" xml:space="preserve">
+    <value>Vorheriges Bild</value>
+  </data>
+  <data name="NextImage" xml:space="preserve">
+    <value>Nächstes Bild</value>
+  </data>
+  <data name="HisFamilyTree" xml:space="preserve">
+    <value>SEIN FAMILIENSTAMMBAUM</value>
+  </data>
+  <data name="HerFamilyTree" xml:space="preserve">
+    <value>IHR FAMILIENSTAMMBAUM</value>
+  </data>
+  <data name="MeetHis" xml:space="preserve">
+    <value>Lernen Sie seine</value>
+  </data>
+  <data name="MeetHer" xml:space="preserve">
+    <value>Lernen Sie ihre</value>
+  </data>
+  <data name="ParentsHeadingSuffix" xml:space="preserve">
+    <value>Eltern kennen.</value>
+  </data>
+  <data name="ParentsDescription" xml:space="preserve">
+    <value>Jede wunderschöne Katze hat ihre eigene Geschichte. Entdecken Sie die Herkunft dieser Katze.</value>
+  </data>
+  <data name="Father" xml:space="preserve">
+    <value>Vater</value>
+  </data>
+  <data name="Mother" xml:space="preserve">
+    <value>Mutter</value>
+  </data>
+  <data name="FamilyHistory" xml:space="preserve">
+    <value>FAMILIENGESCHICHTE</value>
+  </data>
+  <data name="NoFamilyRecordsHeading" xml:space="preserve">
+    <value>Noch keine Familieneinträge vorhanden.</value>
+  </data>
+  <data name="NoFamilyRecordsDescription" xml:space="preserve">
+    <value>Wir ergänzen noch die Familiengeschichte unserer Katzen. Schauen Sie bald wieder vorbei und entdecken Sie ihre Herkunft.</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>MIT LIEBE UND FÜRSORGE AUFGEZOGEN</value>
+  </data>
+  <data name="AgeMonthsOne" xml:space="preserve">
+    <value>1 Monat alt</value>
+  </data>
+  <data name="AgeMonthsMany" xml:space="preserve">
+    <value>{0} Monate alt</value>
+  </data>
+  <data name="AgeYearsOne" xml:space="preserve">
+    <value>1 Jahr alt</value>
+  </data>
+  <data name="AgeYearsMany" xml:space="preserve">
+    <value>{0} Jahre alt</value>
+  </data>
+</root>

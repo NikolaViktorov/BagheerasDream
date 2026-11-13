@@ -2,44 +2,41 @@
 @using BagheerasDream.Application.Interfaces
 @using System.Globalization
 @inject ILittersService LittersService
+@inject IStringLocalizer<LatestLitters> Localizer
 
 <section class="latest-litters-section">
 
     <div class="litters-container">
 
-        <!-- Section Header -->
         <div class="litters-header">
 
             <div class="litters-heading">
 
                 <span class="section-eyebrow">
-                    THE NEXT GENERATION
+                    @Localizer["Eyebrow"]
                 </span>
 
                 <h2>
-                    OUR LITTLE <span>ONES</span>
+                    @Localizer["Heading"] <span>@Localizer["HeadingHighlight"]</span>
                 </h2>
 
                 <p>
-                    Discover our litters and follow the
-                    first steps of our little British Shorthairs.
+                    @Localizer["Description"]
                 </p>
 
             </div>
 
             <a href="/litters" class="litters-view-all">
-                VIEW ALL LITTERS
+                @Localizer["ViewAllLitters"]
                 <span>→</span>
             </a>
 
         </div>
 
-
-        <!-- Litter Cards -->
         <div class="litters-grid">
             @if (IsLoading)
             {
-                <p>Loading litters...</p>
+                <p>@Localizer["LoadingLitters"]</p>
             }
             else if (LittersList.Any())
             {
@@ -49,8 +46,8 @@
 
                         <a href="@($"/litters/{litter.LitterId}")" class="litter-image-wrapper">
                             <img src="@(string.IsNullOrWhiteSpace(litter.PhotoOfLitter)
-                                            ? "/images/placeholder.jpg"
-                                            : litter.PhotoOfLitter)"
+                                                                        ? "/images/placeholder.jpg"
+                                                                        : litter.PhotoOfLitter)"
                                  alt="@litter.Name"
                                  class="litter-image" />
                         </a>
@@ -64,7 +61,7 @@
                                 </span>
 
                                 <span class="litter-date">
-                                    @litter.Birthday.ToString("dd MMM yyyy", CultureInfo.InvariantCulture)
+                                    @litter.Birthday.ToString("dd MMM yyyy", CultureInfo.CurrentCulture)
                                 </span>
 
                             </div>
@@ -74,11 +71,11 @@
                             <div class="litter-card-bottom">
 
                                 <span class="litter-count">
-                                    @litter.KittenCount @(litter.KittenCount > 1 ? "Kittens" : "Kitten")
+                                    @litter.KittenCount @GetKittenCountLabel(litter.KittenCount)
                                 </span>
 
                                 <a href="@($"/litters/{litter.LitterId}")" class="litter-details">
-                                    VIEW LITTER
+                                    @Localizer["ViewLitter"]
                                     <span>→</span>
                                 </a>
 
@@ -91,25 +88,23 @@
             }
             else if (ErrorMessage is not null)
             {
-                <p>@ErrorMessage</p>
+                <p>@Localizer["LoadError"]</p>
             }
             else
             {
                 <div class="empty-litters">
                     <span>♡</span>
-                    <h2>Beautiful moments are coming.</h2>
-                    <p>We currently have no litters to display.</p>
+                    <h2>@Localizer["EmptyHeading"]</h2>
+                    <p>@Localizer["EmptyDescription"]</p>
                 </div>
             }
         </div>
 
-
-        <!-- Bottom Decoration -->
         <div class="litters-footer">
 
-            <span>EVERY LITTLE PAW HAS A STORY</span>
+            <span>@Localizer["FooterFirst"]</span>
 
-            <span>RAISED WITH LOVE & CARE</span>
+            <span>@Localizer["FooterSecond"]</span>
 
         </div>
 
@@ -124,6 +119,18 @@
     private bool IsLoading = true;
 
     private string? ErrorMessage;
+
+    private string GetKittenCountLabel(int count)
+    {
+        var language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+
+        return language switch
+        {
+            "bg" => count == 1 ? Localizer["KittenSingular"] : Localizer["KittenPlural"],
+            "de" => count == 1 ? Localizer["KittenSingular"] : Localizer["KittenPlural"],
+            _ => count == 1 ? Localizer["KittenSingular"] : Localizer["KittenPlural"]
+        };
+    }
 
     protected override async Task OnInitializedAsync()
     {

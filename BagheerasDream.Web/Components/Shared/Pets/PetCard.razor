@@ -1,4 +1,6 @@
-﻿<article class="pet-card">
+﻿@inject IStringLocalizer<PetCard> Localizer
+
+<article class="pet-card">
 
     <div class="pet-card-image">
 
@@ -10,7 +12,7 @@
         {
             <div class="pet-image-placeholder">
                 <span>♡</span>
-                <p>Photo coming soon</p>
+                <p>@Localizer["PhotoComingSoon"]</p>
             </div>
         }
 
@@ -30,7 +32,7 @@
             <span>@Age</span>
 
             <span class="pet-card-gender">
-                @Gender
+                @Localizer[Gender]
             </span>
 
         </div>
@@ -57,7 +59,7 @@
         get
         {
             var today = DateOnly.FromDateTime(DateTime.Today);
-            var birthday = Birthday;
+            var birthday = DateOnly.FromDateTime(Birthday);
 
             var years = today.Year - birthday.Year;
             var months = today.Month - birthday.Month;
@@ -71,10 +73,17 @@
                 months += 12;
             }
 
-            if (years == 0)
-                return months == 1 ? "1 month old" : $"{months} months old";
+            if (years < 0)
+                return string.Empty;
 
-            return years == 1 ? "1 year old" : $"{years} years old";
+            if (years == 0)
+                return months == 1
+                    ? Localizer["AgeOneMonth"].Value
+                    : Localizer["AgeMonths", months].Value;
+
+            return years == 1
+                ? Localizer["AgeOneYear"].Value
+                : Localizer["AgeYears", years].Value;
         }
     }
 }

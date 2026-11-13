@@ -1,55 +1,43 @@
 ﻿@page "/litters"
+
 @using BagheerasDream.Application.Interfaces
+@using BagheerasDream.Application.DTOs.Litters
 @using BagheerasDream.Application.DTOs.Litters
 @using BagheerasDream.Web.Components.Shared.Litters
 
 @inject ILittersService LittersService
+@inject IStringLocalizer<Litters> Localizer
 
-<PageTitle>Our Litters | Bagheera's Dream</PageTitle>
+<PageTitle>@Localizer["PageTitle"]</PageTitle>
 
 <HeadContent>
-    <meta name="description"
-          content="Entdecken Sie die aktuellen und vergangenen Würfe unserer British Shorthair Katzenzucht. Erfahren Sie mehr über unsere Kitten bei Bagheera's Dream." />
-
+    <meta name="description" content="@Localizer["MetaDescription"]" />
     <link rel="canonical" href="https://bagheerasdream.de/litters" />
-
-    <meta property="og:title"
-          content="British Shorthair Kitten und Würfe | Bagheera's Dream" />
-
-    <meta property="og:description"
-          content="Informieren Sie sich über unsere British Shorthair Würfe und entdecken Sie unsere Kitten." />
-
-    <meta property="og:url"
-          content="https://bagheerasdream.de/litters" />
-
-    <meta property="og:image"
-          content="https://bagheerasdream.de/images/home/5.jpg" />
-
+    <meta property="og:title" content="@Localizer["OgTitle"]" />
+    <meta property="og:description" content="@Localizer["OgDescription"]" />
+    <meta property="og:url" content="https://bagheerasdream.de/litters" />
+    <meta property="og:image" content="https://bagheerasdream.de/images/home/5.jpg" />
     <meta property="og:type" content="website" />
 </HeadContent>
 
 <section class="litters-page">
 
     <header class="litters-header">
-
         <span class="section-eyebrow">
-            THE NEWEST MEMBERS OF OUR FAMILY - 
+            @Localizer["HeaderEyebrow"]
         </span>
 
-        <h1>OUR <span>LITTERS</span></h1>
+        <h1>@Localizer["Heading"] <span>@Localizer["HeadingHighlight"]</span></h1>
 
         <p>
-            Discover the little ones raised with love, care
-            and dedication in our family.
+            @Localizer["Description"]
         </p>
-
     </header>
-
 
     <div class="litters-container">
         @if (IsLoading)
         {
-            <p>Loading litters...</p>
+            <p>@Localizer["Loading"]</p>
         }
         else if (LittersList.Any())
         {
@@ -64,15 +52,14 @@
         {
             <div class="empty-litters">
                 <span>♡</span>
-                <h2>Beautiful moments are coming.</h2>
-                <p>We currently have no litters to display.</p>
+                <h2>@Localizer["EmptyHeading"]</h2>
+                <p>@Localizer["EmptyDescription"]</p>
             </div>
         }
     </div>
 
-
     <div class="litters-bottom">
-        <span>RAISED WITH LOVE & CARE</span>
+        <span>@Localizer["FooterNote"]</span>
     </div>
 
 </section>

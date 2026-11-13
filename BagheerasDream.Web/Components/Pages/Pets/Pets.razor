@@ -6,57 +6,40 @@
 @using BagheerasDream.Web.Components.Shared.Pets
 
 @inject IPetsService PetsService
+@inject IStringLocalizer<Pets> Localizer
 
-<PageTitle>Our Pets | Bagheera's Dream</PageTitle>
+<PageTitle>@Localizer["PageTitle"]</PageTitle>
 
 <HeadContent>
-    <meta name="description"
-          content="Meet our beloved British Shorthair family pets. Discover their personalities, beautiful colors and unique charm at Bagheera's Dream." />
-
+    <meta name="description" content="@Localizer["MetaDescription"]" />
     <link rel="canonical" href="https://bagheerasdream.de/pets" />
-
-    <meta property="og:title"
-          content="Our Beloved Pets | Bagheera's Dream" />
-
-    <meta property="og:description"
-          content="Meet the beloved British Shorthair pets who are part of our family." />
-
-    <meta property="og:url"
-          content="https://bagheerasdream.de/pets" />
-
-    <meta property="og:image"
-          content="https://bagheerasdream.de/images/home/5.jpg" />
-
+    <meta property="og:title" content="@Localizer["OgTitle"]" />
+    <meta property="og:description" content="@Localizer["OgDescription"]" />
+    <meta property="og:url" content="https://bagheerasdream.de/pets" />
+    <meta property="og:image" content="https://bagheerasdream.de/images/home/5.jpg" />
     <meta property="og:type" content="website" />
 </HeadContent>
 
 <section class="pets-page">
 
-    <!-- HEADER -->
     <div class="pets-header">
-        <span class="section-eyebrow">THE BELOVED MEMBERS OF OUR FAMILY</span>
+        <span class="section-eyebrow">@Localizer["HeaderEyebrow"]</span>
 
         <h1>
-            OUR <span>PETS</span>
+            @Localizer["Heading"] <span>@Localizer["HeadingHighlight"]</span>
         </h1>
 
         <p>
-            Our family is not made up of cats alone! We also have a sweet little Toy Poodle girl who 
-            gets along great with our feline friends. They have formed the sweetest friendships and love playing together every day.
-
-            Here, you will also meet some of our older cats, who may have retired from breeding but 
-            will forever remain part of our family. For us, love has no expiry date – once family, 
-            always family, and we will cherish and care for them until the very end.
+            @Localizer["Description"]
         </p>
     </div>
 
-    <!-- PETS GRID -->
     <div class="pets-container">
 
         @if (IsLoading)
         {
             <div class="empty-pets">
-                <p>Loading...</p>
+                <p>@Localizer["Loading"]</p>
             </div>
         }
         else if (PetsList.Any())
@@ -64,30 +47,28 @@
             <div class="pets-grid">
                 @foreach (var pet in PetsList)
                 {
-                    <PetCard
-                        Name="@pet.Name"
-                        Birthday="@pet.Birthday.ToDateTime(TimeOnly.MinValue)"
-                        Color="@pet.Color.ToDisplayName()"
-                        Breed="@pet.Breed.ToDisplayName()"
-                        Gender="@pet.Gender.ToString()"
-                        ProfileImage="@pet.ProfileImage" />
+                    <PetCard Name="@pet.Name"
+                             Birthday="@pet.Birthday.ToDateTime(TimeOnly.MinValue)"
+                             Color="@pet.Color.ToDisplayName()"
+                             Breed="@pet.Breed.ToDisplayName()"
+                             Gender="@pet.Gender.ToString()"
+                             ProfileImage="@pet.ProfileImage" />
                 }
             </div>
         }
         else
         {
             <div class="empty-pets">
-                <h3>No pets to display yet.</h3>
-                <p>Our family is growing. Check back soon.</p>
+                <h3>@Localizer["EmptyHeading"]</h3>
+                <p>@Localizer["EmptyDescription"]</p>
             </div>
         }
 
     </div>
 
-    <!-- FOOTER DECORATION -->
     <div class="pets-bottom">
-        <span>BRITISH SHORTHAIR</span>
-        <span>FOREVER PART OF OUR FAMILY</span>
+        <span>@Localizer["FooterBreed"]</span>
+        <span>@Localizer["FooterNote"]</span>
     </div>
 
 </section>

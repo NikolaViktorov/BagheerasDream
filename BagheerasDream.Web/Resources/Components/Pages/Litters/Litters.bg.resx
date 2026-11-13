@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Нашите котила | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Разгледайте настоящите и миналите котила на нашия развъдник за британски късокосмести котки. Научете повече за котенцата на Bagheera's Dream.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Котенца и котила британска късокосместа | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Разгледайте нашите котила и се запознайте с малките британски късокосмести котета.</value>
+  </data>
+  <data name="HeaderEyebrow" xml:space="preserve">
+    <value>НАЙ-НОВИТЕ ЧЛЕНОВЕ НА НАШЕТО СЕМЕЙСТВО</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>НАШИТЕ</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>КОТИЛА</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Открийте малките ни любимци, отгледани с много любов, грижа и отдаденост в нашето семейство.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Котилата се зареждат...</value>
+  </data>
+  <data name="EmptyHeading" xml:space="preserve">
+    <value>Очакват ни красиви моменти.</value>
+  </data>
+  <data name="EmptyDescription" xml:space="preserve">
+    <value>В момента нямаме котила за показване.</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>ОТГЛЕДАНИ С ЛЮБОВ И ГРИЖА</value>
+  </data>
+</root>

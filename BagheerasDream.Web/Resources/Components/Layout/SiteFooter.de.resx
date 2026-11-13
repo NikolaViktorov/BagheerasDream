@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="BrandSubtitle" xml:space="preserve">
+    <value>BRITISCH KURZHAAR</value>
+  </data>
+  <data name="BrandDescription" xml:space="preserve">
+    <value>Eine Welt voller Eleganz, Zuneigung und wundervoller Britisch-Kurzhaar-Katzen.</value>
+  </data>
+  <data name="ExploreHeading" xml:space="preserve">
+    <value>ENTDECKEN</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>Über uns</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="OurCatsHeading" xml:space="preserve">
+    <value>UNSERE KATZEN</value>
+  </data>
+  <data name="OurFemales" xml:space="preserve">
+    <value>Unsere weiblichen Katzen</value>
+  </data>
+  <data name="OurMales" xml:space="preserve">
+    <value>Unsere männlichen Katzen</value>
+  </data>
+  <data name="OurLitters" xml:space="preserve">
+    <value>Unsere Würfe</value>
+  </data>
+  <data name="GetInTouchHeading" xml:space="preserve">
+    <value>KONTAKT</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Kontaktieren Sie uns</value>
+  </data>
+  <data name="RightsReserved" xml:space="preserve">
+    <value>Alle Rechte vorbehalten.</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>MIT LIEBE UND FÜRSORGE AUFGEZOGEN</value>
+  </data>
+</root>

@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>About Us | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Learn more about Bagheera's Dream, our passion for British Shorthair cats, our breeding philosophy and our love for this special breed.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>About Us | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Discover the story behind Bagheera's Dream, our passion for British Shorthair cats and the values that guide our cattery.</value>
+  </data>
+  <data name="HeroEyebrow" xml:space="preserve">
+    <value>THE STORY BEHIND BAGHEERA'S DREAM</value>
+  </data>
+  <data name="HeroHeading" xml:space="preserve">
+    <value>A LOVE FOR</value>
+  </data>
+  <data name="HeroHeadingHighlight" xml:space="preserve">
+    <value>BRITISH SHORTHAIRS</value>
+  </data>
+  <data name="HeroDescription" xml:space="preserve">
+    <value>More than a cattery. A passion built around beautiful cats, wonderful personalities and the love they bring into our lives.</value>
+  </data>
+  <data name="StoryImageAlt" xml:space="preserve">
+    <value>Our British Shorthair cats</value>
+  </data>
+  <data name="StoryCaptionNumber" xml:space="preserve">
+    <value>01 — OUR STORY</value>
+  </data>
+  <data name="StoryEyebrow" xml:space="preserve">
+    <value>GET TO KNOW US</value>
+  </data>
+  <data name="StoryHeading" xml:space="preserve">
+    <value>HOW WE BECAME</value>
+  </data>
+  <data name="StoryHeadingHighlight" xml:space="preserve">
+    <value>BAGHEERA'S DREAM</value>
+  </data>
+  <data name="StoryDescription" xml:space="preserve">
+    <value>Twelve years ago, my journey into the wonderful world of British Shorthairs began with just two cats and a heart full of love for the breed. What started as a small passion slowly grew into something much bigger – a family, a lifelong commitment and a home filled with beautiful cats, each with their own personality and place in my heart.</value>
+  </data>
+  <data name="PhilosophyEyebrow" xml:space="preserve">
+    <value>WHAT MATTERS TO US</value>
+  </data>
+  <data name="PhilosophyHeading" xml:space="preserve">
+    <value>OUR</value>
+  </data>
+  <data name="PhilosophyHeadingHighlight" xml:space="preserve">
+    <value>PHILOSOPHY</value>
+  </data>
+  <data name="PhilosophyDescription" xml:space="preserve">
+    <value>The values that guide everything we do.</value>
+  </data>
+  <data name="LoveCareTitle" xml:space="preserve">
+    <value>Love &amp; Care</value>
+  </data>
+  <data name="LoveCareDescription" xml:space="preserve">
+    <value>Every cat deserves affection, attention and a caring environment.</value>
+  </data>
+  <data name="HealthWellbeingTitle" xml:space="preserve">
+    <value>Health &amp; Wellbeing</value>
+  </data>
+  <data name="HealthWellbeingDescription" xml:space="preserve">
+    <value>The health and wellbeing of our cats always come first.</value>
+  </data>
+  <data name="ResponsibleBreedingTitle" xml:space="preserve">
+    <value>Responsible Breeding</value>
+  </data>
+  <data name="ResponsibleBreedingDescription" xml:space="preserve">
+    <value>We believe in thoughtful decisions and responsible breeding practices.</value>
+  </data>
+  <data name="HappyFamiliesTitle" xml:space="preserve">
+    <value>Happy Families</value>
+  </data>
+  <data name="HappyFamiliesDescription" xml:space="preserve">
+    <value>Our wish is for every kitten to find a loving and caring forever home.</value>
+  </data>
+  <data name="HappyFamiliesLink" xml:space="preserve">
+    <value>DISCOVER OUR HAPPY FAMILIES</value>
+  </data>
+  <data name="BreedEyebrow" xml:space="preserve">
+    <value>GET TO KNOW US</value>
+  </data>
+  <data name="BreedHeading" xml:space="preserve">
+    <value>ONE FAMILY, EVERY</value>
+  </data>
+  <data name="BreedHeadingHighlight" xml:space="preserve">
+    <value>CAT CHERISHED</value>
+  </data>
+  <data name="BreedDescription" xml:space="preserve">
+    <value>Today, our cattery is home to a big family of both breeding and non-breeding cats. For me, every cat matters, regardless of whether they are part of the breeding programme or simply enjoying their well-deserved life as beloved family members.</value>
+  </data>
+  <data name="BreedImageAlt" xml:space="preserve">
+    <value>Our British Shorthair cats</value>
+  </data>
+  <data name="BreedImageCaption" xml:space="preserve">
+    <value>Felidae e.V. exhibition in August, 2024 in Dessau Rosslau, Germany.</value>
+  </data>
+  <data name="BreedImageDay" xml:space="preserve">
+    <value>DAY 2</value>
+  </data>
+  <data name="CtaEyebrow" xml:space="preserve">
+    <value>WELCOME TO OUR WORLD</value>
+  </data>
+  <data name="CtaHeading" xml:space="preserve">
+    <value>DISCOVER THE WORLD OF</value>
+  </data>
+  <data name="CtaHeadingHighlight" xml:space="preserve">
+    <value>BAGHEERA'S DREAM</value>
+  </data>
+  <data name="CtaDescription" xml:space="preserve">
+    <value>We invite you to meet our beautiful cats and discover the little ones who make our family special.</value>
+  </data>
+  <data name="CtaButton" xml:space="preserve">
+    <value>DISCOVER OUR LITTERS</value>
+  </data>
+</root>

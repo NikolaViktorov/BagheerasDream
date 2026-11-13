@@ -1,4 +1,6 @@
-﻿<section class="about-section">
+﻿@inject IStringLocalizer<AboutSection> Localizer
+
+<section class="about-section">
 
     <div class="about-container">
 
@@ -7,14 +9,14 @@
 
             <div class="about-image-frame">
                 <img src="/images/home/main2.jpg"
-                     alt="British Shorthair cat"
+                     alt="@Localizer["ImageAlt"]"
                      class="about-image" />
             </div>
 
             <div class="about-image-decoration"></div>
 
             <span class="about-image-caption">
-                Felidae e.V. exhibition in August, 2024 in Dessau Rosslau, Germany.
+                @Localizer["ImageCaption"]
             </span>
 
         </div>
@@ -23,28 +25,22 @@
         <div class="about-content">
 
             <span class="about-eyebrow">
-                A LITTLE ABOUT US
+                @Localizer["Eyebrow"]
             </span>
 
             <h2>
-                MORE THAN
-                <span>JUST A BREED</span>
+                @Localizer["Heading"]
+                <span>@Localizer["HeadingHighlight"]</span>
             </h2>
 
             <div class="about-divider"></div>
 
             <p class="about-description">
-                At Bagheera's Dream, we believe that every cat
-                has its own personality, charm and story.
-                Our appreciation for the British Shorthair
-                goes beyond its distinctive appearance.
-                We admire its gentle character, expressive eyes
-                and timeless elegance. Discover our cats, explore their stories
-                and get to know the world of Bagheera's Dream.
+                @Localizer["Description"]
             </p>
 
             <a href="/home/aboutus" class="about-button">
-                DISCOVER OUR STORY
+                @Localizer["DiscoverStory"]
                 <span>→</span>
             </a>
 

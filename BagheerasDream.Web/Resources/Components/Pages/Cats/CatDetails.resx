@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Cat Details</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading cat details...</value>
+  </data>
+  <data name="LoadError" xml:space="preserve">
+    <value>Something went wrong while loading the cat.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Cat not found.</value>
+  </data>
+  <data name="BackToCats" xml:space="preserve">
+    <value>BACK TO OUR CATS</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="OurMales" xml:space="preserve">
+    <value>Our Males</value>
+  </data>
+  <data name="OurFemales" xml:space="preserve">
+    <value>Our Females</value>
+  </data>
+  <data name="PhotoComingSoon" xml:space="preserve">
+    <value>PHOTO COMING SOON</value>
+  </data>
+  <data name="BreedLabel" xml:space="preserve">
+    <value>BREED</value>
+  </data>
+  <data name="ColorLabel" xml:space="preserve">
+    <value>COLOR</value>
+  </data>
+  <data name="BirthdayLabel" xml:space="preserve">
+    <value>BIRTHDAY</value>
+  </data>
+  <data name="AgeLabel" xml:space="preserve">
+    <value>AGE</value>
+  </data>
+  <data name="GenderLabel" xml:space="preserve">
+    <value>GENDER</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="MeetOurLady" xml:space="preserve">
+    <value>MEET OUR LADY</value>
+  </data>
+  <data name="MeetOurGentleman" xml:space="preserve">
+    <value>MEET OUR GENTLEMAN</value>
+  </data>
+  <data name="PedigreeEyebrow" xml:space="preserve">
+    <value>FAMILY HERITAGE</value>
+  </data>
+  <data name="PedigreeHeadingSuffix" xml:space="preserve">
+    <value>Pedigree.</value>
+  </data>
+  <data name="PedigreeDescription" xml:space="preserve">
+    <value>Discover the family history and lineage behind this cat.</value>
+  </data>
+  <data name="PedigreeImageAlt" xml:space="preserve">
+    <value>{0}'s pedigree</value>
+  </data>
+  <data name="GalleryEyebrow" xml:space="preserve">
+    <value>PHOTO COLLECTION</value>
+  </data>
+  <data name="GalleryHeading" xml:space="preserve">
+    <value>A Little More of</value>
+  </data>
+  <data name="GalleryDescription" xml:space="preserve">
+    <value>Discover more beautiful moments from this cat's life.</value>
+  </data>
+  <data name="CloseImage" xml:space="preserve">
+    <value>Close image</value>
+  </data>
+  <data name="PreviousImage" xml:space="preserve">
+    <value>Previous image</value>
+  </data>
+  <data name="NextImage" xml:space="preserve">
+    <value>Next image</value>
+  </data>
+  <data name="HisFamilyTree" xml:space="preserve">
+    <value>HIS FAMILY TREE</value>
+  </data>
+  <data name="HerFamilyTree" xml:space="preserve">
+    <value>HER FAMILY TREE</value>
+  </data>
+  <data name="MeetHis" xml:space="preserve">
+    <value>Meet His</value>
+  </data>
+  <data name="MeetHer" xml:space="preserve">
+    <value>Meet Her</value>
+  </data>
+  <data name="ParentsHeadingSuffix" xml:space="preserve">
+    <value>Parents.</value>
+  </data>
+  <data name="ParentsDescription" xml:space="preserve">
+    <value>Every beautiful cat has a story. Discover this cat's origins.</value>
+  </data>
+  <data name="Father" xml:space="preserve">
+    <value>Father</value>
+  </data>
+  <data name="Mother" xml:space="preserve">
+    <value>Mother</value>
+  </data>
+  <data name="FamilyHistory" xml:space="preserve">
+    <value>FAMILY HISTORY</value>
+  </data>
+  <data name="NoFamilyRecordsHeading" xml:space="preserve">
+    <value>No family records yet.</value>
+  </data>
+  <data name="NoFamilyRecordsDescription" xml:space="preserve">
+    <value>We're still adding our cats' family history. Check back soon to discover their origins.</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>RAISED WITH LOVE &amp; CARE</value>
+  </data>
+  <data name="AgeMonthsOne" xml:space="preserve">
+    <value>1 month old</value>
+  </data>
+  <data name="AgeMonthsMany" xml:space="preserve">
+    <value>{0} months old</value>
+  </data>
+  <data name="AgeYearsOne" xml:space="preserve">
+    <value>1 year old</value>
+  </data>
+  <data name="AgeYearsMany" xml:space="preserve">
+    <value>{0} years old</value>
+  </data>
+</root>

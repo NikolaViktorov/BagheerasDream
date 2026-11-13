@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Eyebrow" xml:space="preserve">
+    <value>LET'S GET IN TOUCH</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>EVERY LITTLE PAW</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>DESERVES A LOVING HOME</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Interested in welcoming a British Shorthair into your family? We'd love to hear from you and help you find your perfect companion.</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>CONTACT US</value>
+  </data>
+  <data name="Decoration" xml:space="preserve">
+    <value>BAGHEERA'S DREAM · BRITISH SHORTHAIR</value>
+  </data>
+</root>

@@ -1,5 +1,7 @@
 ﻿@using BagheerasDream.Application.DTOs.Litters
 
+@inject IStringLocalizer<KittenCard> Localizer
+
 <article class="kitten-card">
 
     <div class="kitten-image">
@@ -15,15 +17,15 @@
         }
 
         <span class="kitten-status @GetStatusClass()">
-            @Kitten.Status.ToString()
+            @Localizer[Kitten.Status.ToString()]
         </span>
     </div>
 
     <div class="kitten-info">
-        <h3>@(string.IsNullOrWhiteSpace(Kitten.Name) ? "Little One" : Kitten.Name)</h3>
+        <h3>@(string.IsNullOrWhiteSpace(Kitten.Name) ? Localizer["LittleOne"].Value : Kitten.Name)</h3>
 
         <span class="kitten-gender">
-            @Kitten.Gender.ToString()
+            @Localizer[Kitten.Gender.ToString()]
         </span>
     </div>
 

@@ -1,115 +1,59 @@
-﻿<section class="why-section">
+﻿@inject IStringLocalizer<WhyBagheerasDream> Localizer
 
+<section class="why-section">
     <div class="why-container">
-
         <!-- Section Introduction -->
         <div class="why-intro">
-
-            <span class="section-eyebrow">
-                WHAT MAKES US DIFFERENT
-            </span>
+            <span class="section-eyebrow">@Localizer["Eyebrow"]</span>
 
             <h2>
-                MORE THAN JUST
-                <span>BREEDING</span>
+                @Localizer["Heading"]
+                <span>@Localizer["HeadingHighlight"]</span>
             </h2>
 
-            <p>
-                At Bagheera's Dream, we believe that raising
-                beautiful cats begins with love, responsibility
-                and a genuine understanding of their needs.
-            </p>
+            <p>@Localizer["Description"]</p>
 
             <a href="/home/aboutus" class="why-story-link">
-                DISCOVER OUR PHILOSOPHY
+                @Localizer["StoryLink"]
                 <span>→</span>
             </a>
-
         </div>
-
 
         <!-- Our Principles -->
         <div class="why-principles">
-
-            <!-- Principle 01 -->
             <article class="why-card">
-
                 <span class="why-number">01</span>
-
                 <div class="why-icon">♡</div>
-
-                <h3>Love & Care</h3>
-
-                <p>
-                    Every cat deserves a loving environment,
-                    daily attention and genuine care.
-                </p>
-
+                <h3>@Localizer["LoveCareTitle"]</h3>
+                <p>@Localizer["LoveCareDescription"]</p>
             </article>
 
-
-            <!-- Principle 02 -->
             <article class="why-card">
-
                 <span class="why-number">02</span>
-
                 <div class="why-icon">✧</div>
-
-                <h3>Responsible Breeding</h3>
-
-                <p>
-                    We believe in thoughtful breeding,
-                    respect for the breed and responsible decisions.
-                </p>
-
+                <h3>@Localizer["ResponsibleBreedingTitle"]</h3>
+                <p>@Localizer["ResponsibleBreedingDescription"]</p>
             </article>
 
-
-            <!-- Principle 03 -->
             <article class="why-card">
-
                 <span class="why-number">03</span>
-
                 <div class="why-icon">◇</div>
-
-                <h3>Health & Wellbeing</h3>
-
-                <p>
-                    The health and wellbeing of our cats
-                    should always come first.
-                </p>
-
+                <h3>@Localizer["HealthWellbeingTitle"]</h3>
+                <p>@Localizer["HealthWellbeingDescription"]</p>
             </article>
 
-
-            <!-- Principle 04 -->
             <article class="why-card">
-
                 <span class="why-number">04</span>
-
                 <div class="why-icon">⌂</div>
-
-                <h3>A Loving Home</h3>
-
-                <p>
-                    We want every kitten to have the opportunity
-                    to grow up in a safe and loving home.
-                </p>
-
+                <h3>@Localizer["LovingHomeTitle"]</h3>
+                <p>@Localizer["LovingHomeDescription"]</p>
             </article>
-
         </div>
-
     </div>
-
 
     <!-- Bottom Decoration -->
     <div class="why-footer">
-
-        <span>OUR VALUES, OUR PROMISE</span>
-
-        <span>BAGHEERA'S DREAM · BRITISH SHORTHAIR</span>
-
+        <span>@Localizer["FooterPromise"]</span>
+        <span>@Localizer["FooterBrand"]</span>
     </div>
-
 </section>

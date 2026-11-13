@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Unsere Kater | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Lernen Sie unsere wunderschönen Britisch Kurzhaar Kater kennen. Entdecken Sie ihre Charaktere, Fellfarben und besonderen Eigenschaften bei Bagheera's Dream.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Unsere Britisch Kurzhaar Kater | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Entdecken Sie unsere männlichen Britisch Kurzhaar Katzen und lernen Sie die Zuchtkater unserer Cattery kennen.</value>
+  </data>
+  <data name="HeaderEyebrow" xml:space="preserve">
+    <value>DIE GENTLEMEN VON BAGHEERA'S DREAM</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>UNSERE</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>KATER</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Lernen Sie unsere stattlichen Gentlemen kennen – mit ihren typischen kräftigen Wangen, ihrem charmant rundlichen Aussehen und ihrem muskulösen Körperbau.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Wird geladen...</value>
+  </data>
+  <data name="EmptyHeading" xml:space="preserve">
+    <value>Zurzeit gibt es keine Kater anzuzeigen.</value>
+  </data>
+  <data name="EmptyDescription" xml:space="preserve">
+    <value>Unsere Familie wächst. Schauen Sie bald wieder vorbei.</value>
+  </data>
+  <data name="FooterBreed" xml:space="preserve">
+    <value>BRITISCH KURZHAAR</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>MIT LIEBE UND FÜRSORGE AUFGEZOGEN</value>
+  </data>
+</root>

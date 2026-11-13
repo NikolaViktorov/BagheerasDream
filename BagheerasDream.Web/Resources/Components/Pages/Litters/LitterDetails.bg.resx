@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Детайли за котилото</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Котилото се зарежда...</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Котилото не е намерено.</value>
+  </data>
+  <data name="BackToLitters" xml:space="preserve">
+    <value>ОБРАТНО КЪМ КОТИЛАТА</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Начало</value>
+  </data>
+  <data name="OurLitters" xml:space="preserve">
+    <value>Нашите котила</value>
+  </data>
+  <data name="HeroEyebrow" xml:space="preserve">
+    <value>СЛЕДВАЩОТО ПОКОЛЕНИЕ</value>
+  </data>
+  <data name="BornOn" xml:space="preserve">
+    <value>Родени на</value>
+  </data>
+  <data name="LittleOnesCount" xml:space="preserve">
+    <value>{0} МАЛКИ СЛЪНЦА</value>
+  </data>
+  <data name="RaisedWithLove" xml:space="preserve">
+    <value>ОТГЛЕДАНИ С ЛЮБОВ И ГРИЖА</value>
+  </data>
+  <data name="MeetLittleOnes" xml:space="preserve">
+    <value>ЗАПОЗНАЙТЕ СЕ С МАЛКИТЕ</value>
+  </data>
+  <data name="Our" xml:space="preserve">
+    <value>НАШИТЕ</value>
+  </data>
+  <data name="Kittens" xml:space="preserve">
+    <value>КОТЕНЦА</value>
+  </data>
+  <data name="KittensDescription" xml:space="preserve">
+    <value>Всяко има свой характер и специално място в нашето семейство.</value>
+  </data>
+  <data name="EmptyKittens" xml:space="preserve">
+    <value>Очакват ни още малки истории.</value>
+  </data>
+  <data name="PhotoCollection" xml:space="preserve">
+    <value>ГАЛЕРИЯ ОТ СНИМКИ</value>
+  </data>
+  <data name="Little" xml:space="preserve">
+    <value>МАЛКИ</value>
+  </data>
+  <data name="Moments" xml:space="preserve">
+    <value>МОМЕНТИ</value>
+  </data>
+  <data name="GalleryDescription" xml:space="preserve">
+    <value>Разгледайте красивите спомени от живота на котилото {0}.</value>
+  </data>
+  <data name="PreviousImage" xml:space="preserve">
+    <value>Предишна снимка</value>
+  </data>
+  <data name="NextImage" xml:space="preserve">
+    <value>Следваща снимка</value>
+  </data>
+  <data name="WhereItBegins" xml:space="preserve">
+    <value>ОТКЪДЕ ЗАПОЧВА ВСИЧКО</value>
+  </data>
+  <data name="MeetThe" xml:space="preserve">
+    <value>ЗАПОЗНАЙТЕ СЕ С</value>
+  </data>
+  <data name="Parents" xml:space="preserve">
+    <value>РОДИТЕЛИТЕ</value>
+  </data>
+  <data name="Mother" xml:space="preserve">
+    <value>МАЙКА</value>
+  </data>
+  <data name="Father" xml:space="preserve">
+    <value>БАЩА</value>
+  </data>
+  <data name="NotSpecified" xml:space="preserve">
+    <value>Не е посочен</value>
+  </data>
+  <data name="OurStory" xml:space="preserve">
+    <value>НАШАТА ИСТОРИЯ</value>
+  </data>
+  <data name="ALittle" xml:space="preserve">
+    <value>МАЛКО</value>
+  </data>
+  <data name="AboutThem" xml:space="preserve">
+    <value>ЗА ТЯХ</value>
+  </data>
+</root>

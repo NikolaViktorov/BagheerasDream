@@ -1,4 +1,6 @@
-﻿<section class="meet-cats-section">
+﻿@inject IStringLocalizer<MeetOurCats> Localizer
+
+<section class="meet-cats-section">
 
     <div class="meet-cats-container">
 
@@ -6,16 +8,16 @@
         <div class="meet-cats-heading">
 
             <span class="section-eyebrow">
-                GET TO KNOW OUR FAMILY
+                @Localizer["Eyebrow"]
             </span>
 
             <h2>
-                MEET OUR <span>CATS</span>
+                @Localizer["Heading"]
+                <span>@Localizer["HeadingHighlight"]</span>
             </h2>
 
             <p>
-                Every cat has its own personality, beauty
-                and story. Discover the members of our family.
+                @Localizer["Description"]
             </p>
 
         </div>
@@ -30,7 +32,7 @@
                 <div class="category-image-wrapper">
 
                     <img src="/images/home/females.jpg"
-                         alt="Our female British Shorthair cats"
+                         alt="@Localizer["FemalesImageAlt"]"
                          class="category-image" />
 
                     <div class="category-overlay"></div>
@@ -38,13 +40,13 @@
                     <div class="category-content">
 
                         <span class="category-number">
-                            01 — OUR LADIES
+                            @Localizer["FemalesNumber"]
                         </span>
 
-                        <h3>Our Females</h3>
+                        <h3>@Localizer["FemalesTitle"]</h3>
 
                         <span class="category-link">
-                            DISCOVER MORE
+                            @Localizer["DiscoverMore"]
                             <span>→</span>
                         </span>
 
@@ -61,7 +63,7 @@
                 <div class="category-image-wrapper">
 
                     <img src="/images/home/males.jpg"
-                         alt="Our male British Shorthair cats"
+                         alt="@Localizer["MalesImageAlt"]"
                          class="category-image" />
 
                     <div class="category-overlay"></div>
@@ -69,13 +71,13 @@
                     <div class="category-content">
 
                         <span class="category-number">
-                            02 — OUR GENTLEMEN
+                            @Localizer["MalesNumber"]
                         </span>
 
-                        <h3>Our Males</h3>
+                        <h3>@Localizer["MalesTitle"]</h3>
 
                         <span class="category-link">
-                            DISCOVER MORE
+                            @Localizer["DiscoverMore"]
                             <span>→</span>
                         </span>
 
@@ -91,9 +93,9 @@
         <!-- Bottom Note -->
         <div class="meet-cats-footer">
 
-            <span>BRITISH SHORTHAIR</span>
+            <span>@Localizer["FooterBreed"]</span>
 
-            <span>RAISED WITH LOVE & CARE</span>
+            <span>@Localizer["FooterNote"]</span>
 
         </div>
 

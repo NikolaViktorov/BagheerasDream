@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Litter Details</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading litter...</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Litter not found.</value>
+  </data>
+  <data name="BackToLitters" xml:space="preserve">
+    <value>BACK TO OUR LITTERS</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="OurLitters" xml:space="preserve">
+    <value>Our Litters</value>
+  </data>
+  <data name="HeroEyebrow" xml:space="preserve">
+    <value>THE NEXT GENERATION</value>
+  </data>
+  <data name="BornOn" xml:space="preserve">
+    <value>Born on</value>
+  </data>
+  <data name="LittleOnesCount" xml:space="preserve">
+    <value>{0} LITTLE ONES</value>
+  </data>
+  <data name="RaisedWithLove" xml:space="preserve">
+    <value>RAISED WITH LOVE &amp; CARE</value>
+  </data>
+  <data name="MeetLittleOnes" xml:space="preserve">
+    <value>MEET THE LITTLE ONES</value>
+  </data>
+  <data name="Our" xml:space="preserve">
+    <value>OUR</value>
+  </data>
+  <data name="Kittens" xml:space="preserve">
+    <value>KITTENS</value>
+  </data>
+  <data name="KittensDescription" xml:space="preserve">
+    <value>Each one has its own personality and a special place in our family.</value>
+  </data>
+  <data name="EmptyKittens" xml:space="preserve">
+    <value>More little stories coming soon.</value>
+  </data>
+  <data name="PhotoCollection" xml:space="preserve">
+    <value>PHOTO COLLECTION</value>
+  </data>
+  <data name="Little" xml:space="preserve">
+    <value>LITTLE</value>
+  </data>
+  <data name="Moments" xml:space="preserve">
+    <value>MOMENTS</value>
+  </data>
+  <data name="GalleryDescription" xml:space="preserve">
+    <value>Discover beautiful memories from {0}'s life.</value>
+  </data>
+  <data name="PreviousImage" xml:space="preserve">
+    <value>Previous image</value>
+  </data>
+  <data name="NextImage" xml:space="preserve">
+    <value>Next image</value>
+  </data>
+  <data name="WhereItBegins" xml:space="preserve">
+    <value>WHERE IT ALL BEGINS</value>
+  </data>
+  <data name="MeetThe" xml:space="preserve">
+    <value>MEET THE</value>
+  </data>
+  <data name="Parents" xml:space="preserve">
+    <value>PARENTS</value>
+  </data>
+  <data name="Mother" xml:space="preserve">
+    <value>MOTHER</value>
+  </data>
+  <data name="Father" xml:space="preserve">
+    <value>FATHER</value>
+  </data>
+  <data name="NotSpecified" xml:space="preserve">
+    <value>Not specified</value>
+  </data>
+  <data name="OurStory" xml:space="preserve">
+    <value>OUR STORY</value>
+  </data>
+  <data name="ALittle" xml:space="preserve">
+    <value>A LITTLE</value>
+  </data>
+  <data name="AboutThem" xml:space="preserve">
+    <value>ABOUT THEM</value>
+  </data>
+</root>

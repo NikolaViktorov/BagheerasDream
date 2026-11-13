@@ -1,18 +1,20 @@
 ﻿@page "/"
 
-<PageTitle>Bagheera's Dream | British Shorthair Katzenzucht</PageTitle>
+@inject IStringLocalizer<Home> Localizer
+
+<PageTitle>@Localizer["PageTitle"]</PageTitle>
 
 <HeadContent>
     <meta name="description"
-          content="Entdecken Sie Bagheera's Dream – unsere liebevolle British Shorthair Katzenzucht. Lernen Sie unsere Katzen, ihre Charaktere und aktuellen Kitten kennen." />
+          content="@Localizer["MetaDescription"]" />
 
     <link rel="canonical" href="https://bagheerasdream.de/" />
 
     <meta property="og:title"
-          content="Bagheera's Dream | British Shorthair Katzenzucht" />
+          content="@Localizer["OgTitle"]" />
 
     <meta property="og:description"
-          content="Entdecken Sie unsere British Shorthair Katzen und erfahren Sie mehr über unsere Zucht, unsere Katzen und aktuellen Kitten." />
+          content="@Localizer["OgDescription"]" />
 
     <meta property="og:url" content="https://bagheerasdream.de/" />
 
@@ -29,28 +31,24 @@
         <div class="hero-content">
 
             <h1>
-                WELCOME TO
+                @Localizer["HeroWelcome"]
                 <span>BAGHEERA'S DREAM</span>
             </h1>
 
             <p class="hero-description">
-                A little love, a lifetime of devotion, and the beauty of the British Shorthair and Longhair.
-                Our breeding programme is built on love, dedication and a deep respect for the British Shorthair breed. 
-                We carefully select our cats with a focus on health, temperament and breed standards, 
-                raising every kitten in a loving home environment where they receive the care, 
-                attention and affection they deserve from their very first days.
+                @Localizer["HeroDescription"]
             </p>
 
             <div class="hero-actions">
                 <a href="/home/aboutus" class="btn-primary">
-                    HOW WE BEGAN
+                    @Localizer["HeroButton"]
                     <span>→</span>
                 </a>
             </div>
 
             <div class="hero-note">
                 <span class="hero-note-line"></span>
-                <span>RAISED WITH LOVE & CARE</span>
+                <span>@Localizer["HeroNote"]</span>
             </div>
 
         </div>
@@ -60,14 +58,14 @@
             <div class="hero-image-frame">
 
                 <img src="/images/home/main1.jpg"
-                     alt="British Shorthair cat"
+                     alt="@Localizer["HeroImageAlt"]"
                      class="hero-image" />
 
             </div>
 
             <div class="hero-image-caption">
                 <span>JR. CH. ATHINA BAGHEERA'S DREAM *DE</span>
-                <span>BRITISH SHORTHAIR</span>
+                <span>@Localizer["HeroImageBreed"]</span>
             </div>
 
             <div class="hero-decoration"></div>
@@ -77,8 +75,8 @@
     </div>
 
     <div class="hero-bottom">
-        <span>DISCOVER THE BAGHEERASDREAM EXPERIENCE</span>
-        <span>SCROLL TO EXPLORE ↓</span>
+        <span>@Localizer["HeroDiscover"]</span>
+        <span>@Localizer["HeroScroll"]</span>
     </div>
 
 </section>

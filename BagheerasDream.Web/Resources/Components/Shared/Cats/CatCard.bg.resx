@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PhotoComingSoon" xml:space="preserve">
+    <value>Снимката предстои</value>
+  </data>
+  <data name="ViewProfile" xml:space="preserve">
+    <value>ВИЖТЕ ПРОФИЛА</value>
+  </data>
+  <data name="ViewDetails" xml:space="preserve">
+    <value>ПОВЕЧЕ ИНФОРМАЦИЯ</value>
+  </data>
+  <data name="AgeMonthsOne" xml:space="preserve">
+    <value>на 1 месец</value>
+  </data>
+  <data name="AgeMonthsMany" xml:space="preserve">
+    <value>на {0} месеца</value>
+  </data>
+  <data name="AgeYearsOne" xml:space="preserve">
+    <value>на 1 година</value>
+  </data>
+  <data name="AgeYearsMany" xml:space="preserve">
+    <value>на {0} години</value>
+  </data>
+</root>

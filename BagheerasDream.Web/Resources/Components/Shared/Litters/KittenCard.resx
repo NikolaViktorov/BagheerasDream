@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="LittleOne" xml:space="preserve">
+    <value>Little One</value>
+  </data>
+  <data name="Available" xml:space="preserve">
+    <value>AVAILABLE</value>
+  </data>
+  <data name="Reserved" xml:space="preserve">
+    <value>RESERVED</value>
+  </data>
+  <data name="Sold" xml:space="preserve">
+    <value>SOLD</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>MALE</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>FEMALE</value>
+  </data>
+</root>

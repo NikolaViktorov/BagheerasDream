@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="BrandSubtitle" xml:space="preserve">
+    <value>БРИТАНСКА КЪСОКОСМЕСТА</value>
+  </data>
+  <data name="BrandDescription" xml:space="preserve">
+    <value>Свят на елегантност, обич и прекрасни британски късокосмести котки.</value>
+  </data>
+  <data name="ExploreHeading" xml:space="preserve">
+    <value>РАЗГЛЕДАЙТЕ</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Начало</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>За нас</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Контакти</value>
+  </data>
+  <data name="OurCatsHeading" xml:space="preserve">
+    <value>НАШИТЕ КОТКИ</value>
+  </data>
+  <data name="OurFemales" xml:space="preserve">
+    <value>Нашите женски котки</value>
+  </data>
+  <data name="OurMales" xml:space="preserve">
+    <value>Нашите мъжки котки</value>
+  </data>
+  <data name="OurLitters" xml:space="preserve">
+    <value>Нашите котила</value>
+  </data>
+  <data name="GetInTouchHeading" xml:space="preserve">
+    <value>СВЪРЖЕТЕ СЕ С НАС</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Свържете се с нас</value>
+  </data>
+  <data name="RightsReserved" xml:space="preserve">
+    <value>Всички права запазени.</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>ОТГЛЕДАНИ С ЛЮБОВ И ГРИЖА</value>
+  </data>
+</root>

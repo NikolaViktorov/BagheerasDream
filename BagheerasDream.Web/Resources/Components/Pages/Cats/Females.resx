@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Our Females | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Meet our beautiful female British Shorthair cats. Discover their personalities, coat colours and unique qualities at Bagheera's Dream.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Our Female British Shorthair Cats | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>Discover our female British Shorthair cats and learn more about the queens of our cattery.</value>
+  </data>
+  <data name="HeaderEyebrow" xml:space="preserve">
+    <value>THE LADIES OF BAGHEERA'S DREAM</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>OUR</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>FEMALES</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Meet the beautiful ladies of our family. Each has her own personality, character and charm.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="EmptyHeading" xml:space="preserve">
+    <value>No females to display yet.</value>
+  </data>
+  <data name="EmptyDescription" xml:space="preserve">
+    <value>Our family is growing. Check back soon.</value>
+  </data>
+  <data name="FooterBreed" xml:space="preserve">
+    <value>BRITISH SHORTHAIR</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>RAISED WITH LOVE &amp; CARE</value>
+  </data>
+</root>

@@ -1,232 +1,171 @@
 ﻿@page "/home/contact"
+@inject IStringLocalizer<Contact> Localizer
 
-<PageTitle>Contact Us | Bagheera's Dream</PageTitle>
+<PageTitle>@Localizer["PageTitle"]</PageTitle>
 
 <HeadContent>
-    <meta name="description"
-          content="Kontaktieren Sie Bagheera's Dream. Wir beantworten gerne Ihre Fragen zu unseren British Shorthair Katzen, Kitten und unserer Zucht." />
-
+    <meta name="description" content="@Localizer["MetaDescription"]" />
     <link rel="canonical" href="https://bagheerasdream.de/home/contact" />
 
-    <meta property="og:title"
-          content="Kontakt | Bagheera's Dream" />
-
-    <meta property="og:description"
-          content="Sie interessieren sich für unsere British Shorthair Katzen? Kontaktieren Sie uns – wir freuen uns auf Ihre Nachricht." />
-
-    <meta property="og:url"
-          content="https://bagheerasdream.de/home/contact" />
-
-    <meta property="og:image"
-          content="https://bagheerasdream.de/images/home/5.jpg" />
-
+    <meta property="og:title" content="@Localizer["OgTitle"]" />
+    <meta property="og:description" content="@Localizer["OgDescription"]" />
+    <meta property="og:url" content="https://bagheerasdream.de/home/contact" />
+    <meta property="og:image" content="https://bagheerasdream.de/images/home/5.jpg" />
     <meta property="og:type" content="website" />
 </HeadContent>
 
 <section class="contact-page">
 
     <!-- HERO -->
-
     <header class="contact-hero">
-
         <span class="section-eyebrow">
-            WE WOULD LOVE TO HEAR FROM YOU
+            @Localizer["HeroEyebrow"]
         </span>
 
-        <h1>LET'S START A <span>CONVERSATION</span></h1>
+        <h1>
+            @Localizer["HeroHeading"]
+            <span>@Localizer["HeroHeadingHighlight"]</span>
+        </h1>
 
         <p>
-            Whether you are interested in our cats, have a question
-            or simply want to learn more about us, we would be happy
-            to hear from you.
+            @Localizer["HeroDescription"]
         </p>
-
     </header>
 
 
     <!-- CONTACT CONTENT -->
-
     <section class="contact-content">
 
         <!-- CONTACT INFORMATION -->
-
         <div class="contact-info">
-
             <span class="section-eyebrow">
-                GET IN TOUCH
+                @Localizer["InfoEyebrow"]
             </span>
 
-            <h2>WE ARE HERE FOR <span>YOU</span></h2>
+            <h2>
+                @Localizer["InfoHeading"]
+                <span>@Localizer["InfoHeadingHighlight"]</span>
+            </h2>
 
             <p>
-                Finding the right kitten is a special journey.
-                We believe that every future family deserves
-                time, attention and honest communication.
+                @Localizer["InfoDescription"]
             </p>
 
             <div class="contact-info-item">
                 <span class="contact-icon">♡</span>
-
                 <div>
-                    <h3>Kitten Enquiries</h3>
-                    <p>
-                        Interested in one of our kittens?
-                        Feel free to get in touch with us.
-                    </p>
+                    <h3>@Localizer["KittenEnquiriesTitle"]</h3>
+                    <p>@Localizer["KittenEnquiriesDescription"]</p>
                 </div>
             </div>
 
             <div class="contact-info-item">
                 <span class="contact-icon">✧</span>
-
                 <div>
-                    <h3>General Questions</h3>
-                    <p>
-                        Have questions about our cattery
-                        or the British Shorthair breed?
-                        We are always happy to help.
-                    </p>
+                    <h3>@Localizer["GeneralQuestionsTitle"]</h3>
+                    <p>@Localizer["GeneralQuestionsDescription"]</p>
                 </div>
             </div>
 
             <div class="contact-note">
-                Every message matters to us. We look forward
-                to getting to know you.
+                @Localizer["ContactNote"]
             </div>
-
         </div>
 
 
         <!-- CONTACT METHODS -->
-
         <div class="contact-methods">
-
             <div class="form-heading">
-                <h2>CONNECT WITH US</h2>
-                <p>
-                    Choose your preferred way to get in touch with us.
-                    We would love to hear from you!
-                </p>
+                <h2>@Localizer["MethodsHeading"]</h2>
+                <p>@Localizer["MethodsDescription"]</p>
             </div>
 
 
             <!-- PHONE -->
-
             <div class="contact-method-card">
-
                 <div class="contact-method-icon">☎</div>
-
                 <div class="contact-method-info">
-                    <h3>Phone</h3>
-                    <p>
-                        Give us a call. We will be happy to hear from you.
-                    </p>
+                    <h3>@Localizer["PhoneTitle"]</h3>
+                    <p>@Localizer["PhoneDescription"]</p>
                     <span>+49 1525 9005871</span>
                 </div>
-
-                <a href="tel:+4915259005871"
-                   class="contact-method-button">
-                    CALL US →
+                <a href="tel:+4915259005871" class="contact-method-button">
+                    @Localizer["CallUs"] →
                 </a>
-
             </div>
 
 
             <!-- WHATSAPP -->
-
             <div class="contact-method-card">
-
                 <div class="contact-method-icon">♡</div>
-
                 <div class="contact-method-info">
                     <h3>WhatsApp</h3>
-                    <p>
-                        Have a question? Send us a message directly.
-                    </p>
-                    <span>Chat with us on WhatsApp</span>
+                    <p>@Localizer["WhatsAppDescription"]</p>
+                    <span>@Localizer["WhatsAppLabel"]</span>
                 </div>
-
                 <a href="https://wa.me/4915259005871"
                    target="_blank"
                    rel="noopener noreferrer"
                    class="contact-method-button">
-                    MESSAGE US →
+                    @Localizer["MessageUs"] →
                 </a>
-
             </div>
 
 
             <!-- INSTAGRAM -->
-
             <div class="contact-method-card">
-
                 <div class="contact-method-icon">◎</div>
-
                 <div class="contact-method-info">
                     <h3>Instagram</h3>
-                    <p>
-                        Follow our cattery and send us a direct message.
-                    </p>
+                    <p>@Localizer["InstagramDescription"]</p>
                     <span>@@bagheeras.dream.cattery</span>
                 </div>
-
                 <a href="https://www.instagram.com/bagheeras.dream.cattery/"
                    target="_blank"
                    rel="noopener noreferrer"
                    class="contact-method-button">
-                    VISIT PROFILE →
+                    @Localizer["VisitProfile"] →
                 </a>
-
             </div>
 
 
             <!-- TIKTOK -->
-
             <div class="contact-method-card">
-
                 <div class="contact-method-icon">♪</div>
-
                 <div class="contact-method-info">
                     <h3>TikTok</h3>
-                    <p>
-                        Discover our cats and follow their little adventures.
-                    </p>
+                    <p>@Localizer["TikTokDescription"]</p>
                     <span>@@bagheeras.dream.de</span>
                 </div>
-
                 <a href="https://www.tiktok.com/@@bagheeras.dream.de"
                    target="_blank"
                    rel="noopener noreferrer"
                    class="contact-method-button">
-                    VISIT PROFILE →
+                    @Localizer["VisitProfile"] →
                 </a>
-
             </div>
-
         </div>
-
     </section>
 
 
     <!-- BOTTOM CTA -->
-
     <section class="contact-bottom">
-
         <span class="section-eyebrow">
-            A LITTLE WORLD OF LOVE
+            @Localizer["BottomEyebrow"]
         </span>
 
-        <h2>PERHAPS YOUR NEW BEST FRIEND <span>IS WAITING</span></h2>
+        <h2>
+            @Localizer["BottomHeading"]
+            <span>@Localizer["BottomHeadingHighlight"]</span>
+        </h2>
 
         <p>
-            Discover our beautiful British Shorthairs
-            and meet the little ones looking for their forever homes.
+            @Localizer["BottomDescription"]
         </p>
 
         <a href="/litters" class="contact-bottom-button">
-            EXPLORE OUR LITTERS
+            @Localizer["BottomButton"]
         </a>
-
     </section>
 
 </section>

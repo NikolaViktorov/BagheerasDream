@@ -6,27 +6,28 @@
 @using BagheerasDream.Application.DTOs.Cats
 
 @inject ICatsService CatsService
+@inject IStringLocalizer<CatDetails> Localizer
 
-<PageTitle>@(Cat?.Name ?? "Cat Details") | BagheerasDream</PageTitle>
+<PageTitle>@(Cat?.Name ?? Localizer["PageTitle"]) | Bagheera's Dream</PageTitle>
 
 @if (IsLoading)
 {
     <div class="cat-not-found">
-        <h1>Loading cat details...</h1>
+        <h1>@Localizer["Loading"]</h1>
     </div>
 }
 else if (ErrorMessage is not null)
 {
     <div class="cat-not-found">
-        <h1>@ErrorMessage</h1>
-        <a href="@GetCatsUrl()">BACK TO OUR CATS →</a>
+        <h1>@Localizer["LoadError"]</h1>
+        <a href="@GetCatsUrl()">@Localizer["BackToCats"] →</a>
     </div>
 }
 else if (Cat is null)
 {
     <div class="cat-not-found">
-        <h1>Cat not found.</h1>
-        <a href="@GetCatsUrl()">BACK TO OUR CATS →</a>
+        <h1>@Localizer["NotFound"]</h1>
+        <a href="@GetCatsUrl()">@Localizer["BackToCats"] →</a>
     </div>
 }
 else
@@ -34,10 +35,12 @@ else
     <section class="cat-details-page">
 
         <div class="details-breadcrumb">
-            <a href="/">Home</a>
+            <a href="/">@Localizer["Home"]</a>
             <span>/</span>
             <a href="@GetCatsUrl()">
-                @(Cat.Gender == Gender.Male ? "Our Males" : "Our Females")
+                @(Cat.Gender == Gender.Male
+                    ? Localizer["OurMales"]
+                    : Localizer["OurFemales"])
             </a>
             <span>/</span>
             <span>@Cat.Name</span>
@@ -55,22 +58,23 @@ else
                 {
                     <div class="details-image-placeholder">
                         <span>♡</span>
-                        <p>PHOTO COMING SOON</p>
+                        <p>@Localizer["PhotoComingSoon"]</p>
                     </div>
                 }
 
                 <div class="image-caption">
-                    <span>BRITISH SHORTHAIR</span>
+                    <span>@Localizer["BreedLabel"]</span>
                     <span>@Cat.Color.ToDisplayName()</span>
                 </div>
 
             </div>
 
-
             <div class="details-information">
 
                 <span class="details-eyebrow">
-                    @(Cat.Gender == Gender.Female ? "MEET OUR LADY" : "MEET OUR GENTLEMAN")
+                    @(Cat.Gender == Gender.Female
+                        ? Localizer["MeetOurLady"]
+                        : Localizer["MeetOurGentleman"])
                 </span>
 
                 <h1>@Cat.Name<span>.</span></h1>
@@ -82,28 +86,32 @@ else
                 <div class="details-facts">
 
                     <div>
-                        <span>BREED</span>
+                        <span>@Localizer["BreedLabel"]</span>
                         <strong>@Cat.Breed.ToDisplayName()</strong>
                     </div>
 
                     <div>
-                        <span>COLOR</span>
+                        <span>@Localizer["ColorLabel"]</span>
                         <strong>@Cat.Color.ToDisplayName()</strong>
                     </div>
 
                     <div>
-                        <span>BIRTHDAY</span>
+                        <span>@Localizer["BirthdayLabel"]</span>
                         <strong>@Cat.Birthday.ToString("dd.MM.yyyy")</strong>
                     </div>
 
                     <div>
-                        <span>AGE</span>
+                        <span>@Localizer["AgeLabel"]</span>
                         <strong>@GetCatAge(Cat.Birthday)</strong>
                     </div>
 
                     <div>
-                        <span>GENDER</span>
-                        <strong>@Cat.Gender</strong>
+                        <span>@Localizer["GenderLabel"]</span>
+                        <strong>
+                            @(Cat.Gender == Gender.Male
+                                ? Localizer["Male"]
+                                : Localizer["Female"])
+                        </strong>
                     </div>
 
                 </div>
@@ -111,21 +119,20 @@ else
         </div>
 
         <!-- PEDIGREE -->
-
         @if (!string.IsNullOrEmpty(Cat.PedigreeImage))
         {
             <section class="pedigree-section">
                 <div class="pedigree-header">
-                    <span class="details-eyebrow">FAMILY HERITAGE</span>
-                    <h2>@Cat.Name's <span>Pedigree.</span></h2>
-                    <p>Discover the family history and lineage behind @Cat.Name.</p>
+                    <span class="details-eyebrow">@Localizer["PedigreeEyebrow"]</span>
+                    <h2>@Cat.Name <span>@Localizer["PedigreeHeadingSuffix"]</span></h2>
+                    <p>@Localizer["PedigreeDescription"]</p>
                 </div>
 
                 <div class="pedigree-image-container"
                      @onclick="OpenPedigreeLightbox">
 
                     <img src="@Cat.PedigreeImage"
-                         alt="@Cat.Name's pedigree" />
+                         alt="@Localizer["PedigreeImageAlt", Cat.Name]" />
                 </div>
 
                 @if (IsPedigreeLightboxOpen)
@@ -134,6 +141,7 @@ else
                          @onclick="ClosePedigreeLightbox">
 
                         <button class="lightbox-close"
+                                aria-label="@Localizer["CloseImage"]"
                                 @onclick:stopPropagation="true"
                                 @onclick="ClosePedigreeLightbox">
                             &times;
@@ -141,7 +149,7 @@ else
 
                         <img class="lightbox-image"
                              src="@Cat.PedigreeImage"
-                             alt="@Cat.Name's pedigree"
+                             alt="@Localizer["PedigreeImageAlt", Cat.Name]"
                              @onclick:stopPropagation="true" />
                     </div>
                 }
@@ -149,20 +157,16 @@ else
         }
 
         <!-- GALLERY -->
-
-
         @if (Cat.GalleryImages.Any())
         {
             <section class="cat-gallery-section">
 
                 <div class="cat-gallery-header">
-                    <span class="details-eyebrow">PHOTO COLLECTION</span>
+                    <span class="details-eyebrow">@Localizer["GalleryEyebrow"]</span>
 
-                    <h2>A Little More of <span>@Cat.Name.</span></h2>
+                    <h2>@Localizer["GalleryHeading"] <span>@Cat.Name.</span></h2>
 
-                    <p>
-                        Discover more beautiful moments from @Cat.Name's life.
-                    </p>
+                    <p>@Localizer["GalleryDescription"]</p>
                 </div>
 
                 <div class="cat-gallery">
@@ -180,6 +184,7 @@ else
                     <div class="lightbox-overlay" @onclick="CloseLightbox">
 
                         <button class="lightbox-close"
+                                aria-label="@Localizer["CloseImage"]"
                                 @onclick:preventDefault="true"
                                 @onclick:stopPropagation="true"
                                 @onclick="CloseLightbox">
@@ -187,6 +192,7 @@ else
                         </button>
 
                         <button class="lightbox-arrow lightbox-prev"
+                                aria-label="@Localizer["PreviousImage"]"
                                 @onclick:stopPropagation="true"
                                 @onclick="PreviousImage">
                             &#10094;
@@ -198,6 +204,7 @@ else
                              @onclick:stopPropagation="true" />
 
                         <button class="lightbox-arrow lightbox-next"
+                                aria-label="@Localizer["NextImage"]"
                                 @onclick:stopPropagation="true"
                                 @onclick="NextImage">
                             &#10095;
@@ -210,73 +217,69 @@ else
                     </div>
                 }
 
-
             </section>
         }
 
         <!-- PARENTS -->
-
         <section class="parents-section">
 
             <div class="parents-header">
 
                 <span class="details-eyebrow">
-                    @(Cat.Gender == Gender.Male ? "His" : "Her") FAMILY TREE
+                    @(Cat.Gender == Gender.Male
+                        ? Localizer["HisFamilyTree"]
+                        : Localizer["HerFamilyTree"])
                 </span>
 
-                <h2>Meet @(Cat.Gender == Gender.Male ? "His" : "Her") <span>Parents.</span></h2>
+                <h2>
+                    @(Cat.Gender == Gender.Male
+                        ? Localizer["MeetHis"]
+                        : Localizer["MeetHer"])
+                    <span>@Localizer["ParentsHeadingSuffix"]</span>
+                </h2>
 
                 <p>
-                    Every beautiful cat has a story.
-                    Discover where @Cat.Name comes from.
+                    @Localizer["ParentsDescription"]
                 </p>
 
             </div>
-
 
             @if (Cat.FatherId.HasValue || Cat.MotherId.HasValue)
             {
                 <div class="parents-grid">
 
-                    <ParentCard
-                        ParentName="@Cat.FatherName"
-                        ProfileImage="@Cat.FatherProfileImage"
-                        DetailsUrl="@(Cat.FatherId.HasValue ? $"/cats/{Cat.FatherId}" : "#")"
-                        Label="Father" />
+                    <ParentCard ParentName="@Cat.FatherName"
+                                ProfileImage="@Cat.FatherProfileImage"
+                                DetailsUrl="@(Cat.FatherId.HasValue ? $"/cats/{Cat.FatherId}" : "#")"
+                                Label="@Localizer["Father"].Value" />
 
-                    <ParentCard
-                        ParentName="@Cat.MotherName"
-                        ProfileImage="@Cat.MotherProfileImage"
-                        DetailsUrl="@(Cat.MotherId.HasValue ? $"/cats/{Cat.MotherId}" : "#")"
-                        Label="Mother" />
+                    <ParentCard ParentName="@Cat.MotherName"
+                                ProfileImage="@Cat.MotherProfileImage"
+                                DetailsUrl="@(Cat.MotherId.HasValue ? $"/cats/{Cat.MotherId}" : "#")"
+                                Label="@Localizer["Mother"].Value" />
 
                 </div>
             }
             else
             {
                 <div class="parents-empty">
-                    <span>FAMILY HISTORY</span>
-                    <h3>No family records yet.</h3>
-                    <p>
-                        We're still adding our cats' family history.
-                        Check back soon to discover their origins.
-                    </p>
+                    <span>@Localizer["FamilyHistory"]</span>
+                    <h3>@Localizer["NoFamilyRecordsHeading"]</h3>
+                    <p>@Localizer["NoFamilyRecordsDescription"]</p>
                 </div>
             }
 
         </section>
 
         <div class="details-bottom">
-            <a href="@GetCatsUrl()">← BACK TO OUR CATS</a>
-            <span>RAISED WITH LOVE & CARE</span>
+            <a href="@GetCatsUrl()">← @Localizer["BackToCats"]</a>
+            <span>@Localizer["FooterNote"]</span>
         </div>
 
     </section>
 }
 
-
 @code {
-
     [Parameter]
     public Guid Id { get; set; }
 
@@ -284,9 +287,7 @@ else
     private bool IsLoading { get; set; } = true;
     private string? ErrorMessage { get; set; }
 
-
     private bool IsLightboxOpen { get; set; }
-
     private int SelectedImageIndex { get; set; }
 
     private CatGalleryImageDto? SelectedGalleryImage =>
@@ -361,7 +362,7 @@ else
         }
     }
 
-    private static string GetCatAge(DateOnly birthday)
+    private string GetCatAge(DateOnly birthday)
     {
         var today = DateOnly.FromDateTime(DateTime.Today);
 
@@ -369,20 +370,24 @@ else
         var months = today.Month - birthday.Month;
 
         if (today.Day < birthday.Day)
-        {
             months--;
-        }
 
         if (months < 0)
         {
             years--;
             months += 12;
         }
-        
-        if (years == 0)
-            return months == 1 ? "1 month old" : $"{months} months old";
 
-        return years == 1 ? "1 year old" : $"{years} years old";
+        if (years == 0)
+        {
+            return months == 1
+                ? Localizer["AgeMonthsOne"].Value
+                : Localizer["AgeMonthsMany", months].Value;
+        }
+
+        return years == 1
+            ? Localizer["AgeYearsOne"].Value
+            : Localizer["AgeYearsMany", years].Value;
     }
 
     private string GetCatsUrl()

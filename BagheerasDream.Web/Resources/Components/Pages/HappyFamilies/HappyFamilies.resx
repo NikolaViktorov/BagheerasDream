@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Happy Families | Bagheera's Dream</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Discover the happy families and beautiful moments shared by the kittens from Bagheera's Dream.</value>
+  </data>
+  <data name="OgTitle" xml:space="preserve">
+    <value>Happy Families | Bagheera's Dream</value>
+  </data>
+  <data name="OgDescription" xml:space="preserve">
+    <value>A collection of beautiful moments and happy families who welcomed our kittens into their homes.</value>
+  </data>
+  <data name="HeaderEyebrow" xml:space="preserve">
+    <value>A LIFETIME OF LOVE AND HAPPINESS</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>HAPPY</value>
+  </data>
+  <data name="HeadingHighlight" xml:space="preserve">
+    <value>FAMILIES</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Nothing makes us happier than seeing our kittens grow up surrounded by love. Every kitten that leaves our home becomes part of a new family, creating special memories and lifelong friendships. Here are some beautiful moments shared by the wonderful families who welcomed our kittens into their lives.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="EmptyHeading" xml:space="preserve">
+    <value>Beautiful moments are coming soon.</value>
+  </data>
+  <data name="EmptyDescription" xml:space="preserve">
+    <value>Our gallery will be updated with memories from our happy families.</value>
+  </data>
+  <data name="ImageAlt" xml:space="preserve">
+    <value>Happy family with a Bagheera's Dream kitten</value>
+  </data>
+  <data name="FooterBrand" xml:space="preserve">
+    <value>BAGHEERA'S DREAM</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>HAPPY FAMILIES, HAPPY KITTENS</value>
+  </data>
+</root>

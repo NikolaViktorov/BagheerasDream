@@ -1,4 +1,6 @@
-﻿<footer class="site-footer">
+﻿@inject IStringLocalizer<SiteFooter> Localizer
+
+<footer class="site-footer">
 
     <div class="footer-container">
 
@@ -12,12 +14,11 @@
                 </a>
 
                 <span class="footer-subtitle">
-                    BRITISH SHORTHAIR
+                    @Localizer["BrandSubtitle"]
                 </span>
 
                 <p>
-                    A world of elegance, affection and beautiful
-                    British Shorthair companions.
+                    @Localizer["BrandDescription"]
                 </p>
 
             </div>
@@ -26,11 +27,11 @@
             <!-- Explore -->
             <div class="footer-column">
 
-                <h4>EXPLORE</h4>
+                <h4>@Localizer["ExploreHeading"]</h4>
 
-                <a href="/">Home</a>
-                <a href="/home/aboutus">About Us</a>
-                <a href="/home/contact">Contact</a>
+                <a href="/">@Localizer["Home"]</a>
+                <a href="/home/aboutus">@Localizer["AboutUs"]</a>
+                <a href="/home/contact">@Localizer["Contact"]</a>
 
             </div>
 
@@ -38,11 +39,11 @@
             <!-- Our Cats -->
             <div class="footer-column">
 
-                <h4>OUR CATS</h4>
+                <h4>@Localizer["OurCatsHeading"]</h4>
 
-                <a href="/cats/females">Our Females</a>
-                <a href="/cats/males">Our Males</a>
-                <a href="/litters">Our Litters</a>
+                <a href="/cats/females">@Localizer["OurFemales"]</a>
+                <a href="/cats/males">@Localizer["OurMales"]</a>
+                <a href="/litters">@Localizer["OurLitters"]</a>
 
             </div>
 
@@ -50,9 +51,9 @@
             <!-- Contact -->
             <div class="footer-column">
 
-                <h4>GET IN TOUCH</h4>
+                <h4>@Localizer["GetInTouchHeading"]</h4>
 
-                <a href="/home/contact">Contact Us</a>
+                <a href="/home/contact">@Localizer["ContactUs"]</a>
             </div>
 
         </div>
@@ -62,11 +63,11 @@
         <div class="footer-bottom">
 
             <span>
-                © @DateTime.Now.Year BagheerasDream. All rights reserved.
+                © @DateTime.Now.Year BagheerasDream. @Localizer["RightsReserved"]
             </span>
 
             <span>
-                RAISED WITH LOVE & CARE
+                @Localizer["FooterNote"]
             </span>
 
         </div>
