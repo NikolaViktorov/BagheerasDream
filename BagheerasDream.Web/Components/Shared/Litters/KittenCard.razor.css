@@ -11,20 +11,23 @@
 
 .kitten-image {
     position: relative;
-    height: 280px;
+    height: 320px;
     background: #eee8df;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
     .kitten-image img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         transition: transform 0.5s ease;
     }
 
 .kitten-card:hover .kitten-image img {
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
 
 .kitten-placeholder {
@@ -80,7 +83,7 @@
 
 @media (max-width: 600px) {
     .kitten-image {
-        height: 240px;
+        height: 280px;
     }
 }
 
